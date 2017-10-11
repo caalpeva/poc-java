@@ -1,2 +1,2 @@
 # PoC
-Proofs of concept (frameworks &amp; java advanced)
+Proofs of concept (frameworks & java topics)
