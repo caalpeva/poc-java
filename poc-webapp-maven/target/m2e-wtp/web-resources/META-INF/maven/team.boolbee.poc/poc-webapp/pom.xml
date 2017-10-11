@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>team.boolbee.poc</groupId>
+  <artifactId>poc-webapp</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <!-- Propiedades para desplegar en tomcat cuando se active el perfil indicado -->
+	<properties>
+		<project.encoding>cp1252</project.encoding>
+		<tomcat.manager.url>http://10.0.0.159:8080</tomcat.manager.url>
+		<tomcat.manager.user>admin</tomcat.manager.user>
+		<tomcat.manager.password>admin</tomcat.manager.password>
+		<tomcat.deploy.path>/WebSamplesWithMaven</tomcat.deploy.path>
+	</properties>
+  
+  <dependencies>
+  	<dependency>
+		<groupId>com.google.apis</groupId>
+  		<artifactId>google-api-services-fitness</artifactId>
+  		<version>v1-rev24-1.22.0</version>
+  	</dependency>
+  	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>2.5</version>
+		<scope>provided</scope>
+	</dependency>
+  </dependencies>
+ <build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<attachClasses>true</attachClasses>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+    				<webXml>WebContent\WEB-INF\web.xml</webXml>   
+  				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+  
+  <profiles>
+		<!-- Si se activa el perfil despliega el proyecto en tomcat 6 -->
+		<profile>
+			<id>deploy-tomcat6</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat6-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<url>${tomcat.manager.url}/manager</url>
+							<username>${tomcat.manager.user}</username>
+							<password>${tomcat.manager.password}</password>
+							<path>${tomcat.deploy.path}</path>
+							<update>true</update>
+						</configuration>
+						<executions>
+							<execution>
+								<id>tomcat-deploy</id>
+								<goals>
+									<goal>deploy-only</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<!-- Si se activa el perfil despliega el proyecto en tomcat 7 -->
+		<profile>
+			<id>deploy-tomcat7</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat7-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<url>${tomcat.manager.url}/manager/text</url>
+							<username>${tomcat.manager.user}</username>
+							<password>${tomcat.manager.password}</password>
+							<path>${tomcat.deploy.path}</path>
+							<update>true</update>
+						</configuration>
+						<executions>
+							<execution>
+								<id>tomcat-deploy</id>
+								<goals>
+									<goal>deploy-only</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+  
+</project>
