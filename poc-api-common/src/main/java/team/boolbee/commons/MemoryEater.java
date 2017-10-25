@@ -14,6 +14,7 @@ public class MemoryEater {
 			do{
 		    	v.add(new byte[100 * MB]);
 		    	freeMemory = getFreeMemory();
+		    	//System.out.println(System.out.printf("Free memory: %.2f MB", getMb(freeMemory)));
 			} while (freeMemory > 512 * MB);
 			System.out.println("Max memory consumed. Sleep for 1 seconds and continue");
 			Thread.sleep(1000);
