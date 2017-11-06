@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd"
+ 	default-autowire="byName">
+
+	<bean id="springIdol" class="team.boolbee.poc.spring.beans.SpringIdol">
+		<property name="performers">
+			<set>
+				<ref bean="bruce"/>
+				<ref bean="harold"/>
+				<ref bean="kenny"/>
+			</set>
+		</property>
+	</bean>
+
+	<bean id="instrument" class="team.boolbee.poc.spring.beans.instruments.Saxophone"/>
+	<bean id="piano" class="team.boolbee.poc.spring.beans.instruments.Piano"/>
+	
+	<bean id="bruce" class="team.boolbee.poc.spring.beans.performers.Instrumentalist">
+		<property name="song" value="True Colors"/>
+	</bean>
+	
+	<bean id="harold" class="team.boolbee.poc.spring.beans.performers.Instrumentalist">
+		<property name="song" value="Ghostbusters Theme"/>
+	</bean>
+
+	<bean id="kenny" class="team.boolbee.poc.spring.beans.performers.Instrumentalist">
+		<property name="song" value="Jingle Bells"/>
+		<!-- Prevalece la conexión explícita a la conexión automática -->
+		<property name="instrument" ref="piano"/>
+	</bean>
+	
+</beans>

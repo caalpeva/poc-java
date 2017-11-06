@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="springIdol" class="team.boolbee.poc.spring.beans.SpringIdol">
+		<property name="performers">
+			<set>
+				<ref bean="bruce" />
+				<ref bean="harold" />
+				<ref bean="kenny" />
+				<ref bean="morgan" />
+			</set>
+		</property>
+	</bean>
+
+	<!-- Por defecto, las definiciones de beans de Spring son instancias únicas por contexto de aplicación -->
+	<bean id="cymbal" class="team.boolbee.poc.spring.beans.instruments.Cymbal" />
+
+	<!-- Delimitar como prototype fuerza a Spring a generar una nueva instancia del bean cada vez que sea necesario -->
+	<bean id="saxophone"
+		class="team.boolbee.poc.spring.beans.instruments.Saxophone"
+		scope="prototype" />
+
+	<bean id="bruce" class="team.boolbee.poc.spring.beans.performers.Instrumentalist">
+		<property name="song" value="True Colors" />
+		<property name="instrument" ref="cymbal" />
+	</bean>
+
+	<bean id="harold" class="team.boolbee.poc.spring.beans.performers.Instrumentalist">
+		<property name="song" value="Ghostbusters Theme" />
+		<property name="instrument" ref="cymbal" />
+	</bean>
+
+	<bean id="kenny" class="team.boolbee.poc.spring.beans.performers.Instrumentalist">
+		<property name="song" value="Jingle Bells" />
+		<property name="instrument" ref="saxophone" />
+	</bean>
+
+	<bean id="morgan" class="team.boolbee.poc.spring.beans.performers.Instrumentalist">
+		<property name="song" value="Scatman" />
+		<property name="instrument" ref="saxophone" />
+	</bean>
+
+</beans>

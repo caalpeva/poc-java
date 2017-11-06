@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+	http://www.springframework.org/schema/lang
+	http://www.springframework.org/schema/lang/spring-lang-2.0.xsd">
+
+<!-- 	<lang:jruby id="lime" script-source="classpath:Lime.rb" -->
+<!-- 		script-interfaces="team.boolbee.poc.spring.beans.others.ILime" /> -->
+
+<!--  	<lang:jruby id="lime" script-source="classpath:Lime.rb" -->
+<!--  		script-interfaces="team.boolbee.poc.spring.beans.others.ILime" -->
+<!--  		refresh-check-delay="5000" /> -->
+
+<!-- 	<lang:groovy id="lime" -->
+<!-- 		script-source="classpath:Lime.groovy"/> -->
+		
+	<lang:bsh id="lime"
+		script-source="classpath:Lime.bsh"
+		script-interfaces="team.boolbee.poc.spring.beans.others.ILime"/>
+
+<!-- 	<lang:bsh id="lime" -->
+<!-- 		script-interfaces="team.boolbee.poc.spring.beans.others.ILime"> -->
+<!-- 		<lang:inline-script><![CDATA[ -->
+<!-- 			drink() { -->
+<!-- 				System.out.println("Called the doctor woke him up! (BeanShell inline-script)"); -->
+<!-- 			} -->
+<!-- 		]]> -->
+<!-- 		</lang:inline-script> -->
+<!-- 	</lang:bsh> -->
+
+<!-- 	<bean id="lime" class="team.boolbee.poc.spring.beans.others.Lime" /> -->
+
+<!-- 	<lang:groovy id="coconut" -->
+<!-- 		script-source="classpath:Coconut.groovy"> -->
+<!-- 		<lang:property name="lime" ref="lime" /> -->
+<!-- 	</lang:groovy> -->
+	
+	<bean id="coconut" class="team.boolbee.poc.spring.beans.others.Coconut">
+		<property name="lime" ref="lime" />
+	</bean>
+</beans>
