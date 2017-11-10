@@ -7,9 +7,9 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/main/resources/context-aop-configuration.xml</config>
-		<config>src/main/resources/context-aop-autoproxy.xml</config>
 		<config>src/main/resources/context-aop-autoproxy-annotation-aspectj.xml</config>
+		<config>src/main/resources/context-aop-schema-configuration.xml</config>
+		<config>src/main/resources/context-aop-autoproxy.xml</config>
 		<config>src/main/resources/context-aop-classic.xml</config>
 	</configs>
 	<autoconfigs>
