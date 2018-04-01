@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="MySQL Properties" basedir=".">
+
+  <property name="PROPERTIESFILE" value="properties/hsqldb-properties.xml"/>
+  <property name="HSQLDBDRIVER" value="lib/hsqldb-2.4.0.jar"/>
+
+  <path id="CLASSPATH">
+    <pathelement location="classes"/>
+    <pathelement location="${HSQLDBDRIVER}"/>
+  </path>
+
+  <property name="DB.DRIVER" value="org.hsqldb.jdbcDriver"/>
+  <property name="DB.HOST" value="localhost"/>
+  <property name="DB.URL" value="jdbc:hsqldb:hsql://localhost:9001/roadrantz/roadrantz"/>
+  <property name="DB.USER" value="sa"/>
+  <property name="DB.PASSWORD" value="" />
+  <property name="DB.SID" value="roadrantz"/>
+  <property name="DB.VENDOR" value="hsqldb"/>
+	
+</project>
+
+

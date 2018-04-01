@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="poc-app-jdbc" basedir=".">
+  <!-- <property name="ANTPROPERTIES" value="properties/sqlserver-build-properties.xml"/> -->
+ <property name="ANTPROPERTIES" value="properties/hsqldb-build-properties.xml"/>
+  <import file="${ANTPROPERTIES}"/>
+
+  <target name="drop-tables">
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+        password="${DB.PASSWORD}" classpathref="CLASSPATH"
+    	autocommit="true" onerror="continue">
+      <transaction src="./sql/${DB.VENDOR}/drop-tables.sql"></transaction>
+    </sql>
+  </target>
+
+  <target name="build-tables" description="Create database tables">
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH"
+         autocommit="true" onerror="continue">
+      <transaction src="./sql/${DB.VENDOR}/create-tables.sql"></transaction>
+    </sql>
+  </target>
+
+  <target name="populate-tables" description="Populate database tables">
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH"
+         delimiter="${DB.DELIMITER}" autocommit="false" onerror="continue">
+      <transaction src="./sql/${DB.VENDOR}/populate-tables.sql"></transaction>
+    </sql>
+  </target>
+
+
+  <target name="create-sqlserver-database">
+    <sql driver="${DB.DRIVER}" url="${DB.URL.NEWDATABASE}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH"
+         delimiter="${DB.DELIMITER}" autocommit="false" onerror="continue">
+      create database ${DB.SID};
+    </sql>
+
+
+  </target>
+	
+  <target name="setup">
+      <antcall target="drop-tables"/>
+      <antcall target="build-tables"/>
+      <antcall target="populate-tables"/>
+  </target>
+
+</project>

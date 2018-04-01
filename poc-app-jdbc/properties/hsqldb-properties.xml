@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+  <entry key="dbms">hsqldb</entry>
+  <entry key="driver">org.hsqldb.jdbcDriver</entry>
+  <entry key="database_name">roadrantz</entry>
+  <entry key="user_name">sa</entry>
+  <entry key="password"></entry>
+  <entry key="server_name">localhost</entry>
+  <entry key="port_number">9001</entry>
+
+
+</properties>

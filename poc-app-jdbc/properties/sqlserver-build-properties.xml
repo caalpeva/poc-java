@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="SQLSERVER Properties" basedir=".">
+
+  <property name="PROPERTIESFILE" value="properties/sqlserver-properties.xml"/>
+  <property name="SQLSERVERDRIVER" value="C:\\Users\\Alberto\\.m2\\repository\\com\\microsoft\\sqlserver\\sqljdbc4\\4.1.5605\\sqljdbc4-4.1.5605.jar"/>
+  <path id="CLASSPATH">
+    <pathelement location="classes"/>
+    <pathelement location="${SQLSERVERDRIVER}"/>
+  </path>
+
+  <property name="DB.DRIVER" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+  <property name="DB.HOST" value="localhost"/>
+  <property name="DB.URL.NEWDATABASE" value="jdbc:sqlserver://localhost"/>
+  <property name="DB.URL" value="jdbc:sqlserver://localhost;databaseName=roadrantz;sendStringAsUnicodeParameter=false;applicationName=testsLocal"/>
+  <property name="DB.USER" value="sa"/>
+  <property name="DB.PASSWORD" value="boolbee"/>
+  <property name="DB.SID" value="roadrantz"/>
+  <property name="DB.VENDOR" value="sqlserver"/>
+
+</project>
+
+
