@@ -8,7 +8,7 @@
 	<!-- Loads externalized configuration details from database.properties. -->
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:/database-hsqldb.properties" />
+		<property name="location" value="classpath:/database-sqlserver.properties" />
 	</bean>
 
 <!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->

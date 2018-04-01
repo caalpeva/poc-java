@@ -7,7 +7,7 @@
     <echo message="Starting HSQLDB"/>
     <java fork="true" dir="." classname="org.hsqldb.Server">
       <classpath>
-        <pathelement path="${spring.home}/lib/hsqldb-2.4.0.jar"/>
+        <pathelement path="${spring.home}/lib/hsqldb-2.3.1.jar"/>
       </classpath>
       <arg value="-database.0"/>
       <arg value="${hsql.path}"/>
@@ -19,7 +19,7 @@
   <target name="dbmgr">
     <java fork="true" dir="." classname="org.hsqldb.util.DatabaseManager">
       <classpath>
-        <pathelement path="${spring.home}/lib/hsqldb-2.4.0.jar"/>
+        <pathelement path="${spring.home}/lib/hsqldb-2.3.1.jar"/>
       </classpath>
     </java>
   </target>

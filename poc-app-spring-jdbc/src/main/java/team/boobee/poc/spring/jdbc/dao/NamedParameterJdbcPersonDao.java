@@ -14,8 +14,8 @@ import team.boobee.poc.spring.jdbc.domain.Person;
 
 public class NamedParameterJdbcPersonDao extends NamedParameterJdbcDaoSupport implements PersonDao {
 
-	private static final String PERSON_INSERT = "INSERT INTO PERSON (id, firstName, lastName, birthDate) "
-			+ "VALUES (null, :firstName, :lastName, :birthDate)";
+	private static final String PERSON_INSERT = "INSERT INTO PERSON (firstName, lastName, birthDate) "
+			+ "VALUES (:firstName, :lastName, :birthDate)";
 
 	private static final String PERSON_UPDATE = "UPDATE PERSON " + "SET firstName=?, lastName=?, birthDate=? "
 			+ "WHERE id=:id";
@@ -29,8 +29,7 @@ public class NamedParameterJdbcPersonDao extends NamedParameterJdbcDaoSupport im
 		parameters.put("firstName", person.getFirstName());
 		parameters.put("lastName", person.getLastName());
 		parameters.put("birthDate", person.getBirthDate());
-		getNamedParameterJdbcTemplate().update(PERSON_INSERT, parameters);
-		person.setId(queryForIdentity());
+		person.setId(getNamedParameterJdbcTemplate().update(PERSON_INSERT, parameters));
 	}
 
 	private int queryForIdentity() {

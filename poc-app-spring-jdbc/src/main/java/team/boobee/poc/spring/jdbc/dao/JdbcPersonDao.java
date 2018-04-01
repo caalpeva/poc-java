@@ -12,8 +12,8 @@ import team.boobee.poc.spring.jdbc.domain.Person;
 
 public class JdbcPersonDao extends JdbcDaoSupport implements PersonDao {
 
-	private static final String PERSON_INSERT = "INSERT INTO PERSON (id, firstName, lastName, birthDate) "
-			+ "VALUES (null, ?, ?, ?)";
+	private static final String PERSON_INSERT = "INSERT INTO PERSON (firstName, lastName, birthDate) "
+			+ "VALUES (?, ?, ?)";
 
 	private static final String PERSON_UPDATE = "UPDATE PERSON " + "SET firstName=?, lastName=?, birthDate=? "
 			+ "WHERE id=?";
@@ -23,9 +23,9 @@ public class JdbcPersonDao extends JdbcDaoSupport implements PersonDao {
 	private static final String PERSON_BY_ID_SELECT = PERSON_SELECT + " WHERE id=?";
 
 	public void savePerson(Person person) {
-		getJdbcTemplate().update(PERSON_INSERT,
-				new Object[] { person.getFirstName(), person.getLastName(), person.getBirthDate() });
-		person.setId(queryForIdentity());
+		person.setId(getJdbcTemplate().update(PERSON_INSERT,
+				new Object[] { person.getFirstName(), person.getLastName(), person.getBirthDate() }));
+		//person.setId(queryForIdentity());
 	}
 
 	private int queryForIdentity() {
