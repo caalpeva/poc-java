@@ -1,6 +1,7 @@
 package chapter01.hibernate;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -85,6 +86,30 @@ public class RankingTest {
 		session.close();
 	}
 	
+	@Test
+	public void changeRanking() {
+		populateRankingData();
+		Session session = factory.openSession();
+		Transaction tx = session.beginTransaction();
+		Query query = session.createQuery("from Ranking r "
+				+ "where r.subject.name=:subject "
+				+ "and r.observer.name=:observer "
+				+ "and r.skill.name=:skill");
+
+		query.setString("subject", "Bjarne Riis");
+		query.setString("observer", "Miguel Indurain");
+		query.setString("skill", SkillType.TimeTrial.name());
+		
+		Ranking ranking = (Ranking) query.uniqueResult();
+		assertNotNull(ranking, "Could not find matching ranking");
+		
+		ranking.setRanking(6);
+		//select * from Ranking WITH (NOLOCK, NOLOCK)
+		
+		tx.commit();
+		session.close();
+	}
+	
 	/***************************************************************************/
 	/**************************** METODOS PRIVADOS *****************************/
 	/***************************************************************************/
@@ -130,7 +155,7 @@ public class RankingTest {
 		createData(session, "Bjarne Riis", "Pedro Delgado", SkillType.Climbing, 6);
 		createData(session, "Bjarne Riis", "Pedro Delgado", SkillType.TimeTrial, 8);
 		createData(session, "Bjarne Riis", "Miguel Indurain", SkillType.Climbing, 7);
-		createData(session, "Bjarne Riis", "Miguel Indurain", SkillType.TimeTrial, 8);
+		createData(session, "Bjarne Riis", "Miguel Indurain", SkillType.TimeTrial, 7);
 		createData(session, "Bjarne Riis", "Bernard Hinault", SkillType.Climbing, 8);
 		tx.commit();
 		session.close();
