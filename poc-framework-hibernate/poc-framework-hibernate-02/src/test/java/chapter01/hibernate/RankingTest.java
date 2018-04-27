@@ -64,15 +64,14 @@ public class RankingTest {
 		populateRankingData();
 		Session session = factory.openSession();
 		Transaction tx = session.beginTransaction();
-		
-		Query query = session.createQuery("from Ranking r "
-				+ "where r.subject.name=:name "
-				+ "and r.skill.name=:skill");
+
+		Query query = session
+				.createQuery("from Ranking r " + "where r.subject.name=:name " + "and r.skill.name=:skill");
 		query.setString("name", "Bjarne Riis");
 		query.setString("skill", "Climbing");
-		
+
 		int sum = 0, count = 0;
-		for (Ranking ranking: (List<Ranking>) query.list()) {
+		for (Ranking ranking : (List<Ranking>) query.list()) {
 			System.out.println(ranking);
 			sum += ranking.getRanking();
 			count++;
@@ -81,37 +80,56 @@ public class RankingTest {
 		float average = sum / count;
 		assertEquals(count, 3);
 		assertEquals(average, 7.0f);
-		
+
 		tx.commit();
 		session.close();
 	}
-	
+
 	@Test
 	public void changeRanking() {
 		populateRankingData();
 		Session session = factory.openSession();
 		Transaction tx = session.beginTransaction();
-		Query query = session.createQuery("from Ranking r "
-				+ "where r.subject.name=:subject "
-				+ "and r.observer.name=:observer "
-				+ "and r.skill.name=:skill");
+		Query query = session.createQuery("from Ranking r " + "where r.subject.name=:subject "
+				+ "and r.observer.name=:observer " + "and r.skill.name=:skill");
 
 		query.setString("subject", "Bjarne Riis");
 		query.setString("observer", "Miguel Indurain");
 		query.setString("skill", SkillType.TimeTrial.name());
-		
+
 		Ranking ranking = (Ranking) query.uniqueResult();
 		assertNotNull(ranking, "Could not find matching ranking");
-		
-		ranking.setRanking(6);
-		//select * from Ranking WITH (NOLOCK, NOLOCK)
-		
+
+		ranking.setRanking(5);
+		// select * from Ranking WITH (NOLOCK, NOLOCK)
+
 		tx.commit();
 		session.close();
+		
+		assertEquals(getAverage("Bjarne Riis", SkillType.TimeTrial), 6);
 	}
-	
+
+	@Test
+	public void zremoveRanking() {
+		populateRankingData();
+		Session session = factory.openSession();
+		Transaction tx = session.beginTransaction();
+
+		Ranking ranking = findRanking(session, "Bjarne Riis", "Bernard Hinault", SkillType.Climbing);
+		assertNotNull(ranking, "Ranking not found");
+
+		session.delete(ranking);
+
+		tx.commit();
+		session.close();
+		
+		assertEquals(getAverage("Bjarne Riis", SkillType.Climbing), 6);
+	}
+
 	/***************************************************************************/
-	/**************************** METODOS PRIVADOS *****************************/
+	/****************************
+	 * METODOS PRIVADOS
+	 *****************************/
 	/***************************************************************************/
 
 	private Person savePerson(Session session, String name) {
@@ -172,5 +190,36 @@ public class RankingTest {
 		ranking.setSkill(skill);
 		ranking.setRanking(rank);
 		session.save(ranking);
+	}
+
+	private Ranking findRanking(Session session, String subject, String observer, SkillType skill) {
+		Query query = session.createQuery("from Ranking r " + "where r.subject.name=:subject and "
+				+ "r.observer.name=:observer and " + " r.skill.name=:skill");
+		query.setString("subject", subject);
+		query.setString("observer", observer);
+		query.setString("skill", skill.name());
+		Ranking ranking = (Ranking) query.uniqueResult();
+		return ranking;
+	}
+
+	private int getAverage(String subject, SkillType skill) {
+		Session session = factory.openSession();
+		Transaction tx = session.beginTransaction();
+
+		Query query = session
+				.createQuery("from Ranking r " + "where r.subject.name=:name " + "and r.skill.name=:skill");
+		query.setString("name", subject);
+		query.setString("skill", skill.name());
+		int sum = 0;
+		int count = 0;
+		for (Ranking r : (List<Ranking>) query.list()) {
+			count++;
+			sum += r.getRanking();
+			System.out.println(r);
+		}
+		int average = sum / count;
+		tx.commit();
+		session.close();
+		return average;
 	}
 }
