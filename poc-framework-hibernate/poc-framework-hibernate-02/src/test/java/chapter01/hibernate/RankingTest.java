@@ -193,8 +193,10 @@ public class RankingTest {
 	}
 
 	private Ranking findRanking(Session session, String subject, String observer, SkillType skill) {
-		Query query = session.createQuery("from Ranking r " + "where r.subject.name=:subject and "
-				+ "r.observer.name=:observer and " + " r.skill.name=:skill");
+		Query query = session.createQuery("from Ranking r "
+				+ "where r.subject.name=:subject and "
+				+ "r.observer.name=:observer and "
+				+ "r.skill.name=:skill");
 		query.setString("subject", subject);
 		query.setString("observer", observer);
 		query.setString("skill", skill.name());

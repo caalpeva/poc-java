@@ -7,7 +7,7 @@ public class SessionBuilderTest {
 
 	@Test
 	public void testSessionBuilder() {
-		Session session = SessionUtil.getSession();
+		Session session = SessionFactoryHelper.getSession();
 		session.close();
 	}
 	
