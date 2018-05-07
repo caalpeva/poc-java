@@ -10,6 +10,7 @@ import team.boobee.poc.framework.hibernate.simple.Person;
 import team.boobee.poc.framework.hibernate.simple.Ranking;
 import team.boobee.poc.framework.hibernate.simple.Skill;
 import team.boobee.poc.framework.hibernate.simple.domain.SkillType;
+import team.boolbee.poc.hibernate.utils.SessionUtil;
 
 public class HibernateRankingService implements RankingService {
 
@@ -66,9 +67,9 @@ public class HibernateRankingService implements RankingService {
 		return skill;
 	}
 
-	private void addRanking(Session session, String subject, String observer, SkillType skillType, int ranking) {
-		Person subject = savePerson(session, subject);
-		Person observer = savePerson(session, observer);
+	private void addRanking(Session session, String subjectName, String observerName, SkillType skillType, int rank) {
+		Person subject = savePerson(session, subjectName);
+		Person observer = savePerson(session, observerName);
 		Skill skill = saveSkill(session, skillType.name());
 
 		Ranking ranking = new Ranking();
