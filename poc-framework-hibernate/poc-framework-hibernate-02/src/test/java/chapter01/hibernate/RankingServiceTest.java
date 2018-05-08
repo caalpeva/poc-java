@@ -31,5 +31,18 @@ public class RankingServiceTest {
 		service.updateRanking("Scottball Most", "Gene Showrama", SkillType.TimeTrial, 7);
 		assertEquals(service.getRankingFor("Scottball Most", SkillType.TimeTrial), 7);
 	}
+	
+    @Test
+    public void removeRanking() {
+        service.addRanking("R1", "R2", SkillType.Climbing, 8);
+        assertEquals(service.getRankingFor("R1", SkillType.Climbing), 8);
+        service.removeRanking("R1", "R2", SkillType.Climbing);
+        assertEquals(service.getRankingFor("R1", SkillType.Climbing), 0);
+    }
+
+    @Test
+    public void removeNonexistentRanking() {
+        service.removeRanking("R3", "R4", SkillType.TimeTrial);
+    }
 
 }
