@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>poc-app-spring-beans-wiring-auto</name>
+	<name>poc-framework-spring-03-di-auto</name>
 	<comment></comment>
 	<projects>
 	</projects>
