@@ -8,10 +8,9 @@
 	</parent>
 	
 	<artifactId>poc-framework-spring-05-aop</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
-			<groupId>team.boobee.poc.spring</groupId>
+			<groupId>team.boobee.poc</groupId>
 			<artifactId>poc-framework-spring-02-di-basic</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
