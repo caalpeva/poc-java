@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="springIdol" class="team.boolbee.poc.spring.beans.SpringIdol">
+		<property name="performers">
+			<set>
+				<!-- <ref bean="baseSaxophonist"/> -->
+				<ref bean="kenny" />
+				<ref bean="david" />
+				<ref bean="frank" />
+				<ref bean="taylor" />
+				<ref bean="stevie" />
+				<ref bean="harry" />
+				<ref bean="morgan" />
+				<ref bean="bruce" />
+				<ref bean="harold" />
+			</set>
+		</property>
+	</bean>
+
+	<bean id="guitar" class="team.boolbee.poc.spring.beans.instruments.Guitar" scope="prototype" />
+	<bean id="saxophone" class="team.boolbee.poc.spring.beans.instruments.Saxophone" />
+
+	<!-- Abstraer un tipo de bean base -->
+	<bean id="baseSaxophonist"
+		class="team.boolbee.poc.spring.beans.performers.Instrumentalist"
+		abstract="true">
+		<property name="song" value="Jingle Bells" />
+		<property name="instrument" ref="saxophone" />
+	</bean>
+
+	<bean id="kenny" parent="baseSaxophonist" />
+
+	<bean id="david" parent="baseSaxophonist" />
+
+	<!-- Obviar propiedades heradadas -->
+	<bean id="frank" parent="baseSaxophonist">
+		<property name="song" value="Mary had a little lamb" />
+	</bean>
+
+	<!-- Abstraer propiedades comunes -->
+	<bean id="basePerformer" abstract="true">
+		<property name="song" value="Somewhere Over the Rainbow" />
+	</bean>
+
+	<bean id="taylor"
+		class="team.boolbee.poc.spring.beans.performers.Vocalist"
+		parent="basePerformer" />
+
+	<bean id="stevie"
+		class="team.boolbee.poc.spring.beans.performers.Instrumentalist"
+		parent="basePerformer">
+		<property name="instrument" ref="guitar" />
+	</bean>
+	
+	<!-- Sustitución básica de método -->
+	<bean id="harry" class="team.boolbee.poc.spring.beans.performers.Magician">
+		<property name="magicBox" ref="magicBox" />
+		<property name="magicWords" value="Bippity boppity boo"></property>
+	</bean>
+	
+<!-- 	<bean id="magicBox" class="team.boolbee.poc.spring.beans.instruments.BlueMagicBox" /> -->
+	<bean id="magicBox" class="team.boolbee.poc.spring.beans.instruments.BlueMagicBox">
+		<replaced-method name="getContents" replacer="tigerReplacer" />
+	</bean>
+	
+	<bean id="tigerReplacer" class="team.boolbee.poc.spring.beans.instruments.TigerReplacer" />
+	
+	<!-- Inyección por getter -->
+	<bean id="morgan" class="team.boolbee.poc.spring.beans.performers.MethodInjectedInstrumentalist">
+		<lookup-method name="getInstrument" bean="guitar" />
+		<property name="song" value="Greensleeves" />
+	</bean>
+	
+	<bean id="bruce" class="team.boolbee.poc.spring.beans.performers.Instrumentalist"
+		init-method="tuneInstrument" destroy-method="cleanInstrument">
+		<property name="song" value="Jingle Bells" />
+		<property name="instrument" ref="saxophone" />
+	</bean>
+	
+	<bean id="harold" class="team.boolbee.poc.spring.beans.performers.LifecycleInterfaceInstrumentalist">
+		<property name="song" value="American Pie" />
+		<property name="instrument" ref="piano" />
+	</bean>
+
+</beans>

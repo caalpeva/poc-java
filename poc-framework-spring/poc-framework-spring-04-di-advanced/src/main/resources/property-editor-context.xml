@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+<!-- 	<bean id="infoPhone" class="team.boolbee.poc.spring.beans.others.PhoneNumber"> -->
+<!-- 		<constructor-arg value="888" /> -->
+<!-- 		<constructor-arg value="555" /> -->
+<!-- 		<constructor-arg value="1212" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="contact" class="team.boolbee.poc.spring.beans.others.Contact"> -->
+<!-- 		<property name="phoneNumber" ref="infoPhone" /> -->
+<!-- 	</bean> -->
+
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="team.boolbee.poc.spring.beans.others.PhoneNumber"
+					value="team.boolbee.poc.spring.beans.others.PhoneEditor" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="contact" class="team.boolbee.poc.spring.beans.others.Contact">
+		<property name="phoneNumber" value="034-123-456789" />
+	</bean>
+	
+</beans>
