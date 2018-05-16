@@ -1,0 +1,6 @@
+; JNativeLib.def: declara los parámetros de módulo para el archivo DLL.
+
+LIBRARY
+
+EXPORTS
+    ; Colocar aquí las exportaciones explícitas
