@@ -1,0 +1,19 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>team.boobee.poc</groupId>
+	<artifactId>team.boobee.poc.framework.spring</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>poc-framework-spring-01-basic</module>
+		<module>poc-framework-spring-02-di-basic</module>
+		<module>poc-framework-spring-03-di-auto</module>
+		<module>poc-framework-spring-04-di-advanced</module>
+		<module>poc-framework-spring-05-aop</module>
+		<module>poc-framework-spring-06-aop-aspecj</module>
+		<module>poc-framework-spring-07-jdbc</module>
+	</modules>
+
+</project>
