@@ -3,9 +3,9 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/src/test/java"/>
         <wb-resource deploy-path="/" source-path="/src/test/resources"/>
+        <wb-resource deploy-path="/" source-path="/src/test/main"/>
         <dependent-module archiveName="spring-core-4.3.10.RELEASE.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/springframework/spring-core/4.3.10.RELEASE/spring-core-4.3.10.RELEASE.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
