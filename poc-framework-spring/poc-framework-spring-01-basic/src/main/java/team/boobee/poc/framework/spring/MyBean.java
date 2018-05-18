@@ -1,4 +1,4 @@
-package beans;
+package team.boobee.poc.framework.spring;
 
 public class MyBean {
 	private String mensaje; 
