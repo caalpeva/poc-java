@@ -1,10 +1,14 @@
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import junit.framework.TestCase;
-import team.boolbee.poc.beans.Message;
 
 public class LoggingTest extends TestCase {
 
+	private Log LOGGER = LogFactory.getLog(LoggingTest.class);
+
 	public void testLogging() {
-		Message message = new Message();
+		LOGGER.info("Esto es un mensaje");
 	}
-	
+
 }
