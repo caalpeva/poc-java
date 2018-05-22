@@ -110,7 +110,7 @@ public class RankingTest {
 	}
 
 	@Test
-	public void zremoveRanking() {
+	public void removeRanking() {
 		populateRankingData();
 		Session session = factory.openSession();
 		Transaction tx = session.beginTransaction();
