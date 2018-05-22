@@ -6,5 +6,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>poc-jcl</module>
+  	<module>poc-simple-logging-facade</module>
   </modules>
 </project>
