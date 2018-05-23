@@ -9,11 +9,27 @@
 	<artifactId>poc-simple-logging-facade</artifactId>
 
 	<dependencies>
+		<!-- Simple Logging Fachade for Java (SLF4J) es una abstracción para varios 
+			marcos de registro de información, tales como java.util.logging, logback 
+			y log4j. SLF4J permite enlazar un marco de registro en tiempo de despliegue 
+			especificando el enlace SLF4J adecuado a la ruta de clases. Cada enlace SLF4J 
+			está referenciado en tiempo de compilación para utilizar un único marco de 
+			registro específico. SLF4J no hace uso ni accede directamente a los cargadores 
+			de clases. Como consecuencia, SLF4J no sufre ninguno de los problemas del 
+			cargador de clase o pérdidas de memoria observadas con Jakarta Commons Logging 
+			(JCL). -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.25</version>
 		</dependency>
+
+		<!-- Enlace SLF4J para marco de trabajo log4j. Dadas las reglas de dependencia 
+			transitiva de Maven2, al declarar esta dependencia adjuntará las dependencias 
+			requeridas slf4j-api y log4j, por lo que no será necesario realizarlo explícitamente. 
+			Si se declaran de forma explícita puede que sea necesario imponer la version 
+			correcta. Enlace SLF4J para implementación simple que por defecto genera 
+			todos los eventos en System.err -->
 		<!-- <dependency> -->
 		<!-- <groupId>org.slf4j</groupId> -->
 		<!-- <artifactId>slf4j-simple</artifactId> -->
@@ -24,16 +40,30 @@
 		<!-- <artifactId>slf4j-jdk14</artifactId> -->
 		<!-- <version>1.7.25</version> -->
 		<!-- </dependency> -->
+
+		<!-- Enlace SLF4J para marco de trabajo log4j. Dadas las reglas de dependencia 
+			transitiva de Maven2, al declarar esta dependencia adjuntará las dependencias 
+			requeridas slf4j-api y log4j, por lo que no será necesario realizarlo explícitamente. 
+			Si se declaran de forma explícita puede que sea necesario imponer la version 
+			correcta. -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.25</version>
 		</dependency>
+
+		<!-- Enlace SLF4J para marco de trabajo logback. Dadas las reglas de dependencia 
+			transitiva de Maven2, al declarar esta dependencia adjuntará las dependencias 
+			requeridas slf4j-api y logback-core, por lo que no será necesario realizarlo 
+			explícitamente. Si se declara de forma explícita puede que sea necesario 
+			imponer la version correcta. Logback es una implementación directa de la 
+			interfaz SLF4J lo que no repercute en gastos adicionales de memoria y computación. -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.0.13</version>
 		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
