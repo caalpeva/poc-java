@@ -6,46 +6,50 @@
 		<artifactId>poc-logging</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>poc-simple-logging-facade</artifactId>
+	<artifactId>poc-simple-logging-facade-for-java</artifactId>
 
 	<dependencies>
 		<!-- Simple Logging Fachade for Java (SLF4J) es una abstracción para varios 
-			marcos de registro de información, tales como java.util.logging, logback 
-			y log4j. SLF4J permite enlazar un marco de registro en tiempo de despliegue 
-			especificando el enlace SLF4J adecuado a la ruta de clases. Cada enlace SLF4J 
-			está referenciado en tiempo de compilación para utilizar un único marco de 
-			registro específico. SLF4J no hace uso ni accede directamente a los cargadores 
-			de clases. Como consecuencia, SLF4J no sufre ninguno de los problemas del 
-			cargador de clase o pérdidas de memoria observadas con Jakarta Commons Logging 
-			(JCL). -->
+			marcos de registro de información, tales como JDK1.4 logging, logback y log4j. 
+			SLF4J permite enlazar con un marco de registro en tiempo de despliegue referenciando 
+			el enlace SLF4J adecuado en la ruta de clases en tiempo de compilación. SLF4J 
+			no hace uso ni accede directamente a los cargadores de clases. Como consecuencia, 
+			SLF4J no sufre ninguno de los problemas del cargador de clase o pérdidas 
+			de memoria observadas con Jakarta Commons Logging (JCL). -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.25</version>
 		</dependency>
 
-		<!-- Enlace SLF4J para marco de trabajo log4j. Dadas las reglas de dependencia 
-			transitiva de Maven2, al declarar esta dependencia adjuntará las dependencias 
-			requeridas slf4j-api y log4j, por lo que no será necesario realizarlo explícitamente. 
-			Si se declaran de forma explícita puede que sea necesario imponer la version 
-			correcta. Enlace SLF4J para implementación simple que por defecto genera 
-			todos los eventos en System.err -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.slf4j</groupId> -->
-		<!-- <artifactId>slf4j-simple</artifactId> -->
-		<!-- <version>1.7.25</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.slf4j</groupId> -->
-		<!-- <artifactId>slf4j-jdk14</artifactId> -->
-		<!-- <version>1.7.25</version> -->
-		<!-- </dependency> -->
+		<!-- Enlace SLF4J para implementación simple que por defecto genera los 
+			eventos en System.err -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.25</version>
+		</dependency>
 
-		<!-- Enlace SLF4J para marco de trabajo log4j. Dadas las reglas de dependencia 
-			transitiva de Maven2, al declarar esta dependencia adjuntará las dependencias 
-			requeridas slf4j-api y log4j, por lo que no será necesario realizarlo explícitamente. 
-			Si se declaran de forma explícita puede que sea necesario imponer la version 
-			correcta. -->
+		<!-- Paquete SLF4J para enlazar con la implementación nop que descarta 
+			cualquier registro de información -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-nop</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+
+		<!-- Enlace SLF4J para marco de trabajo JDK1.4 logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+
+		<!-- Paquete SLF4J para conectar con el marco de trabajo log4j. Dadas las 
+			reglas de dependencia transitiva de Maven2, al declarar esta dependencia 
+			adjuntará las dependencias requeridas slf4j-api y log4j, por lo que no será 
+			necesario realizarlo explícitamente. Si se declaran de forma explícita puede 
+			que sea necesario imponer la version correcta. -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -64,6 +68,18 @@
 			<version>1.0.13</version>
 		</dependency>
 
+		<!-- Enlace SLF4J para delegar el todo el registro de SLF4J al API Jakarta 
+			Commons Loggins (JCL). En principio parece que no tiene mucho sentido utilizar 
+			esta opción, cuando SLF4J mejora sustanciablemente a JCL. Esto se utiliza 
+			cuando no es posible migrar el código JCL a SLF4 y tampoco es posible redireccionar 
+			en sentido inverso desde JCL a SLF mediante un puente, debido a cuestiones 
+			de configuración -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jcl</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -71,6 +87,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 
 </project>
