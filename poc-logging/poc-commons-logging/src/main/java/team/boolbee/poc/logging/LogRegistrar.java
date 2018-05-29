@@ -9,7 +9,5 @@ public class LogRegistrar {
 
 	public void register(String message) {
 		LOGGER.error(message);
-		LOGGER.info("Mensaje en info");
 	}
-
 }

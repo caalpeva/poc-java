@@ -5,7 +5,6 @@ import junit.framework.TestCase;
 public class JCLTest extends TestCase {
 
 	public void testLogging() {
-		System.setProperty("mail.smtp.starttls.enable", "true");
 		while(true) {
 			new LogRegistrar().register("This is a message");
 			try {
