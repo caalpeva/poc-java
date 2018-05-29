@@ -6,7 +6,7 @@
 		<artifactId>poc-logging</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>poc-jcl</artifactId>
 
 	<dependencies>
@@ -19,6 +19,11 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.3</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
