@@ -8,7 +8,8 @@ public class LogRegistrar {
 	private Log LOGGER = LogFactory.getLog(LogRegistrar.class);
 
 	public void register(String message) {
-		LOGGER.info(message);
+		LOGGER.error(message);
+		LOGGER.info("Mensaje en info");
 	}
 
 }
