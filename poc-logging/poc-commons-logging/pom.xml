@@ -37,4 +37,36 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+			        <include>**/log4j.properties</include>
+			    </includes>
+			</testResource>
+		</testResources>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<filters>
+					<filter>profiles/test/config.properties</filter>
+				</filters>
+<!-- 				<resources> -->
+<!-- 					<resource> -->
+<!-- 						<directory>profiles/test</directory> -->
+<!-- 						<filtering>true</filtering> -->
+<!-- 					</resource> -->
+<!-- 				</resources> -->
+			</build>
+		</profile>
+	</profiles>
 </project>
