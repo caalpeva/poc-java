@@ -9,6 +9,10 @@
 
 	<artifactId>poc-jcl</artifactId>
 
+	<properties>
+		<spring.version>2.0.6</spring.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -31,6 +35,24 @@
 			<version>4.1.8112</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-mock</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.2</version>
@@ -43,9 +65,9 @@
 			<testResource>
 				<directory>src/test/resources</directory>
 				<filtering>true</filtering>
-<!-- 				<includes> -->
-<!-- 			        <include>**/log4j.properties</include> -->
-<!-- 			    </includes> -->
+				<!-- <includes> -->
+				<!-- <include>**/log4j.properties</include> -->
+				<!-- </includes> -->
 			</testResource>
 		</testResources>
 	</build>
@@ -60,12 +82,12 @@
 				<filters>
 					<filter>profiles/test/config.properties</filter>
 				</filters>
-<!-- 				<resources> -->
-<!-- 					<resource> -->
-<!-- 						<directory>profiles/test</directory> -->
-<!-- 						<filtering>true</filtering> -->
-<!-- 					</resource> -->
-<!-- 				</resources> -->
+				<!-- <resources> -->
+				<!-- <resource> -->
+				<!-- <directory>profiles/test</directory> -->
+				<!-- <filtering>true</filtering> -->
+				<!-- </resource> -->
+				<!-- </resources> -->
 			</build>
 		</profile>
 	</profiles>
