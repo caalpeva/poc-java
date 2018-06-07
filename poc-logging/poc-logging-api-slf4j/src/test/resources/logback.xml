@@ -52,32 +52,41 @@
 	</appender>
 	<!-- <appender name="DATABASE"> -->
 	<!-- </appender> -->
+
 	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
 		<!--See http://logback.qos.ch/manual/appenders.html#SMTPAppender -->
 		<!--for documentation -->
 		<smtpHost>smtp.gmail.com</smtpHost>
 		<smtpPort>465</smtpPort>
-		<!-- <ssl>true</ssl> -->
+<!-- 		<ssl>true</ssl> -->
 		<username>${email.account}</username>
 		<password>${email.password}</password>
-		<to>${email.target}</to>
+		<!-- <to>${email.target}</to> -->
 		<to>${email.target.bcc}</to>
-		<to>${email.target}</to>
 		<from>${email.account}</from>
 		<subject>Log message from Logback</subject>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+		<cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+			<!-- send just one log entry per email -->
+			<bufferSize>1</bufferSize>
+		</cyclicBufferTracker>
 		<layout class="ch.qos.logback.classic.PatternLayout">
 			<pattern>%date %-5level %logger{35} - %msg%n</pattern>
 		</layout>
 	</appender>
-	<logger name="team" level="ERROR">
-		<appender-ref ref="EMAIL" />
-	</logger>
+
+	<!-- <logger name="com.semplest"> -->
+	<!-- <level value="INFO" /> -->
+	<!-- </logger> -->
+
 	<root level="INFO">
 		<appender-ref ref="stdout" />
-		<appender-ref ref="ROLLING_FILE" />
-		<appender-ref ref="TIME_ROLLING_FILE" />
+		<!-- <appender-ref ref="ROLLING_FILE" /> -->
+		<!-- <appender-ref ref="TIME_ROLLING_FILE" /> -->
 		<!-- <appender-ref ref="DATABASE" /> -->
 		<!-- <appender-ref ref="REMOTE" /> -->
-		<!-- <appender-ref ref="EMAIL" /> -->
+		<appender-ref ref="EMAIL" />
 	</root>
 </configuration>
