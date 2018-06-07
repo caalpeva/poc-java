@@ -8,16 +8,20 @@
 <!-- http://www.qos.ch/shop/products/professionalSupport -->
 <!-- -->
 <configuration>
-	<!-- Errors were reported during translation. -->
-	<!-- No class found for appender DATABASE -->
-	<!-- Could not find transformer for null -->
-	<!-- Could not find transformer for org.apache.log4j.net.TelnetAppender -->
-	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
 			</pattern>
 		</encoder>
 	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>D:\logs\poc-logging\logback\stacktrace.log</file>
+		<encoder>
+			<pattern>${details}: %msg%n</pattern>
+		</encoder>
+	</appender>
+
 	<appender name="ROLLING_FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
@@ -45,7 +49,7 @@
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>D:\logs\poc-logging\logback\time-logging.%d%d{yyyy-MM-dd-HH}.log
+			<fileNamePattern>D:\logs\poc-logging\logback\time-logging.%d{yyyy-MM-dd-HH-mm}.log
 			</fileNamePattern>
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
@@ -57,20 +61,23 @@
 		<!--See http://logback.qos.ch/manual/appenders.html#SMTPAppender -->
 		<!--for documentation -->
 		<smtpHost>smtp.gmail.com</smtpHost>
-		<smtpPort>465</smtpPort>
-<!-- 		<ssl>true</ssl> -->
+		<smtpPort>587</smtpPort>
+		<STARTTLS>true</STARTTLS>
 		<username>${email.account}</username>
 		<password>${email.password}</password>
-		<!-- <to>${email.target}</to> -->
+		<to>${email.target}</to>
 		<to>${email.target.bcc}</to>
 		<from>${email.account}</from>
 		<subject>Log message from Logback</subject>
+		<asynchronousSending>false</asynchronousSending>
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>ERROR</level>
 		</filter>
+		<!-- By default, the outgoing message will contain the last 256 messages 
+			seen by SMTPAppender. -->
 		<cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
 			<!-- send just one log entry per email -->
-			<bufferSize>1</bufferSize>
+			<bufferSize>5</bufferSize>
 		</cyclicBufferTracker>
 		<layout class="ch.qos.logback.classic.PatternLayout">
 			<pattern>%date %-5level %logger{35} - %msg%n</pattern>
@@ -82,9 +89,10 @@
 	<!-- </logger> -->
 
 	<root level="INFO">
-		<appender-ref ref="stdout" />
-		<!-- <appender-ref ref="ROLLING_FILE" /> -->
-		<!-- <appender-ref ref="TIME_ROLLING_FILE" /> -->
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+		<appender-ref ref="ROLLING_FILE" />
+		<appender-ref ref="TIME_ROLLING_FILE" />
 		<!-- <appender-ref ref="DATABASE" /> -->
 		<!-- <appender-ref ref="REMOTE" /> -->
 		<appender-ref ref="EMAIL" />

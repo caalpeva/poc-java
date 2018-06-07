@@ -26,7 +26,9 @@ public class LoggingHelper implements ILoggingHelper {
 	}
 	
 	public void dumpException(Throwable throwable) {
-		logger.error(throwable);
+		//logger.info("Got an exception. " + throwable.getMessage());
+		//logger.info("Just a stack trace, nothing to worry about", throwable);
+		logger.error("BOOM!", throwable);
 	}
 	
 	public void dumpVars(Map<String, ?> m) {
