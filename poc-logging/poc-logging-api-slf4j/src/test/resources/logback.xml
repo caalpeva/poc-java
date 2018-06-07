@@ -1,11 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user -->
+<!-- -->
+<!-- For professional support please see -->
+<!-- http://www.qos.ch/shop/products/professionalSupport -->
+<!-- -->
 <configuration>
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<!-- Errors were reported during translation. -->
+	<!-- No class found for appender DATABASE -->
+	<!-- Could not find transformer for null -->
+	<!-- Could not find transformer for org.apache.log4j.net.TelnetAppender -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
 		</encoder>
 	</appender>
-	<logger name="deng" level="DEBUG" />
+	<appender name="ROLLING_FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+		<File>D:\logs\poc-logging\logback\logging.log</File>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<maxIndex>10</maxIndex>
+			<FileNamePattern>D:\logs\poc-logging\logback\logging.log.%i
+			</FileNamePattern>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10KB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	<appender name="TIME_ROLLING_FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+		<!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy -->
+		<!--for further documentation -->
+		<File>D:\logs\poc-logging\logback\time-logging.log</File>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>D:\logs\poc-logging\logback\time-logging.%d%d{yyyy-MM-dd-HH}.log
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+	</appender>
+	<!-- <appender name="DATABASE"> -->
+	<!-- </appender> -->
+	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+		<!--See http://logback.qos.ch/manual/appenders.html#SMTPAppender -->
+		<!--for documentation -->
+		<smtpHost>smtp.gmail.com</smtpHost>
+		<smtpPort>465</smtpPort>
+		<!-- <ssl>true</ssl> -->
+		<username>${email.account}</username>
+		<password>${email.password}</password>
+		<to>${email.target}</to>
+		<to>${email.target.bcc}</to>
+		<to>${email.target}</to>
+		<from>${email.account}</from>
+		<subject>Log message from Logback</subject>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date %-5level %logger{35} - %msg%n</pattern>
+		</layout>
+	</appender>
+	<logger name="team" level="ERROR">
+		<appender-ref ref="EMAIL" />
+	</logger>
 	<root level="INFO">
-		<appender-ref ref="STDOUT" />
+		<appender-ref ref="stdout" />
+		<appender-ref ref="ROLLING_FILE" />
+		<appender-ref ref="TIME_ROLLING_FILE" />
+		<!-- <appender-ref ref="DATABASE" /> -->
+		<!-- <appender-ref ref="REMOTE" /> -->
+		<!-- <appender-ref ref="EMAIL" /> -->
 	</root>
 </configuration>

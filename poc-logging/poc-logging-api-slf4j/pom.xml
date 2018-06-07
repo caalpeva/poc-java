@@ -6,7 +6,12 @@
 		<artifactId>poc-logging</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>poc-simple-logging-facade-for-java</artifactId>
+	<artifactId>poc-logging-api-slf4j</artifactId>
+
+	<properties>
+		<spring.version>2.5.6</spring.version>
+		<junit.version>4.2</junit.version>
+	</properties>
 
 	<dependencies>
 		<!-- Simple Logging Fachade for Java (SLF4J) es una abstracción para varios 
@@ -25,37 +30,37 @@
 
 		<!--Enlace SLF4J para implementación simple que por defecto genera los 
 			eventos en System.err -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.25</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>slf4j-simple</artifactId> -->
+<!-- 			<version>1.7.25</version> -->
+<!-- 		</dependency> -->
 
 		<!-- Paquete SLF4J para enlazar con la implementación nop que descarta 
 			cualquier registro de información -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-nop</artifactId>
-			<version>1.7.25</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>slf4j-nop</artifactId> -->
+<!-- 			<version>1.7.25</version> -->
+<!-- 		</dependency> -->
 
 		<!-- Enlace SLF4J para marco de trabajo JDK1.4 logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jdk14</artifactId>
-			<version>1.7.25</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>slf4j-jdk14</artifactId> -->
+<!-- 			<version>1.7.25</version> -->
+<!-- 		</dependency> -->
 
 		<!-- Paquete SLF4J para conectar con el marco de trabajo log4j. Dadas las 
 			reglas de dependencia transitiva de Maven2, al declarar esta dependencia 
 			adjuntará las dependencias requeridas slf4j-api y log4j, por lo que no será 
 			necesario realizarlo explícitamente. Si se declaran de forma explícita puede 
 			que sea necesario imponer la version correcta. -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.25</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>slf4j-log4j12</artifactId> -->
+<!-- 			<version>1.7.25</version> -->
+<!-- 		</dependency> -->
 
 		<!-- Enlace SLF4J para marco de trabajo logback. Dadas las reglas de dependencia 
 			transitiva de Maven2, al declarar esta dependencia adjuntará las dependencias 
@@ -75,18 +80,107 @@
 			cuando no es posible migrar el código JCL a SLF4 y tampoco es posible redireccionar 
 			en sentido inverso desde JCL a SLF mediante un puente, debido a cuestiones 
 			de configuración -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>slf4j-jcl</artifactId> -->
+<!-- 			<version>1.7.25</version> -->
+<!-- 		</dependency> -->
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jcl</artifactId>
+			<artifactId>jcl-over-slf4j</artifactId>
 			<version>1.7.25</version>
+		</dependency>
+
+		<dependency>
+			<groupId>team.boolbee.poc</groupId>
+			<artifactId>poc-logging-api-jcl</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+            		<artifactId>commons-logging</artifactId>
+            	</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc4</artifactId>
+			<version>4.1.8112</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+            		<artifactId>commons-logging</artifactId>
+            	</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+            		<artifactId>commons-logging</artifactId>
+            	</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.2</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+				<!-- <includes> -->
+				<!-- <include>**/log4j.properties</include> -->
+				<!-- </includes> -->
+			</testResource>
+		</testResources>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<filters>
+					<filter>profiles/test/config.properties</filter>
+				</filters>
+				<!-- <resources> -->
+				<!-- <resource> -->
+				<!-- <directory>profiles/test</directory> -->
+				<!-- <filtering>true</filtering> -->
+				<!-- </resource> -->
+				<!-- </resources> -->
+			</build>
+		</profile>
+	</profiles>
 
 </project>
