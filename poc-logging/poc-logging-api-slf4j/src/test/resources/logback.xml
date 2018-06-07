@@ -65,11 +65,16 @@
 		<STARTTLS>true</STARTTLS>
 		<username>${email.account}</username>
 		<password>${email.password}</password>
+
 		<to>${email.target}</to>
 		<to>${email.target.bcc}</to>
 		<from>${email.account}</from>
 		<subject>Log message from Logback</subject>
-		<asynchronousSending>false</asynchronousSending>
+
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date %-5level %logger{35} - %msg%n</pattern>
+		</layout>
+
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>ERROR</level>
 		</filter>
@@ -79,9 +84,7 @@
 			<!-- send just one log entry per email -->
 			<bufferSize>5</bufferSize>
 		</cyclicBufferTracker>
-		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>%date %-5level %logger{35} - %msg%n</pattern>
-		</layout>
+		<asynchronousSending>false</asynchronousSending>
 	</appender>
 
 	<!-- <logger name="com.semplest"> -->
