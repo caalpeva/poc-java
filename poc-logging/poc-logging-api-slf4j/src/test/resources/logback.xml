@@ -71,8 +71,17 @@
 		<from>${email.account}</from>
 		<subject>Log message from Logback</subject>
 
-		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>%date %-5level %logger{35} - %msg%n</pattern>
+		<!-- <layout class="ch.qos.logback.classic.PatternLayout"> -->
+		<!-- <pattern>%date %-5level %logger{35} - %msg%n</pattern> -->
+		<!-- </layout> -->
+
+		<!-- <layout class="ch.qos.logback.classic.html.HTMLLayout"/> -->
+		<layout class="ch.qos.logback.classic.html.HTMLLayout">
+			<!-- <pattern>%relative%thread%mdc%level%logger%msg</pattern> -->
+			<pattern>%date%level%logger%msg</pattern>
+<!-- 			<cssBuilder class="ch.qos.logback.classic.html.UrlCssBuilder"> -->
+<!-- 				<url>https://github.com/qos-ch/logback-demo/blob/master/src/main/webapp/css/pk.css</url> -->
+<!-- 			</cssBuilder> -->
 		</layout>
 
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -82,7 +91,7 @@
 			seen by SMTPAppender. -->
 		<cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
 			<!-- send just one log entry per email -->
-			<bufferSize>5</bufferSize>
+			<bufferSize>1</bufferSize>
 		</cyclicBufferTracker>
 		<asynchronousSending>false</asynchronousSending>
 	</appender>
