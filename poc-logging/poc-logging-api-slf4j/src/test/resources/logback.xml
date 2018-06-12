@@ -41,6 +41,7 @@
 			<MaxFileSize>10KB</MaxFileSize>
 		</triggeringPolicy>
 	</appender>
+
 	<appender name="TIME_ROLLING_FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
@@ -56,8 +57,16 @@
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 	</appender>
-	<!-- <appender name="DATABASE"> -->
-	<!-- </appender> -->
+
+	<appender name="DATABASE" class="ch.qos.logback.classic.db.DBAppender">
+		<connectionSource
+			class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+			<driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>
+			<url>jdbc:sqlserver://localhost;databaseName=POC_LOGGING</url>
+			<user>sa</user>
+			<password>C1st3lc0m</password>
+		</connectionSource>
+	</appender>
 
 	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
 		<!--See http://logback.qos.ch/manual/appenders.html#SMTPAppender -->
@@ -104,11 +113,11 @@
 
 	<root level="INFO">
 		<appender-ref ref="CONSOLE" />
-		<appender-ref ref="FILE" />
+<!-- 		<appender-ref ref="FILE" /> -->
 		<appender-ref ref="ROLLING_FILE" />
 		<appender-ref ref="TIME_ROLLING_FILE" />
-		<!-- <appender-ref ref="DATABASE" /> -->
+		<appender-ref ref="DATABASE" />
 		<!-- <appender-ref ref="REMOTE" /> -->
-		<appender-ref ref="EMAIL" />
+<!-- 		<appender-ref ref="EMAIL" /> -->
 	</root>
 </configuration>
