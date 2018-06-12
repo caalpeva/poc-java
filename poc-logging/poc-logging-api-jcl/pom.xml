@@ -15,11 +15,20 @@
 	</properties>
 
 	<dependencies>
+		<!-- El paquete Jakarta Commons Logging (JCL) es una librería de código 
+			abierto que permite utilizar una API común de registro de datos evitando 
+			el acoplamiento a una implementacion de log específica. La configuración 
+			con una implementación de log se realiza de forma declarativa, por defecto 
+			mediante el fichero commons-logging.properties (que contiene el nombre de 
+			clase de la implementación de log) y la librería descubrirá dinámicamente 
+			la implementación que se está utilizando. No obstante, cada implementacion 
+			de log puede tener diferentes requisitos de configuración que deben ser satisfechos. -->
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<!-- El framework log4j necesita declarar sus requisitos de configuración. -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -44,14 +53,14 @@
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
