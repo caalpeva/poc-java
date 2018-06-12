@@ -90,19 +90,16 @@
 		<layout class="ch.qos.logback.classic.html.HTMLLayout">
 			<!-- <pattern>%relative%thread%mdc%level%logger%msg</pattern> -->
 			<pattern>%date%level%logger%msg</pattern>
-<!-- 			<cssBuilder class="ch.qos.logback.classic.html.UrlCssBuilder"> -->
-<!-- 				<url>https://github.com/qos-ch/logback-demo/blob/master/src/main/webapp/css/pk.css</url> -->
-<!-- 			</cssBuilder> -->
 		</layout>
 
-		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>ERROR</level>
-		</filter>
+<!-- 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter"> -->
+<!-- 			<level>ERROR</level> -->
+<!-- 		</filter> -->
 		<!-- By default, the outgoing message will contain the last 256 messages 
 			seen by SMTPAppender. -->
 		<cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
 			<!-- send just one log entry per email -->
-			<bufferSize>1</bufferSize>
+			<bufferSize>20</bufferSize>
 		</cyclicBufferTracker>
 		<asynchronousSending>false</asynchronousSending>
 	</appender>
@@ -118,6 +115,6 @@
 		<appender-ref ref="TIME_ROLLING_FILE" />
 		<appender-ref ref="DATABASE" />
 		<!-- <appender-ref ref="REMOTE" /> -->
-<!-- 		<appender-ref ref="EMAIL" /> -->
+		<appender-ref ref="EMAIL" />
 	</root>
 </configuration>
