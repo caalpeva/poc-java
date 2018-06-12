@@ -8,6 +8,8 @@
 <!-- http://www.qos.ch/shop/products/professionalSupport -->
 <!-- -->
 <configuration>
+	<property name="DEV_HOME" value="D:/logs" />
+
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
@@ -31,7 +33,7 @@
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
 			<maxIndex>10</maxIndex>
-			<FileNamePattern>D:\logs\poc-logging\logback\logging.log.%i
+			<FileNamePattern>${DEV_HOME}\poc-logging\logback\loggXXing.log.%i
 			</FileNamePattern>
 		</rollingPolicy>
 		<triggeringPolicy
