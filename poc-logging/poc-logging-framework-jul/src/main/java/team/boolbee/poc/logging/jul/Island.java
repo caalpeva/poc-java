@@ -10,28 +10,22 @@ public class Island {
 	static {
 		Handler fh;
 		try {
-//			String path = Island.class.getClassLoader().getResource("jul-logging.properties").getFile();
-//			System.setProperty("java.util.logging.config.file", path);
-
-			fh = new FileHandler("%t/wombat.log");
-			Logger.getLogger("").addHandler(fh);
-			Logger.getLogger("team.boolbee.poc.logging.jul").setLevel(Level.FINEST);
+			String path = Island.class.getClassLoader().getResource("jul-logging.properties").getFile();
+			System.setProperty("java.util.logging.config.file", path);
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public static void execute() {
+	public static void execute() throws SecurityException, IOException {
 		// public static Logger logger = Logger.getLogger("com.wombat.nose");
 		Logger logger = Logger.getLogger("team.boolbee.poc.logging.jul");
-		// private static FileHandler fh = new FileHandler("mylog.txt");
-		// logger.addHandler(fh);
+		FileHandler fh = new FileHandler("%t/mylog.txt");
+		logger.addHandler(fh);
+		Logger.getLogger("team.boolbee.poc.logging.jul").setLevel(Level.FINEST);
 		// Request that every detail gets logged.
-		// logger.setLevel(Level.ALL);
+		logger.setLevel(Level.ALL);
 		// Log a simple INFO message.
 		logger.info("doing stuff");
 		try {
@@ -44,7 +38,15 @@ public class Island {
 	}
 	
 	public static void main(String[] args) {
-		Island.execute();
+		try {
+			Island.execute();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
