@@ -108,13 +108,13 @@
 	<!-- <level value="INFO" /> -->
 	<!-- </logger> -->
 
-	<root level="INFO">
+	<root level="DEBUG">
 		<appender-ref ref="CONSOLE" />
 <!-- 		<appender-ref ref="FILE" /> -->
 		<appender-ref ref="ROLLING_FILE" />
 		<appender-ref ref="TIME_ROLLING_FILE" />
-		<appender-ref ref="DATABASE" />
+<!-- 		<appender-ref ref="DATABASE" /> -->
 		<!-- <appender-ref ref="REMOTE" /> -->
-		<appender-ref ref="EMAIL" />
+<!-- 		<appender-ref ref="EMAIL" /> -->
 	</root>
 </configuration>
