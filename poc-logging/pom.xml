@@ -8,5 +8,6 @@
 	<modules>
 		<module>poc-jcl</module>
 		<module>poc-simple-logging-facade</module>
+		<module>poc-logging-framework-jul</module>
 	</modules>
 </project>
