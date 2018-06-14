@@ -108,7 +108,7 @@
 	<!-- <level value="INFO" /> -->
 	<!-- </logger> -->
 
-	<root level="DEBUG">
+	<root level="TRACE">
 		<appender-ref ref="CONSOLE" />
 <!-- 		<appender-ref ref="FILE" /> -->
 		<appender-ref ref="ROLLING_FILE" />
