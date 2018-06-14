@@ -10,6 +10,7 @@ public class Sdk14LoggingTest extends TestCase {
 	public void testLogging() {
 		try {
 			Island.execute();
+			//prueba
 		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
