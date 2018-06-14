@@ -16,19 +16,20 @@ import junit.framework.TestCase;
 public class HttpConnectionTest extends TestCase {
 
 	static {
-		SLF4JBridgeHandler.removeHandlersForRootLogger(); // (since SLF4J 1.6.5)
+		//SLF4JBridgeHandler.removeHandlersForRootLogger(); // (since SLF4J 1.6.5)
 
 		// add SLF4JBridgeHandler to j.u.l's root logger, should be done once
 		// during
 		// the initialization phase of your application
-		SLF4JBridgeHandler.install();
-		java.util.logging.Logger.getLogger("").setLevel(Level.FINEST);
+		//SLF4JBridgeHandler.install();
+		//java.util.logging.Logger.getLogger("").setLevel(Level.ALL);
+		java.util.logging.Logger.getLogger("sun.net.www.protocol.http.HttpURLConnection").setLevel(Level.ALL);
 		// https://www.slf4j.org/api/org/slf4j/bridge/SLF4JBridgeHandler.html
 		// https://stackoverflow.com/questions/9117030/jul-to-slf4j-bridge
 	}
 
 	public void testHttpConnection() {
-		java.util.logging.Logger logger = java.util.logging.Logger.getLogger("HOLA");
+		java.util.logging.Logger logger = java.util.logging.Logger.getLogger("");
 		//Logger slf4jLogger = LoggerFactory.getLogger(HttpConnectionTest.class);
 		URL url;
 		try {
