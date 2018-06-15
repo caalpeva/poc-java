@@ -6,7 +6,7 @@ import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 import team.boolbee.poc.logging.jcl.StartupManager;
-import team.boolbee.poc.logging.jul.Sdk14LoggingTest;
+import team.boolbee.poc.logging.jul.Jdk14LoggingTest;
 
 public class SimpleLoggingFacadeForJavaTest extends AbstractDependencyInjectionSpringContextTests {
 
