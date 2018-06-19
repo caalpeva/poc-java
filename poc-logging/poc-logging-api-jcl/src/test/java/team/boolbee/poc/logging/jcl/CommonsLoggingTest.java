@@ -2,7 +2,7 @@ package team.boolbee.poc.logging.jcl;
 
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
-public class JakartaCommonsLoggingTest extends AbstractDependencyInjectionSpringContextTests {
+public class CommonsLoggingTest extends AbstractDependencyInjectionSpringContextTests {
 
 	@Override
 	protected String[] getConfigLocations() {

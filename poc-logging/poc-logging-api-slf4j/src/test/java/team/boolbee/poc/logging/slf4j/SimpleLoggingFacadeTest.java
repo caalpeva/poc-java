@@ -8,7 +8,7 @@ import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 import team.boolbee.poc.logging.jcl.StartupManager;
 import team.boolbee.poc.logging.jul.Jdk14LoggingTest;
 
-public class SimpleLoggingFacadeForJavaTest extends AbstractDependencyInjectionSpringContextTests {
+public class SimpleLoggingFacadeTest extends AbstractDependencyInjectionSpringContextTests {
 
 	@Override
 	protected String[] getConfigLocations() {
@@ -22,7 +22,7 @@ public class SimpleLoggingFacadeForJavaTest extends AbstractDependencyInjectionS
 //					java.exe -Djava.util.logging.config.file=logging.properties HttpConnect
 //					and put in logging.properties file (by default in JRE_HOME\lib) the following property
 //					sun.net.www.protocol.http.HttpURLConnection.level = ALL
-			String path = SimpleLoggingFacadeForJavaTest.class.getClassLoader().getResource("jul-logging.properties").getFile();
+			String path = SimpleLoggingFacadeTest.class.getClassLoader().getResource("jul-logging.properties").getFile();
 			System.setProperty("java.util.logging.config.file", path);
 		} catch (SecurityException e) {
 			//e.printStackTrace();
