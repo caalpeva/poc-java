@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>poc-logging-api-slf4j-module-logback</name>
+	<name>poc-logging-api-slf4j-logback</name>
 	<comment></comment>
 	<projects>
 	</projects>

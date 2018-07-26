@@ -6,8 +6,8 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-		<module>poc-jcl</module>
-		<module>poc-simple-logging-facade</module>
+		<module>poc-logging-api-jcl-log4j</module>
+		<module>poc-logging-api-slf4j-logback</module>
 		<module>poc-logging-framework-jul</module>
 	</modules>
 </project>
