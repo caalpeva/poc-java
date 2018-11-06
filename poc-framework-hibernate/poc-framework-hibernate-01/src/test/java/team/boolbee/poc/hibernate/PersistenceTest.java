@@ -1,4 +1,4 @@
-package chapter01.hibernate;
+package team.boolbee.poc.hibernate;
 
 import java.util.List;
 
@@ -8,15 +8,16 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import junit.framework.Assert;
+import team.boolbee.poc.hibernate.Message;
 
 public class PersistenceTest {
     SessionFactory factory;
 
-    @BeforeClass
+    @BeforeSuite
     public void setup() {
         Configuration configuration = new Configuration();
         configuration.configure();

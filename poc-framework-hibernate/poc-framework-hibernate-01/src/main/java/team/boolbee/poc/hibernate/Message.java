@@ -1,4 +1,4 @@
-package chapter01.hibernate;
+package team.boolbee.poc.hibernate;
 
 import javax.persistence.*;
 
