@@ -6,13 +6,13 @@
     <session-factory>
         <!--  Database connection settings  -->
         <property name="connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>
-        <property name="connection.url">jdbc:hsqldb:db1;shutdown=true</property>
-                <property name="connection.username">sa</property>
+        <property name="connection.url">jdbc:hsqldb:POC_DB01;shutdown=true</property>
+        <property name="connection.username">sa</property>
         <property name="connection.password"/>
         <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
         
 <!--         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
-<!--         <property name="connection.url">jdbc:sqlserver://localhost;databaseName=roadrantz</property> -->
+<!--         <property name="connection.url">jdbc:sqlserver://localhost;databaseName=POC_DB01</property> -->
 <!--         <property name="connection.username">sa</property> -->
 <!--         <property name="connection.password">boolbee</property> -->
 <!--         <property name="dialect">org.hibernate.dialect.SQLServerDialect</property> -->
@@ -21,6 +21,7 @@
         <property name="show_sql">true</property>
         <!--  Drop and re-create the database schema on startup  -->
         <property name="hbm2ddl.auto">create-drop</property>
+        
         <mapping class="chapter01.hibernate.Message"/>
     </session-factory>
 
