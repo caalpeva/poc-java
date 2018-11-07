@@ -11,8 +11,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>team.boobee.poc.hibernate.utils</groupId>
-			<artifactId>utils</artifactId>
+			<groupId>team.boobee.poc</groupId>
+			<artifactId>poc-framework-hibernate-utils</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

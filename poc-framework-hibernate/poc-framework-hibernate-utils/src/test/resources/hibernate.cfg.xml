@@ -6,15 +6,15 @@
     <session-factory>
         <!--  Database connection settings  -->
 <!--         <property name="connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property> -->
-<!--         <property name="connection.url">jdbc:hsqldb:POC_DB2;shutdown=true</property> -->
+<!--         <property name="connection.url">jdbc:hsqldb:POC_TEST;shutdown=true</property> -->
 <!--         <property name="connection.username">sa</property> -->
 <!--         <property name="connection.password"/> -->
 <!--         <property name="dialect">org.hibernate.dialect.HSQLDialect</property> -->
         
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-        <property name="connection.url">jdbc:sqlserver://localhost;databaseName=POC_DB2</property>
+        <property name="connection.url">jdbc:sqlserver://localhost;databaseName=POC_TEST</property>
         <property name="connection.username">sa</property>
-        <property name="connection.password">C1st3lc0m</property>
+        <property name="connection.password">boolbee</property>
         <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
         
         <!-- set up c3p0 for use -->

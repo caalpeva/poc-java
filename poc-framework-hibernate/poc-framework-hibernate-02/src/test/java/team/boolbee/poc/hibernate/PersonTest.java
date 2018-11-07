@@ -1,4 +1,4 @@
-package chapter01.hibernate;
+package team.boolbee.poc.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,7 +9,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import team.boobee.poc.framework.hibernate.simple.Person;
+import team.boolbee.poc.hibernate.model.Person;
 
 public class PersonTest {
     SessionFactory factory;
@@ -29,12 +29,11 @@ public class PersonTest {
         Session session = factory.openSession();
         Transaction tx = session.beginTransaction();
         Person person = new Person();
-        person.setName("Jan Ullrich");
+        person.setName("Glenn Rhee");
 
         session.save(person);
 
         tx.commit();
         session.close();
     }
-
 }

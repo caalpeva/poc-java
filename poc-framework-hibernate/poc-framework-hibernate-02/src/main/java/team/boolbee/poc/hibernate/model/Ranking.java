@@ -1,4 +1,4 @@
-package team.boobee.poc.framework.hibernate.simple;
+package team.boolbee.poc.hibernate.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
