@@ -9,7 +9,7 @@ public class AddRankingTest {
 
     @Test
     public void addRanking() {
-        service.addRanking("Glenn Rhee", "Rick Grimes", "Mule", 8);
-        assertEquals(service.getRankingFor("Glenn Rhee", "Mule"), 8);
+        service.addRanking("Glenn Rhee", "Rick Grimes", "Conflict Resolution", 8);
+        assertEquals(service.getRankingFor("Glenn Rhee", "Conflict Resolution"), 8);
     }	
 }

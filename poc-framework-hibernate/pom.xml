@@ -10,7 +10,8 @@
 	<modules>
 		<module>poc-framework-hibernate-01</module>
 		<module>poc-framework-hibernate-02</module>
-		<module>utils</module>
+		<module>poc-framework-hibernate-03</module>
+		<module>poc-framework-hibernate-utils</module>
 	</modules>
 
 	<properties>

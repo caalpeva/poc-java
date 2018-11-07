@@ -6,7 +6,7 @@ import static org.testng.Assert.assertEquals;
 
 public class UpdateRankingTest {
     RankingService service = new HibernateRankingService();
-  
+
     @Test
     public void updateExistingRanking() {
         service.addRanking("Daryl Dixon", "Carol Peletier", "Decision Making", 6);

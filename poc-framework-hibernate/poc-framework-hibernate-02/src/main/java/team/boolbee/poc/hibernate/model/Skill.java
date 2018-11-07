@@ -8,14 +8,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Skill {
-	/*
-    Rick Grimes
-    Daryl Dixon
-    Glenn Rhee
-    Maggie Greene
-    Carol Peletier
-    Michonne
-    */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
