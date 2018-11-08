@@ -12,6 +12,7 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 
 public class OrphanRemovalTest {
+	
     @SuppressWarnings("unchecked")
 	@Test
     public void orphanRemovalTest() {
@@ -53,19 +54,19 @@ public class OrphanRemovalTest {
 
         Book book = new Book();
         book.setLibrary(library);
-        book.setTitle("book 1");
+        book.setTitle("Android in Action. Manning");
         session.save(book);
         library.getBooks().add(book);
 
         book = new Book();
         book.setLibrary(library);
-        book.setTitle("book 2");
+        book.setTitle("Beginning Hibernate. Apress");
         session.save(book);
         library.getBooks().add(book);
 
         book = new Book();
         book.setLibrary(library);
-        book.setTitle("book 3");
+        book.setTitle("Spring in Action. Manning");
         session.save(book);
         library.getBooks().add(book);
 

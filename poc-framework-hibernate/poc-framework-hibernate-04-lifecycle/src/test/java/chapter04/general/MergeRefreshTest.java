@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class MergeRefreshTest {
+	
     @Test
     public void testMerge() {
         Long id;
@@ -28,7 +29,7 @@ public class MergeRefreshTest {
         tx.commit();
         session.close();
 
-        SimpleObject so = validateSimpleObject(id, 1L);
+        SimpleObject so = validateSimpleObject(id, "testMerge", 1L);
 
         so.setValue(2L);
 
@@ -40,7 +41,7 @@ public class MergeRefreshTest {
         tx.commit();
         session.close();
 
-        validateSimpleObject(id, 2L);
+        validateSimpleObject(id, "testMerge", 2L);
     }
 
     @Test
@@ -51,7 +52,7 @@ public class MergeRefreshTest {
 
         SimpleObject simpleObject = new SimpleObject();
 
-        simpleObject.setText("testMerge");
+        simpleObject.setText("testRefresh");
         simpleObject.setValue(1L);
 
         session.save(simpleObject);
@@ -61,7 +62,7 @@ public class MergeRefreshTest {
         tx.commit();
         session.close();
 
-        SimpleObject so = validateSimpleObject(id, 1L);
+        SimpleObject so = validateSimpleObject(id, "testRefresh", 1L);
 
         so.setValue(2L);
 
@@ -73,18 +74,18 @@ public class MergeRefreshTest {
         tx.commit();
         session.close();
 
-        validateSimpleObject(id, 1L);
+        validateSimpleObject(id, "testRefresh", 1L);
     }
 
-    private SimpleObject validateSimpleObject(Long id, Long value) {
+    private SimpleObject validateSimpleObject(Long id, String text, Long value) {
         Session session;
-        Transaction tx;// validate the database values
+        Transaction tx; // validate the database values
         session = SessionFactoryHelper.getSession();
         tx = session.beginTransaction();
 
         SimpleObject so = (SimpleObject) session.load(SimpleObject.class, id);
 
-        assertEquals(so.getText(), "testMerge");
+        assertEquals(so.getText(), text);
         assertEquals(so.getValue(), value);
 
         tx.commit();
