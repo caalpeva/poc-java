@@ -11,7 +11,9 @@
 		<module>poc-framework-hibernate-01</module>
 		<module>poc-framework-hibernate-02</module>
 		<module>poc-framework-hibernate-03</module>
+		<module>poc-framework-hibernate-03-lifecycle</module>
 		<module>poc-framework-hibernate-utils</module>
+		
 	</modules>
 
 	<properties>
@@ -50,6 +52,11 @@
 			<artifactId>testng</artifactId>
 			<version>6.8.7</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>team.boobee.poc</groupId>
+			<artifactId>poc-framework-hibernate-utils</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
