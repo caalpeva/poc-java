@@ -9,4 +9,12 @@
 	
 	<artifactId>poc-framework-hibernate-01</artifactId>
 	
+	<dependencies>
+		<dependency>
+			<groupId>team.boobee.poc</groupId>
+			<artifactId>poc-framework-hibernate-utils</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
 </project>

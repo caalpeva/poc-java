@@ -15,7 +15,6 @@ import team.boolbee.poc.hibernate.utils.SessionFactoryHelper;
 
 public class HibernateRankingService implements RankingService {
 
-	@Override
 	public int getRankingFor(String subject, String skill) {
 		Session session = SessionFactoryHelper.getSession();
 		Transaction tx = session.beginTransaction();
@@ -28,7 +27,6 @@ public class HibernateRankingService implements RankingService {
 		return average;
 	}
 
-	@Override
 	public void addRanking(String subject, String observer, String skill, int ranking) {
 		Session session = SessionFactoryHelper.getSession();
 		Transaction tx = session.beginTransaction();
@@ -39,7 +37,6 @@ public class HibernateRankingService implements RankingService {
 		session.close();
 	}
 
-	@Override
 	public void updateRanking(String subject, String observer, String skill, int rank) {
 		Session session = SessionFactoryHelper.getSession();
 		Transaction tx = session.beginTransaction();
@@ -55,7 +52,6 @@ public class HibernateRankingService implements RankingService {
 		session.close();
 	}
 
-	@Override
 	public void removeRanking(String subject, String observer, String skill) {
 		Session session = SessionFactoryHelper.getSession();
 		Transaction tx = session.beginTransaction();
@@ -66,7 +62,6 @@ public class HibernateRankingService implements RankingService {
 		session.close();
 	}
 
-	@Override
 	public Map<String, Integer> findRankingsFor(String subject) {
 		Map<String, Integer> results;
 		Session session = SessionFactoryHelper.getSession();
@@ -80,7 +75,6 @@ public class HibernateRankingService implements RankingService {
 		return results;
 	}
 
-	@Override
 	public Person findBestPersonFor(String skillType) {
 		Person person = null;
 		Session session = SessionFactoryHelper.getSession();
@@ -179,7 +173,7 @@ public class HibernateRankingService implements RankingService {
 
 	@SuppressWarnings("unchecked")
 	private Map<String, Integer> findRankingsFor(Session session, String subject) {
-		Map<String, Integer> results = new HashMap<>();
+		Map<String, Integer> results = new HashMap<String, Integer>();
 
 		Query query = session.createQuery("from Ranking r "
 				+ "where r.subject.name=:subject "

@@ -53,19 +53,19 @@ public class IdentityTest {
         System.out.println(obj.getId());
     }
 
-    @Test
-    public void testSequenceIdentity() {
-        Session session = SessionFactoryHelper.getSession();
-        Transaction tx = session.beginTransaction();
-
-        GeneratedSequenceIdentity obj = new GeneratedSequenceIdentity();
-        session.persist(obj);
-
-        tx.commit();
-        session.close();
-
-        System.out.println(obj.getId());
-    }
+//    @Test
+//    public void testSequenceIdentity() {
+//        Session session = SessionFactoryHelper.getSession();
+//        Transaction tx = session.beginTransaction();
+//
+//        GeneratedSequenceIdentity obj = new GeneratedSequenceIdentity();
+//        session.persist(obj);
+//
+//        tx.commit();
+//        session.close();
+//
+//        System.out.println(obj.getId());
+//    }
 
     @Test
     public void testTableIdentity() {
