@@ -5,12 +5,12 @@ import org.hibernate.Transaction;
 import org.hibernate.id.IdentifierGenerationException;
 import org.testng.annotations.Test;
 
-import team.boolbee.poc.hibernate.utils.SessionFactoryHelper;
+import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 public class IdentityTest {
     @Test
     public void testAutoIdentity() {
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         GeneratedAutoIdentity obj = new GeneratedAutoIdentity();
@@ -25,7 +25,7 @@ public class IdentityTest {
 
     @Test(expectedExceptions = IdentifierGenerationException.class)
     public void testNongeneratedIdentityFailure() {
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         NongeneratedIdentity obj = new NongeneratedIdentity();
@@ -40,7 +40,7 @@ public class IdentityTest {
 
     @Test
     public void testNongeneratedIdentity() {
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         NongeneratedIdentity obj = new NongeneratedIdentity();
@@ -69,7 +69,7 @@ public class IdentityTest {
 
     @Test
     public void testTableIdentity() {
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         GeneratedTableIdentity obj = new GeneratedTableIdentity();
@@ -83,7 +83,7 @@ public class IdentityTest {
 
     @Test
     public void testIdentityIdentity() {
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         GeneratedIdentityIdentity obj = new GeneratedIdentityIdentity();

@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.testng.annotations.Test;
 
-import team.boolbee.poc.hibernate.utils.SessionFactoryHelper;
+import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class OrphanRemovalTest {
     public void orphanRemovalTest() {
         Long id = createLibrary();
 
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         Library library = (Library) session.load(Library.class, id);
@@ -30,7 +30,7 @@ public class OrphanRemovalTest {
         tx.commit();
         session.close();
 
-        session = SessionFactoryHelper.getSession();
+        session = HibernateSession.getSession();
         tx = session.beginTransaction();
 
         Library l2 = (Library) session.load(Library.class, id);
@@ -45,7 +45,7 @@ public class OrphanRemovalTest {
     }
 
     private Long createLibrary() {
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         Library library = new Library();

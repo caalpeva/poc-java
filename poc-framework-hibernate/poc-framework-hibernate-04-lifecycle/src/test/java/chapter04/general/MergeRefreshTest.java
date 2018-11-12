@@ -1,7 +1,7 @@
 package chapter04.general;
 
 import chapter04.model.SimpleObject;
-import team.boolbee.poc.hibernate.utils.SessionFactoryHelper;
+import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -14,7 +14,7 @@ public class MergeRefreshTest {
     @Test
     public void testMerge() {
         Long id;
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         SimpleObject simpleObject = new SimpleObject();
@@ -33,7 +33,7 @@ public class MergeRefreshTest {
 
         so.setValue(2L);
 
-        session = SessionFactoryHelper.getSession();
+        session = HibernateSession.getSession();
         tx = session.beginTransaction();
 
         session.merge(so);
@@ -47,7 +47,7 @@ public class MergeRefreshTest {
     @Test
     public void testRefresh() {
         Long id;
-        Session session = team.boolbee.poc.hibernate.utils.SessionFactoryHelper.getSession();
+        Session session = team.boolbee.poc.hibernate.utils.HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         SimpleObject simpleObject = new SimpleObject();
@@ -66,7 +66,7 @@ public class MergeRefreshTest {
 
         so.setValue(2L);
 
-        session = SessionFactoryHelper.getSession();
+        session = HibernateSession.getSession();
         tx = session.beginTransaction();
 
         session.refresh(so);
@@ -80,7 +80,7 @@ public class MergeRefreshTest {
     private SimpleObject validateSimpleObject(Long id, String text, Long value) {
         Session session;
         Transaction tx; // validate the database values
-        session = SessionFactoryHelper.getSession();
+        session = HibernateSession.getSession();
         tx = session.beginTransaction();
 
         SimpleObject so = (SimpleObject) session.load(SimpleObject.class, id);

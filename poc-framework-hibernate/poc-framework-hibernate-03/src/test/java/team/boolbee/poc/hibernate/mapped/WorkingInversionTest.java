@@ -2,7 +2,7 @@ package team.boolbee.poc.hibernate.mapped;
 
 import team.boolbee.poc.hibernate.model.mapped.Email;
 import team.boolbee.poc.hibernate.model.mapped.Message;
-import team.boolbee.poc.hibernate.utils.SessionFactoryHelper;
+import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,7 +17,7 @@ public class WorkingInversionTest {
         Long emailId;
         Long messageId;
 
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         Email email = new Email("Inverse Email");
@@ -40,7 +40,7 @@ public class WorkingInversionTest {
         assertNull(email.getMessage());
         assertNotNull(message.getEmail());
 
-        session = SessionFactoryHelper.getSession();
+        session = HibernateSession.getSession();
         tx = session.beginTransaction();
         email = (Email) session.get(Email.class, emailId);
         System.out.println(email);
