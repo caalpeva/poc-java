@@ -13,6 +13,8 @@
 		<module>poc-framework-hibernate-03</module>
 		<module>poc-framework-hibernate-03-lifecycle</module>
 		<module>poc-framework-hibernate-utils</module>
+		<module>poc-framework-hibernate-03-oneToOne-unidirectional-xml</module>
+		<module>poc-framework-hibernate-03-oneToOne-unidirectional-annotation</module>
 	</modules>
 
 	<properties>

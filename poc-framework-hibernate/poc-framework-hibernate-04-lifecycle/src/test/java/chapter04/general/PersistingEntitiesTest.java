@@ -1,7 +1,7 @@
 package chapter04.general;
 
 import chapter04.model.SimpleObject;
-import team.boolbee.poc.hibernate.utils.SessionFactoryHelper;
+import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -15,7 +15,7 @@ public class PersistingEntitiesTest {
     public void testSaveLoad() {
         Long id = null;
 
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         SimpleObject obj = new SimpleObject();
@@ -30,7 +30,7 @@ public class PersistingEntitiesTest {
         tx.commit();
         session.close();
 
-        session = SessionFactoryHelper.getSession();
+        session = HibernateSession.getSession();
         tx = session.beginTransaction();
 
         // we're loading the object by id
@@ -57,7 +57,7 @@ public class PersistingEntitiesTest {
     @Test
     public void testSavingEntitiesTwice() {
         Long id;
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         SimpleObject obj = new SimpleObject();
@@ -76,7 +76,7 @@ public class PersistingEntitiesTest {
         // El objeto pasa del estado transitorio (cuando se crea) al estado persistente (cuando se guarda por primera vez)
         // y luego pasa al estado disociado (cuando se cierra la sesión).
         
-        session = SessionFactoryHelper.getSession();
+        session = HibernateSession.getSession();
         tx = session.beginTransaction();
 
         obj.setText("SAVING TWICE");
@@ -98,7 +98,7 @@ public class PersistingEntitiesTest {
     @Test
     public void testSaveOrUpdateEntity() {
         Long id;
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         SimpleObject obj = new SimpleObject();
@@ -117,7 +117,7 @@ public class PersistingEntitiesTest {
         // El objeto pasa del estado transitorio (cuando se crea) al estado persistente (cuando se guarda por primera vez)
         // y luego pasa al estado disociado (cuando se cierra la sesión).
         
-        session = SessionFactoryHelper.getSession();
+        session = HibernateSession.getSession();
         tx = session.beginTransaction();
 
         obj.setValue(12L);

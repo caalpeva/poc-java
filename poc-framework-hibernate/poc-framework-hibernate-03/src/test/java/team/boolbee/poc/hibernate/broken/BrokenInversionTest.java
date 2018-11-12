@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import team.boolbee.poc.hibernate.model.broken.Email;
 import team.boolbee.poc.hibernate.model.broken.Message;
-import team.boolbee.poc.hibernate.utils.SessionFactoryHelper;
+import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 import static org.testng.Assert.*;
 
@@ -17,7 +17,7 @@ public class BrokenInversionTest {
         Long emailId;
         Long messageId;
 
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         Email email = new Email("Broken");
@@ -38,7 +38,7 @@ public class BrokenInversionTest {
         assertNotNull(email.getMessage());
         assertNull(message.getEmail());
 
-        session = SessionFactoryHelper.getSession();
+        session = HibernateSession.getSession();
         tx = session.beginTransaction();
         email = (Email) session.get(Email.class, emailId);
         System.out.println(email);
@@ -57,7 +57,7 @@ public class BrokenInversionTest {
         Long emailId;
         Long messageId;
 
-        Session session = SessionFactoryHelper.getSession();
+        Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
 
         Email email = new Email("Proper");
@@ -78,7 +78,7 @@ public class BrokenInversionTest {
         assertNotNull(email.getMessage());
         assertNotNull(message.getEmail());
 
-        session = SessionFactoryHelper.getSession();
+        session = HibernateSession.getSession();
         tx = session.beginTransaction();
         email = (Email) session.get(Email.class, emailId);
         System.out.println(email);

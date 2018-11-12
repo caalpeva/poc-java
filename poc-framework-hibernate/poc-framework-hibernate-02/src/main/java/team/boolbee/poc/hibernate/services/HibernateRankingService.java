@@ -11,12 +11,12 @@ import org.hibernate.Transaction;
 import team.boolbee.poc.hibernate.model.Person;
 import team.boolbee.poc.hibernate.model.Ranking;
 import team.boolbee.poc.hibernate.model.Skill;
-import team.boolbee.poc.hibernate.utils.SessionFactoryHelper;
+import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 public class HibernateRankingService implements RankingService {
 
 	public int getRankingFor(String subject, String skill) {
-		Session session = SessionFactoryHelper.getSession();
+		Session session = HibernateSession.getSession();
 		Transaction tx = session.beginTransaction();
 
 		int average = getRankingFor(session, subject, skill);
@@ -28,7 +28,7 @@ public class HibernateRankingService implements RankingService {
 	}
 
 	public void addRanking(String subject, String observer, String skill, int ranking) {
-		Session session = SessionFactoryHelper.getSession();
+		Session session = HibernateSession.getSession();
 		Transaction tx = session.beginTransaction();
 
 		addRanking(session, subject, observer, skill, ranking);
@@ -38,7 +38,7 @@ public class HibernateRankingService implements RankingService {
 	}
 
 	public void updateRanking(String subject, String observer, String skill, int rank) {
-		Session session = SessionFactoryHelper.getSession();
+		Session session = HibernateSession.getSession();
 		Transaction tx = session.beginTransaction();
 
 		Ranking ranking = findRanking(session, subject, observer, skill);
@@ -53,7 +53,7 @@ public class HibernateRankingService implements RankingService {
 	}
 
 	public void removeRanking(String subject, String observer, String skill) {
-		Session session = SessionFactoryHelper.getSession();
+		Session session = HibernateSession.getSession();
 		Transaction tx = session.beginTransaction();
 
 		removeRanking(session, subject, observer, skill);
@@ -64,7 +64,7 @@ public class HibernateRankingService implements RankingService {
 
 	public Map<String, Integer> findRankingsFor(String subject) {
 		Map<String, Integer> results;
-		Session session = SessionFactoryHelper.getSession();
+		Session session = HibernateSession.getSession();
 		Transaction tx = session.beginTransaction();
 
 		results = findRankingsFor(session, subject);
@@ -77,7 +77,7 @@ public class HibernateRankingService implements RankingService {
 
 	public Person findBestPersonFor(String skillType) {
 		Person person = null;
-		Session session = SessionFactoryHelper.getSession();
+		Session session = HibernateSession.getSession();
 		Transaction tx = session.beginTransaction();
 
 		person = findBestPersonFor(session, skillType);

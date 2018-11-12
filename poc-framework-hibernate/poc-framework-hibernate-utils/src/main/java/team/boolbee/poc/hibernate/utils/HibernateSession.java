@@ -6,12 +6,12 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-public class SessionFactoryHelper {
+public class HibernateSession {
 
-	private static final SessionFactoryHelper instance = new SessionFactoryHelper();
+	private static final HibernateSession instance = new HibernateSession();
 	private final SessionFactory factory;
 	
-	private SessionFactoryHelper() {
+	private HibernateSession() {
 		Configuration configuration = new Configuration();
 		configuration.configure();
 		ServiceRegistryBuilder srBuilder = new ServiceRegistryBuilder();
@@ -28,7 +28,7 @@ public class SessionFactoryHelper {
 		getInstance().factory.close();
 	}
 	
-	private static SessionFactoryHelper getInstance() {
+	private static HibernateSession getInstance() {
 		return instance;
 	}
 }
