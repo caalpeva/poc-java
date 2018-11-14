@@ -24,6 +24,15 @@
 		<module>
 			poc-framework-hibernate-03-oneToOne-unidirectional-annotation-table
 		</module>
+		<module>
+			poc-framework-hibernate-03-oneToOne-bidirectional-xml
+		</module>
+		<module>
+			poc-framework-hibernate-03-oneToOne-bidirectional-annotation
+		</module>
+		<module>
+			poc-framework-hibernate-03-oneToOne-bidireccional-annotation-identicalPrimaryKeys
+		</module>
 	</modules>
 
 	<properties>
