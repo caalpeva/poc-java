@@ -15,6 +15,15 @@
 		<module>poc-framework-hibernate-utils</module>
 		<module>poc-framework-hibernate-03-oneToOne-unidirectional-xml</module>
 		<module>poc-framework-hibernate-03-oneToOne-unidirectional-annotation</module>
+		<module>
+			poc-framework-hibernate-03-oneToOne-unidirectional-annotation-simple
+		</module>
+		<module>
+			poc-framework-hibernate-03-oneToOne-unidirectional-xml-simple
+		</module>
+		<module>
+			poc-framework-hibernate-03-oneToOne-unidirectional-annotation-table
+		</module>
 	</modules>
 
 	<properties>

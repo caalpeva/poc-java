@@ -1,0 +1,5 @@
+CREATE DATABASE POC_HB03_xml_oneToOne_identicalPrimaryKeys;
+CREATE DATABASE POC_HB03_xml_oneToOne_unidirectional;
+CREATE DATABASE POC_HB03_annotation_oneToOne_identicalPrimaryKeys;
+CREATE DATABASE POC_HB03_annotation_oneToOne_unidirectional;
+CREATE DATABASE POC_HB03_annotation_oneToOne_unidirectional_table;

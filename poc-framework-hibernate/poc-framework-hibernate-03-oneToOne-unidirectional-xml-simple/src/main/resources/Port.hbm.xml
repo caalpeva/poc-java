@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+	package="team.boolbee.poc.hibernate.onetoone.unidirectional.xml.model">
+	<class name="Port" table="PORT">
+		<id name="id" column="id">
+			<generator class="identity" />
+		</id>
+		<property name="number" not-null="true" unique="true" />
+		<property name="type">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">team.boolbee.poc.hibernate.onetoone.unidirectional.xml.model.PortType</param>
+				<param name="useNamed">true</param>
+			</type>
+		</property>
+		
+		<!-- Se utiliza el elemento <many-to-one> con los atributos unique="true"
+			not-null="true" para forzar la relación one-to-one -->
+		<many-to-one name="service" column="service_id" unique="true"
+			not-null="true" cascade="persist, delete" />
+	</class>
+</hibernate-mapping>

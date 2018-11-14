@@ -13,7 +13,7 @@ import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.model.Port;
 import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.model.PortType;
 import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.model.Service;
 
-public class OneToOneAnnotationTest {
+public class OneToOnePrimaryKeySharedAnnotationTest {
 	
     @Test
     public void testOneToOneMappedByAnnotation() {

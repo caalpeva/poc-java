@@ -1,4 +1,4 @@
-package team.boolbee.poc.hibernate.onetoone.unidirectional.xml.model;
+package team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.model;
 
 import static org.testng.Assert.assertEquals;
 
@@ -7,13 +7,16 @@ import java.util.List;
 import org.hibernate.exception.ConstraintViolationException;
 import org.testng.annotations.Test;
 
-import team.boolbee.poc.hibernate.onetoone.unidirectional.xml.dao.PortDAO;
-import team.boolbee.poc.hibernate.onetoone.unidirectional.xml.dao.ServiceDAO;
+import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.dao.PortDAO;
+import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.dao.ServiceDAO;
+import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.model.Port;
+import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.model.PortType;
+import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.model.Service;
 
-public class OneToOneXmlTest {
+public class OneToOneAnnotationTest {
 	
     @Test
-    public void testOneToOneMappedByXml() {
+    public void testOneToOneMappedByAnnotation() {
         Service sqlServerService = new Service();
         sqlServerService.setName("SQLServer");
         sqlServerService.setPath("C:\\Program Files\\SQLServer\\sqls.exe");
@@ -60,9 +63,20 @@ public class OneToOneXmlTest {
         
         services = serviceDAO.selectAll();
         assertEquals(services.size(), 2);
+        
+        Port port = portDAO.selectById(apachePort.getId());
+        System.out.println("PortNumber: " + port.getNumber());
+        
+        Service service = port.getService();
+        System.out.println("ServiceName: " + service.getName());
+        
+//        Port apachePort2 = new Port();
+//        apachePort2.setNumber(8080);
+//        apachePort2.setType(PortType.TCP);
+//        portDAO.insert(apachePort2, new Long(3));
     }
     
-    @Test(dependsOnMethods = "testOneToOneMappedByXml", expectedExceptions = ConstraintViolationException.class)
+    @Test(dependsOnMethods = "testOneToOneMappedByAnnotation", expectedExceptions = ConstraintViolationException.class)
     public void testUniqueKeyConstraintViolation() {
     	Service tomcatService = new Service();
     	tomcatService.setName("Apache Tomcat");

@@ -19,8 +19,6 @@ public class Port {
 	@GeneratedValue(generator = "gen")
 	@GenericGenerator(name="gen", strategy="foreign", parameters=
 		@Parameter(name= "property", value = "service"))
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name="port_id")
 	private Long id;
 	
 	@Column(unique=true)
@@ -31,7 +29,6 @@ public class Port {
 	
 	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	@PrimaryKeyJoinColumn
-//	@JoinTable(name="port_address", joinColumns=@JoinColumn(name="port_id"))
 	private Service service;
 
 	/**
