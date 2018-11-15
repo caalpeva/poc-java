@@ -47,11 +47,8 @@ public class OneToOneAnnotationBidirIdenticalPrimaryKeysTest {
 		portDAO.insert(port2);
 		portDAO.insert(port3);
 
-		// Finalmente se elimina el puerto 1, luego el servicio será 
-		// borrado en cascada.
-		
-		//serviceDAO.delete(service1);
-		//portDAO.delete(port3);
+		serviceDAO.delete(service1);
+		portDAO.delete(port3);
 		
 //		Service service4 = new Service();
 //		service4.setName("SQLServer");

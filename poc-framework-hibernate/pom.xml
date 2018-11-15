@@ -33,6 +33,12 @@
 		<module>
 			poc-framework-hibernate-03-oneToOne-bidireccional-annotation-identicalPrimaryKeys
 		</module>
+		<module>
+			poc-framework-hibernate-03-xml-oneToMany-unidirectional
+		</module>
+		<module>
+			poc-framework-hibernate-03-annotation-oneToMany-unidir
+		</module>
 	</modules>
 
 	<properties>
