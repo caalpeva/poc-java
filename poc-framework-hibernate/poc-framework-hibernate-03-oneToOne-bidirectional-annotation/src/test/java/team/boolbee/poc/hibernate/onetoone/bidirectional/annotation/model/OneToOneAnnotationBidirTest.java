@@ -42,10 +42,11 @@ public class OneToOneAnnotationBidirTest {
 		PortDAO portDAO = new PortDAO();
 		ServiceDAO serviceDAO = new ServiceDAO();
 
-		Service service4 = new Service();
-		service4.setName("SQLServer");
-		service4.setPath("c:\\Program Files\\SQLServer\\sqls.exe");
-		serviceDAO.insert(service4);
+// TODO: Descomentar y probar
+//		Service service4 = new Service();
+//		service4.setName("SQLServer");
+//		service4.setPath("c:\\Program Files\\SQLServer\\sqls.exe");
+//		serviceDAO.insert(service4);
 		
 		serviceDAO.insert(service1);
 		//serviceDAO.insert(service2);

@@ -1,15 +1,14 @@
 package team.boolbee.hibernate.xml.onetomany.unidir.model;
 
-import javax.transaction.Transaction;
-
 import org.hibernate.Session;
 import org.testng.annotations.Test;
 
+import team.boolbee.hibernate.xml.onetomany.unidir.dao.RiderDAO;
 import team.boolbee.hibernate.xml.onetomany.unidir.dao.TeamDAO;
 import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 
-public class OneToOneManyXmlTest {
+public class OneToManyBidirXmlTest {
 	
     @Test
     public void testOneToOneMappedByXml() {
@@ -21,9 +20,14 @@ public class OneToOneManyXmlTest {
 		player2.setName("Andreas Kloden");
 		player2.setNumber(24);
 		
+		Rider player9 = new Rider();
+		player9.setName("Fabian Cancellara");
+		player9.setNumber(13);
+		
 		Team team1 = new Team();
 		team1.setName("Team RadioShack");
 		team1.addRider(player1);
+		team1.addRider(player9);
 		team1.addRider(player2);
     	
 		TeamDAO teamDAO = new TeamDAO();
@@ -53,7 +57,7 @@ public class OneToOneManyXmlTest {
 		player6.setNumber(16);
 		
 		Team team3 = new Team();
-		team3.setName("Team Saxo Bank");
+		team3.setName("Saxo Bank");
 		team3.addRider(player5);
 		team3.addRider(player6);
 
@@ -74,26 +78,51 @@ public class OneToOneManyXmlTest {
 
 		teamDAO.insert(team4);
 
-		teamDAO.delete(team1);
+		team3 = teamDAO.selectById(team3.getId());
+		player9.setTeam(team3);
+		team3.addRider(player9);
 		
+		RiderDAO riderDAO = new RiderDAO();
+		riderDAO.update(player9);
+		
+		team1 = teamDAO.selectById(team1.getId());
+		teamDAO.delete(team1);
+
+		Team team5 = new Team();
+		team5.setName("Liquigas");
+		
+		Rider player10 = new Rider();
+		player10.setName("Ivan Basso");
+		player10.setNumber(41);
+		player10.setTeam(team5);
+		team5.addRider(player10);
+		
+		riderDAO.insert(player10);
+		
+		//team5 = teamDAO.selectById(team5.getId());
+
 		Session session = HibernateSession.getSession();
 		session.beginTransaction();
 		
-		team4 = (Team) session.get(Team.class, team4.getId());
-		if (team4.getRiders().size() > 0) {
-			System.out.println("LAZY FALSE");
-			for(Rider ride: team4.getRiders()) {
-				System.out.println(ride.getName());
-			}
-		} else {
-			System.out.println("LAZY TRUE");
-		}
+		team5 = (Team) session.get(Team.class, team5.getId());
 		
-		if (team4.getRiders().size() > 0) {
-			team4.getRiders().remove(team4.getRiders().size() - 1);
-		}
+		Rider player11 = new Rider();
+		player11.setName("Roman Kreuziger");
+		player11.setNumber(44);
+		player11.setTeam(team5);
+		team5.addRider(player11);
+		
+		session.persist(player11);
 		
 		session.getTransaction().commit();
 		session.close();
+		
+//		Rider player11 = new Rider();
+//		player11.setName("Roman Kreuziger");
+//		player11.setNumber(44);
+//		player11.setTeam(team5);
+//		team5.addRider(player11);
+//		
+//		riderDAO.update(player11);
     }
 }

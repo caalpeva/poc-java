@@ -39,6 +39,7 @@
 		<module>
 			poc-framework-hibernate-03-annotation-oneToMany-unidir
 		</module>
+		<module>poc-framework-hibernate-03-xml-oneToMany-bidir</module>
 	</modules>
 
 	<properties>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>poc-framework-hibernate-03-oneToOne-bidirectional-annotation</name>
+	<name>poc-framework-hibernate-03-annotation-oneToOne-bidirectional</name>
 	<comment></comment>
 	<projects>
 	</projects>

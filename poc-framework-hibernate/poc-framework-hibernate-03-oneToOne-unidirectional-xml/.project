@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>poc-framework-hibernate-03-oneToOne-unidirectional-xml-primaryKey-identical</name>
+	<name>poc-framework-hibernate-03-xml-oneToOne-unidirectional-sharedPrimaryKeys</name>
 	<comment></comment>
 	<projects>
 	</projects>
