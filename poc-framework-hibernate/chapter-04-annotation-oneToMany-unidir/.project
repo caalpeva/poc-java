@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>poc-framework-hibernate-03-annotation-oneToMany-unidirectional</name>
+	<name>chapter-04-annotation-oneToMany-unidirectional</name>
 	<comment></comment>
 	<projects>
 	</projects>
