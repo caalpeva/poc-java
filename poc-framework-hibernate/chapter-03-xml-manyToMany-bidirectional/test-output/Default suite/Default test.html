@@ -1,0 +1,234 @@
+<html>
+<head>
+<title>TestNG:  Default test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Default test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>5/1/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Nov 20 17:08:11 CET 2018</td>
+</tr>
+<tr><td>Total time:</td><td>1 seconds (1752 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest.deleteBankAccount()'><b>deleteBankAccount</b><br>Test class: team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest</td>
+<td><div><pre>org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:129)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:124)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:109)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:189)
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:58)
+	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:3355)
+	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:3558)
+	at org.hibernate.action.internal.EntityDeleteAction.execute(EntityDeleteAction.java:102)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:395)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:387)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:310)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:349)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:56)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1159)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:404)
+	at org.hibernate.engine.transaction.internal.jdbc.JdbcTransaction.beforeTransactionCommit(JdbcTransaction.java:101)
+	at org.hibernate.engine.transaction.spi.AbstractTransactionImpl.commit(AbstractTransactionImpl.java:175)
+	at team.boolbee.hibernate.xml.manytomany.unidir.dao.BankAccountDAO.delete(BankAccountDAO.java:91)
+	at team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest.deleteBankAccount(BidirectionalManyToManyAsociationMappedByXmlTest.java:189)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: The DELETE statement conflicted with the REFERENCE constraint &quot;FK_4ps58o4u8hta433t40l6ts57p&quot;. The conflict occurred in database &quot;POC_HB03_xml_manyToMany_bidirectional&quot;, table &quot;dbo.CUSTOMER_BANKACCOUNT&quot;, column &apos;bankaccount_id&apos;.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:216)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1522)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:404)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:350)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:5696)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1717)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:180)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:155)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeUpdate(SQLServerPreparedStatement.java:314)
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeUpdate(NewProxyPreparedStatement.java:147)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:186)
+	... 39 more
+</pre></div><a href='#' onClick='toggleBox("stack-trace1210939243", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1210939243'><pre>org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:129)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:124)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:109)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:189)
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:58)
+	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:3355)
+	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:3558)
+	at org.hibernate.action.internal.EntityDeleteAction.execute(EntityDeleteAction.java:102)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:395)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:387)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:310)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:349)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:56)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1159)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:404)
+	at org.hibernate.engine.transaction.internal.jdbc.JdbcTransaction.beforeTransactionCommit(JdbcTransaction.java:101)
+	at org.hibernate.engine.transaction.spi.AbstractTransactionImpl.commit(AbstractTransactionImpl.java:175)
+	at team.boolbee.hibernate.xml.manytomany.unidir.dao.BankAccountDAO.delete(BankAccountDAO.java:91)
+	at team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest.deleteBankAccount(BidirectionalManyToManyAsociationMappedByXmlTest.java:189)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: The DELETE statement conflicted with the REFERENCE constraint &quot;FK_4ps58o4u8hta433t40l6ts57p&quot;. The conflict occurred in database &quot;POC_HB03_xml_manyToMany_bidirectional&quot;, table &quot;dbo.CUSTOMER_BANKACCOUNT&quot;, column &apos;bankaccount_id&apos;.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:216)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1522)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:404)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:350)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:5696)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1717)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:180)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:155)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeUpdate(SQLServerPreparedStatement.java:314)
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeUpdate(NewProxyPreparedStatement.java:147)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:186)
+	... 39 more
+</pre></div></td>
+<td>0</td>
+<td>team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest@32d992b2</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest.addAccountToExistingCustomer()'><b>addAccountToExistingCustomer</b><br>Test class: team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest</td>
+<td></td>
+<td>0</td>
+<td>team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest@32d992b2</td></tr>
+<tr>
+<td title='team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest.addCustomerToExistingBankAccount()'><b>addCustomerToExistingBankAccount</b><br>Test class: team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest</td>
+<td></td>
+<td>0</td>
+<td>team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest@32d992b2</td></tr>
+<tr>
+<td title='team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest.deleteCustomer()'><b>deleteCustomer</b><br>Test class: team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest</td>
+<td></td>
+<td>0</td>
+<td>team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest@32d992b2</td></tr>
+<tr>
+<td title='team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest.deleteCustomerWithSharedBankAccount()'><b>deleteCustomerWithSharedBankAccount</b><br>Test class: team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest</td>
+<td></td>
+<td>0</td>
+<td>team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest@32d992b2</td></tr>
+<tr>
+<td title='team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest.populateBankData()'><b>populateBankData</b><br>Test class: team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest</td>
+<td></td>
+<td>1</td>
+<td>team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest@32d992b2</td></tr>
+</table><p>
+</body>
+</html>

@@ -36,6 +36,7 @@
 		
 		<module>poc-framework-hibernate-04-annotation-manyToMany-unidirectional</module>
 
+		<module>chapter-03-xml-manyToMany-bidirectional</module>
 	</modules>
 
 	<properties>

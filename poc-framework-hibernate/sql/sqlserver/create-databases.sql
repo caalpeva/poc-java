@@ -12,3 +12,4 @@ CREATE DATABASE POC_HB03_xml_oneToMany_bidirectional;
 CREATE DATABASE POC_HB03_annotation_oneToMany_bidirectional;
 CREATE DATABASE POC_HB03_xml_manyToMany_unidirectional;
 CREATE DATABASE POC_HB03_annotation_manyToMany_unidirectional;
+CREATE DATABASE POC_HB03_xml_manyToMany_bidirectional;

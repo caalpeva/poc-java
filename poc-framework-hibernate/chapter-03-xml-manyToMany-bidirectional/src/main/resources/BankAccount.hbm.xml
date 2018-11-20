@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="team.boolbee.hibernate.xml.manytomany.unidir.model">
+	<class name="BankAccount" table="BANK_ACCOUNT">
+		<id name="id">
+			<generator class="identity" />
+		</id>
+		<property name="number" unique="true" />
+		<property name="deposit" />
+		<set name="customers" table="CUSTOMER_BANKACCOUNT" lazy="false"
+			inverse="true" cascade="persist,merge,refresh">
+			<key column="bankaccount_id" />
+			<many-to-many class="Customer" column="customer_id" />
+		</set>
+	</class>
+</hibernate-mapping>
