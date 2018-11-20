@@ -5,9 +5,9 @@
     <classes>
       <class name="team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest">
         <methods>
-          <include name="deleteBankAccount"/>
           <include name="populateBankData"/>
-          <include name="addAccountToExistingCustomer"/>
+          <include name="addCustomerToExistingBankAccount"/>
+          <include name="deleteCustomerWithSharedBankAccount"/>
         </methods>
       </class> <!-- team.boolbee.hibernate.xml.manytomany.unidir.model.BidirectionalManyToManyAsociationMappedByXmlTest -->
     </classes>

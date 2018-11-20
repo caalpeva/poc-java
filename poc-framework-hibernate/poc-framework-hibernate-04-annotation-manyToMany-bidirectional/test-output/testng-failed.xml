@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest">
+        <methods>
+          <include name="deleteBankAccount"/>
+          <include name="populateBankData"/>
+          <include name="addAccountToExistingCustomer"/>
+        </methods>
+      </class> <!-- team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

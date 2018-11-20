@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="1446" started-at="2018-11-20T18:35:17Z" finished-at="2018-11-20T18:35:19Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="1446" started-at="2018-11-20T18:35:17Z" finished-at="2018-11-20T18:35:19Z">
+      <class name="team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest">
+        <test-method status="PASS" signature="populateBankData()[pri:0, instance:team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest@32d992b2]" name="populateBankData" duration-ms="1321" started-at="2018-11-20T19:35:17Z" finished-at="2018-11-20T19:35:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- populateBankData -->
+        <test-method status="PASS" signature="addAccountToExistingCustomer()[pri:0, instance:team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest@32d992b2]" name="addAccountToExistingCustomer" duration-ms="31" started-at="2018-11-20T19:35:18Z" depends-on-methods="team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest.populateBankData" finished-at="2018-11-20T19:35:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addAccountToExistingCustomer -->
+        <test-method status="PASS" signature="addCustomerToExistingBankAccount()[pri:0, instance:team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest@32d992b2]" name="addCustomerToExistingBankAccount" duration-ms="15" started-at="2018-11-20T19:35:18Z" depends-on-methods="team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest.populateBankData" finished-at="2018-11-20T19:35:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCustomerToExistingBankAccount -->
+        <test-method status="PASS" signature="deleteCustomer()[pri:0, instance:team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest@32d992b2]" name="deleteCustomer" duration-ms="32" started-at="2018-11-20T19:35:18Z" depends-on-methods="team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest.populateBankData" finished-at="2018-11-20T19:35:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteCustomer -->
+        <test-method status="PASS" signature="deleteCustomerWithSharedBankAccount()[pri:0, instance:team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest@32d992b2]" name="deleteCustomerWithSharedBankAccount" duration-ms="31" started-at="2018-11-20T19:35:18Z" depends-on-methods="team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest.addCustomerToExistingBankAccount" finished-at="2018-11-20T19:35:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteCustomerWithSharedBankAccount -->
+      </class> <!-- team.boolbee.hibernate.annotation.manytomany.bidir.model.BidirectionalManyToManyAsociationMappedByAnnotationTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

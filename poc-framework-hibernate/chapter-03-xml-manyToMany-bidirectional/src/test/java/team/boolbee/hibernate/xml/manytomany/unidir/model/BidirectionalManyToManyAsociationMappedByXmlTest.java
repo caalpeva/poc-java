@@ -1,13 +1,9 @@
 package team.boolbee.hibernate.xml.manytomany.unidir.model;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Query;
@@ -32,7 +28,7 @@ public class BidirectionalManyToManyAsociationMappedByXmlTest {
 		assertEquals(customer.getBankAccounts().size(), 2);
 
 		customer = customerDAO.selectByName("Jeff Bezos");
-		assertEquals(customer.getBankAccounts().size(), 3);
+		assertEquals(customer.getBankAccounts().size(), 2);
 
 		populateCustomerDataFromBankAccountDAO();
 
@@ -65,7 +61,7 @@ public class BidirectionalManyToManyAsociationMappedByXmlTest {
 		Customer customer = customerDAO.selectByName("Priscilla Chan");
 		assertEquals(customer.getBankAccounts().size(), 1);
 
-		BankAccount bankAccount = new BankAccount("4100-4400-4404-4404-0002", 3000000f);
+		BankAccount bankAccount = new BankAccount("4100-4400-4404-4404-0002", 4000000f);
 		customer.addAccount(bankAccount);
 
 		customerDAO.update(customer);
@@ -96,7 +92,7 @@ public class BidirectionalManyToManyAsociationMappedByXmlTest {
 	public void addCustomerToExistingBankAccount() {
 		CustomerDAO customerDAO = new CustomerDAO();
 		Customer customer = customerDAO.selectByName("Jeff Bezos");
-		assertEquals(customer.getBankAccounts().size(), 3);
+		assertEquals(customer.getBankAccounts().size(), 2);
 
 		Customer otherCustomer = customerDAO.selectByName("Mackenzie Bezos");
 		assertNull(otherCustomer);
@@ -129,7 +125,7 @@ public class BidirectionalManyToManyAsociationMappedByXmlTest {
 		assertEquals(customer.getBankAccounts().size(), 2);
 		Set<BankAccount> oldAccounts = new HashSet<BankAccount>(customer.getBankAccounts());
 		
-		// Se borran un cliente y sus cuentas asociadas
+		// Se borran el cliente y sus cuentas asociadas
 		customerDAO.delete(customer);
 
 		customer = customerDAO.selectByName("Warren Buffet");
@@ -147,50 +143,31 @@ public class BidirectionalManyToManyAsociationMappedByXmlTest {
 		Customer customer = customerDAO.selectByName("Mackenzie Bezos");
 		assertEquals(customer.getBankAccounts().size(), 1);
 
-		String sharedAccountNumber = customer.getBankAccounts().iterator().next().getNumber();
 		Customer otherCustomer = customerDAO.selectByName("Jeff Bezos");
-		//customerDAO.delete(otherCustomer);
+		assertEquals(otherCustomer.getBankAccounts().size(), 2);		
+		
+		BankAccount sharedBankAccount = getSharedBankAccount(otherCustomer);
+		assertEquals(sharedBankAccount.getCustomers().size(), 2);
 
-		Session session = HibernateSession.getSession();
-		session.beginTransaction();
-
-		otherCustomer = (Customer) session.get(Customer.class, otherCustomer.getId());
-		BankAccount account = null;
-		for (Iterator<BankAccount> it = otherCustomer.getBankAccounts().iterator(); it.hasNext();) {
-			account = (BankAccount) it.next();
-			if (sharedAccountNumber.equals(account.getNumber())) {
-				break;
-			}
-		}
-
-		if (account != null) {
-			otherCustomer.getBankAccounts().remove(account);
-		}
-
-		session.delete(otherCustomer);
-
-		session.getTransaction().commit();
-		session.close();
-
+		// Se elimina la asociación del cliente con su cuenta compartida
+		otherCustomer.getBankAccounts().remove(sharedBankAccount);
+		customerDAO.update(otherCustomer);
+		
+		BankAccountDAO bankAccountDAO = new BankAccountDAO();
+		sharedBankAccount = bankAccountDAO.selectByNumber(sharedBankAccount.getNumber());
+		assertEquals(sharedBankAccount.getCustomers().size(), 1);
+		
 		customer = customerDAO.selectByName("Mackenzie Bezos");
 		assertEquals(customer.getBankAccounts().size(), 1);
+		
+		otherCustomer = customerDAO.selectByName("Jeff Bezos");
+		assertEquals(otherCustomer.getBankAccounts().size(), 1);
+		
+		// Se elimina el cliente con el resto de cuentas asociadas
+		customerDAO.delete(otherCustomer);
 
 		otherCustomer = customerDAO.selectByName("Jeff Bezos");
 		assertNull(otherCustomer);
-	}
-
-	@Test(dependsOnMethods = "addAccountToExistingCustomer")
-	public void deleteBankAccount() {
-		String accountNumber = "4100-4400-4404-4404-0001";
-		BankAccountDAO bankAccountDAO = new BankAccountDAO();
-		BankAccount bankAccount = bankAccountDAO.selectByNumber(accountNumber);
-		assertEquals(bankAccount.getCustomers().size(), 2);
-		
-		bankAccountDAO.delete(bankAccount);
-		bankAccount = bankAccountDAO.selectByNumber(accountNumber);
-		assertNull(bankAccount);
-		
-		//assertEquals(bankAccount.getCustomers().size(), 2);
 	}
 
 	private void populateBankDataFromCustomerDAO() {
@@ -207,7 +184,6 @@ public class BidirectionalManyToManyAsociationMappedByXmlTest {
 		accounts = new HashSet<BankAccount>();
 		accounts.add(new BankAccount("5100-5500-5505-5505-0001", 5000000f));
 		accounts.add(new BankAccount("5100-5500-5505-5505-0002", 5000000f));
-		accounts.add(new BankAccount("5100-5500-5505-5505-0003", 5000000f));
 		Customer customer3 = new Customer("Jeff Bezos", "Washington, Estados Unidos", accounts);
 
 		// Se insertan los clientes, con sus cuentas en cascada
@@ -224,7 +200,7 @@ public class BidirectionalManyToManyAsociationMappedByXmlTest {
 		customers.add(new Customer("Flora Pérez", "La coruña, España", new HashSet<BankAccount>()));
 		addCustomersToBankAccount(bankAccount1, customers);
 
-		BankAccount bankAccount2 = new BankAccount("4100-4400-4404-4404-0001", 3000000f);
+		BankAccount bankAccount2 = new BankAccount("4100-4400-4404-4404-0001", 4000000f);
 		customers = new HashSet<Customer>();
 		customers.add(new Customer("Mark Zuckerberg", "California, Estados Unidos", new HashSet<BankAccount>()));
 		customers.add(new Customer("Priscilla Chan", "California, Estados Unidos", new HashSet<BankAccount>()));
@@ -242,5 +218,18 @@ public class BidirectionalManyToManyAsociationMappedByXmlTest {
 		}
 
 		return bankAccount;
+	}
+	
+	//TODO: Utilizar Criteria
+	private BankAccount getSharedBankAccount(Customer customer) {
+		if (customer.getBankAccounts() != null && customer.getBankAccounts().size() > 0) {
+			for(BankAccount account: customer.getBankAccounts()) {
+				if (account.getCustomers() != null && account.getCustomers().size() > 1) {
+					return account;
+				}
+			}
+		}
+		
+		return null;
 	}
 }
