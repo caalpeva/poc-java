@@ -1,5 +1,11 @@
 package team.boolbee.poc.hibernate;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -30,10 +36,34 @@ public class PersonTest {
         Transaction tx = session.beginTransaction();
         Person person = new Person();
         person.setName("Glenn Rhee");
+        
+        Calendar calendar = Calendar.getInstance();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date;
+		try {
+			date = dateFormat.parse("1982/08/23");
+	        //Date date = new Date(1982, 7, 23);
+			calendar.setTime(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+        person.setBirthDate(calendar);
+        
         session.save(person);
 
         tx.commit();
+        session.close();
+    }
+    
+    @Test(dependsOnMethods = "savePerson")
+    public void readPerson() {
+        Session session = factory.openSession();
+        
+        Person person = (Person) session.get(Person.class, 1L);
+        System.out.println("Age: " + person.getAge());
+        
         session.close();
     }
 }
