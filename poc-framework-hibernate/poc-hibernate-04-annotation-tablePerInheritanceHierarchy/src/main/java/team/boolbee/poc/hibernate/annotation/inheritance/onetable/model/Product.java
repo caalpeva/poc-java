@@ -14,9 +14,11 @@ import javax.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "discriminator", discriminatorType = DiscriminatorType.STRING)
-// Si no se usa esta anotación, por defecto la columna discrimitoria se nombrará
-// DTYPE y será del tipo DiscriminatorType.STRING
 public abstract class Product implements Serializable {
+
+	// Por defecto el nombre de la columna discriminatoria es DTYPE y su tipo STRING.
+	// Adicionalmente la anotación @DiscriminatorColumn permite especificar un
+	// nombre de columna distinto y tipo de discriminaor.
 
 	private static final long serialVersionUID = 3384660249279744574L;
 
