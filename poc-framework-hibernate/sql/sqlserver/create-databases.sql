@@ -16,3 +16,5 @@ CREATE DATABASE POC_HB03_xml_manyToMany_bidirectional;
 CREATE DATABASE POC_HB03_annotation_manyToMany_bidirectional;
 CREATE DATABASE POC_HB03_xml_inheritance_oneTable;
 CREATE DATABASE POC_HB03_annotation_inheritance_oneTable;
+CREATE DATABASE POC_HB03_xml_inheritance_oneTablePerSubclass;
+CREATE DATABASE POC_HB03_annotation_inheritance_oneTablePerSubclass;

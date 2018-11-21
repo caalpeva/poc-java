@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<joined-subclass
+		name="team.boolbee.poc.hibernate.xml.inheritance.onetablepersubclass.model.Dessert"
+		extends="team.boolbee.poc.hibernate.xml.inheritance.onetablepersubclass.model.Food"
+		table="DESSERT">
+		<key column="id" />
+		<property name="calories" />
+	</joined-subclass>
+</hibernate-mapping>

@@ -46,6 +46,7 @@
 		<module>
 			poc-hibernate-04-xml-tablePerInheritanceHierarchy
 		</module>
+		<module>poc-hibernate-04-xml-tablePerSubclass</module>
 	</modules>
 
 	<properties>
