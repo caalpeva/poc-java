@@ -1,5 +1,8 @@
-package team.boolbee.poc.hibernate.xml.inheritance.onetablepersubclass.model;
+package team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Drink extends Product {
 
 	private static final long serialVersionUID = -1041109481450180546L;

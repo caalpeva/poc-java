@@ -1,17 +1,17 @@
-package team.boolbee.poc.hibernate.xml.inheritance.oneTablePerSubclass.model;
+package team.boolbee.poc.hibernate.annotation.inheritance.oneTablePerSubclass.model;
 
 import org.testng.annotations.Test;
 
+import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Course;
+import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Dessert;
+import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Drink;
+import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Food;
 import team.boolbee.poc.hibernate.utils.GenericDAO;
-import team.boolbee.poc.hibernate.xml.inheritance.onetablepersubclass.model.Course;
-import team.boolbee.poc.hibernate.xml.inheritance.onetablepersubclass.model.Dessert;
-import team.boolbee.poc.hibernate.xml.inheritance.onetablepersubclass.model.Drink;
-import team.boolbee.poc.hibernate.xml.inheritance.onetablepersubclass.model.Food;
 
-public class OneTablePerSubclassXmlTest {
+public class OneTablePerSubclassAnnotationTest {
 	
     @Test
-    public void testOneTablePerSubclassXml() {
+    public void testOneTablePerSubclassAnnotation() {
     	Drink drink = new Drink("Coke", 2.5f, true);
     	Food food = new Food("Salad", 6.0f, "Special Salad");
     	Course course1 = new Course("Pasta", 8.5f, "Ravioli", "Starter");

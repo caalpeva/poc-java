@@ -1,5 +1,8 @@
-package team.boolbee.poc.hibernate.xml.inheritance.onetablepersubclass.model;
+package team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Dessert extends Food {
 	
 	private static final long serialVersionUID = 2685675537632929074L;
