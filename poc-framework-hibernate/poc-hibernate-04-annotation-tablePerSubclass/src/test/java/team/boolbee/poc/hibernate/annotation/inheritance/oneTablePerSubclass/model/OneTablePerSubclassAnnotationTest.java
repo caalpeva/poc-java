@@ -6,6 +6,7 @@ import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.mod
 import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Dessert;
 import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Drink;
 import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Food;
+import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Product;
 import team.boolbee.poc.hibernate.utils.GenericDAO;
 
 public class OneTablePerSubclassAnnotationTest {
@@ -25,5 +26,9 @@ public class OneTablePerSubclassAnnotationTest {
     	GenericDAO<Course> courseDAO = new GenericDAO<Course>();
     	courseDAO.insert(course1);
     	courseDAO.insert(course2);
+    	
+    	courseDAO.selectById(course1.getId(), Course.class);
+    	
+    	new GenericDAO<Product>().selectById(course1.getId(), Product.class);
     }
 }

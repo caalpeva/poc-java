@@ -6,6 +6,7 @@ import team.boolbee.poc.hibernate.annotation.inheritance.onetable.model.Course;
 import team.boolbee.poc.hibernate.annotation.inheritance.onetable.model.Dessert;
 import team.boolbee.poc.hibernate.annotation.inheritance.onetable.model.Drink;
 import team.boolbee.poc.hibernate.annotation.inheritance.onetable.model.Food;
+import team.boolbee.poc.hibernate.annotation.inheritance.onetable.model.Product;
 import team.boolbee.poc.hibernate.utils.GenericDAO;
 
 public class OneTablePerInheritanceHierarchyAnnotationTest {
@@ -25,5 +26,9 @@ public class OneTablePerInheritanceHierarchyAnnotationTest {
     	GenericDAO<Course> courseDAO = new GenericDAO<Course>();
     	courseDAO.insert(course1);
     	courseDAO.insert(course2);
+    	
+    	courseDAO.selectById(course1.getId(), Course.class);
+
+		new GenericDAO<Product>().selectById(course1.getId(), Product.class);
     }
 }
