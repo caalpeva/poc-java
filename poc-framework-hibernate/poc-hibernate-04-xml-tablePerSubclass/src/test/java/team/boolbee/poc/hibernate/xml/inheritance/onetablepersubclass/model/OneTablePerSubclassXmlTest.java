@@ -1,4 +1,4 @@
-package team.boolbee.poc.hibernate.xml.inheritance.oneTablePerSubclass.model;
+package team.boolbee.poc.hibernate.xml.inheritance.onetablepersubclass.model;
 
 import org.testng.annotations.Test;
 
