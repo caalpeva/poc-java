@@ -40,6 +40,12 @@
 		<module>
 			poc-framework-hibernate-04-annotation-manyToMany-bidirectional
 		</module>
+		<module>
+			poc-hibernate-04-annotation-tablePerInheritanceHierarchy
+		</module>
+		<module>
+			poc-hibernate-04-xml-tablePerInheritanceHierarchy
+		</module>
 	</modules>
 
 	<properties>
