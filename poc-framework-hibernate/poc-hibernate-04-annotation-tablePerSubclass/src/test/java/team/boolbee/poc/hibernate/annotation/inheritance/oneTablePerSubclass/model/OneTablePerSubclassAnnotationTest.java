@@ -27,8 +27,16 @@ public class OneTablePerSubclassAnnotationTest {
     	courseDAO.insert(course1);
     	courseDAO.insert(course2);
     	
-    	courseDAO.selectById(course1.getId(), Course.class);
-    	
-    	new GenericDAO<Product>().selectById(course1.getId(), Product.class);
+    	// Con la estrategia de mapeo de herencia de crear una tabla por cada subclase de la jerarquía,
+		// se comprueba que al consultar por la entidad específica, el SQL generado por Hibernate
+		// utiliza un join para unir cada una de las tres tablas que forman la jerarquia de dicha entidad.
+		// En este caso son Course, Food y Product.
+		courseDAO.selectById(course1.getId(), Course.class);
+
+		// Sin embargo, si no se indica a que clase pertenece la instancia que queremos recuperar,
+		// hibernate genera una consulta más compleja y cuantas mas entidades se tengan mas compleja
+		// se volverá. Es por eso que esta estrategia es muy lenta si tenemos consultas polimórficas,
+		// en las que no se conoce el tipo concreto de la clase que se busca, únicamente la clase base.
+		new GenericDAO<Product>().selectById(course1.getId(), Product.class);
     }
 }
