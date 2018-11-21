@@ -33,7 +33,7 @@ public class GenericDAO<T> {
 		try {
 			startTransaction();
 			session.persist(entity);
-			session.flush();
+			//session.flush();
 		} catch(HibernateException e) {
 			handleException(e);
 		} finally {
@@ -45,7 +45,7 @@ public class GenericDAO<T> {
 		try {
 			startTransaction();
 			session.merge(entity);
-			session.flush();
+			//session.flush();
 		} catch(HibernateException e) {
 			handleException(e);
 		} finally {
@@ -84,7 +84,7 @@ public class GenericDAO<T> {
 		try {
 			startTransaction();
 			session.delete(entity);
-			session.flush();
+			//session.flush();
 		} catch(HibernateException e) {
 			handleException(e);
 		} finally {

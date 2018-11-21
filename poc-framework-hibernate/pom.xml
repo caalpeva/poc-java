@@ -48,6 +48,10 @@
 		</module>
 		<module>poc-hibernate-04-xml-tablePerSubclass</module>
 		<module>poc-hibernate-04-annotation-tablePerSubclass</module>
+		<module>poc-hibernate-04-xml-tablePerConcreteClass</module>
+		<module>
+			poc-hibernate-04-annotation-tablePerConcreteClass
+		</module>
 	</modules>
 
 	<properties>

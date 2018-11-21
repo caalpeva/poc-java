@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="1228" started-at="2018-11-21T18:34:54Z" finished-at="2018-11-21T18:34:55Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="1228" started-at="2018-11-21T18:34:54Z" finished-at="2018-11-21T18:34:55Z">
+      <class name="team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.OneTablePerConcreteClassAnnotationTest">
+        <test-method status="PASS" signature="testOneTablePerConcreteClassAnnotation()[pri:0, instance:team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.OneTablePerConcreteClassAnnotationTest@50c87b21]" name="testOneTablePerConcreteClassAnnotation" duration-ms="1228" started-at="2018-11-21T19:34:54Z" finished-at="2018-11-21T19:34:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testOneTablePerConcreteClassAnnotation -->
+      </class> <!-- team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.OneTablePerConcreteClassAnnotationTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
