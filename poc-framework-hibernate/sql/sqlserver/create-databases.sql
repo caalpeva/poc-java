@@ -20,3 +20,4 @@ CREATE DATABASE POC_HB03_xml_inheritance_oneTablePerSubclass;
 CREATE DATABASE POC_HB03_annotation_inheritance_oneTablePerSubclass;
 CREATE DATABASE POC_HB03_xml_inheritance_oneTablePerConcreteClass;
 CREATE DATABASE POC_HB03_annotation_inheritance_oneTablePerConcreteClass;
+CREATE DATABASE POC_H05_interceptors;

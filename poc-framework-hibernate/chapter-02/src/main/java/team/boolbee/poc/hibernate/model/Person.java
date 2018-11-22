@@ -1,12 +1,15 @@
 package team.boolbee.poc.hibernate.model;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
@@ -16,7 +19,9 @@ public class Person {
 	private Long id;
 	@Column(unique = true)
     private String name;
-	private Calendar birthDate;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date birthDate;
 	@Transient
 	private int age;
 
@@ -38,11 +43,11 @@ public class Person {
         this.name = name;
     }
 
-    public Calendar getBirthdate() {
+    public Date getBirthdate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Calendar birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 	
@@ -52,9 +57,13 @@ public class Person {
 		}
 		
 		Calendar now = Calendar.getInstance();
-		int year = now.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR);
-		int month = now.get(Calendar.MONTH) - birthDate.get(Calendar.MONTH);
-		int day = now.get(Calendar.DAY_OF_MONTH) - birthDate.get(Calendar.DAY_OF_MONTH);
+//		int year = now.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR);
+//		int month = now.get(Calendar.MONTH) - birthDate.get(Calendar.MONTH);
+//		int day = now.get(Calendar.DAY_OF_MONTH) - birthDate.get(Calendar.DAY_OF_MONTH);
+		
+		int year = now.get(Calendar.YEAR) - birthDate.getYear();
+		int month = now.get(Calendar.MONTH) - birthDate.getMonth();
+		int day = now.get(Calendar.DAY_OF_MONTH) - birthDate.getDay();
 
 		// Se ajusta el año dependiendo el mes y el día
 		// month < 0 todavía no ha llegado el mes de su cumpleaños

@@ -49,7 +49,7 @@ public class PersonTest {
 			e.printStackTrace();
 		}
 
-        person.setBirthDate(calendar);
+        person.setBirthDate(new Date(1982, 7, 23));
         
         session.save(person);
 
