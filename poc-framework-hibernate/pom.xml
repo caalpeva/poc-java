@@ -52,7 +52,7 @@
 		<module>
 			poc-hibernate-04-annotation-tablePerConcreteClass
 		</module>
-		<module>poc-hibernate-05-events-interceptors</module>
+		<module>poc-hibernate-05-interceptors</module>
 	</modules>
 
 	<properties>
