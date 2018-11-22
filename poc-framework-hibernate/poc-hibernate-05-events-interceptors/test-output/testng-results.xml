@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results skipped="0" failed="0" total="5" passed="5">
   <reporter-output>
   </reporter-output>
@@ -100,6 +101,29 @@
           </reporter-output>
         </test-method> <!-- testInterceptors -->
       </class> <!-- team.boolbee.poc.hibernate.interceptors.model.AuditInterceptorTest -->
+=======
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="146" started-at="2018-11-22T16:45:28Z" finished-at="2018-11-22T16:45:28Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="146" started-at="2018-11-22T16:45:28Z" finished-at="2018-11-22T16:45:28Z">
+      <class name="team.boolbee.poc.hibernate.interceptors.model.OverridingDefaultConstructorTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:team.boolbee.poc.hibernate.interceptors.model.OverridingDefaultConstructorTest@7f9a81e8]" name="setup" is-config="true" duration-ms="833" started-at="2018-11-22T17:45:27Z" finished-at="2018-11-22T17:45:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="saveMissingDefaultConstructorObject()[pri:0, instance:team.boolbee.poc.hibernate.interceptors.model.OverridingDefaultConstructorTest@7f9a81e8]" name="saveMissingDefaultConstructorObject" duration-ms="124" started-at="2018-11-22T17:45:28Z" finished-at="2018-11-22T17:45:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- saveMissingDefaultConstructorObject -->
+        <test-method status="PASS" signature="readMissingDefaultConstructorObject()[pri:0, instance:team.boolbee.poc.hibernate.interceptors.model.OverridingDefaultConstructorTest@7f9a81e8]" name="readMissingDefaultConstructorObject" duration-ms="13" started-at="2018-11-22T17:45:28Z" depends-on-methods="team.boolbee.poc.hibernate.interceptors.model.OverridingDefaultConstructorTest.saveMissingDefaultConstructorObject" finished-at="2018-11-22T17:45:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- readMissingDefaultConstructorObject -->
+      </class> <!-- team.boolbee.poc.hibernate.interceptors.model.OverridingDefaultConstructorTest -->
+>>>>>>> branch '1.0.0' of https://github.com/caalpeva/PoC
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
