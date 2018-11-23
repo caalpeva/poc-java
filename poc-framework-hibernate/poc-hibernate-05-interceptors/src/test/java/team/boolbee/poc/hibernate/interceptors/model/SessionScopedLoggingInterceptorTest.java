@@ -19,10 +19,11 @@ public class SessionScopedLoggingInterceptorTest {
     	Salesperson salesperson2 = new Salesperson("Apu Nahasapeemapetilon", 21000f, 0.20f);
     	
     	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		Sale sale1 = null, sale2 = null, sale3 = null;
+		Sale sale1 = null, sale2 = null, sale3 = null, sale4 = null;
     	try {
 			sale1 = new Sale(1200f, 0.10f, dateFormat.parse("2012/11/22"));
 			sale2 = new Sale(650f, 0.25f, dateFormat.parse("2014/08/14"));
+			sale4 = new Sale(700f, 0.20f, dateFormat.parse("2015/02/15"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -34,6 +35,7 @@ public class SessionScopedLoggingInterceptorTest {
     	salesperson1.addSales(sale1);
     	salesperson1.addSales(sale2);
     	salesperson1.addSales(sale3);
+    	salesperson2.addSales(sale4);
     	
     	LoggingInterceptor auditSalesInterceptor = new LoggingInterceptor();
     	GenericInterceptorDAO<Salesperson> salespersonDAO = new GenericInterceptorDAO<Salesperson>(auditSalesInterceptor);
@@ -44,7 +46,7 @@ public class SessionScopedLoggingInterceptorTest {
     	assertEquals(salesperson1.getSales().size(), 3);
     	
     	salesperson2 = salespersonDAO.selectById(salesperson2.getId(), Salesperson.class);
-    	assertEquals(salesperson2.getSales().size(), 0);
+    	assertEquals(salesperson2.getSales().size(), 1);
     	
     	GenericInterceptorDAO<Sale> saleDAO = new GenericInterceptorDAO<Sale>(auditSalesInterceptor);
 //    	saleDAO.insert(sale1);
