@@ -4,10 +4,8 @@ import java.io.Serializable;
 
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.EntityMode;
-import org.hibernate.type.Type;
 
 import team.boolbee.poc.hibernate.interceptors.model.MissingDefaultCtorObject;
-import team.boolbee.poc.hibernate.interceptors.model.Sale;
 
 // Ocasionalmente, es posible encontrarse con la necesidad de mantener de forma persistente
 // un POJO que no disponga de un constructor predeterminado.
@@ -36,15 +34,6 @@ public class InstantiationInterceptor extends EmptyInterceptor {
 			// Some other class - continue to default handling
 			return super.instantiate(entityName, entityMode, id);
 		}
-	}
-
-	@Override
-	public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
-		if (entity instanceof Sale) {
-			System.out.println("Sales has");
-		}
-
-		return super.onSave(entity, id, state, propertyNames, types);
 	}
 
 }
