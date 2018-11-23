@@ -63,7 +63,7 @@ public class GenericInterceptorDAO<T> {
 	public T selectById(Serializable id, Class<T> entityClass) throws HibernateException {
 		T obj = null;
 		try {
-			session = HibernateSession.getSession();
+			session = HibernateSession.getSession(interceptor);
 			obj = (T) session.get(entityClass, id);
 		} finally {
 			session.close();
@@ -76,7 +76,7 @@ public class GenericInterceptorDAO<T> {
 	public List<T> selectAll(Class<T> entityClass) throws HibernateException {
 		List<T> result = null;
 		try {
-			session = HibernateSession.getSession();
+			session = HibernateSession.getSession(interceptor);
 			result = session.createQuery("FROM " + entityClass.getSimpleName()).list();
 			//result = session.createCriteria(entityClass).list();
 		} finally {

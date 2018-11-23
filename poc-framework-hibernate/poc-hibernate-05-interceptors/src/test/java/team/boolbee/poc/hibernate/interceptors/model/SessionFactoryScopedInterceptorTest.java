@@ -8,7 +8,9 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-public class MissingDefaultConstructorTest {
+import team.boolbee.poc.hibernate.interceptors.InstantiationInterceptor;
+
+public class SessionFactoryScopedInterceptorTest {
 
 	SessionFactory factory;
 
@@ -16,6 +18,9 @@ public class MissingDefaultConstructorTest {
 	public void setup() {
 		Configuration configuration = new Configuration();
 		configuration.configure();
+
+		// Configure interceptor using session factory
+		configuration.setInterceptor(new InstantiationInterceptor());
 
 		ServiceRegistryBuilder srBuilder = new ServiceRegistryBuilder();
 		srBuilder.applySettings(configuration.getProperties());
@@ -25,8 +30,8 @@ public class MissingDefaultConstructorTest {
 	}
 
 	@Test
-	public void saveMissingDefaultConstructorObject() {
-		MissingDefaultConstructorObject object = new MissingDefaultConstructorObject("Hello, world", 2L);
+	public void saveLoadMissingDefaultCtorObject() {
+		MissingDefaultCtorObject object = new MissingDefaultCtorObject("No default constructor");
 		Session session = factory.openSession();
 		session.beginTransaction();
 
@@ -34,13 +39,12 @@ public class MissingDefaultConstructorTest {
 
 		session.getTransaction().commit();
 		session.close();
-	}
-	
-	@Test(dependsOnMethods = "saveMissingDefaultConstructorObject", expectedExceptions = org.hibernate.InstantiationException.class)
-	public void testMissingDefaultConstructorObjectFailure() {
-		Session session = factory.openSession();
-		MissingDefaultConstructorObject object = (MissingDefaultConstructorObject) session.get(MissingDefaultConstructorObject.class, 1L);
+
+		session = factory.openSession();
+		object = (MissingDefaultCtorObject) session.get(MissingDefaultCtorObject.class,
+				object.getId());
 		System.out.println(object);
+		
 		session.close();
 	}
 }

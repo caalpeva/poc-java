@@ -1,18 +1,18 @@
 package team.boolbee.poc.hibernate.interceptors.model;
 
+import static org.testng.Assert.assertEquals;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.testng.annotations.Test;
 
-import team.boolbee.poc.hibernate.interceptors.AuditSalesInterceptor;
-import team.boolbee.poc.hibernate.interceptors.model.Sale;
-import team.boolbee.poc.hibernate.interceptors.model.Salesperson;
+import team.boolbee.poc.hibernate.interceptors.LoggingInterceptor;
 import team.boolbee.poc.hibernate.utils.GenericInterceptorDAO;
 
-public class AuditInterceptorTest {
-	
+public class SessionScopedLoggingInterceptorTest {
+
     @Test
     public void testInterceptors() {
     	Salesperson salesperson1 = new Salesperson("Gil Gunderson", 18000f, 0.15f);
@@ -35,10 +35,16 @@ public class AuditInterceptorTest {
     	salesperson1.addSales(sale2);
     	salesperson1.addSales(sale3);
     	
-    	AuditSalesInterceptor auditSalesInterceptor = new AuditSalesInterceptor();
+    	LoggingInterceptor auditSalesInterceptor = new LoggingInterceptor();
     	GenericInterceptorDAO<Salesperson> salespersonDAO = new GenericInterceptorDAO<Salesperson>(auditSalesInterceptor);
     	salespersonDAO.insert(salesperson1);
     	salespersonDAO.insert(salesperson2);
+
+    	salesperson1 = salespersonDAO.selectById(salesperson1.getId(), Salesperson.class);
+    	assertEquals(salesperson1.getSales().size(), 3);
+    	
+    	salesperson2 = salespersonDAO.selectById(salesperson2.getId(), Salesperson.class);
+    	assertEquals(salesperson2.getSales().size(), 0);
     	
     	GenericInterceptorDAO<Sale> saleDAO = new GenericInterceptorDAO<Sale>(auditSalesInterceptor);
 //    	saleDAO.insert(sale1);

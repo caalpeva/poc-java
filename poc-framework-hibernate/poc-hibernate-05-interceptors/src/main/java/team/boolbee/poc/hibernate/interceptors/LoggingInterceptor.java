@@ -9,11 +9,11 @@ import org.hibernate.type.Type;
 
 import team.boolbee.poc.hibernate.interceptors.model.Sale;
 
-public class AuditSalesInterceptor extends EmptyInterceptor {
+public class LoggingInterceptor extends EmptyInterceptor {
 
 	private static final long serialVersionUID = -5315026433103286540L;
 	
-	private static Log logger = LogFactory.getLog(AuditSalesInterceptor.class);
+	private static Log logger = LogFactory.getLog(LoggingInterceptor.class);
 
 	@Override
 	public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {

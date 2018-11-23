@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class MissingDefaultConstructorObject implements Serializable {
+public class MissingDefaultCtorObject implements Serializable {
 	
 	private static final long serialVersionUID = 3568438556896755359L;
 	
@@ -18,14 +18,11 @@ public class MissingDefaultConstructorObject implements Serializable {
 	Long id;
 	@Column
 	String text;
-	@Column
-	Long value;
 
 	// No default constructor.
 	
-	public MissingDefaultConstructorObject(String text, Long value) {
+	public MissingDefaultCtorObject(String text) {
 		setText(text);
-		setValue(value);
 	}
 	
 	public Long getId() {
@@ -44,16 +41,8 @@ public class MissingDefaultConstructorObject implements Serializable {
 		this.text = text;
 	}
 
-	public Long getValue() {
-		return value;
-	}
-
-	public void setValue(Long value) {
-		this.value = value;
-	}
-
 	@Override
 	public String toString() {
-		return "MissingDefaultConstructorObject{" + "id=" + id + ", text='" + text + '\'' + ", value=" + value + '}';
+		return "MissingDefaultConstructorObject{" + "id=" + id + ", text='" + text + "\'}";
 	}
 }
