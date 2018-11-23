@@ -28,8 +28,15 @@ public class InstantiationInterceptor extends EmptyInterceptor {
 
 	@Override
 	public Object instantiate(String entityName, EntityMode entityMode, Serializable id) {
+		// Instantiate the entity class or return null to indicate
+		// that Hibernate should use the default constructor of the class
+		
 		if (entityName.equals(MissingDefaultCtorObject.class.getName())) {
-			return new MissingDefaultCtorObject(null);
+			MissingDefaultCtorObject object = new MissingDefaultCtorObject(null);
+			// The identifier property of the returned instance
+			// should be initialized with the given identifier.
+			object.setId((Long) id);
+			return object;
 		} else {
 			// Some other class - continue to default handling
 			return super.instantiate(entityName, entityMode, id);
