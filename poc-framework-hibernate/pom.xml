@@ -54,6 +54,7 @@
 		</module>
 		<module>poc-hibernate-05-interceptors</module>
 		<module>poc-hibernate-05-events</module>
+		<module>poc-hibernate-05-filters-annotation</module>
 	</modules>
 
 	<properties>

@@ -22,3 +22,4 @@ CREATE DATABASE POC_HB03_xml_inheritance_oneTablePerConcreteClass;
 CREATE DATABASE POC_HB03_annotation_inheritance_oneTablePerConcreteClass;
 CREATE DATABASE POC_H05_interceptors;
 CREATE DATABASE POC_H05_events;
+CREATE DATABASE POC_H05_filters_annotation;
