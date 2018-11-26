@@ -37,21 +37,13 @@
 		<module>poc-framework-hibernate-04-annotation-manyToMany-unidirectional</module>
 
 		<module>chapter-03-xml-manyToMany-bidirectional</module>
-		<module>
-			poc-framework-hibernate-04-annotation-manyToMany-bidirectional
-		</module>
-		<module>
-			poc-hibernate-04-annotation-tablePerInheritanceHierarchy
-		</module>
-		<module>
-			poc-hibernate-04-xml-tablePerInheritanceHierarchy
-		</module>
+		<module>poc-framework-hibernate-04-annotation-manyToMany-bidirectional</module>
+		<module>poc-hibernate-04-annotation-tablePerInheritanceHierarchy</module>
+		<module>poc-hibernate-04-xml-tablePerInheritanceHierarchy</module>
 		<module>poc-hibernate-04-xml-tablePerSubclass</module>
 		<module>poc-hibernate-04-annotation-tablePerSubclass</module>
 		<module>poc-hibernate-04-xml-tablePerConcreteClass</module>
-		<module>
-			poc-hibernate-04-annotation-tablePerConcreteClass
-		</module>
+		<module>poc-hibernate-04-annotation-tablePerConcreteClass</module>
 		<module>poc-hibernate-05-interceptors</module>
 		<module>poc-hibernate-05-events</module>
 		<module>poc-hibernate-05-filters-annotation</module>
