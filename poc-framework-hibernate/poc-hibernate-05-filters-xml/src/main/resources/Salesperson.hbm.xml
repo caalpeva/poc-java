@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="team.boolbee.poc.hibernate.filters.xml.model">
+	<class name="Salesperson" table="SALESPERSON">
+		<id name="id">
+			<generator class="identity" />
+		</id>
+		<property name="name" />
+		<property name="salary" />
+		<property name="commission" />
+		<property name="active" />
+
+		<set name="areas" table="SALESPERSON_AREAS" lazy="false">
+			<key column="salesperson_id" />
+			<element column="area" type="string" />
+		</set>
+
+		<set name="sales" cascade="all" lazy="false">
+			<key column="salesperson_id" />
+			<one-to-many class="Sale" />
+			<filter name="bySalesDate" condition="salesDate > :salesDate" />
+		</set>
+
+		<filter name="byStatus" condition="active = :status" />
+		<filter name="byArea" condition=":area in (select ua.area from salesperson_areas ua where ua.salesperson_id = id)" />
+		<filter name="nameEndsWithAlbertson" condition="name like '%Albertson'" />
+	</class>
+
+	<filter-def name="byStatus">
+		<filter-param name="status" type="boolean" />
+	</filter-def>
+
+	<filter-def name="byArea">
+		<filter-param name="area" type="string" />
+	</filter-def>
+
+	<filter-def name="nameEndsWithAlbertson" />
+
+	<filter-def name="bySalesDate">
+		<filter-param name="salesDate" type="date" />
+	</filter-def>
+</hibernate-mapping>

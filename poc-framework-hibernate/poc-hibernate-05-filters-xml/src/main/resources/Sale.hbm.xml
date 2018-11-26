@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="team.boolbee.poc.hibernate.filters.xml.model">
+	<class name="Sale" table="SALES">
+		<id name="id">
+			<generator class="identity" />
+		</id>
+		<property name="total" />
+		<property name="discount" />
+		<property name="salesDate" />
+		<many-to-one name="salesperson" column="salesperson_id" lazy="false" cascade="persist, merge" />
+	</class>
+</hibernate-mapping>
