@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,7 +31,7 @@ import org.hibernate.annotations.ParamDef;
 
 @Filters({
 	@Filter(name = "byStatus", condition = "active = :status"),
-	@Filter(name = "byArea", condition = ":area in (select ua.areas from salesperson_areas ua where ua.salesperson_id = id)"),
+	@Filter(name = "byArea", condition = ":area in (select ua.area from salesperson_areas ua where ua.salesperson_id = id)"),
 	// El filtro declarado en la entidad sobre una propiedad de colección aplica unicamente a los resultados de dicha entidad
 	@Filter(name = "nameEndsWithAlbertson", condition = "name like '%Albertson'") })
 public class Salesperson implements Serializable {
@@ -53,6 +54,7 @@ public class Salesperson implements Serializable {
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	//@CollectionTable(name = "SALESPERSON_AREAS")
+	@Column(name="area")
 	private Set<String> areas;
 
 	/**
