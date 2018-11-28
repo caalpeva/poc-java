@@ -13,27 +13,27 @@
 		<module>poc-framework-hibernate-03</module>
 		<module>poc-framework-hibernate-04-lifecycle</module>
 		<module>chapter-utils</module>
-		
+
 		<module>poc-framework-hibernate-03-xml-oneToOne-unidirectional-simple</module>
 		<module>poc-framework-hibernate-03-xml-oneToOne-unidirectional</module>
-		
+
 		<module>poc-framework-hibernate-03-xml-oneToOne-bidirectional</module>
-		
+
 		<module>poc-framework-hibernate-03-xml-oneToMany-unidirectional</module>
 		<module>poc-framework-hibernate-03-xml-oneToMany-bidir</module>
 
 		<module>poc-framework-hibernate-03-xml-manyToMany-unidirectional</module>
-		
+
 		<module>poc-framework-hibernate-04-annotation-oneToOne-unidirectional</module>
 		<module>poc-framework-hibernate-04-annotation-oneToOne-unidirectional-simple</module>
 		<module>poc-framework-hibernate-04-annotation-oneToOne-unidirectional-table</module>
-		
+
 		<module>poc-framework-hibernate-04-annotation-oneToOne-bidirectional</module>
 		<module>poc-framework-hibernate-04-annotation-oneToOne-bidireccional-identicalPrimaryKeys</module>
-		
+
 		<module>poc-framework-hibernate-04-annotation-oneToMany-unidir</module>
 		<module>poc-framework-hibernate-04-annotation-oneToMany-bidirectional</module>
-		
+
 		<module>poc-framework-hibernate-04-annotation-manyToMany-unidirectional</module>
 
 		<module>chapter-03-xml-manyToMany-bidirectional</module>
@@ -81,11 +81,11 @@
 			<artifactId>sqljdbc4</artifactId>
 			<version>4.1.8112</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>mysql</groupId> -->
-<!-- 			<artifactId>mysql-connector-java</artifactId> -->
-<!-- 			<version>5.1.47</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>mysql</groupId> -->
+		<!-- <artifactId>mysql-connector-java</artifactId> -->
+		<!-- <version>5.1.47</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -93,4 +93,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
 </project>

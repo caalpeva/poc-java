@@ -6,6 +6,44 @@
 		<artifactId>team.boobee.poc.framework.hibernate</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>poc-framework-hibernate-01</artifactId>
+
+<!-- 	<profiles> -->
+<!-- 		<profile> -->
+<!-- 			<id>hsqldb</id> -->
+<!-- 			<activation> -->
+<!-- 				<activeByDefault>true</activeByDefault> -->
+<!-- 			</activation> -->
+<!-- 			<properties> -->
+<!-- 				<resourceDirectory>hsqldb</resourceDirectory> -->
+<!-- 			</properties> -->
+<!-- 		</profile> -->
+<!-- 		<profile> -->
+<!-- 			<id>sqlserver</id> -->
+<!-- 			<properties> -->
+<!-- 				<resourceDirectory>sqlserver</resourceDirectory> -->
+<!-- 			</properties> -->
+<!-- 		</profile> -->
+<!-- 		<profile> -->
+<!-- 			<id>mysql</id> -->
+<!-- 			<properties> -->
+<!-- 				<resourceDirectory>mysql</resourceDirectory> -->
+<!-- 			</properties> -->
+<!-- 		</profile> -->
+<!-- 	</profiles> -->
+
+<!-- 	<build> -->
+<!-- 		<filters> -->
+<!-- 			<filter>profiles/${resourceDirectory}/db.properties</filter> -->
+<!-- 		</filters> -->
+<!-- 		<testResources> -->
+<!-- 			<testResource> -->
+<!-- 				<directory>src/test/resources</directory> -->
+<!-- 				<filtering>true</filtering> -->
+<!-- 			</testResource> -->
+<!-- 		</testResources> -->
+<!-- 	</build> -->
+
+
 </project>
