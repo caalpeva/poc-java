@@ -7,7 +7,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>poc-framework-hibernate-01</artifactId>
+	<artifactId>poc-hibernate-03-lifecycle</artifactId>
 	
 	<dependencies>
 		<dependency>
