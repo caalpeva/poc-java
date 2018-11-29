@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>chapter-04-annotation-manyToMany-unidirectional</name>
+	<name>poc-hibernate-05-mapping-annotation-03-manyToMany-unidir</name>
 	<comment></comment>
 	<projects>
 	</projects>

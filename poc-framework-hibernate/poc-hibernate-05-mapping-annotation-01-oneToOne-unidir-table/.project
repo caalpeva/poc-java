@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>chapter-04-annotation-oneToOne-unidirectional-table</name>
+	<name>poc-hibernate-05-mapping-annotation-01-oneToOne-unidir-table</name>
 	<comment></comment>
 	<projects>
 	</projects>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>poc-hibernate-04-annotation-tablePerSubclass</name>
+	<name>poc-hibernate-05-mapping-annotation-05-tablePerSubclass</name>
 	<comment></comment>
 	<projects>
 	</projects>
