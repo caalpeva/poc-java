@@ -1,2 +1,5 @@
 /logs/
 /test-output/
+/POC_H05_interceptors.lck
+/POC_H05_interceptors.properties
+/POC_H05_interceptors.script

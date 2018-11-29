@@ -1,2 +1,5 @@
 /test-output/
 /logs/
+/POC_H05_events.lck
+/POC_H05_events.properties
+/POC_H05_events.script
