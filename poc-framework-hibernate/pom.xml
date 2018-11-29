@@ -10,46 +10,37 @@
 <!-- 	<name>poc-hibernate-parent</name> -->
 
 	<modules>
-		<module>chapter-01</module>
-		<module>chapter-02</module>
-		<module>poc-framework-hibernate-03</module>
-		<module>poc-framework-hibernate-04-lifecycle</module>
-		<module>chapter-utils</module>
-
-		<module>poc-framework-hibernate-03-xml-oneToOne-unidirectional-simple</module>
-		<module>poc-framework-hibernate-03-xml-oneToOne-unidirectional</module>
-
-		<module>poc-framework-hibernate-03-xml-oneToOne-bidirectional</module>
-
-		<module>poc-framework-hibernate-03-xml-oneToMany-unidirectional</module>
-		<module>poc-framework-hibernate-03-xml-oneToMany-bidir</module>
-
-		<module>poc-framework-hibernate-03-xml-manyToMany-unidirectional</module>
-
-		<module>poc-framework-hibernate-04-annotation-oneToOne-unidirectional</module>
-		<module>poc-framework-hibernate-04-annotation-oneToOne-unidirectional-simple</module>
-		<module>poc-framework-hibernate-04-annotation-oneToOne-unidirectional-table</module>
-
-		<module>poc-framework-hibernate-04-annotation-oneToOne-bidirectional</module>
-		<module>poc-framework-hibernate-04-annotation-oneToOne-bidireccional-identicalPrimaryKeys</module>
-
-		<module>poc-framework-hibernate-04-annotation-oneToMany-unidir</module>
-		<module>poc-framework-hibernate-04-annotation-oneToMany-bidirectional</module>
-
-		<module>poc-framework-hibernate-04-annotation-manyToMany-unidirectional</module>
-
-		<module>chapter-03-xml-manyToMany-bidirectional</module>
-		<module>poc-framework-hibernate-04-annotation-manyToMany-bidirectional</module>
-		<module>poc-hibernate-04-annotation-tablePerInheritanceHierarchy</module>
-		<module>poc-hibernate-04-xml-tablePerInheritanceHierarchy</module>
-		<module>poc-hibernate-04-xml-tablePerSubclass</module>
-		<module>poc-hibernate-04-annotation-tablePerSubclass</module>
-		<module>poc-hibernate-04-xml-tablePerConcreteClass</module>
-		<module>poc-hibernate-04-annotation-tablePerConcreteClass</module>
-		<module>poc-hibernate-05-interceptors</module>
-		<module>poc-hibernate-05-events</module>
-		<module>poc-hibernate-05-filters-annotation</module>
-		<module>poc-hibernate-05-filters-xml</module>
+		<module>poc-hibernate-01-basic</module>
+		<module>poc-hibernate-02-crud</module>
+		<module>poc-hibernate-03-lifecycle</module>
+		<module>poc-hibernate-03-lifecycle2</module>
+		<module>poc-hibernate-04-mapping-xml-01-oneToOne-bidir</module>
+		<module>poc-hibernate-04-mapping-xml-01-oneToOne-unidir</module>
+		<module>poc-hibernate-04-mapping-xml-01-oneToOne-unidir-simple</module>
+		<module>poc-hibernate-04-mapping-xml-02-oneToMany-bidir</module>
+		<module>poc-hibernate-04-mapping-xml-02-oneToMany-unidir</module>
+		<module>poc-hibernate-04-mapping-xml-03-manyToMany-bidir</module>
+		<module>poc-hibernate-04-mapping-xml-03-manyToMany-unidir</module>
+		<module>poc-hibernate-04-mapping-xml-04-tablePerInheritanceHierarchy</module>
+		<module>poc-hibernate-04-mapping-xml-05-tablePerSubclass</module>
+		<module>poc-hibernate-04-mapping-xml-06-tablePerConcreteClass</module>
+		<module>poc-hibernate-05-mapping-annotation-01-oneToOne-bidir</module>
+		<module>poc-hibernate-05-mapping-annotation-01-oneToOne-bidir-identicalPrimaryKeys</module>
+		<module>poc-hibernate-05-mapping-annotation-01-oneToOne-unidir</module>
+		<module>poc-hibernate-05-mapping-annotation-01-oneToOne-unidir-simple</module>
+		<module>poc-hibernate-05-mapping-annotation-01-oneToOne-unidir-table</module>
+		<module>poc-hibernate-05-mapping-annotation-02-oneToMany-bidir</module>
+		<module>poc-hibernate-05-mapping-annotation-02-oneToMany-unidir</module>
+		<module>poc-hibernate-05-mapping-annotation-03-manyToMany-bidir</module>
+		<module>poc-hibernate-05-mapping-annotation-03-manyToMany-unidir</module>
+		<module>poc-hibernate-05-mapping-annotation-04-tablePerInheritanceHierarchy</module>
+		<module>poc-hibernate-05-mapping-annotation-05-tablePerSubclass</module>
+		<module>poc-hibernate-05-mapping-annotation-06-tablePerConcreteClass</module>
+		<module>poc-hibernate-07-events</module>
+		<module>poc-hibernate-07-filters-01-xml</module>
+		<module>poc-hibernate-07-filters-02-annotation</module>
+		<module>poc-hibernate-07-interceptors</module>
+		<module>poc-hibernate-utils</module>
 	</modules>
 
 	<properties>
