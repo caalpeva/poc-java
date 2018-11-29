@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>chapter-04-xml-manyToMany-bidirectional</name>
+	<name>poc-hibernate-04-mapping-xml-03-manyToMany-bidir</name>
 	<comment></comment>
 	<projects>
 	</projects>

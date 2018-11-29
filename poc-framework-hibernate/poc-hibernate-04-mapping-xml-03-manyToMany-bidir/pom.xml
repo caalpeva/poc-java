@@ -7,7 +7,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>chapter-03-xml-manyToMany-bidirectional</artifactId>
+	<artifactId>poc-hibernate-04-mapping-xml-03-manyToMany-bidir</artifactId>
 	
 	<dependencies>
 		<dependency>

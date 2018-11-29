@@ -7,7 +7,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>poc-framework-hibernate-03-oneToOne-unidirectional-xml</artifactId>
+	<artifactId>poc-hibernate-04-mapping-xml-01-oneToOne-unidir-simple</artifactId>
 	
 	<dependencies>
 		<dependency>

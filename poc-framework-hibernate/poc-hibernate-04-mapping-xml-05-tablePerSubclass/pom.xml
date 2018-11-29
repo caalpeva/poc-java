@@ -6,7 +6,7 @@
 		<artifactId>team.boobee.poc.framework.hibernate</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>poc-hibernate-04-xml-tablePerSubclass</artifactId>
+	<artifactId>poc-hibernate-04-mapping-xml-06-tablePerConcreteClass</artifactId>
 	<dependencies>
 		<dependency>
 			<groupId>team.boobee.poc</groupId>

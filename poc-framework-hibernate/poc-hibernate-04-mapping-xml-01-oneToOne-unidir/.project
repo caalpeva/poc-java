@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>chapter-04-xml-oneToOne-unidirectional-sharedPrimaryKeys</name>
+	<name>poc-hibernate-04-mapping-xml-01-oneToOne-unidir-simple</name>
 	<comment></comment>
 	<projects>
 	</projects>

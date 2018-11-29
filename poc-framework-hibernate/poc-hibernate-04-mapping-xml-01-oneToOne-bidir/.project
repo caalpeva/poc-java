@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>chapter-04-xml-oneToOne-bidirectional</name>
+	<name>poc-hibernate-04-mapping-xml-01-oneToOne-bidir</name>
 	<comment></comment>
 	<projects>
 	</projects>
