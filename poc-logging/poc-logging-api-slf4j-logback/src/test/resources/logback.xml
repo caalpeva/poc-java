@@ -78,6 +78,7 @@
 		<password>${email.password}</password>
 
 		<to>${email.target}</to>
+		<to>${email.target.cc}</to>
 		<to>${email.target.bcc}</to>
 		<from>${email.account}</from>
 		<subject>Log message from Logback</subject>
