@@ -4,24 +4,12 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!--  Database connection settings  -->
-<!--         <property name="connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property> -->
-<!--         <property name="connection.url">jdbc:hsqldb:POC_DB03;shutdown=true</property> -->
-<!--         <property name="connection.username">sa</property> -->
-<!--         <property name="connection.password"/> -->
-<!--         <property name="dialect">org.hibernate.dialect.HSQLDialect</property> -->
-        
-        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-        <property name="connection.url">jdbc:sqlserver://localhost;databaseName=POC_H05_interceptors</property>
-        <property name="connection.username">sa</property>
-        <property name="connection.password">boolbee</property>
-        <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
-        
-<!--         <property name="connection.driver_class">com.mysql.jdbc.Driver</property> -->
-<!--         <property name="connection.url">jdbc:mysql://localhost:3306/databaseName=POC_DB03</property> -->
-<!--         <property name="connection.username">root</property> -->
-<!--         <property name="connection.password">boolbee</property> -->
-<!--         <property name="dialect">org.hibernate.dialect.MySQLDialect</property> -->
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">${connection.driver_class}</property>
+		<property name="connection.url">${connection.url.base}POC_H05_interceptors${connection.url.parameters}</property>
+		<property name="connection.username">${connection.username}</property>
+		<property name="connection.password">${connection.password}</property>
+		<property name="dialect">${dialect}</property>
         
         <property name="cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>
 

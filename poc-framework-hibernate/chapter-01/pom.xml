@@ -9,41 +9,16 @@
 
 	<artifactId>poc-framework-hibernate-01</artifactId>
 
-<!-- 	<profiles> -->
-<!-- 		<profile> -->
-<!-- 			<id>hsqldb</id> -->
-<!-- 			<activation> -->
-<!-- 				<activeByDefault>true</activeByDefault> -->
-<!-- 			</activation> -->
-<!-- 			<properties> -->
-<!-- 				<resourceDirectory>hsqldb</resourceDirectory> -->
-<!-- 			</properties> -->
-<!-- 		</profile> -->
-<!-- 		<profile> -->
-<!-- 			<id>sqlserver</id> -->
-<!-- 			<properties> -->
-<!-- 				<resourceDirectory>sqlserver</resourceDirectory> -->
-<!-- 			</properties> -->
-<!-- 		</profile> -->
-<!-- 		<profile> -->
-<!-- 			<id>mysql</id> -->
-<!-- 			<properties> -->
-<!-- 				<resourceDirectory>mysql</resourceDirectory> -->
-<!-- 			</properties> -->
-<!-- 		</profile> -->
-<!-- 	</profiles> -->
-
-<!-- 	<build> -->
+	<build>
 <!-- 		<filters> -->
 <!-- 			<filter>profiles/${resourceDirectory}/db.properties</filter> -->
 <!-- 		</filters> -->
-<!-- 		<testResources> -->
-<!-- 			<testResource> -->
-<!-- 				<directory>src/test/resources</directory> -->
-<!-- 				<filtering>true</filtering> -->
-<!-- 			</testResource> -->
-<!-- 		</testResources> -->
-<!-- 	</build> -->
-
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+	</build>
 
 </project>

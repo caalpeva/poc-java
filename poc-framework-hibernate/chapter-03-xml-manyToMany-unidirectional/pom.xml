@@ -7,6 +7,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>poc-framework-hibernate-03-xml-manyToMany-unidirectional</artifactId>
+	
 	<dependencies>
 		<dependency>
 			<groupId>team.boobee.poc</groupId>
@@ -14,4 +15,13 @@
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
+	
+	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+	</build>
 </project>

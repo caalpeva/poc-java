@@ -2,6 +2,7 @@ package team.boolbee.poc.hibernate;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -40,8 +41,11 @@ public class PersistenceTest {
     @Test(dependsOnMethods = "saveMessage")
     public void readMessage() {
         Session session = factory.openSession();
+        Query query = session.createQuery("from Message");
+        query.setComment("This is only a query for message");
+        
         @SuppressWarnings("unchecked")
-        List<Message> list = (List<Message>) session.createQuery("from Message").list();
+        List<Message> list = (List<Message>) query.list();
 
         if (list.size() > 1) {
             Assert.fail("Message configuration in error; table should contain only one."

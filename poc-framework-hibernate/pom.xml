@@ -7,6 +7,8 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+<!-- 	<name>poc-hibernate-parent</name> -->
+
 	<modules>
 		<module>chapter-01</module>
 		<module>chapter-02</module>
@@ -51,8 +53,13 @@
 	</modules>
 
 	<properties>
-		<hibernate-core.version>4.2.11.Final</hibernate-core.version>
-		<c3p0.version>0.9.2.1</c3p0.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hibernate-core.version>4.2.11.Final</hibernate-core.version>
+        <hibernate-validator.version>5.1.0.Alpha1</hibernate-validator.version>
+        <hsqldb.version>2.3.1</hsqldb.version>
+        <c3p0.version>0.9.2.1</c3p0.version>
+		<slf4j.version>1.7.25</slf4j.version>
+		<testng.version>6.8.7</testng.version>
 	</properties>
 
 	<dependencies>
@@ -71,27 +78,77 @@
 			<artifactId>c3p0</artifactId>
 			<version>${c3p0.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-			<version>2.3.1</version>
+			<version>${hsqldb.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>sqljdbc4</artifactId>
 			<version>4.1.8112</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>mysql</groupId> -->
-		<!-- <artifactId>mysql-connector-java</artifactId> -->
-		<!-- <version>5.1.47</version> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.47</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>6.8.7</version>
+			<version>${testng.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
+	<profiles>
+		<profile>
+			<id>hsqldb</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- <resourceDirectory>hsqldb</resourceDirectory> -->
+				<connection.driver_class>org.hsqldb.jdbc.JDBCDriver</connection.driver_class>
+				<connection.url.base>jdbc:hsqldb:</connection.url.base>
+				<connection.url.parameters>;shutdown=true</connection.url.parameters>
+				<connection.username>sa</connection.username>
+				<connection.password></connection.password>
+				<dialect>org.hibernate.dialect.HSQLDialect</dialect>
+			</properties>
+		</profile>
+		<profile>
+			<id>sqlserver</id>
+			<properties>
+				<!-- <resourceDirectory>sqlserver</resourceDirectory> -->
+				<connection.driver_class>com.microsoft.sqlserver.jdbc.SQLServerDriver</connection.driver_class>
+				<connection.url.base>jdbc:sqlserver://localhost;databaseName=</connection.url.base>
+				<connection.url.parameters></connection.url.parameters>
+				<connection.username>sa</connection.username>
+				<connection.password>boolbee</connection.password>
+				<dialect>org.hibernate.dialect.SQLServerDialect</dialect>
+			</properties>
+		</profile>
+		<profile>
+			<id>mysql</id>
+			<properties>
+				<!-- <resourceDirectory>mysql</resourceDirectory> -->
+				<connection.driver_class>com.mysql.jdbc.Driver</connection.driver_class>
+				<connection.url.base>jdbc:mysql://localhost:3306/databaseName=</connection.url.base>
+				<connection.url.parameters></connection.url.parameters>
+				<connection.username>root</connection.username>
+				<connection.password>boolbee</connection.password>
+				<dialect>org.hibernate.dialect.MySQLDialect</dialect>
+			</properties>
+		</profile>
+	</profiles>
+
 </project>
