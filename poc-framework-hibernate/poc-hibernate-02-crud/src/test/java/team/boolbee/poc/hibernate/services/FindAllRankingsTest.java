@@ -1,12 +1,5 @@
 package team.boolbee.poc.hibernate.services;
 
-import org.testng.annotations.Test;
-
-import java.util.Map;
-
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-
 public class FindAllRankingsTest {
     RankingService service = new HibernateRankingService();
 

@@ -21,7 +21,7 @@ public class Person {
     private String name;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date birthDate;
+	private Calendar birthDate;
 	@Transient
 	private int age;
 
@@ -43,11 +43,11 @@ public class Person {
         this.name = name;
     }
 
-    public Date getBirthdate() {
+    public Calendar getBirthdate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(Calendar birthDate) {
 		this.birthDate = birthDate;
 	}
 	
@@ -57,17 +57,13 @@ public class Person {
 		}
 		
 		Calendar now = Calendar.getInstance();
-//		int year = now.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR);
-//		int month = now.get(Calendar.MONTH) - birthDate.get(Calendar.MONTH);
-//		int day = now.get(Calendar.DAY_OF_MONTH) - birthDate.get(Calendar.DAY_OF_MONTH);
-		
-		int year = now.get(Calendar.YEAR) - birthDate.getYear();
-		int month = now.get(Calendar.MONTH) - birthDate.getMonth();
-		int day = now.get(Calendar.DAY_OF_MONTH) - birthDate.getDay();
+		int year = now.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR);
+		int month = now.get(Calendar.MONTH) - birthDate.get(Calendar.MONTH);
+		int day = now.get(Calendar.DAY_OF_MONTH) - birthDate.get(Calendar.DAY_OF_MONTH);
 
-		// Se ajusta el año dependiendo el mes y el día
-		// month < 0 todavía no ha llegado el mes de su cumpleaños
-		// (month == 0 && day < 0) estamos en el mes de su cumpleaños pero no hemos llegado todavía al día en concreto
+		// Se ajusta el aï¿½o dependiendo el mes y el dï¿½a
+		// month < 0 todavï¿½a no ha llegado el mes de su cumpleaï¿½os
+		// (month == 0 && day < 0) estamos en el mes de su cumpleaï¿½os pero no hemos llegado todavï¿½a al dï¿½a en concreto
 		if (month < 0 || (month == 0 && day < 0)) {
 			year--;
 		}
@@ -80,6 +76,7 @@ public class Person {
         return "Person{" +
         		"id=" + id +
                 ", name='" + name + '\'' +
+                ", birthDate='" + birthDate + '\'' +
                 '}';
     }
 }

@@ -1,23 +1,36 @@
 package team.boolbee.poc.hibernate.criteria.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Product {
+
+    public enum Status { ACTIVE, INACTIVE }
 	
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
     
+    @Column(nullable = false)
     private String name;
     
     private String description;
 	
+    @Column(nullable = false)
+    private Double price;
+    
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
+    
     @ManyToOne
-    private ProductType productType;
+    private Supplier supplier;
 	
 	/**
 	 * default constructor
@@ -30,13 +43,28 @@ public class Product {
 	 * Constructor with parameters
 	 * @param name
 	 * @param description
-	 * @param type
+ 	 * @param price
+	 * @param supplier
 	 */
-	public Product(String name, String description, ProductType productType) {
+	public Product(String name, String description, Double price, Supplier supplier) {
 		this.name = name;
-		this.description = description;
-		this.productType = productType;
-	}
+        this.description = description;
+        this.price = price;
+        this.supplier = supplier;
+    }
+	
+	/**
+	 * Constructor with parameters
+	 * @param name
+	 * @param description
+ 	 * @param price
+ 	 * @param status
+	 * @param supplier
+	 */
+	public Product(String name, String description, Double price, Status status, Supplier supplier) {
+		this(name, description, price, supplier);
+        this.status = status;
+    }
 
 	/**
 	 * @return the id
@@ -81,17 +109,33 @@ public class Product {
 	}
 
 	/**
-	 * @return the productType
+	 * @return the supplier
 	 */
-	public ProductType getProductType() {
-		return productType;
+	public Supplier getSupplier() {
+		return supplier;
 	}
 
 	/**
-	 * @param productType the productType to set
+	 * @param supplier the supplier to set
 	 */
-	public void setProductType(ProductType productType) {
-		this.productType = productType;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+	
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	/* (non-Javadoc)
@@ -99,8 +143,11 @@ public class Product {
 	 */
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", description="
-				+ description + "]";
+		return "Product [id=" + id
+				+ ", name=" + name
+				+ ",description=" + description
+				+ ", price=" + price
+				+ ", status=" + status + "]";
 	} 
 	
 	

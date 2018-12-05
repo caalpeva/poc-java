@@ -2,6 +2,9 @@ package team.boolbee.poc.hibernate.services;
 
 import org.testng.annotations.Test;
 
+import team.boolbee.poc.hibernate.services.HibernateRankingService;
+import team.boolbee.poc.hibernate.services.RankingService;
+
 import static org.testng.Assert.assertEquals;
 
 public class RemoveRankingTest {
