@@ -17,7 +17,7 @@
 		<property name="hbm2ddl.auto">create</property>
 
 		<mapping class="team.boolbee.poc.hibernate.criteria.model.Product" />
-		<mapping class="team.boolbee.poc.hibernate.criteria.model.ProductType" />
+		<mapping class="team.boolbee.poc.hibernate.criteria.model.Supplier" />
 
 	</session-factory>
 
