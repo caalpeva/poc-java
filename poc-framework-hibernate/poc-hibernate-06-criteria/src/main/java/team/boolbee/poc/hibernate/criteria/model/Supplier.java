@@ -95,4 +95,10 @@ public class Supplier {
 	public void addProduct(Product product) {
 		this.products.add(product);
 	}
+	
+	@Override
+	public String toString() {
+		return "Supplier [id=" + id
+				+ ", name=" + name + "]";
+	} 
 }

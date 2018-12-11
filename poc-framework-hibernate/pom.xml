@@ -36,12 +36,12 @@
 		<module>poc-hibernate-05-mapping-annotation-04-tablePerInheritanceHierarchy</module>
 		<module>poc-hibernate-05-mapping-annotation-05-tablePerSubclass</module>
 		<module>poc-hibernate-05-mapping-annotation-06-tablePerConcreteClass</module>
+		<module>poc-hibernate-06-criteria</module>
 		<module>poc-hibernate-07-events</module>
 		<module>poc-hibernate-07-filters-01-xml</module>
 		<module>poc-hibernate-07-filters-02-annotation</module>
 		<module>poc-hibernate-07-interceptors</module>
 		<module>poc-hibernate-utils</module>
-		<module>poc-hibernate-06-criteria</module>
 	</modules>
 
 	<properties>
