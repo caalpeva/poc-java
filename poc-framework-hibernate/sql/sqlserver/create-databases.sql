@@ -25,6 +25,7 @@ CREATE DATABASE POC_H05_events;
 CREATE DATABASE POC_H05_filters_annotation;
 CREATE DATABASE POC_H05_filters_xml;
 CREATE DATABASE POC_H06_criteria;
+
 SELECT * FROM ::fn_helpcollations()
 SELECT SERVERPROPERTY('COLLATION')
 SELECT name, collation_name 
@@ -32,6 +33,11 @@ FROM sys.databases
 WHERE name = 'POC_H06_criteria'
 --// Modern_Spanish_CI_AS
 ALTER DATABASE POC_H06_criteria
+COLLATE Modern_Spanish_CS_AS
+
+CREATE DATABASE POC_H06_hql;
+
+ALTER DATABASE POC_H06_hql
 COLLATE Modern_Spanish_CS_AS
 
 
