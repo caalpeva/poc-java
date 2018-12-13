@@ -17,8 +17,8 @@
 		<property name="use_sql_comments">true</property>
 		<property name="hbm2ddl.auto">create</property>
 
-		<mapping class="team.boolbee.poc.hibernate.sql.model.Product" />
-		<mapping class="team.boolbee.poc.hibernate.sql.model.Supplier" />
+		<mapping class="team.boolbee.poc.hibernate.hql.model.Product" />
+		<mapping class="team.boolbee.poc.hibernate.hql.model.Supplier" />
 
 	</session-factory>
 

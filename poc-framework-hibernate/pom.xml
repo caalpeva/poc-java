@@ -43,6 +43,8 @@
 		<module>poc-hibernate-07-filters-02-annotation</module>
 		<module>poc-hibernate-07-interceptors</module>
 		<module>poc-hibernate-utils</module>
+		<module>poc-hibernate-sql</module>
+		<module>poc-hibernate-06-sql</module>
 	</modules>
 
 	<properties>
