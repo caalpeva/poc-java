@@ -1,4 +1,4 @@
-package team.boolbee.poc.hibernate.criteria.model;
+package team.boolbee.poc.hibernate.hql.model;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -23,7 +23,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import team.boolbee.poc.hibernate.criteria.model.Product.Status;
+import team.boolbee.poc.hibernate.hql.model.Product;
+import team.boolbee.poc.hibernate.hql.model.Supplier;
+import team.boolbee.poc.hibernate.hql.model.Product.Status;
 import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 public class HqlQueryTest {

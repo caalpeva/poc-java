@@ -1,4 +1,4 @@
-package team.boolbee.poc.hibernate.criteria.model;
+package team.boolbee.poc.hibernate.hql.model;
 
 import java.util.ArrayList;
 import java.util.List;

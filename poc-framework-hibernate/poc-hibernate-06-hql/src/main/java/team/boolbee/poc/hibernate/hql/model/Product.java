@@ -1,4 +1,4 @@
-package team.boolbee.poc.hibernate.criteria.model;
+package team.boolbee.poc.hibernate.hql.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
