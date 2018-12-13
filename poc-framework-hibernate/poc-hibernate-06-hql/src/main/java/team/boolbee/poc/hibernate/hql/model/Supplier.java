@@ -22,7 +22,7 @@ public class Supplier {
 	private String name;
 
 	// orphanRemoval = true
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier") //, fetch = FetchType.EAGER) 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier", orphanRemoval = true) //, fetch = FetchType.EAGER) 
     List<Product> products = new ArrayList<Product>();
 	
 	/**

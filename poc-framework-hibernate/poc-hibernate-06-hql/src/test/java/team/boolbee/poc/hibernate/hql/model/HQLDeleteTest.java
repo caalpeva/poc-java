@@ -18,6 +18,7 @@ public class HQLDeleteTest {
     public void testDeleteHQL() {
         Session session = HibernateSession.getSession();
         Transaction tx = session.beginTransaction();
+        session.createQuery("delete from Product").executeUpdate();
         session.createQuery("delete from Supplier").executeUpdate();
         
         // create a set of suppliers, then delete them
