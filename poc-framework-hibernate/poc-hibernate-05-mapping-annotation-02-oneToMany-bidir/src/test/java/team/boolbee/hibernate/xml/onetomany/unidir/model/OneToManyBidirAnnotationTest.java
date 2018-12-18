@@ -11,7 +11,7 @@ import team.boolbee.poc.hibernate.utils.HibernateSession;
 public class OneToManyBidirAnnotationTest {
 	
     @Test
-    public void testOneToOneMappedByXml() {
+    public void testOneToManyMappedByAnnotation() {
     	Rider player1 = new Rider();
 		player1.setName("Lance Armstrong");
 		player1.setNumber(21);
@@ -53,7 +53,7 @@ public class OneToManyBidirAnnotationTest {
 		player5.setNumber(11);
 		
 		Rider player6 = new Rider();
-		player6.setName("Fränk Schleck");
+		player6.setName("Frï¿½nk Schleck");
 		player6.setNumber(16);
 		
 		Team team3 = new Team();

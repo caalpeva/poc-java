@@ -176,6 +176,7 @@ public class HqlQueryTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testProjectionRowCount() {
+		// CURRENT_DATE(), CURRENT_TIME(), CURRENT_TIMESTAMP()
 		Query query = session.createQuery("select COUNT(*) from Product p");
 		List<Long> results = query.list();
 		assertEquals(results.size(), 1);

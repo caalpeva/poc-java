@@ -23,7 +23,7 @@ public class ManyToManyUnidirAnnotationTest {
 	private String sharedCustom5Account = "4100-4400-4404-4404-0001";
 	
     @Test
-    public void testManyToOneMappedByXml() {
+    public void testManyToManyMappedByAnnotation() {
     	populateBankData();
     	
     	CustomerDAO customerDAO = new CustomerDAO();
@@ -114,7 +114,7 @@ public class ManyToManyUnidirAnnotationTest {
 		accountData = new HashMap<String, Float>();
 		accountData.put(sharedCustom4Account, 4000000.00f);
 		accountData.put("2100-2219-2202-2202-0002", 4000000.00f);
-		Customer customer4 = createCustomerWithAccounts("Amancio Ortega", "La coruña, España", accountData);
+		Customer customer4 = createCustomerWithAccounts("Amancio Ortega", "La coruï¿½a, Espaï¿½a", accountData);
 		
 		accountData = new HashMap<String, Float>();
 		accountData.put(sharedCustom5Account, 3000000.00f);
@@ -129,7 +129,7 @@ public class ManyToManyUnidirAnnotationTest {
 		customerDAO.insert(customer4);
 		customerDAO.insert(customer5);
 
-		// Se añaden clientes con cuentas ya existentes
+		// Se aï¿½aden clientes con cuentas ya existentes
 		Session session = HibernateSession.getSession();
 		session.beginTransaction();
 		
@@ -138,7 +138,7 @@ public class ManyToManyUnidirAnnotationTest {
 		
 		Customer customer41 = new Customer();
 		customer41.setName("Flora Perez");
-		customer41.setAddress("La coruña, España");
+		customer41.setAddress("La coruï¿½a, Espaï¿½a");
 		customer41.addAccount(bankAccount);
 		session.persist(customer41);
 		
