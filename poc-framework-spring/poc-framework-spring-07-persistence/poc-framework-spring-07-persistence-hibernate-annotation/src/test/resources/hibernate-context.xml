@@ -5,22 +5,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
                http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> -->
-	<!-- <property name="dataSource" ref="dataSource" /> -->
-	<!-- <property name="mappingResources"> -->
-	<!-- <list> -->
-	<!-- <value>team/boobee/domain/Rant.hbm.xml</value> -->
-	<!-- <value>team/boobee/domain/Motorist.hbm.xml</value> -->
-	<!-- <value>team/boobee/domain/Vehicle.hbm.xml</value> -->
-	<!-- </list> -->
-	<!-- </property> -->
-	<!-- <property name="hibernateProperties"> -->
-	<!-- <props> -->
-	<!-- <prop key="hibernate.dialect">${hibernate.dialect}</prop> -->
-	<!-- </props> -->
-	<!-- </property> -->
-	<!-- </bean> -->
-
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
