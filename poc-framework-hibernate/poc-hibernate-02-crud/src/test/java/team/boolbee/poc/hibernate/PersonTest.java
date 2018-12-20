@@ -1,15 +1,9 @@
 package team.boolbee.poc.hibernate;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNull;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
