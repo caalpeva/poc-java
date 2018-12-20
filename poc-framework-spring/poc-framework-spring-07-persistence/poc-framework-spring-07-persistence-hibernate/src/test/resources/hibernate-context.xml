@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+               http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> -->
+	<!-- <property name="dataSource" ref="dataSource" /> -->
+	<!-- <property name="mappingResources"> -->
+	<!-- <list> -->
+	<!-- <value>team/boobee/domain/Rant.hbm.xml</value> -->
+	<!-- <value>team/boobee/domain/Motorist.hbm.xml</value> -->
+	<!-- <value>team/boobee/domain/Vehicle.hbm.xml</value> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- <property name="hibernateProperties"> -->
+	<!-- <props> -->
+	<!-- <prop key="hibernate.dialect">${hibernate.dialect}</prop> -->
+	<!-- </props> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>team.boobee.poc.spring.hibernate.model.Person</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="personDao" class="team.boobee.poc.spring.hibernate.dao.PersonTemplateDao">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	
+	<bean id="personDaoSupport" class="team.boobee.poc.spring.hibernate.dao.PersonDaoSupport">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="hibernateSessionPersonDao" class="team.boobee.poc.spring.hibernate.dao.PersonHibernateSessionDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>
