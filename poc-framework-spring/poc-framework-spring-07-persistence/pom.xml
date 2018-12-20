@@ -3,42 +3,28 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-		<parent>
+	<parent>
 		<groupId>team.boolbee.poc</groupId>
 		<artifactId>team.boobee.poc.framework.spring</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	
-	<artifactId>poc-framework-spring-07-jdbc</artifactId>
-	<version>1.0.0</version>
-	<packaging>jar</packaging>
 
-	<build>
-		<sourceDirectory>src</sourceDirectory>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>**/*PersonServiceTest*.java</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<artifactId>poc-framework-spring-07-persistence</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
 
 	<properties>
 		<spring.version>2.5.6</spring.version>
 		<hsqldb.version>2.3.1</hsqldb.version>
 	</properties>
+
+	<modules>
+		<module>poc-framework-spring-07-persistence-jdbc</module>
+		<module>poc-framework-spring-07-persistence-hibernate</module>
+		<module>
+			poc-framework-spring-07-persistence-hibernate-xml
+		</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
@@ -135,4 +121,29 @@
 			<version>2.1</version>
 		</dependency>
 	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>hsqldb</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<databaseType>hsqldb</databaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>sqlserver</id>
+			<properties>
+				<databaseType>sqlserver</databaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>mysql</id>
+			<properties>
+				<databaseType>mysql</databaseType>
+			</properties>
+		</profile>
+	</profiles>
+
 </project>
