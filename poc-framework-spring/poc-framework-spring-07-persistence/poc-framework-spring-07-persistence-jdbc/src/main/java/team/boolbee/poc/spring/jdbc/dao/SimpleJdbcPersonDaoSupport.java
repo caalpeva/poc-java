@@ -12,8 +12,8 @@ import team.boolbee.poc.spring.jdbc.model.Person;
 // Proporciona funcionalidades Java 5, como varargs y auto-boxing
 public class SimpleJdbcPersonDaoSupport extends SimpleJdbcDaoSupport implements PersonDao {
 
-	private static final String PERSON_INSERT = "INSERT INTO PERSON (id, firstName, lastName, birthDate) "
-			+ "VALUES (null, ?, ?, ?)";
+	private static final String PERSON_INSERT = "INSERT INTO PERSON (firstName, lastName, birthDate) "
+			+ "VALUES (?, ?, ?)";
 
 	private static final String PERSON_UPDATE = "UPDATE PERSON " + "SET firstName=?, lastName=?, birthDate=? "
 			+ "WHERE id=?";
@@ -23,9 +23,10 @@ public class SimpleJdbcPersonDaoSupport extends SimpleJdbcDaoSupport implements 
 	private static final String PERSON_BY_ID_SELECT = PERSON_SELECT + " WHERE id=?";
 
 	public void savePerson(Person person) {
-		getSimpleJdbcTemplate().update(PERSON_INSERT,
+		int id = getSimpleJdbcTemplate().update(PERSON_INSERT,
 				person.getFirstName(), person.getLastName(), person.getBirthDate());
-		person.setId(queryForIdentity());
+		person.setId(id);
+		//person.setId(queryForIdentity());
 	}
 
 	private int queryForIdentity() {

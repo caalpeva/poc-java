@@ -1,6 +1,6 @@
 <project name="poc-framework-spring-07-persistence-jdbc-create-database" default="setup">
-	<!--<property file="src/test/resources/database-hsqldb.properties" />-->
-	<property file="src/test/resources/database-sqlserver.properties" />
+	<property file="src/test/resources/database-hsqldb.properties" />
+	<!--<property file="src/test/resources/database-sqlserver.properties" />-->
 
 	<path id="CLASSPATH">
 		<pathelement location="classes" />
