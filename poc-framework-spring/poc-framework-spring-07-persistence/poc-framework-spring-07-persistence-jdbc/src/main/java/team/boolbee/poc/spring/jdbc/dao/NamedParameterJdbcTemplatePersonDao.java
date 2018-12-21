@@ -1,40 +1,46 @@
-package team.boobee.poc.spring.jdbc.dao;
+package team.boolbee.poc.spring.jdbc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
-import team.boobee.poc.spring.jdbc.model.Person;
+import team.boolbee.poc.spring.jdbc.model.Person;
 
-public class JdbcTemplatePersonDao implements PersonDao {
+public class NamedParameterJdbcTemplatePersonDao implements PersonDao {
 
 	private static final String PERSON_INSERT = "INSERT INTO PERSON (id, firstName, lastName, birthDate) "
-			+ "VALUES (null, ?, ?, ?)";
+			+ "VALUES (null, :firstName, :lastName, :birthDate)";
 
 	private static final String PERSON_UPDATE = "UPDATE PERSON " + "SET firstName=?, lastName=?, birthDate=? "
-			+ "WHERE id=?";
+			+ "WHERE id=:id";
 
 	private static final String PERSON_SELECT = "SELECT id, firstName, lastName, birthDate FROM PERSON";
 
-	private static final String PERSON_BY_ID_SELECT = PERSON_SELECT + " WHERE id=?";
+	private static final String PERSON_BY_ID_SELECT = PERSON_SELECT + " WHERE id=:id";
 
-	private JdbcTemplate jdbcTemplate;
+	private NamedParameterJdbcTemplate jdbcTemplate;
 
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+	public void setJdbcTemplate(NamedParameterJdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
 	public void savePerson(Person person) {
-		jdbcTemplate.update(PERSON_INSERT,
-				new Object[] { person.getFirstName(), person.getLastName(), person.getBirthDate() });
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("firstName", person.getFirstName());
+		parameters.put("lastName", person.getLastName());
+		parameters.put("birthDate", person.getBirthDate());
+		jdbcTemplate.update(PERSON_INSERT, parameters);
 		person.setId(queryForIdentity());
 	}
 
 	private int queryForIdentity() {
-		return new Integer(jdbcTemplate.queryForInt("call identity()"));
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		return new Integer(jdbcTemplate.queryForInt("call identity()", parameters));
 	}
 
 	public void updatePerson(Person person) {
@@ -43,7 +49,9 @@ public class JdbcTemplatePersonDao implements PersonDao {
 
 	@SuppressWarnings("rawtypes")
 	public Person getPersonById(Integer id) {
-		List matches = jdbcTemplate.query(PERSON_BY_ID_SELECT, new Object[] { Long.valueOf(id) }, new RowMapper() {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("id", Long.valueOf(id));
+		List matches = jdbcTemplate.query(PERSON_BY_ID_SELECT, parameters, new RowMapper() {
 			public Object mapRow(ResultSet result, int rowNums) throws SQLException {
 				Person person = new Person();
 				person.setId(result.getInt(1));
@@ -59,7 +67,8 @@ public class JdbcTemplatePersonDao implements PersonDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Person> list() {
-		return jdbcTemplate.query(PERSON_SELECT, new RowMapper() {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		return jdbcTemplate.query(PERSON_SELECT, parameters, new RowMapper() {
 			public Object mapRow(ResultSet result, int rowNums) throws SQLException {
 				Person person = new Person();
 				person.setId(result.getInt(1));

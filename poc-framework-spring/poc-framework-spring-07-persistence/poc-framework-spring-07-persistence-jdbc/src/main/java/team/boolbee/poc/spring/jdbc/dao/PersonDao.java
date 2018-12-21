@@ -1,8 +1,8 @@
-package team.boobee.poc.spring.jdbc.dao;
+package team.boolbee.poc.spring.jdbc.dao;
 
 import java.util.List;
 
-import team.boobee.poc.spring.jdbc.model.Person;
+import team.boolbee.poc.spring.jdbc.model.Person;
 
 public interface PersonDao {
 

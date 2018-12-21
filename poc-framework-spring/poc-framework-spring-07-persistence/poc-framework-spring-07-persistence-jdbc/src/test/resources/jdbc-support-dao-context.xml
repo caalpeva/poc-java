@@ -6,17 +6,17 @@
                http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 	<bean id="jdbcPersonDao"
-		class="team.boobee.poc.spring.jdbc.dao.JdbcPersonDao">
+		class="team.boolbee.poc.spring.jdbc.dao.JdbcPersonDaoSupport">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<bean id="namedParameterJdbcPersonDao"
-		class="team.boobee.poc.spring.jdbc.dao.NamedParameterJdbcPersonDao">
+		class="team.boolbee.poc.spring.jdbc.dao.NamedParameterJdbcPersonDaoSupport">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<bean id="simpleJdbcPersonDao"
-		class="team.boobee.poc.spring.jdbc.dao.SimpleJdbcPersonDao">
+		class="team.boolbee.poc.spring.jdbc.dao.SimpleJdbcPersonDaoSupport">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 

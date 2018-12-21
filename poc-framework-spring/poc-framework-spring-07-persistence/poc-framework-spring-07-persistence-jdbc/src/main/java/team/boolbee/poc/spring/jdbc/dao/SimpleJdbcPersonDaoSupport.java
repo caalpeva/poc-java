@@ -1,4 +1,4 @@
-package team.boobee.poc.spring.jdbc.dao;
+package team.boolbee.poc.spring.jdbc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,10 +7,10 @@ import java.util.List;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 
-import team.boobee.poc.spring.jdbc.model.Person;
+import team.boolbee.poc.spring.jdbc.model.Person;
 
 // Proporciona funcionalidades Java 5, como varargs y auto-boxing
-public class SimpleJdbcPersonDao extends SimpleJdbcDaoSupport implements PersonDao {
+public class SimpleJdbcPersonDaoSupport extends SimpleJdbcDaoSupport implements PersonDao {
 
 	private static final String PERSON_INSERT = "INSERT INTO PERSON (id, firstName, lastName, birthDate) "
 			+ "VALUES (null, ?, ?, ?)";

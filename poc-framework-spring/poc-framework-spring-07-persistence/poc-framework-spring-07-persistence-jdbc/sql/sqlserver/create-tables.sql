@@ -1,5 +1,6 @@
-create table USERS
+create table PERSON
   (ID  integer NOT NULL IDENTITY,
-  FIRSTNAME varchar(40) NOT NULL,
-  LASTNAME varchar(40) NOT NULL,
+  FIRSTNAME varchar(50) NOT NULL,
+  LASTNAME varchar(50) NOT NULL,
+  BIRTHDATE date null,
   PRIMARY KEY(ID));

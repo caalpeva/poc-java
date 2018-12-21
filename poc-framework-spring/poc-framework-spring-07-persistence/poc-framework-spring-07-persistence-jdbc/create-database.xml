@@ -1,0 +1,44 @@
+<project name="poc-framework-spring-07-persistence-jdbc-create-database" default="setup">
+	<property file="src/test/resources/database-hsqldb.properties" />
+	<!--<property file="src/test/resources/database-sqlserver.properties" />-->
+
+	<path id="CLASSPATH">
+		<pathelement location="classes" />
+		<pathelement location="${driver.path}" />
+	</path>
+
+	<target name="drop-tables">
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" classpathref="CLASSPATH" autocommit="true" onerror="continue">
+			<transaction src="./sql/${db.vendor}/drop-tables.sql">
+			</transaction>
+		</sql>
+	</target>
+
+	<target name="build-tables" description="Create database tables">
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" classpathref="CLASSPATH" autocommit="true" onerror="continue">
+			<transaction src="./sql/${db.vendor}/create-tables.sql">
+			</transaction>
+		</sql>
+	</target>
+
+	<target name="populate-tables" description="Populate database tables">
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" classpathref="CLASSPATH" delimiter="${DB.DELIMITER}" autocommit="false" onerror="continue">
+			<transaction src="./sql/${db.vendor}/populate-tables.sql">
+			</transaction>
+		</sql>
+	</target>
+
+
+	<target name="create-sqlserver-database">
+		<sql driver="${db.driver}" url="jdbc:sqlserver://localhost" userid="${db.username}" password="${db.password}" classpathref="CLASSPATH" delimiter="${DB.DELIMITER}" autocommit="false" onerror="continue">
+	      create database ${db.name};
+	    </sql>
+	</target>
+
+	<target name="setup">
+		<antcall target="drop-tables" />
+		<antcall target="build-tables" />
+		<antcall target="populate-tables" />
+	</target>
+
+</project>

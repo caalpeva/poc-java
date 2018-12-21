@@ -1,12 +1,12 @@
-package team.boobee.poc.spring.jdbc.test;
+package team.boolbee.poc.spring.jdbc.test;
 
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
-import team.boobee.poc.spring.jdbc.dao.PersonDao;
-import team.boobee.poc.spring.jdbc.model.Person;
+import team.boolbee.poc.spring.jdbc.dao.PersonDao;
+import team.boolbee.poc.spring.jdbc.model.Person;
 
 /**
  * Tests the RantService from the Spring context along with its dependencies.

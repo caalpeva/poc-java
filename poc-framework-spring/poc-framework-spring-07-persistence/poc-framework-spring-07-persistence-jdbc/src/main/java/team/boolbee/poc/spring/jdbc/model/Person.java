@@ -1,4 +1,4 @@
-package team.boobee.poc.spring.jdbc.model;
+package team.boolbee.poc.spring.jdbc.model;
 
 import java.util.Date;
 

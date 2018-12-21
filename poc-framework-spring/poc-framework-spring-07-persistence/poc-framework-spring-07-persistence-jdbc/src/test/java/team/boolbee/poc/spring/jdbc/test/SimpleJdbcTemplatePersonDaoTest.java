@@ -1,21 +1,21 @@
-package team.boobee.poc.spring.jdbc.test;
+package team.boolbee.poc.spring.jdbc.test;
 
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
-import team.boobee.poc.spring.jdbc.dao.PersonDao;
-import team.boobee.poc.spring.jdbc.model.Person;
+import team.boolbee.poc.spring.jdbc.dao.PersonDao;
+import team.boolbee.poc.spring.jdbc.model.Person;
 
 /**
  * Tests the RantService from the Spring context along with its dependencies.
  * Strictly speaking, this is an integration test, not a unit-test, as it tests
  * the service and its dependencies, as wired in Spring.
  */
-public class JdbcTemplatePersonDaoTest extends AbstractDependencyInjectionSpringContextTests {
+public class SimpleJdbcTemplatePersonDaoTest extends AbstractDependencyInjectionSpringContextTests {
 
-	public JdbcTemplatePersonDaoTest() {
+	public SimpleJdbcTemplatePersonDaoTest() {
 	}
 
 	@Override
@@ -25,12 +25,12 @@ public class JdbcTemplatePersonDaoTest extends AbstractDependencyInjectionSpring
 
 	@SuppressWarnings("deprecation")
 	public void testAddPerson() throws Exception {
-		PersonDao personDAO = (PersonDao) applicationContext.getBean("jdbcTemplatePersonDao");
+		PersonDao personDAO = (PersonDao) applicationContext.getBean("simpleJdbcTemplatePersonDao");
 
 		Person newPerson = new Person();
-		newPerson.setFirstName("Jan");
-		newPerson.setLastName("Ullrich");
-		newPerson.setBirthDate(new Date(78, 0, 01));
+		newPerson.setFirstName("Marco");
+		newPerson.setLastName("Pantani");
+		newPerson.setBirthDate(new Date(76, 10, 15));
 
 		personDAO.savePerson(newPerson);
 		List<Person> persons = personDAO.list();

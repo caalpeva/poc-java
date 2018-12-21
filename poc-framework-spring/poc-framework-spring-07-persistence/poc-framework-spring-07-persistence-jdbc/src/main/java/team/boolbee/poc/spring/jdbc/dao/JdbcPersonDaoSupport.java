@@ -1,4 +1,4 @@
-package team.boobee.poc.spring.jdbc.dao;
+package team.boolbee.poc.spring.jdbc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,9 +7,9 @@ import java.util.List;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
-import team.boobee.poc.spring.jdbc.model.Person;
+import team.boolbee.poc.spring.jdbc.model.Person;
 
-public class JdbcPersonDao extends JdbcDaoSupport implements PersonDao {
+public class JdbcPersonDaoSupport extends JdbcDaoSupport implements PersonDao {
 
 	private static final String PERSON_INSERT = "INSERT INTO PERSON (firstName, lastName, birthDate) "
 			+ "VALUES (?, ?, ?)";

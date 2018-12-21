@@ -20,17 +20,17 @@
 	</bean>
 
 	<bean id="jdbcTemplatePersonDao"
-		class="team.boobee.poc.spring.jdbc.dao.JdbcTemplatePersonDao">
+		class="team.boolbee.poc.spring.jdbc.dao.JdbcTemplatePersonDao">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 
 	<bean id="namedParameterJdbcTemplatePersonDao"
-		class="team.boobee.poc.spring.jdbc.dao.NamedParameterJdbcTemplatePersonDao">
+		class="team.boolbee.poc.spring.jdbc.dao.NamedParameterJdbcTemplatePersonDao">
 		<property name="jdbcTemplate" ref="namedParameterJdbcTemplate" />
 	</bean>
 
 	<bean id="simpleJdbcTemplatePersonDao"
-		class="team.boobee.poc.spring.jdbc.dao.SimpleJdbcTemplatePersonDao">
+		class="team.boolbee.poc.spring.jdbc.dao.SimpleJdbcTemplatePersonDao">
 		<property name="jdbcTemplate" ref="simpleJdbcTemplate" />
 	</bean>
 
