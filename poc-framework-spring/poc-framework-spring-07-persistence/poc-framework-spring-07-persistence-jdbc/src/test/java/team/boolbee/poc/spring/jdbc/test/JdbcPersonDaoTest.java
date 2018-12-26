@@ -36,7 +36,7 @@ public class JdbcPersonDaoTest extends AbstractDependencyInjectionSpringContextT
 		List<Person> persons = personDAO.list();
 		
 		for(Person person: persons) {
-			System.out.println(person.getId() + " " + person.getFirstName() + " " + person.getBirthDate());
+			System.out.println(person);
 		} // for
 		
 		assertTrue(persons.contains(newPerson));

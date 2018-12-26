@@ -50,7 +50,14 @@ public class Person {
 		}
 	}
 
-	public int hashCode() {
-		return super.hashCode();
+	@Override
+    public String toString() {
+        return "Person{" +
+        		"id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                '}';
 	}
+
 }

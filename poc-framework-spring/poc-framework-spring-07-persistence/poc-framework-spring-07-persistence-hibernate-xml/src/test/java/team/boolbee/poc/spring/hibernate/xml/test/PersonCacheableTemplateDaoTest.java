@@ -31,15 +31,15 @@ public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionS
 		personDAO.savePerson(newPerson);
 
 		Person foundPerson = personDAO.getPersonById(newPerson.getId());
-		System.out.println(foundPerson.toString());
+		System.out.println(foundPerson);
 
 		foundPerson = personDAO.getPersonById(newPerson.getId());
-		System.out.println(foundPerson.toString());
+		System.out.println(foundPerson);
 		
 		Thread.sleep(6000);
 
 		foundPerson = personDAO.getPersonById(newPerson.getId());
-		System.out.println(foundPerson.toString());
+		System.out.println(foundPerson);
 		
 		assertNotNull(foundPerson);
 
@@ -52,12 +52,12 @@ public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionS
 
 		List<Person> persons = personDAO.list();
 		for (Person person : persons) {
-			System.out.println(person.toString());
+			System.out.println(person);
 		} // for
 
 		persons = personDAO.list();
 		for (Person person : persons) {
-			System.out.println(person.toString());
+			System.out.println(person);
 		} // for
 
 		Person newPerson = new Person();
@@ -69,7 +69,7 @@ public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionS
 		
 		persons = personDAO.list();
 		for (Person person : persons) {
-			System.out.println(person.toString());
+			System.out.println(person);
 		} // for
 		
 		checkCache();
