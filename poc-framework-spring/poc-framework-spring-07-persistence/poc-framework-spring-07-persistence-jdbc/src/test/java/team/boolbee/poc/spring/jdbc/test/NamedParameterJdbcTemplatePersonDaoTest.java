@@ -20,7 +20,7 @@ public class NamedParameterJdbcTemplatePersonDaoTest extends AbstractDependencyI
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "datasource-context.xml", "jdbc-persistence-context.xml" };
+		return new String[] { "spring-datasource.xml", "spring-jdbc.xml" };
 	}
 
 	@SuppressWarnings("deprecation")

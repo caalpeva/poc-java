@@ -33,5 +33,20 @@
 		class="team.boolbee.poc.spring.jdbc.dao.SimpleJdbcTemplatePersonDao">
 		<property name="jdbcTemplate" ref="simpleJdbcTemplate" />
 	</bean>
+	
+		<bean id="jdbcPersonDao"
+		class="team.boolbee.poc.spring.jdbc.dao.JdbcPersonDaoSupport">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="namedParameterJdbcPersonDao"
+		class="team.boolbee.poc.spring.jdbc.dao.NamedParameterJdbcPersonDaoSupport">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="simpleJdbcPersonDao"
+		class="team.boolbee.poc.spring.jdbc.dao.SimpleJdbcPersonDaoSupport">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 </beans>

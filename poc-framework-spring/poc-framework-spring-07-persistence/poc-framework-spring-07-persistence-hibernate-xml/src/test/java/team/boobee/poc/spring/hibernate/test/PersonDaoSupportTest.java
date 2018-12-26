@@ -20,7 +20,7 @@ public class PersonDaoSupportTest extends AbstractDependencyInjectionSpringConte
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "datasource-context.xml", "hibernate-context.xml" };
+		return new String[] { "spring-datasource.xml", "spring-hibernate.xml" };
 	}
 
 	@SuppressWarnings("deprecation")

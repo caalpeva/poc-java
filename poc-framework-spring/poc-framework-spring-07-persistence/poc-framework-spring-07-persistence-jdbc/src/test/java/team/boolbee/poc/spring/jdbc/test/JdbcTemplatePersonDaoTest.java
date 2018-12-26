@@ -20,7 +20,7 @@ public class JdbcTemplatePersonDaoTest extends AbstractDependencyInjectionSpring
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "datasource-context.xml", "jdbc-persistence-context.xml" };
+		return new String[] { "spring-datasource.xml", "spring-jdbc.xml" };
 	}
 
 	@SuppressWarnings("deprecation")

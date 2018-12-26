@@ -9,19 +9,19 @@ import net.sf.ehcache.CacheManager;
 import team.boolbee.poc.spring.hibernate.dao.PersonDao;
 import team.boolbee.poc.spring.hibernate.model.Person;
 
-public class PersonTemplateDaoTest extends AbstractDependencyInjectionSpringContextTests {
+public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionSpringContextTests {
 
-	public PersonTemplateDaoTest() {
+	public PersonCacheableTemplateDaoTest() {
 	}
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "spring-datasource.xml", "spring-hibernate.xml" };
+		return new String[] { "spring-datasource.xml", "spring-hibernate.xml", "spring-cache.xml" };
 	}
 
 	@SuppressWarnings("deprecation")
 	public void testAddPerson() throws Exception {
-		PersonDao personDAO = (PersonDao) applicationContext.getBean("personDao");
+		PersonDao personDAO = (PersonDao) applicationContext.getBean("cacheablePersonDao");
 
 		Person newPerson = new Person();
 		newPerson.setFirstName("Alex");
@@ -36,6 +36,11 @@ public class PersonTemplateDaoTest extends AbstractDependencyInjectionSpringCont
 		foundPerson = personDAO.getPersonById(newPerson.getId());
 		System.out.println(foundPerson.toString());
 		
+		Thread.sleep(11000);
+
+		foundPerson = personDAO.getPersonById(newPerson.getId());
+		System.out.println(foundPerson.toString());
+		
 		assertNotNull(foundPerson);
 
 		checkCache();
@@ -43,7 +48,7 @@ public class PersonTemplateDaoTest extends AbstractDependencyInjectionSpringCont
 	
 	@SuppressWarnings("deprecation")
 	public void testAddOtherPerson() throws Exception {
-		PersonDao personDAO = (PersonDao) applicationContext.getBean("personDao");
+		PersonDao personDAO = (PersonDao) applicationContext.getBean("cacheablePersonDao");
 
 		List<Person> persons = personDAO.list();
 		for (Person person : persons) {
@@ -69,7 +74,7 @@ public class PersonTemplateDaoTest extends AbstractDependencyInjectionSpringCont
 		
 		checkCache();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private void checkCache() {
 		List<CacheManager> tempManagers = CacheManager.ALL_CACHE_MANAGERS;

@@ -1,0 +1,13 @@
+<ehcache>
+  <defaultCache
+      maxElementsInMemory="500"
+      eternal="true"
+      overflowToDisk="false"
+      memoryStoreEvictionPolicy="LFU" />
+  <cache name="pocCache"
+      maxElementsInMemory="500"
+      eternal="false"
+      timeToLiveSeconds="10"
+      overflowToDisk="false"
+      memoryStoreEvictionPolicy="LFU" />
+</ehcache>

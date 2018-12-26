@@ -15,7 +15,7 @@ public class PersonTemplateDaoTest extends AbstractDependencyInjectionSpringCont
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "datasource-context.xml", "hibernate-context.xml" };
+		return new String[] { "spring-datasource.xml", "spring-hibernate.xml" };
 	}
 
 	@SuppressWarnings("deprecation")

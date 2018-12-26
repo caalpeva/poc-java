@@ -1,8 +1,12 @@
 package team.boolbee.poc.spring.hibernate.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Person {
+public class Person implements Serializable {
+	
+	private static final long serialVersionUID = 3972192228292927273L;
+		
 	private Integer id;
 	private String firstName;
 	private String lastName;
