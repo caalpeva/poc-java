@@ -13,11 +13,10 @@
             http://www.springmodules.org/schema/ehcache
             http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd">
 
-	<!-- Loads the ehcache.xml configuration. From section 5.7.1, page 213. -->
+	<!-- Carga la configuración de la cache del archivo ehcache.xml -->
 	<ehcache:config configLocation="classpath:ehcache.xml" />
 
-	<!-- Configures the cache proxy, as described in section 5.7.2, page 215. 
-		I discontinued use of it in favor of the annotation-based caching. -->
+	<!-- Configura un proxy cache -->
 	<ehcache:proxy id="cacheablePersonDao" refId="personDao">
 		<ehcache:caching methodName="get*" cacheName="pocCache" />
 		<ehcache:caching methodName="list" cacheName="pocCache" />
@@ -26,14 +25,17 @@
 			when="before" />
 	</ehcache:proxy>
 
-<!-- 	<ehcache:proxy id="personDao"> -->
-<!-- 		<bean class="team.boolbee.poc.spring.hibernate.dao.PersonTemplateDao"> -->
-<!-- 			<property name="hibernateTemplate" ref="hibernateTemplate" /> -->
-<!-- 		</bean> -->
+	<!-- Configura un proxy cache con bean interno -->
+	<!--
+	<ehcache:proxy id="personDao">
+		<bean class="team.boolbee.poc.spring.hibernate.dao.PersonTemplateDao">
+			<property name="hibernateTemplate" ref="hibernateTemplate" />
+		</bean>
 	
-<!-- 		<ehcache:caching methodName="getPersonById" cacheName="pocCache" /> -->
-<!-- 		<ehcache:caching methodName="list" cacheName="pocCache" /> -->
-<!-- 		<ehcache:flushing methodName="savePerson" cacheNames="pocCache"	when="before" /> -->
-<!-- 	</ehcache:proxy> -->
+		<ehcache:caching methodName="getPersonById" cacheName="pocCache" />
+		<ehcache:caching methodName="list" cacheName="pocCache" />
+		<ehcache:flushing methodName="savePerson" cacheNames="pocCache"	when="before" />
+	</ehcache:proxy>
+	-->
 
 </beans>
