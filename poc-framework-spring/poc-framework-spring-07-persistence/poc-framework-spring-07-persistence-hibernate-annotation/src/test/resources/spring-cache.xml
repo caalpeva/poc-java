@@ -14,10 +14,12 @@
             http://www.springmodules.org/schema/ehcache
             http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd">
 
+	<!-- Se carga la configuración de la cache -->
 	<ehcache:config configLocation="classpath:ehcache.xml" />
 
-	<!-- Configures annotation-based caching -->
+	<!-- Se configura el cacheo basado en anotaciones -->
 	<ehcache:annotations>
-		<ehcache:caching id="rantzCacheModel" cacheName="rantzCache" />
+		<ehcache:caching id="pocCacheModel" cacheName="pocCache" />
+		<ehcache:flushing id ="pocFlushModel" cacheNames="pocCache" when="before" />
 	</ehcache:annotations>
 </beans>

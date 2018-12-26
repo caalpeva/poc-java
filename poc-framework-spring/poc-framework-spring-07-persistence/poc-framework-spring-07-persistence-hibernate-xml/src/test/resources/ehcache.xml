@@ -7,7 +7,7 @@
   <cache name="pocCache"
       maxElementsInMemory="500"
       eternal="false"
-      timeToLiveSeconds="10"
+      timeToLiveSeconds="5"
       overflowToDisk="false"
       memoryStoreEvictionPolicy="LFU" />
 </ehcache>

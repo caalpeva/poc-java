@@ -13,10 +13,10 @@
             http://www.springmodules.org/schema/ehcache
             http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd">
 
-	<!-- Carga la configuración de la cache del archivo ehcache.xml -->
+	<!-- Se carga la configuración de la cache -->
 	<ehcache:config configLocation="classpath:ehcache.xml" />
 
-	<!-- Configura un proxy cache -->
+	<!-- Se configuran proxies cache -->
 	<ehcache:proxy id="cacheablePersonDao" refId="personDao">
 		<ehcache:caching methodName="get*" cacheName="pocCache" />
 		<ehcache:caching methodName="list" cacheName="pocCache" />
@@ -25,7 +25,7 @@
 			when="before" />
 	</ehcache:proxy>
 
-	<!-- Configura un proxy cache con bean interno -->
+	<!-- Se configura un proxy cache con bean interno -->
 	<!--
 	<ehcache:proxy id="personDao">
 		<bean class="team.boolbee.poc.spring.hibernate.dao.PersonTemplateDao">

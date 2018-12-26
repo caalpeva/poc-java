@@ -10,7 +10,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>team.boobee.poc.spring.hibernate.model.Person</value>
+				<value>team.boolbee.poc.spring.hibernate.model.Person</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -26,15 +26,19 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="personDao" class="team.boobee.poc.spring.hibernate.dao.PersonTemplateDao">
+	<bean id="personDao" class="team.boolbee.poc.spring.hibernate.dao.PersonTemplateDao">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<bean id="cacheablePersonDao" class="team.boolbee.poc.spring.hibernate.dao.PersonCacheableTemplateDao">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 	
-	<bean id="personDaoSupport" class="team.boobee.poc.spring.hibernate.dao.PersonDaoSupport">
+	<bean id="personDaoSupport" class="team.boolbee.poc.spring.hibernate.dao.PersonDaoSupport">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean id="hibernateSessionPersonDao" class="team.boobee.poc.spring.hibernate.dao.PersonHibernateSessionDao">
+	<bean id="hibernateSessionPersonDao" class="team.boolbee.poc.spring.hibernate.dao.PersonHibernateSessionDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 

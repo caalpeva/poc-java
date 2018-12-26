@@ -6,7 +6,8 @@
       memoryStoreEvictionPolicy="LFU" />
   <cache name="pocCache"
       maxElementsInMemory="500"
-      eternal="true"
+      eternal="false"
+      timeToLiveSeconds="5"
       overflowToDisk="false"
       memoryStoreEvictionPolicy="LFU" />
 </ehcache>
