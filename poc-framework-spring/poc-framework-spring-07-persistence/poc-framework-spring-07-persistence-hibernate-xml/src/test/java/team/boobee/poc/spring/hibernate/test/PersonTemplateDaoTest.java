@@ -20,7 +20,7 @@ public class PersonTemplateDaoTest extends AbstractDependencyInjectionSpringCont
 	}
 
 	@SuppressWarnings("deprecation")
-	public void testAddPerson() throws Exception {
+	public void testAddFirstPerson() throws Exception {
 		PersonDao personDAO = (PersonDao) applicationContext.getBean("personDao");
 
 		Person newPerson = new Person();
@@ -42,7 +42,7 @@ public class PersonTemplateDaoTest extends AbstractDependencyInjectionSpringCont
 	}
 	
 	@SuppressWarnings("deprecation")
-	public void testAddOtherPerson() throws Exception {
+	public void testAddSecondPerson() throws Exception {
 		PersonDao personDAO = (PersonDao) applicationContext.getBean("personDao");
 
 		List<Person> persons = personDAO.list();

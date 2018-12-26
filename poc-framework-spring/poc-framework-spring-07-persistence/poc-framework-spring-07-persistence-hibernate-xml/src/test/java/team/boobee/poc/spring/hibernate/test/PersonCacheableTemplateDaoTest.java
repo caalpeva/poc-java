@@ -20,8 +20,8 @@ public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionS
 	}
 
 	@SuppressWarnings("deprecation")
-	public void testAddPerson() throws Exception {
-		PersonDao personDAO = (PersonDao) applicationContext.getBean("cacheablePersonDao");
+	public void testAddFirstPerson() throws Exception {
+		PersonDao personDAO = (PersonDao) applicationContext.getBean("cacheablePersonDao"); //personDao
 
 		Person newPerson = new Person();
 		newPerson.setFirstName("Alex");
@@ -47,8 +47,8 @@ public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionS
 	}
 	
 	@SuppressWarnings("deprecation")
-	public void testAddOtherPerson() throws Exception {
-		PersonDao personDAO = (PersonDao) applicationContext.getBean("cacheablePersonDao");
+	public void testAddSecondPerson() throws Exception {
+		PersonDao personDAO = (PersonDao) applicationContext.getBean("cacheablePersonDao"); //personDao
 
 		List<Person> persons = personDAO.list();
 		for (Person person : persons) {
