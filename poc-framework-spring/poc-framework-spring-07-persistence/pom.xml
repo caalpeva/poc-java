@@ -47,6 +47,11 @@
 			<version>${fixed.spring.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.10</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${fixed.spring.version}</version>
