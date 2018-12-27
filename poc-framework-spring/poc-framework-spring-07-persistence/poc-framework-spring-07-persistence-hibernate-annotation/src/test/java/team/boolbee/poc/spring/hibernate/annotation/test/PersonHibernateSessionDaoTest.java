@@ -28,15 +28,15 @@ public class PersonHibernateSessionDaoTest extends AbstractDependencyInjectionSp
 		PersonDao personDAO = (PersonDao) applicationContext.getBean("hibernateSessionPersonDao");
 
 		Person newPerson = new Person();
-		newPerson.setFirstName("Chris");
-		newPerson.setLastName("Froome");
+		newPerson.setName("Chris");
+		newPerson.setSurname("Froome");
 		newPerson.setBirthDate(new Date(85, 5, 20));
 
 		personDAO.savePerson(newPerson);
 		List<Person> persons = personDAO.list();
 		
 		for(Person person: persons) {
-			System.out.println(person.getId() + " " + person.getFirstName() + " " + person.getBirthDate());
+			System.out.println(person.getId() + " " + person.getName() + " " + person.getBirthDate());
 		} // for
 		
 		assertTrue(persons.contains(newPerson));

@@ -14,45 +14,47 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<spring.version>2.5.6</spring.version>
+		<!-- El código de Spring 2.5.x no asumió que se ejecutará en una versión 
+			de Java posterior a la 1.7. Para Java 8 y versiones posteriores, este código 
+			asumirá la versión 1.4 predeterminada. Debido a esto, la parte de anotaciones 
+			no funcionará adecuadamente. Como soluciones se aconseja la actualización 
+			de la versión de Spring o usar Java 7. -->
+		<fixed.spring.version>3.2.9.RELEASE</fixed.spring.version>
 		<hsqldb.version>2.3.1</hsqldb.version>
 		<spring.modules.version>0.8a</spring.modules.version>
 	</properties>
 
 	<modules>
 		<module>poc-framework-spring-07-persistence-jdbc</module>
-		<module>poc-framework-spring-07-persistence-hibernate</module>
-		<module>
-			poc-framework-spring-07-persistence-hibernate-xml
-		</module>
+		<module>poc-framework-spring-07-persistence-hibernate-annotation</module>
+		<module>poc-framework-spring-07-persistence-hibernate-xml</module>
 	</modules>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring</artifactId>
-			<version>${spring.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
+			<version>${fixed.spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>${spring.version}</version>
+			<version>${fixed.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${fixed.spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
+			<version>${fixed.spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
+			<version>${fixed.spring.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- <dependency> -->
@@ -84,7 +86,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
 

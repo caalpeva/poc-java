@@ -6,6 +6,7 @@
 		<artifactId>poc-framework-spring-07-persistence</artifactId>
 		<version>1.0.0</version>
 	</parent>
+	
 	<artifactId>poc-framework-spring-07-persistence-hibernate</artifactId>
 
 	<build>

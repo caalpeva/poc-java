@@ -11,6 +11,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>team.boolbee.poc.spring.hibernate.model.Person</value>
+				<value>team.boolbee.poc.spring.hibernate.model.Vehicle</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -30,16 +31,28 @@
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 
-	<bean id="cacheablePersonDao" class="team.boolbee.poc.spring.hibernate.dao.PersonCacheableTemplateDao">
+	<bean id="cacheablePersonDao"
+		class="team.boolbee.poc.spring.hibernate.dao.PersonCacheableTemplateDao">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
-	
+
 	<bean id="personDaoSupport" class="team.boolbee.poc.spring.hibernate.dao.PersonDaoSupport">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
-	<bean id="hibernateSessionPersonDao" class="team.boolbee.poc.spring.hibernate.dao.PersonHibernateSessionDao">
+
+	<bean id="hibernateSessionPersonDao"
+		class="team.boolbee.poc.spring.hibernate.dao.PersonHibernateSessionDao">
 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="vehicleRegistrationService"
+		class="team.boolbee.poc.spring.hibernate.service.VehicleRegistrationServiceImpl">
+		<property name="personDao" ref="personDao" />
+	</bean>
+
+	<bean id="vehicleRegistrationTransactionalService"
+		class="team.boolbee.poc.spring.hibernate.service.VehicleRegistrationTransactionalServiceImpl">
+		<property name="personDao" ref="personDao" />
 	</bean>
 
 </beans>

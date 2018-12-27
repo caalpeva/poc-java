@@ -13,7 +13,7 @@
 		<module>poc-framework-spring-04-di-advanced</module>
 		<module>poc-framework-spring-05-aop</module>
 		<module>poc-framework-spring-06-aop-aspecj</module>
-		<module>poc-framework-spring-07-jdbc</module>
+		<module>poc-framework-spring-07-persistence</module>
 	</modules>
 
 	<properties>

@@ -23,15 +23,15 @@ public class PersonTemplateDaoTest extends AbstractDependencyInjectionSpringCont
 		PersonDao personDAO = (PersonDao) applicationContext.getBean("personDao");
 
 		Person newPerson = new Person();
-		newPerson.setFirstName("Alex");
-		newPerson.setLastName("Zülle");
+		newPerson.setName("Alex");
+		newPerson.setSurname("Zülle");
 		newPerson.setBirthDate(new Date(68, 4, 5));
 
 		personDAO.savePerson(newPerson);
 		List<Person> persons = personDAO.list();
 		
 		for(Person person: persons) {
-			System.out.println(person.getId() + " " + person.getFirstName() + " " + person.getBirthDate());
+			System.out.println(person.getId() + " " + person.getName() + " " + person.getBirthDate());
 		} // for
 		
 		assertTrue(persons.contains(newPerson));
