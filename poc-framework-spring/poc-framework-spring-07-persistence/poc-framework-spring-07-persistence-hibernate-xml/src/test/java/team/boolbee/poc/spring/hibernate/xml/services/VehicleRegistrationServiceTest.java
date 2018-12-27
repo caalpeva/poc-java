@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.annotation.test;
+package team.boolbee.poc.spring.hibernate.xml.services;
 
 import java.util.Date;
 import java.util.List;
@@ -9,25 +9,25 @@ import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 import team.boolbee.poc.spring.hibernate.model.Person;
 import team.boolbee.poc.spring.hibernate.model.Vehicle;
 import team.boolbee.poc.spring.hibernate.model.VehicleType;
-import team.boolbee.poc.spring.hibernate.service.VehicleRegistrationService;
+import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
 
-public class PersonTransactionalServiceTest extends AbstractDependencyInjectionSpringContextTests {
+public class VehicleRegistrationServiceTest extends AbstractDependencyInjectionSpringContextTests {
 
-	public PersonTransactionalServiceTest() {
+	public VehicleRegistrationServiceTest() {
 	}
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "spring-datasource.xml", "spring-hibernate.xml", "spring-transactions.xml" };
+		return new String[] { "spring-datasource.xml", "spring-hibernate.xml" };
 	}
 
 	@SuppressWarnings("deprecation")
 	public void testAddPersonsWithVehicles() {
 		VehicleRegistrationService registrationServiceDAO = (VehicleRegistrationService) applicationContext
-				.getBean("vehicleRegistrationTransactionalService");
+				.getBean("vehicleRegistrationService");
 
 		Vehicle vehicle = new Vehicle();
-		vehicle.setPlateNumber("4653 NSX");
+		vehicle.setPlateNumber("4653 NSX"); // 2107 PZG 6936 AHR 7811 UAL 1974 WSE 4602 UEQ 5813 VID 3067 CWE
 		vehicle.setRegistrationDate(new Date());
 		vehicle.setType(VehicleType.AUTOMOBILE);
 
@@ -66,7 +66,10 @@ public class PersonTransactionalServiceTest extends AbstractDependencyInjectionS
 				System.out.println(currentPerson);
 			} // for
 
-			assertFalse(persons.contains(person));
+			assertTrue(persons.contains(person));
+
+			person = registrationServiceDAO.getPersonById(person.getId());
+			assertEquals(person.getVehicles().size(), 0);
 		}
 	}
 }

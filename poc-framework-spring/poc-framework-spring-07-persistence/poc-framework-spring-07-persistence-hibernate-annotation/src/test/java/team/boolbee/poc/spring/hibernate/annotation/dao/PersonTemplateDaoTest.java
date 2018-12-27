@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.annotation.test;
+package team.boolbee.poc.spring.hibernate.annotation.dao;
 
 import java.util.Date;
 import java.util.List;

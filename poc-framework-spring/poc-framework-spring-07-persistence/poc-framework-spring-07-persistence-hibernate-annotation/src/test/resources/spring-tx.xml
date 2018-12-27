@@ -18,4 +18,9 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+	<bean id="vehicleRegistrationTransactionalService"
+		class="team.boolbee.poc.spring.hibernate.service.VehicleRegistrationTransactionalServiceImpl">
+		<property name="personDao" ref="personDao" />
+	</bean>
+
 </beans>

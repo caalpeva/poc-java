@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.annotation.test;
+package team.boolbee.poc.spring.hibernate.annotation.services;
 
 import java.util.Date;
 import java.util.List;
@@ -11,9 +11,9 @@ import team.boolbee.poc.spring.hibernate.model.Vehicle;
 import team.boolbee.poc.spring.hibernate.model.VehicleType;
 import team.boolbee.poc.spring.hibernate.service.VehicleRegistrationService;
 
-public class PersonServiceTest extends AbstractDependencyInjectionSpringContextTests {
+public class VehicleRegistrationServiceTest extends AbstractDependencyInjectionSpringContextTests {
 
-	public PersonServiceTest() {
+	public VehicleRegistrationServiceTest() {
 	}
 
 	@Override

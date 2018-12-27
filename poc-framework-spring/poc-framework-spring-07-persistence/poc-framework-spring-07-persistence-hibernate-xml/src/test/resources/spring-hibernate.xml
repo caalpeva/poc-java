@@ -11,7 +11,8 @@
 		<property name="mappingResources">
 			<list>
 				<value>Person.hbm.xml</value>
-<!-- 				<value>team/boolbee/poc/spring/hibernate/model/Person.hbm.xml</value> -->
+				<value>Vehicle.hbm.xml</value>
+				<!-- <value>team/boolbee/poc/spring/hibernate/model/Person.hbm.xml</value> -->
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -38,6 +39,11 @@
 	<bean id="hibernateSessionPersonDao"
 		class="team.boolbee.poc.spring.hibernate.dao.PersonHibernateSessionDao">
 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="vehicleRegistrationService"
+		class="team.boolbee.poc.spring.hibernate.services.VehicleRegistrationServiceImpl">
+		<property name="personDao" ref="personDao" />
 	</bean>
 
 </beans>

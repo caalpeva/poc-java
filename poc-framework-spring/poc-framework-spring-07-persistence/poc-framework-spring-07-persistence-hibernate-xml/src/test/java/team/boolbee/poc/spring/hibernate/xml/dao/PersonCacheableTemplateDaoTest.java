@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.xml.test;
+package team.boolbee.poc.spring.hibernate.xml.dao;
 
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,8 @@ public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionS
 		PersonDao personDAO = (PersonDao) applicationContext.getBean("cacheablePersonDao"); //personDao
 
 		Person newPerson = new Person();
-		newPerson.setFirstName("Alex");
-		newPerson.setLastName("Zülle");
+		newPerson.setName("Alex");
+		newPerson.setSurname("Zülle");
 		newPerson.setBirthDate(new Date(68, 4, 5));
 
 		personDAO.savePerson(newPerson);
@@ -61,8 +61,8 @@ public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionS
 		} // for
 
 		Person newPerson = new Person();
-		newPerson.setFirstName("Tony");
-		newPerson.setLastName("Rominger");
+		newPerson.setName("Tony");
+		newPerson.setSurname("Rominger");
 		newPerson.setBirthDate(new Date(61, 2, 27));
 		
 		personDAO.savePerson(newPerson);

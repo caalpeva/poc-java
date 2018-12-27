@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.annotation.test;
+package team.boolbee.poc.spring.hibernate.annotation.dao;
 
 import java.util.Date;
 import java.util.List;
@@ -13,9 +13,9 @@ import team.boolbee.poc.spring.hibernate.model.Person;
  * Strictly speaking, this is an integration test, not a unit-test, as it tests
  * the service and its dependencies, as wired in Spring.
  */
-public class PersonDaoSupportTest extends AbstractDependencyInjectionSpringContextTests {
+public class PersonHibernateSessionDaoTest extends AbstractDependencyInjectionSpringContextTests {
 
-	public PersonDaoSupportTest() {
+	public PersonHibernateSessionDaoTest() {
 	}
 
 	@Override
@@ -25,12 +25,12 @@ public class PersonDaoSupportTest extends AbstractDependencyInjectionSpringConte
 
 	@SuppressWarnings("deprecation")
 	public void testAddPerson() throws Exception {
-		PersonDao personDAO = (PersonDao) applicationContext.getBean("personDaoSupport");
+		PersonDao personDAO = (PersonDao) applicationContext.getBean("hibernateSessionPersonDao");
 
 		Person newPerson = new Person();
-		newPerson.setName("Cadel");
-		newPerson.setSurname("Evans");
-		newPerson.setBirthDate(new Date(77, 2, 14));
+		newPerson.setName("Chris");
+		newPerson.setSurname("Froome");
+		newPerson.setBirthDate(new Date(85, 5, 20));
 
 		personDAO.savePerson(newPerson);
 		List<Person> persons = personDAO.list();

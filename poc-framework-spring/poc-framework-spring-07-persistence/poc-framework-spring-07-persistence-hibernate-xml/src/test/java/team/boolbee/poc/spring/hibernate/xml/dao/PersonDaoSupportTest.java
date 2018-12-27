@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.xml.test;
+package team.boolbee.poc.spring.hibernate.xml.dao;
 
 import java.util.Date;
 import java.util.List;
@@ -28,15 +28,15 @@ public class PersonDaoSupportTest extends AbstractDependencyInjectionSpringConte
 		PersonDao personDAO = (PersonDao) applicationContext.getBean("personDaoSupport");
 
 		Person newPerson = new Person();
-		newPerson.setFirstName("Cadel");
-		newPerson.setLastName("Evans");
+		newPerson.setName("Cadel");
+		newPerson.setSurname("Evans");
 		newPerson.setBirthDate(new Date(77, 2, 14));
 
 		personDAO.savePerson(newPerson);
 		List<Person> persons = personDAO.list();
 		
 		for(Person person: persons) {
-			System.out.println(person.getId() + " " + person.getFirstName() + " " + person.getBirthDate());
+			System.out.println(person);
 		} // for
 		
 		assertTrue(persons.contains(newPerson));

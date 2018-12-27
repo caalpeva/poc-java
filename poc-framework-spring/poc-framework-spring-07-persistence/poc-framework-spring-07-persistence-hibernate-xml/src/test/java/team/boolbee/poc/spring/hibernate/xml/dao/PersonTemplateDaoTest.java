@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.annotation.test;
+package team.boolbee.poc.spring.hibernate.xml.dao;
 
 import java.util.Date;
 import java.util.List;
@@ -9,19 +9,19 @@ import net.sf.ehcache.CacheManager;
 import team.boolbee.poc.spring.hibernate.dao.PersonDao;
 import team.boolbee.poc.spring.hibernate.model.Person;
 
-public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionSpringContextTests {
+public class PersonTemplateDaoTest extends AbstractDependencyInjectionSpringContextTests {
 
-	public PersonCacheableTemplateDaoTest() {
+	public PersonTemplateDaoTest() {
 	}
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "spring-datasource.xml", "spring-hibernate.xml", "spring-cache.xml" };
+		return new String[] { "spring-datasource.xml", "spring-hibernate.xml" };
 	}
 
 	@SuppressWarnings("deprecation")
 	public void testAddFirstPerson() throws Exception {
-		PersonDao personDAO = (PersonDao) applicationContext.getBean("cacheablePersonDao");
+		PersonDao personDAO = (PersonDao) applicationContext.getBean("personDao");
 
 		Person newPerson = new Person();
 		newPerson.setName("Alex");
@@ -36,11 +36,6 @@ public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionS
 		foundPerson = personDAO.getPersonById(newPerson.getId());
 		System.out.println(foundPerson);
 		
-		Thread.sleep(6000);
-
-		foundPerson = personDAO.getPersonById(newPerson.getId());
-		System.out.println(foundPerson);
-		
 		assertNotNull(foundPerson);
 
 		checkCache();
@@ -48,7 +43,7 @@ public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionS
 	
 	@SuppressWarnings("deprecation")
 	public void testAddSecondPerson() throws Exception {
-		PersonDao personDAO = (PersonDao) applicationContext.getBean("cacheablePersonDao");
+		PersonDao personDAO = (PersonDao) applicationContext.getBean("personDao");
 
 		List<Person> persons = personDAO.list();
 		for (Person person : persons) {
@@ -74,7 +69,7 @@ public class PersonCacheableTemplateDaoTest extends AbstractDependencyInjectionS
 		
 		checkCache();
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	private void checkCache() {
 		List<CacheManager> tempManagers = CacheManager.ALL_CACHE_MANAGERS;
