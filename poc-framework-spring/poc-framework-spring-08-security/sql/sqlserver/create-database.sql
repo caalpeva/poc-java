@@ -1,0 +1,1 @@
+CREATE DATABASE POC_SP08_HB_security;

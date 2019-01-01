@@ -14,6 +14,7 @@
 		<module>poc-framework-spring-05-aop</module>
 		<module>poc-framework-spring-06-aop-aspecj</module>
 		<module>poc-framework-spring-07-persistence</module>
+		<module>poc-framework-spring-08-security</module>
 	</modules>
 
 	<properties>

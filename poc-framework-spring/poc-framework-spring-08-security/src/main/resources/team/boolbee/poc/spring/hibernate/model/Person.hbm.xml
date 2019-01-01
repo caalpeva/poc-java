@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping package="team.boolbee.poc.spring.hibernate.model">
+	<class name="Person" table="PERSON">
+		<id name="id" column="id">
+			<generator class="identity" />
+		</id>
+		<property name="name"/>
+		<property name="surname"/>
+		<property name="birthDate"/>
+		<list name="vehicles" cascade="all-delete-orphan" lazy="false">
+			<key column="owner" />
+			<index column="owner_order" />
+			<one-to-many class="Vehicle" />
+		</list>
+	</class>
+</hibernate-mapping>

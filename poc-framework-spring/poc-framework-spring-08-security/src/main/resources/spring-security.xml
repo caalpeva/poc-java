@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref bean="daoAuthenticationProvider" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="daoAuthenticationProvider"
+		class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+	</bean>
+
+	<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
+		<property name="userMap">
+			<value>
+				egon=egon,ROLE_PRESIDENT
+				ray=ray,disabled,ROLE_PRESIDENT
+				venkman=venkman,ROLE_ANALIST,ROLE_OPS
+				winston=winston,ROLE_OPS
+			</value>
+		</property>
+	</bean>
+
+	<bean id="authenticationEntryPoint"
+		class="org.acegisecurity.ui.basicauth.BasicProcessingFilterEntryPoint">
+		<property name="realmName" value="Introduzca credenciales" />
+	</bean>
+
+	<bean id="httpSessionIntegrationFilter"
+		class="org.acegisecurity.context.HttpSessionContextIntegrationFilter">
+		<property name="forceEagerSessionCreation" value="true" />
+	</bean>
+
+	<bean id="authenticationProcessingFilter" class="org.acegisecurity.ui.basicauth.BasicProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationEntryPoint" ref="authenticationEntryPoint" />
+	</bean>
+
+	<!-- <bean id="authenticationProcessingFilter" class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter"> 
+		<property name="authenticationManager" ref="authenticationManager" /> <property 
+		name="authenticationFailureUrl" value="/login.htm?login_error=1" /> <property 
+		name="defaultTargetUrl" value="/" /> <property name="filterProcessesUrl" 
+		value="/j_acegi_security_check" /> </bean> -->
+
+	<bean id="filterSecurityInterceptor"
+		class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="accessDecisionManager" ref="accessDecisionManager" />
+		<property name="objectDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/login.htm=ROLE_PRESIDENT
+				/home.htm=ROLE_PRESIDENT
+			</value>
+		</property>
+	</bean>
+
+	<bean id="filterChainProxy" class="org.acegisecurity.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**=httpSessionIntegrationFilter,authenticationProcessingFilter,filterSecurityInterceptor
+			</value>
+		</property>
+	</bean>
+
+	<!-- ,exceptionTranslationFilter,filterSecurityInterceptor -->
+
+	<bean id="accessDecisionManager" class="org.acegisecurity.vote.UnanimousBased">
+		<property name="allowIfAllAbstainDecisions" value="false" />
+		<property name="decisionVoters">
+			<list>
+				<bean class="org.acegisecurity.vote.RoleVoter" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
