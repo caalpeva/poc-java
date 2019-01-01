@@ -7,39 +7,49 @@
 			http://www.springframework.org/schema/aop
 			http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
 
-	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
-		<property name="providers">
-			<list>
-				<ref bean="daoAuthenticationProvider" />
-			</list>
-		</property>
-		<property name="sessionController" ref="concurrentSessionController" />
-	</bean>
-
-	<bean id="daoAuthenticationProvider"
-		class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
-		<property name="userDetailsService" ref="userDetailsService" />
-	</bean>
-
-	<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
-		<property name="userMap">
+	<bean id="filterChainProxy" class="org.acegisecurity.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
 			<value>
-				egon=egon,ROLE_PRESIDENT
-				ray=ray,disabled,ROLE_PRESIDENT
-				venkman=venkman,ROLE_ANALIST,ROLE_OPS
-				winston=winston,ROLE_OPS
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**=concurrentSessionFilter,httpSessionIntegrationFilter,logoutFilter,authenticationProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor
 			</value>
 		</property>
 	</bean>
 
-	<bean id="authenticationEntryPoint"
-		class="org.acegisecurity.ui.basicauth.BasicProcessingFilterEntryPoint">
-		<property name="realmName" value="Introduzca credenciales" />
+	<!-- ============================== -->
+	<!--            FILTROS             -->
+	<!-- ============================== -->
+
+	<!-- Filtro requerido por el paquete de manejo de sesión concurrente. Este 
+		filtro realiza dos funciones. Primero, llama a SessionRegistry.refreshLastRequest 
+		(String) para cada solicitud, de modo que las sesiones registradas siempre 
+		tengan la fecha / hora correcta de "última actualización". En segundo lugar, 
+		recupera una SessionInformation del SessionRegistry para cada solicitud y 
+		comprueba si la sesión ha sido marcada como caducada. Si se ha marcado como 
+		caducado, se llamará a los manejadores de cierre de sesión configurados (como 
+		ocurre con LogoutFilter), normalmente para invalidar la sesión. Para manejar 
+		la sesión caducada, se realiza una llamada a SessionInformationExpiredStrategy. 
+		La invalidación de la sesión hará que se publique un HttpSessionDestroyedEvent 
+		a través del HttpSessionEventPublisher registrado en web.xml. -->
+	<bean id="concurrentSessionFilter" class="org.acegisecurity.concurrent.ConcurrentSessionFilter">
+		<property name="sessionRegistry" ref="sessionRegistry" />
+		<property name="expiredUrl" value="/home.htm" />
 	</bean>
 
 	<bean id="httpSessionIntegrationFilter"
 		class="org.acegisecurity.context.HttpSessionContextIntegrationFilter">
 		<property name="forceEagerSessionCreation" value="true" />
+	</bean>
+
+	<bean id="logoutFilter" class="org.acegisecurity.ui.logout.LogoutFilter">
+		<constructor-arg value="/home.htm" />
+		<constructor-arg>
+			<list>
+				<!-- <ref bean="rememberMeServices" /> -->
+				<bean class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler" />
+			</list>
+		</constructor-arg>
 	</bean>
 
 	<bean id="authenticationProcessingFilter" class="org.acegisecurity.ui.basicauth.BasicProcessingFilter">
@@ -76,22 +86,9 @@
 		</property>
 	</bean>
 
-	<!-- Filtro requerido por el paquete de manejo de sesión concurrente. Este 
-		filtro realiza dos funciones. Primero, llama a SessionRegistry.refreshLastRequest 
-		(String) para cada solicitud, de modo que las sesiones registradas siempre 
-		tengan la fecha / hora correcta de "última actualización". En segundo lugar, 
-		recupera una SessionInformation del SessionRegistry para cada solicitud y 
-		comprueba si la sesión ha sido marcada como caducada. Si se ha marcado como 
-		caducado, se llamará a los manejadores de cierre de sesión configurados (como 
-		ocurre con LogoutFilter), normalmente para invalidar la sesión. Para manejar 
-		la sesión caducada, se realiza una llamada a SessionInformationExpiredStrategy. 
-		La invalidación de la sesión hará que se publique un HttpSessionDestroyedEvent 
-		a través del HttpSessionEventPublisher registrado en web.xml. -->
-
-	<bean id="concurrentSessionFilter" class="org.acegisecurity.concurrent.ConcurrentSessionFilter">
-		<property name="sessionRegistry" ref="sessionRegistry" />
-		<property name="expiredUrl" value="/home.htm" />
-	</bean>
+	<!-- ============================== -->
+	<!--        CONTROL DE SESION       -->
+	<!-- ============================== -->
 
 	<bean id="sessionRegistry" class="org.acegisecurity.concurrent.SessionRegistryImpl" />
 
@@ -102,25 +99,43 @@
 		<property name="exceptionIfMaximumExceeded" value="true" />
 	</bean>
 
-	<bean id="filterChainProxy" class="org.acegisecurity.util.FilterChainProxy">
-		<property name="filterInvocationDefinitionSource">
+	<!-- ============================== -->
+	<!--     GESTOR DE AUTENTICACION    -->
+	<!-- ============================== -->
+	
+	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref bean="daoAuthenticationProvider" />
+			</list>
+		</property>
+		<property name="sessionController" ref="concurrentSessionController" />
+	</bean>
+
+	<bean id="daoAuthenticationProvider"
+		class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+	</bean>
+
+	<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
+		<property name="userMap">
 			<value>
-				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
-				PATTERN_TYPE_APACHE_ANT
-				/**=concurrentSessionFilter,httpSessionIntegrationFilter,logoutFilter,authenticationProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor
+				egon=egon,ROLE_PRESIDENT
+				ray=ray,disabled,ROLE_PRESIDENT
+				venkman=venkman,ROLE_ANALIST,ROLE_OPS
+				winston=winston,ROLE_OPS
 			</value>
 		</property>
 	</bean>
 
-	<bean id="logoutFilter" class="org.acegisecurity.ui.logout.LogoutFilter">
-		<constructor-arg value="/home.htm" />
-		<constructor-arg>
-			<list>
-				<!-- <ref bean="rememberMeServices" /> -->
-				<bean class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler" />
-			</list>
-		</constructor-arg>
+	<bean id="authenticationEntryPoint"
+		class="org.acegisecurity.ui.basicauth.BasicProcessingFilterEntryPoint">
+		<property name="realmName" value="Introduzca credenciales" />
 	</bean>
+
+	<!-- ============================== -->
+	<!--  GESTOR DE DECISION DE ACCESO  -->
+	<!-- ============================== -->
 
 	<bean id="accessDecisionManager" class="org.acegisecurity.vote.UnanimousBased">
 		<property name="allowIfAllAbstainDecisions" value="false" />
