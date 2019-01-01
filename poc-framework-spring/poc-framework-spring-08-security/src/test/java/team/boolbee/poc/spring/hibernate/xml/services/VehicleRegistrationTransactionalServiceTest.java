@@ -68,5 +68,11 @@ public class VehicleRegistrationTransactionalServiceTest extends AbstractDepende
 
 			assertFalse(persons.contains(person));
 		}
+		
+		persons = registrationServiceDAO.getPersons();
+
+		for (Person currentPerson : persons) {
+			System.out.println(currentPerson);
+		} // for
 	}
 }
