@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.annotation.services;
+package team.boolbee.poc.spring.hibernate.xml.services;
 
 import java.util.Date;
 import java.util.List;
@@ -9,16 +9,16 @@ import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 import team.boolbee.poc.spring.hibernate.model.Person;
 import team.boolbee.poc.spring.hibernate.model.Vehicle;
 import team.boolbee.poc.spring.hibernate.model.VehicleType;
-import team.boolbee.poc.spring.hibernate.service.VehicleRegistrationService;
+import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
 
-public class VehicleRegistrationServiceTest extends AbstractDependencyInjectionSpringContextTests {
+public class VehicleRegistrationTransactionalServiceTest extends AbstractDependencyInjectionSpringContextTests {
 
-	public VehicleRegistrationServiceTest() {
+	public VehicleRegistrationTransactionalServiceTest() {
 	}
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "spring-datasource.xml", "spring-hibernate.xml" };
+		return new String[] { "spring-datasource.xml", "spring-hibernate.xml", "spring-tx.xml" };
 	}
 
 	@SuppressWarnings("deprecation")
@@ -27,14 +27,14 @@ public class VehicleRegistrationServiceTest extends AbstractDependencyInjectionS
 				.getBean("vehicleRegistrationService");
 
 		Vehicle vehicle = new Vehicle();
-		vehicle.setPlateNumber("4653 NSX"); // 6936 UAL 1974 WSE 4602 UEQ 5813 VID 3067 CWE
+		vehicle.setPlateNumber("AHR 7811");
 		vehicle.setRegistrationDate(new Date());
 		vehicle.setType(VehicleType.AUTOMOBILE);
 
 		Person person = new Person();
-		person.setName("Alex");
-		person.setSurname("Zülle");
-		person.setBirthDate(new Date(68, 4, 5));
+		person.setName("Dan");
+		person.setSurname("Aykroyd");
+		person.setBirthDate(new Date(52, 6, 1));
 		person.addVehicle(vehicle);
 
 		registrationServiceDAO.register(person);
@@ -48,14 +48,14 @@ public class VehicleRegistrationServiceTest extends AbstractDependencyInjectionS
 		assertTrue(persons.contains(person));
 
 		vehicle = new Vehicle();
-		vehicle.setPlateNumber("4653 NSX");
+		vehicle.setPlateNumber("2107 PZG");
 		vehicle.setRegistrationDate(new Date());
 		vehicle.setType(VehicleType.MOTORCYCLE);
 
 		person = new Person();
-		person.setName("Cadel");
-		person.setSurname("Evans");
-		person.setBirthDate(new Date(77, 2, 14));
+		person.setName("Bill");
+		person.setSurname("Murray");
+		person.setBirthDate(new Date(50, 8, 21));
 		person.addVehicle(vehicle);
 
 		try {
@@ -66,10 +66,7 @@ public class VehicleRegistrationServiceTest extends AbstractDependencyInjectionS
 				System.out.println(currentPerson);
 			} // for
 
-			assertTrue(persons.contains(person));
-
-			person = registrationServiceDAO.getPersonById(person.getId());
-			assertEquals(person.getVehicles().size(), 0);
+			assertFalse(persons.contains(person));
 		}
 	}
 }

@@ -52,6 +52,15 @@
 		name="defaultTargetUrl" value="/" /> <property name="filterProcessesUrl" 
 		value="/j_acegi_security_check" /> </bean> -->
 
+	<bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint" ref="authenticationEntryPoint" />
+		<property name="accessDeniedHandler">
+			<bean class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
+				<property name="errorPage" value="/error.htm" />
+			</bean>
+		</property>	
+	</bean>
+
 	<bean id="filterSecurityInterceptor"
 		class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
 		<property name="authenticationManager" ref="authenticationManager" />
@@ -71,7 +80,7 @@
 			<value>
 				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
 				PATTERN_TYPE_APACHE_ANT
-				/**=httpSessionIntegrationFilter,authenticationProcessingFilter,filterSecurityInterceptor
+				/**=httpSessionIntegrationFilter,authenticationProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor
 			</value>
 		</property>
 	</bean>
