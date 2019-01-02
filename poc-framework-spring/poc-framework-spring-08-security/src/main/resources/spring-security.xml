@@ -12,11 +12,11 @@
 			<value>
 				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
 				PATTERN_TYPE_APACHE_ANT
-				/**=concurrentSessionFilter,httpSessionIntegrationFilter,logoutFilter,authenticationProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor
+				/**=concurrentSessionFilter,httpSessionIntegrationFilter,logoutFilter,authenticationProcessingFilter,rememberMeProcessingFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor
 			</value>
 		</property>
 	</bean>
-	<!-- channelProcessingFilter -->
+	<!-- channelProcessingFilter,anonymousProcessingFilter -->
 
 	<!-- ============================== -->
 	<!-- ========== FILTROS =========== -->
@@ -64,7 +64,7 @@
 		<constructor-arg value="/login.htm" />
 		<constructor-arg>
 			<list>
-				<!-- <ref bean="rememberMeServices" /> -->
+				<ref bean="rememberMeServices" />
 				<bean class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler" />
 			</list>
 		</constructor-arg>
@@ -82,10 +82,24 @@
 		<property name="authenticationFailureUrl" value="/login.htm?login_error=1" />
 		<property name="defaultTargetUrl" value="/" />
 		<property name="filterProcessesUrl" value="/j_acegi_security_check" />
+		<property name="rememberMeServices" ref="rememberMeServices"></property>
+	</bean>
+
+	<bean id="rememberMeProcessingFilter"
+		class="org.acegisecurity.ui.rememberme.RememberMeProcessingFilter">
+		<property name="rememberMeServices" ref="rememberMeServices" />
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+
+	<bean id="anonymousProcessingFilter"
+		class="org.acegisecurity.providers.anonymous.AnonymousProcessingFilter">
+		<property name="key" value="foobar" />
+		<property name="userAttribute" value="anonymousUser,ROLE_ADMIN" /> <!-- ROLE_ANONYMOUS -->
 	</bean>
 
 	<bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
-		<!-- <property name="authenticationEntryPoint" ref="basicAuthenticationEntryPoint" /> -->
+		<!-- <property name="authenticationEntryPoint" ref="basicAuthenticationEntryPoint" 
+			/> -->
 		<property name="authenticationEntryPoint">
 			<bean
 				class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
@@ -108,7 +122,7 @@
 			<value>
 				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
 				PATTERN_TYPE_APACHE_ANT
-				/home.htm=ROLE_PRESIDENT
+				/home.htm=ROLE_ADMIN
 			</value>
 		</property>
 	</bean>
@@ -127,9 +141,9 @@
 		</property>
 	</bean>
 
-	<!-- ============================== -->
-	<!-- CONTROL DE SESION -->
-	<!-- ============================== -->
+	<!-- =============================== -->
+	<!-- ====== CONTROL DE SESION ====== -->
+	<!-- =============================== -->
 
 	<bean id="sessionRegistry" class="org.acegisecurity.concurrent.SessionRegistryImpl" />
 
@@ -140,17 +154,20 @@
 		<property name="exceptionIfMaximumExceeded" value="true" />
 	</bean>
 
-	<!-- ============================== -->
-	<!-- GESTOR DE AUTENTICACION -->
-	<!-- ============================== -->
+	<!-- =============================== -->
+	<!-- === GESTOR DE AUTENTICACION === -->
+	<!-- =============================== -->
 
 	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
 		<property name="providers">
 			<list>
 				<ref bean="daoAuthenticationProvider" />
+				<ref bean="anonymousAuthenticationProvider" />
+				<ref bean="rememberMeAuthenticationProvider" />
 			</list>
 		</property>
-		<property name="sessionController" ref="concurrentSessionController" />
+		<!-- <property name="sessionController" ref="concurrentSessionController" 
+			/> -->
 	</bean>
 
 	<bean id="daoAuthenticationProvider"
@@ -161,10 +178,10 @@
 	<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
 		<property name="userMap">
 			<value>
-				egon=egon,ROLE_PRESIDENT
-				ray=ray,disabled,ROLE_PRESIDENT
-				venkman=venkman,ROLE_ANALIST,ROLE_OPS
-				winston=winston,ROLE_OPS
+				egon=egon,ROLE_ADMIN
+				ray=ray,disabled,ROLE_ADMIN
+				venkman=venkman,ROLE_ADMIN,ROLE_ANALIST
+				winston=winston,ROLE_ANALIST,ROLE_OPS
 			</value>
 		</property>
 	</bean>
@@ -172,6 +189,30 @@
 	<bean id="basicAuthenticationEntryPoint"
 		class="org.acegisecurity.ui.basicauth.BasicProcessingFilterEntryPoint">
 		<property name="realmName" value="poc-webapp-spring-security" />
+	</bean>
+
+	<!-- ================================ -->
+	<!-- ===== SERVICIO REMEMBERME ====== -->
+	<!-- ================================ -->
+
+	<bean id="rememberMeServices"
+		class="org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices">
+		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="key" value="poc" />
+	</bean>
+
+	<bean id="rememberMeAuthenticationProvider"
+		class="org.acegisecurity.providers.rememberme.RememberMeAuthenticationProvider">
+		<property name="key" value="poc" />
+	</bean>
+
+	<!-- ====================== -->
+	<!-- ===== ANONYMOUS ====== -->
+	<!-- ====================== -->
+
+	<bean id="anonymousAuthenticationProvider"
+		class="org.acegisecurity.providers.anonymous.AnonymousAuthenticationProvider">
+		<property name="key" value="foobar" />
 	</bean>
 
 	<!-- ================================ -->
