@@ -16,10 +16,24 @@
 			</value>
 		</property>
 	</bean>
+	<!-- channelProcessingFilter -->
 
 	<!-- ============================== -->
-	<!--            FILTROS             -->
+	<!-- ========== FILTROS =========== -->
 	<!-- ============================== -->
+
+	<bean id="channelProcessingFilter" class="org.acegisecurity.securechannel.ChannelProcessingFilter">
+		<property name="channelDecisionManager" ref="channelDecisionManager" />
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/login.htm=REQUIRES_SECURE_CHANNEL
+				/j_acegi_security_check*=REQUIRES_SECURE_CHANNEL
+				/**=REQUIRES_INSECURE_CHANNEL
+			</value>
+		</property>
+	</bean>
 
 	<!-- Filtro requerido por el paquete de manejo de sesión concurrente. Este 
 		filtro realiza dos funciones. Primero, llama a SessionRegistry.refreshLastRequest 
@@ -34,37 +48,51 @@
 		a través del HttpSessionEventPublisher registrado en web.xml. -->
 	<bean id="concurrentSessionFilter" class="org.acegisecurity.concurrent.ConcurrentSessionFilter">
 		<property name="sessionRegistry" ref="sessionRegistry" />
-		<property name="expiredUrl" value="/home.htm" />
+		<property name="expiredUrl" value="/login.htm" />
 	</bean>
 
 	<bean id="httpSessionIntegrationFilter"
 		class="org.acegisecurity.context.HttpSessionContextIntegrationFilter">
+		<property name="context"
+			value="org.acegisecurity.context.SecurityContextImpl" />
+		<property name="allowSessionCreation" value="true" />
 		<property name="forceEagerSessionCreation" value="true" />
+		<property name="cloneFromHttpSession" value="false" />
 	</bean>
 
 	<bean id="logoutFilter" class="org.acegisecurity.ui.logout.LogoutFilter">
-		<constructor-arg value="/home.htm" />
+		<constructor-arg value="/login.htm" />
 		<constructor-arg>
 			<list>
 				<!-- <ref bean="rememberMeServices" /> -->
 				<bean class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler" />
 			</list>
 		</constructor-arg>
+		<property name="filterProcessesUrl" value="/Logout" />
 	</bean>
 
-	<bean id="authenticationProcessingFilter" class="org.acegisecurity.ui.basicauth.BasicProcessingFilter">
+	<bean id="basicProcessingFilter" class="org.acegisecurity.ui.basicauth.BasicProcessingFilter">
 		<property name="authenticationManager" ref="authenticationManager" />
-		<property name="authenticationEntryPoint" ref="authenticationEntryPoint" />
+		<property name="authenticationEntryPoint" ref="basicAuthenticationEntryPoint" />
 	</bean>
 
-	<!-- <bean id="authenticationProcessingFilter" class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter"> 
-		<property name="authenticationManager" ref="authenticationManager" /> <property 
-		name="authenticationFailureUrl" value="/login.htm?login_error=1" /> <property 
-		name="defaultTargetUrl" value="/" /> <property name="filterProcessesUrl" 
-		value="/j_acegi_security_check" /> </bean> -->
+	<bean id="authenticationProcessingFilter"
+		class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationFailureUrl" value="/login.htm?login_error=1" />
+		<property name="defaultTargetUrl" value="/" />
+		<property name="filterProcessesUrl" value="/j_acegi_security_check" />
+	</bean>
 
 	<bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
-		<property name="authenticationEntryPoint" ref="authenticationEntryPoint" />
+		<!-- <property name="authenticationEntryPoint" ref="basicAuthenticationEntryPoint" /> -->
+		<property name="authenticationEntryPoint">
+			<bean
+				class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+				<property name="loginFormUrl" value="/login.htm" />
+				<property name="forceHttps" value="false" />
+			</bean>
+		</property>
 		<property name="accessDeniedHandler">
 			<bean class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
 				<property name="errorPage" value="/error.htm" />
@@ -80,14 +108,27 @@
 			<value>
 				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
 				PATTERN_TYPE_APACHE_ANT
-				/login.htm=ROLE_PRESIDENT
 				/home.htm=ROLE_PRESIDENT
 			</value>
 		</property>
 	</bean>
 
+	<!-- ================================= -->
+	<!-- == GESTOR DE DECISION DE CANAL == -->
+	<!-- ================================= -->
+
+	<bean id="channelDecisionManager"
+		class="org.acegisecurity.securechannel.ChannelDecisionManagerImpl">
+		<property name="channelProcessors">
+			<list>
+				<bean class="org.acegisecurity.securechannel.SecureChannelProcessor" />
+				<bean class="org.acegisecurity.securechannel.InsecureChannelProcessor" />
+			</list>
+		</property>
+	</bean>
+
 	<!-- ============================== -->
-	<!--        CONTROL DE SESION       -->
+	<!-- CONTROL DE SESION -->
 	<!-- ============================== -->
 
 	<bean id="sessionRegistry" class="org.acegisecurity.concurrent.SessionRegistryImpl" />
@@ -100,9 +141,9 @@
 	</bean>
 
 	<!-- ============================== -->
-	<!--     GESTOR DE AUTENTICACION    -->
+	<!-- GESTOR DE AUTENTICACION -->
 	<!-- ============================== -->
-	
+
 	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
 		<property name="providers">
 			<list>
@@ -128,14 +169,14 @@
 		</property>
 	</bean>
 
-	<bean id="authenticationEntryPoint"
+	<bean id="basicAuthenticationEntryPoint"
 		class="org.acegisecurity.ui.basicauth.BasicProcessingFilterEntryPoint">
-		<property name="realmName" value="Introduzca credenciales" />
+		<property name="realmName" value="poc-webapp-spring-security" />
 	</bean>
 
-	<!-- ============================== -->
-	<!--  GESTOR DE DECISION DE ACCESO  -->
-	<!-- ============================== -->
+	<!-- ================================ -->
+	<!-- = GESTOR DE DECISION DE ACCESO = -->
+	<!-- ================================ -->
 
 	<bean id="accessDecisionManager" class="org.acegisecurity.vote.UnanimousBased">
 		<property name="allowIfAllAbstainDecisions" value="false" />
@@ -145,5 +186,7 @@
 			</list>
 		</property>
 	</bean>
+
+	<bean id="loggerListener" class="org.acegisecurity.event.authentication.LoggerListener" />
 
 </beans>
