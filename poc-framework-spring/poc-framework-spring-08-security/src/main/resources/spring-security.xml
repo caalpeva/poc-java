@@ -68,7 +68,7 @@
 				<bean class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler" />
 			</list>
 		</constructor-arg>
-		<property name="filterProcessesUrl" value="/Logout" />
+		<property name="filterProcessesUrl" value="/logout" /> <!-- j_acegi_logout -->
 	</bean>
 
 	<bean id="basicProcessingFilter" class="org.acegisecurity.ui.basicauth.BasicProcessingFilter">
