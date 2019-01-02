@@ -48,7 +48,7 @@
 		a través del HttpSessionEventPublisher registrado en web.xml. -->
 	<bean id="concurrentSessionFilter" class="org.acegisecurity.concurrent.ConcurrentSessionFilter">
 		<property name="sessionRegistry" ref="sessionRegistry" />
-		<property name="expiredUrl" value="/login.htm" />
+		<property name="expiredUrl" value="/home.htm" />
 	</bean>
 
 	<bean id="httpSessionIntegrationFilter"
@@ -61,7 +61,7 @@
 	</bean>
 
 	<bean id="logoutFilter" class="org.acegisecurity.ui.logout.LogoutFilter">
-		<constructor-arg value="/login.htm" />
+		<constructor-arg value="/home.htm" />
 		<constructor-arg>
 			<list>
 				<ref bean="rememberMeServices" />
@@ -98,8 +98,7 @@
 	</bean>
 
 	<bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
-		<!-- <property name="authenticationEntryPoint" ref="basicAuthenticationEntryPoint" 
-			/> -->
+<!-- 		<property name="authenticationEntryPoint" ref="basicAuthenticationEntryPoint"/> -->
 		<property name="authenticationEntryPoint">
 			<bean
 				class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
