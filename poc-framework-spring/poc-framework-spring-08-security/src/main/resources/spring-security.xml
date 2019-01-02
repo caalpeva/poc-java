@@ -126,9 +126,9 @@
 		</property>
 	</bean>
 
-	<!-- ================================= -->
-	<!-- == GESTOR DE DECISION DE CANAL == -->
-	<!-- ================================= -->
+	<!-- ======================================= -->
+	<!-- ===== GESTOR DE DECISION DE CANAL ===== -->
+	<!-- ======================================= -->
 
 	<bean id="channelDecisionManager"
 		class="org.acegisecurity.securechannel.ChannelDecisionManagerImpl">
@@ -153,9 +153,9 @@
 		<property name="exceptionIfMaximumExceeded" value="true" />
 	</bean>
 
-	<!-- =============================== -->
-	<!-- === GESTOR DE AUTENTICACION === -->
-	<!-- =============================== -->
+	<!-- =================================== -->
+	<!-- ===== GESTOR DE AUTENTICACION ===== -->
+	<!-- =================================== -->
 
 	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
 		<property name="providers">
@@ -214,9 +214,9 @@
 		<property name="key" value="foobar" />
 	</bean>
 
-	<!-- ================================ -->
-	<!-- = GESTOR DE DECISION DE ACCESO = -->
-	<!-- ================================ -->
+	<!-- ======================================== -->
+	<!-- ===== GESTOR DE DECISION DE ACCESO ===== -->
+	<!-- ======================================== -->
 
 	<bean id="accessDecisionManager" class="org.acegisecurity.vote.UnanimousBased">
 		<property name="allowIfAllAbstainDecisions" value="false" />
