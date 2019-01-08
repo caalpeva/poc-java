@@ -12,7 +12,7 @@
 		<put name="content" value="/WEB-INF/jsp/defaultContentPage.jsp" />
 		<put name="footer" value="/WEB-INF/jsp/footer.jsp" />
 	</definition>
-	
+
 	<definition name="userMenutemplate" page="/WEB-INF/jsp/pageTemplate.jsp">
 		<put name="title" value="RoadRantz" />
 		<!-- <put name="header" value=".header"/> -->
@@ -28,6 +28,21 @@
 		<put name="title" value="Welcome to RoadRantz" />
 		<put name="content" value="/WEB-INF/jsp/home.jsp" />
 	</definition>
+
+	<definition name="vehiclesForPerson" extends="userMenutemplate">
+		<put name="title" value="Vehicles for a person" />
+		<put name="content" value="/WEB-INF/jsp/vehicles.jsp" />
+	</definition>
+
+	<definition name="addVehicle" extends="userMenutemplate">
+		<put name="title" value="Add a vehicle" />
+		<put name="content" value="/WEB-INF/jsp/addVehicle.jsp" />
+	</definition>
+	
+	<definition name="vehicleAdded" extends="userMenutemplate">
+	  <put name="title" value="Vehicle added" />
+	  <put name="content" value="/WEB-INF/jsp/vehicleAdded.jsp"/>
+	</definition>  
 
 
 </tiles-definitions>

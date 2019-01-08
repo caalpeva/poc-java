@@ -11,10 +11,9 @@
 		<property name="name"/>
 		<property name="surname"/>
 		<property name="birthDate"/>
-		<list name="vehicles" cascade="all-delete-orphan" lazy="false">
+		<set name="vehicles" cascade="all-delete-orphan" lazy="false">
 			<key column="owner" />
-			<index column="owner_order" />
 			<one-to-many class="Vehicle" />
-		</list>
+		</set>
 	</class>
 </hibernate-mapping>

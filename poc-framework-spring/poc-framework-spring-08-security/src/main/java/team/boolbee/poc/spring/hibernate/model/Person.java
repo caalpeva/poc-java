@@ -1,19 +1,10 @@
 package team.boolbee.poc.spring.hibernate.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.Set;
 
 public class Person implements Serializable {
 	
@@ -23,7 +14,7 @@ public class Person implements Serializable {
 	private String name;
 	private String surname;
 	private Date birthDate;
-	private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+	private Set<Vehicle> vehicles = new HashSet<Vehicle>();
 
 	public Person() {}
 	
@@ -59,11 +50,11 @@ public class Person implements Serializable {
 		this.birthDate = birthDate;
 	}
 
-	public List<Vehicle> getVehicles() {
+	public Set<Vehicle> getVehicles() {
 		return vehicles;
 	}
 
-	public void setVehicles(List<Vehicle> vehicles) {
+	public void setVehicles(Set<Vehicle> vehicles) {
 		this.vehicles = vehicles;
 	}
 	

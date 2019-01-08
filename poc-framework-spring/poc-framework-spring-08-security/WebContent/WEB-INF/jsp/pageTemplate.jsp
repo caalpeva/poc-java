@@ -12,7 +12,6 @@
 		</div>
 
 		<div class="menuBar">
-			<a href="addRant.htm">Add a rant</a>&nbsp;|
 			<authz:authorize ifNotGranted="ROLE_ANONYMOUS">
 				<a href="#">Your account</a>&nbsp;|&nbsp;
 				<a href="logout">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -5,55 +5,73 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/login.htm">loginController</prop>
+				<prop key="/error.htm">errorController</prop>
+				<prop key="/home.htm">homePageController</prop>
+				<prop key="/vehiclesforperson.htm">vehiclesForPersonController</prop>
+				<prop key="/addVehicle.htm">addVehicleFormController</prop>
+			</props>
+		</property>
+	</bean>
+
 	<bean id="loginController"
+		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+
+	<bean id="errorController"
 		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
 
 	<bean id="homePageController" class="team.boolbee.poc.spring.security.mvc.HomePageController">
 		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
 	</bean>
 
-	<bean id="errorController"
-		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
-		
-	<bean id="expiredController"
-		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+	<bean id="vehiclesForPersonController"
+		class="team.boolbee.poc.spring.security.mvc.VehiclesForPersonController">
+		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
+	</bean>
 
-	<bean id="urlMapping"
-		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<props>
-				<prop key="/login.htm">loginController</prop>
-				<prop key="/home.htm">homePageController</prop>
-				<prop key="/error.htm">errorController</prop>
-				<prop key="/expired.htm">expiredController</prop>
-			</props>
+	<bean id="addVehicleFormController"
+		class="team.boolbee.poc.spring.security.mvc.AddVehicleFormController">
+		<property name="formView" value="addVehicle" />
+		<property name="successView" value="vehicleAdded" />
+		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
+		<property name="validator">
+			<bean class="team.boolbee.poc.spring.security.mvc.VehicleValidator" />
 		</property>
 	</bean>
 
-	<!-- 
-	<bean id="jspViewResolver"
+	<!-- <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView" 
+		/> <property name="prefix" value="/WEB-INF/jsp/" /> <property name="suffix" 
+		value=".jsp" /> </bean> -->
+
+	<!-- FOR TILES -->
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/spring-tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
-			value="org.springframework.web.servlet.view.InternalResourceView" />
-		<property name="prefix" value="/WEB-INF/jsp/" />
-		<property name="suffix" value=".jsp" />
+			value="org.springframework.web.servlet.view.tiles.TilesJstlView" />
 	</bean>
-	-->
-	
-	 <!-- FOR TILES -->
-	<bean id="tilesConfigurer" 
-	    class="org.springframework.web.servlet.view.tiles.TilesConfigurer">
-	  <property name="definitions">
-	    <list>
-	      <value>/WEB-INF/spring-tiles.xml</value>
-	    </list>
-	  </property>
-	</bean>
-	
-	<bean id="viewResolver" 
-	    class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	  <property name="viewClass"
-	      value="org.springframework.web.servlet.view.tiles.TilesJstlView"/>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+				<value>errors</value>
+			</list>
+		</property>
 	</bean>
 
 </beans>

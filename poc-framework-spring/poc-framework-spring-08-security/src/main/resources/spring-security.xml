@@ -82,7 +82,7 @@
 		<property name="authenticationFailureUrl" value="/login.htm?login_error=1" />
 		<property name="defaultTargetUrl" value="/" />
 		<property name="filterProcessesUrl" value="/j_acegi_security_check" />
-		<property name="rememberMeServices" ref="rememberMeServices"></property>
+		<property name="rememberMeServices" ref="rememberMeServices" />
 	</bean>
 
 	<bean id="rememberMeProcessingFilter"
@@ -98,7 +98,7 @@
 	</bean>
 
 	<bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
-<!-- 		<property name="authenticationEntryPoint" ref="basicAuthenticationEntryPoint"/> -->
+		<!-- <property name="authenticationEntryPoint" ref="basicAuthenticationEntryPoint"/> -->
 		<property name="authenticationEntryPoint">
 			<bean
 				class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
@@ -119,9 +119,11 @@
 		<property name="accessDecisionManager" ref="accessDecisionManager" />
 		<property name="objectDefinitionSource">
 			<value>
-				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+			 	CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
 				PATTERN_TYPE_APACHE_ANT
 				/home.htm=ROLE_ADMIN
+				/addvehicle.htm=ROLE_ADMIN
+				/vehiclesforperson.htm=ROLE_ADMIN
 			</value>
 		</property>
 	</bean>
