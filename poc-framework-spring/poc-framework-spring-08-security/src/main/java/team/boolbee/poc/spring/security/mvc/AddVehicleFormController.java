@@ -26,7 +26,7 @@ public class AddVehicleFormController extends SimpleFormController {
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
 		Person person = vehicleRegistrationService.getPersonById(Integer.valueOf(request.getParameter("personId"))); 
 		Vehicle vehicleForm = (Vehicle) super.formBackingObject(request);
-		vehicleForm.setOwner(person);
+		vehicleForm.setPerson(person);
 		return vehicleForm;
 	}
 	
@@ -42,9 +42,7 @@ public class AddVehicleFormController extends SimpleFormController {
 	@Override
 	protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command,
 			BindException errors) throws Exception {
-		
 		Vehicle vehicle = (Vehicle) command;
-		
 		vehicleRegistrationService.register(vehicle);
 		
 		return new ModelAndView(getSuccessView());

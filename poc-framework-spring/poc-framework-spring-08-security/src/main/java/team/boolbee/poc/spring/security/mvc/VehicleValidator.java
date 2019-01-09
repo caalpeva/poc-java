@@ -26,7 +26,7 @@ public class VehicleValidator implements Validator {
 		validatePlateNumber(vehicle.getPlateNumber(), errors);
 	}
 
-	private void validatePlateNumber(String plateNumber, Errors errors) {
+	public void validatePlateNumber(String plateNumber, Errors errors) {
 		Pattern pattern = Pattern.compile(PLATE_REGEXP);
 		Matcher matcher = pattern.matcher(plateNumber);
 		if (!matcher.matches()) {

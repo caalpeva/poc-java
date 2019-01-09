@@ -12,9 +12,8 @@
 		<div class="header"></div>
 
 		<div class="menuBar">
-			<a href="register.htm">Register</a>
 		</div>
-
+		
 		<div class="contentArea">
 			<tiles:insert name="content" />
 		</div>

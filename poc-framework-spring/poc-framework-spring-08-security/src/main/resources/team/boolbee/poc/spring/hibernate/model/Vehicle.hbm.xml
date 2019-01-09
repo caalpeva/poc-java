@@ -15,7 +15,6 @@
 			</type>
 		</property>
 		<property name="registrationDate" />
-		<many-to-one name="owner" column="owner" lazy="false"
-			cascade="persist, merge" />
+		<many-to-one name="person" column="person_id" lazy="false" cascade="persist, merge" />
 	</class>
 </hibernate-mapping>

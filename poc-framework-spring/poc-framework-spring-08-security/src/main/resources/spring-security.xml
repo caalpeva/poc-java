@@ -108,7 +108,7 @@
 		</property>
 		<property name="accessDeniedHandler">
 			<bean class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
-				<property name="errorPage" value="/error.htm" />
+				<property name="errorPage" value="/authorizationError.htm" />
 			</bean>
 		</property>
 	</bean>
@@ -230,5 +230,8 @@
 	</bean>
 
 	<bean id="loggerListener" class="org.acegisecurity.event.authentication.LoggerListener" />
+	
+	<!-- TODO: Intentar solucionar mediante AOP el java.lang.NullPointerException
+	org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices.logout(TokenBasedRememberMeServices.java:295) -->
 
 </beans>

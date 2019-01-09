@@ -2,6 +2,7 @@ package team.boolbee.poc.spring.hibernate.dao;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
+import team.boolbee.poc.spring.hibernate.model.Person;
 import team.boolbee.poc.spring.hibernate.model.Vehicle;
 
 public class VehicleTemplateDao implements VehicleDao {
@@ -14,6 +15,8 @@ public class VehicleTemplateDao implements VehicleDao {
 	}
 
 	public void saveVehicle(Vehicle vehicle) {
+		Person person = vehicle.getPerson();
+		person.addVehicle(vehicle);
 		hibernateTemplate.save(vehicle);		
 	}
 	

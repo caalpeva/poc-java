@@ -28,10 +28,14 @@ public class OneToManyBidirXmlTest {
 		team1.setName("Team RadioShack");
 		team1.addRider(player1);
 		team1.addRider(player9);
-		team1.addRider(player2);
+		//team1.addRider(player2);
     	
 		TeamDAO teamDAO = new TeamDAO();
 		teamDAO.insert(team1);
+		
+		team1 = teamDAO.selectById(team1.getId());
+		team1.addRider(player2);
+		teamDAO.update(team1);
 		
     	Rider player3 = new Rider();
 		player3.setName("Alberto Contador");
@@ -86,7 +90,7 @@ public class OneToManyBidirXmlTest {
 		riderDAO.update(player9);
 		
 		team1 = teamDAO.selectById(team1.getId());
-		teamDAO.delete(team1);
+		//teamDAO.delete(team1);
 
 		Team team5 = new Team();
 		team5.setName("Liquigas");

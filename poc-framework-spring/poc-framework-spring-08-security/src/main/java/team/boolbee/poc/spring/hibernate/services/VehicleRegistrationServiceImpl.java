@@ -56,6 +56,8 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 
 	public void register(Vehicle vehicle) {
 		vehicle.setRegistrationDate(new Date());
-		vehicleDao.saveVehicle(vehicle);
+		Person person = personDao.getPersonById(vehicle.getPerson().getId());
+		person.addVehicle(vehicle);
+		personDao.updatePerson(person);
 	}
 }

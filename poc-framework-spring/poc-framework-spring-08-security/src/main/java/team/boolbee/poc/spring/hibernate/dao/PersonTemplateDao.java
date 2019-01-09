@@ -31,15 +31,4 @@ public class PersonTemplateDao implements PersonDao {
 	public List<Person> list() {
 		return hibernateTemplate.loadAll(Person.class);
 	}
-	
-//	public Vehicle findVehicleByPlate(String state, String plateNumber) {
-//		List results = hibernateTemplate.find("from " + VEHICLE + " where state = ? and plateNumber = ?",
-//				new Object[] { state, plateNumber });
-//
-//		if (results.size() > 0) {
-//			return (Vehicle) results.get(0);
-//		}
-//
-//		return null; // TODO - Should I throw an exception instead?
-//	}
 }

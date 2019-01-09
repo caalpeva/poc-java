@@ -6,6 +6,12 @@
 	<!-- <definition name=".header" page="/WEB-INF/jsp/header.jsp" controllerClass="com.roadrantz.tiles.HeaderTileController" 
 		/> -->
 
+	<definition name="plainTemplate" page="/WEB-INF/jsp/plainTemplate.jsp">
+		<put name="title" value="RoadRantz" />
+		<put name="content" value="/WEB-INF/jsp/defaultContentPage.jsp" />
+		<put name="footer" value="/WEB-INF/jsp/footer.jsp" />
+	</definition>
+
 	<definition name="loginTemplate" page="/WEB-INF/jsp/template.jsp">
 		<put name="title" value="RoadRantz" />
 		<!-- <put name="header" value=".header"/> -->
@@ -24,6 +30,7 @@
 		<put name="title" value="Login to RoadRantz" />
 		<put name="content" value="/WEB-INF/jsp/login.jsp" />
 	</definition>
+
 	<definition name="home" extends="userMenutemplate">
 		<put name="title" value="Welcome to RoadRantz" />
 		<put name="content" value="/WEB-INF/jsp/home.jsp" />
@@ -38,11 +45,35 @@
 		<put name="title" value="Add a vehicle" />
 		<put name="content" value="/WEB-INF/jsp/addVehicle.jsp" />
 	</definition>
-	
-	<definition name="vehicleAdded" extends="userMenutemplate">
-	  <put name="title" value="Vehicle added" />
-	  <put name="content" value="/WEB-INF/jsp/vehicleAdded.jsp"/>
-	</definition>  
 
+	<definition name="vehicleAdded" extends="userMenutemplate">
+		<put name="title" value="Vehicle added" />
+		<put name="content" value="/WEB-INF/jsp/vehicleAdded.jsp" />
+	</definition>
+
+	<definition name="personConfirmation" extends="userMenutemplate">
+		<put name="title" value="Confirm motorist information" />
+		<put name="content" value="/WEB-INF/jsp/personConfirmation.jsp" />
+	</definition>
+
+	<definition name="personDetailForm" extends="userMenutemplate">
+		<put name="title" value="Enter motorist information" />
+		<put name="content" value="/WEB-INF/jsp/personDetailForm.jsp" />
+	</definition>
+
+	<definition name="personVehicleForm" extends="userMenutemplate">
+		<put name="title" value="Add vehicles" />
+		<put name="content" value="/WEB-INF/jsp/personVehicleForm.jsp" />
+	</definition>
+
+	<definition name="authorizationError" extends="plainTemplate">
+		<put name="title" value="Authorization error" />
+		<put name="content" value="/WEB-INF/jsp/error_authorization.jsp" />
+	</definition>
+
+	<definition name="unexpectedError" extends="plainTemplate">
+		<put name="title" value="Autorization error" />
+		<put name="content" value="/WEB-INF/jsp/error_unexpected.jsp" />
+	</definition>
 
 </tiles-definitions>

@@ -14,7 +14,7 @@ public class Vehicle implements Serializable {
 	private String plateNumber;
 	private VehicleType type;
 	private Date registrationDate;
-	private Person owner;
+	private Person person;
 	
 	public Vehicle() {}
 
@@ -50,12 +50,12 @@ public class Vehicle implements Serializable {
 		this.registrationDate = registrationDate;
 	}
 
-	public Person getOwner() {
-		return owner;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setOwner(Person owner) {
-		this.owner = owner;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 	private String stripNonAlphanumeric(String in) {

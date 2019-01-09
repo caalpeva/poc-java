@@ -5,25 +5,34 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
+	<!-- ==================================== -->
+	<!-- ===== MANIPULADOR DE MAPEO URL ===== -->
+	<!-- ==================================== -->
+
 	<bean id="urlMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
 				<prop key="/login.htm">loginController</prop>
-				<prop key="/error.htm">errorController</prop>
 				<prop key="/home.htm">homePageController</prop>
 				<prop key="/vehiclesforperson.htm">vehiclesForPersonController</prop>
-				<prop key="/addVehicle.htm">addVehicleFormController</prop>
+				<prop key="/addVehicle.htm">addVehicleController</prop>
+				<prop key="/register.htm">userRegistrationController</prop>
+				<prop key="/authorizationError.htm">authorizationErrorController</prop>
 			</props>
 		</property>
 	</bean>
 
+	<!-- ========================= -->
+	<!-- ===== CONTROLADORES ===== -->
+	<!-- ========================= -->
+
 	<bean id="loginController"
 		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
 
-	<bean id="errorController"
+	<bean id="authorizationErrorController"
 		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
-
+		
 	<bean id="homePageController" class="team.boolbee.poc.spring.security.mvc.HomePageController">
 		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
 	</bean>
@@ -33,22 +42,49 @@
 		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
 	</bean>
 
-	<bean id="addVehicleFormController"
+	<bean id="addVehicleController"
 		class="team.boolbee.poc.spring.security.mvc.AddVehicleFormController">
+		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
 		<property name="formView" value="addVehicle" />
 		<property name="successView" value="vehicleAdded" />
-		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
-		<property name="validator">
-			<bean class="team.boolbee.poc.spring.security.mvc.VehicleValidator" />
+		<property name="validator" ref="vehicleValidator">
 		</property>
 	</bean>
 
-	<!-- <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
-		<property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView" 
-		/> <property name="prefix" value="/WEB-INF/jsp/" /> <property name="suffix" 
-		value=".jsp" /> </bean> -->
+	<bean id="userRegistrationController"
+		class="team.boolbee.poc.spring.security.mvc.UserRegistrationFormController">
+		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
+		<property name="pages">
+			<list>
+				<value>personDetailForm</value>
+				<value>personVehicleForm</value>
+				<value>personConfirmation</value>
+				<value>redirect:home.htm</value>
+			</list>
+		</property>
+		<property name="validator">
+			<bean id="personValidator" class="team.boolbee.poc.spring.security.mvc.PersonValidator" />
+		</property>
+	</bean>
 
-	<!-- FOR TILES -->
+	<!-- =============================== -->
+	<!-- ===== RESOLUCIÓN DE VISTA ===== -->
+	<!-- =============================== -->
+
+	<!-- <bean id="jspViewResolver" -->
+	<!-- class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<!-- <property name="viewClass" -->
+	<!-- value="org.springframework.web.servlet.view.InternalResourceView" /> -->
+	<!-- <property name="prefix" value="/WEB-INF/jsp/" /> -->
+	<!-- <property name="suffix" value=".jsp" /> -->
+	<!-- </bean> -->
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles.TilesJstlView" />
+	</bean>
+
 	<bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles.TilesConfigurer">
 		<property name="definitions">
@@ -58,12 +94,38 @@
 		</property>
 	</bean>
 
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles.TilesJstlView" />
-	</bean>
+	<!-- ======================= -->
+	<!-- ===== VALIDADORES ===== -->
+	<!-- ======================= -->
 
+	<bean id="vehicleValidator" class="team.boolbee.poc.spring.security.mvc.VehicleValidator" />
+
+	<!-- <bean id="vehicleValidator" class="org.springmodules.validation.commons.DefaultBeanValidator"> -->
+	<!-- <property name="validatorFactory" ref="validatorFactory" /> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="validatorFactory" class="org.springmodules.validation.commons.DefaultValidatorFactory"> -->
+	<!-- <property name="validationConfigLocations"> -->
+	<!-- <list> -->
+	<!-- <value>WEB-INF/validator-rules.xml</value> -->
+	<!-- <value>WEB-INF/validation.xml</value> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<!-- ==================================== -->
+	<!-- ===== MANEJADOR DE EXCEPCIONES ===== -->
+	<!-- ==================================== -->
+
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">unexpectedError</prop>
+			</props>
+		</property>
+	</bean>
+	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">

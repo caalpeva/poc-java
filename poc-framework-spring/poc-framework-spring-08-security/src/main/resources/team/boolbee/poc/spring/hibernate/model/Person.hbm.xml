@@ -8,12 +8,14 @@
 		<id name="id" column="id">
 			<generator class="identity" />
 		</id>
-		<property name="name"/>
-		<property name="surname"/>
+		<property name="name" not-null="true"/>
+		<property name="surname" not-null="true"/>
 		<property name="birthDate"/>
-		<set name="vehicles" cascade="all-delete-orphan" lazy="false">
-			<key column="owner" />
+		<property name="email"/>
+		<list name="vehicles" cascade="all-delete-orphan" lazy="false">
+			<key column="person_id" />
+			<index column="person_order" />
 			<one-to-many class="Vehicle" />
-		</set>
+		</list>
 	</class>
 </hibernate-mapping>

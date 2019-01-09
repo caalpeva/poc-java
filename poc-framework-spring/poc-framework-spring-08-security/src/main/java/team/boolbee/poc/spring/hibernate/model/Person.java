@@ -1,10 +1,9 @@
 package team.boolbee.poc.spring.hibernate.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Person implements Serializable {
 	
@@ -14,7 +13,8 @@ public class Person implements Serializable {
 	private String name;
 	private String surname;
 	private Date birthDate;
-	private Set<Vehicle> vehicles = new HashSet<Vehicle>();
+	private String email;
+	private List<Vehicle> vehicles = new ArrayList<Vehicle>();
 
 	public Person() {}
 	
@@ -50,17 +50,25 @@ public class Person implements Serializable {
 		this.birthDate = birthDate;
 	}
 
-	public Set<Vehicle> getVehicles() {
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Vehicle> getVehicles() {
 		return vehicles;
 	}
 
-	public void setVehicles(Set<Vehicle> vehicles) {
+	public void setVehicles(List<Vehicle> vehicles) {
 		this.vehicles = vehicles;
 	}
 	
 	public void addVehicle(Vehicle vehicle) {
 		vehicles.add(vehicle);
-		vehicle.setOwner(this);
+		vehicle.setPerson(this);
 	}
 
 	public boolean equals(Object o) {
@@ -79,6 +87,7 @@ public class Person implements Serializable {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", birthDate='" + birthDate + '\'' +
+                ", email='" + email + '\'' +
                 '}';
 	}
 }

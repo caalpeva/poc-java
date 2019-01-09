@@ -18,7 +18,7 @@
 			<props>
 				<prop key="hibernate.dialect">${dialect}</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property>
 	</bean>
@@ -27,8 +27,8 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="personDao" class="team.boolbee.poc.spring.hibernate.dao.PersonTemplateDao">
-		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	<bean id="personDao" class="team.boolbee.poc.spring.hibernate.dao.PersonHibernateSessionDao">
+			<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
 	<bean id="vehicleDao" class="team.boolbee.poc.spring.hibernate.dao.VehicleTemplateDao">
