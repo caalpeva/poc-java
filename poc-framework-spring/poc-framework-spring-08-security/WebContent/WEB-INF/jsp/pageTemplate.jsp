@@ -1,4 +1,5 @@
-<%@ taglib prefix="tiles" uri="http://jakarta.apache.org/struts/tags-tiles"%>
+<%@ taglib prefix="tiles"
+	uri="http://jakarta.apache.org/struts/tags-tiles"%>
 <%@ taglib prefix="authz" uri="http://acegisecurity.org/authz"%>
 
 <html>
@@ -9,6 +10,7 @@
 <body>
 	<div id="container">
 		<div class="header">
+			<tiles:insert name="header" />
 		</div>
 
 		<div class="menuBar">

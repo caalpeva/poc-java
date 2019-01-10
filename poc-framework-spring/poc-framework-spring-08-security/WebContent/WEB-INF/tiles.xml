@@ -3,8 +3,8 @@
  "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
 
 <tiles-definitions>
-	<!-- <definition name=".header" page="/WEB-INF/jsp/header.jsp" controllerClass="com.roadrantz.tiles.HeaderTileController" 
-		/> -->
+	<definition name=".header" page="/WEB-INF/jsp/header.jsp"
+		controllerClass="team.boolbee.poc.spring.security.mvc.tiles.HeaderTileController" />
 
 	<definition name="plainTemplate" page="/WEB-INF/jsp/plainTemplate.jsp">
 		<put name="title" value="RoadRantz" />
@@ -14,14 +14,14 @@
 
 	<definition name="loginTemplate" page="/WEB-INF/jsp/template.jsp">
 		<put name="title" value="RoadRantz" />
-		<!-- <put name="header" value=".header"/> -->
+		<put name="header" value=".header"/>
 		<put name="content" value="/WEB-INF/jsp/defaultContentPage.jsp" />
 		<put name="footer" value="/WEB-INF/jsp/footer.jsp" />
 	</definition>
 
 	<definition name="userMenutemplate" page="/WEB-INF/jsp/pageTemplate.jsp">
 		<put name="title" value="RoadRantz" />
-		<!-- <put name="header" value=".header"/> -->
+		<put name="header" value=".header"/>
 		<put name="content" value="/WEB-INF/jsp/defaultContentPage.jsp" />
 		<put name="footer" value="/WEB-INF/jsp/footer.jsp" />
 	</definition>

@@ -1,6 +1,7 @@
 package team.boolbee.poc.spring.hibernate.services;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import team.boolbee.poc.spring.hibernate.model.Person;
@@ -13,4 +14,5 @@ public interface VehicleRegistrationService {
   public Collection<Vehicle> getVehiclesForPersons(Integer personId);
   
   public void register(Vehicle vehicle);
+  public List<Vehicle> getVehiclesForDay(Date day);
 }

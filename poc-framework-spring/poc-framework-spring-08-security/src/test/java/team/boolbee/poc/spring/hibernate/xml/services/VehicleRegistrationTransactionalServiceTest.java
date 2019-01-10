@@ -74,5 +74,10 @@ public class VehicleRegistrationTransactionalServiceTest extends AbstractDepende
 		for (Person currentPerson : persons) {
 			System.out.println(currentPerson);
 		} // for
+		
+		List<Vehicle> vehicles = registrationServiceDAO.getVehiclesForDay(new Date());
+		for (Vehicle currentVehicle: vehicles) {
+			System.out.println(currentVehicle.getPlateNumber() + " " + currentVehicle.getRegistrationDate());
+		} // for
 	}
 }

@@ -60,4 +60,8 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 		person.addVehicle(vehicle);
 		personDao.updatePerson(person);
 	}
+
+	public List<Vehicle> getVehiclesForDay(Date date) {
+		return vehicleDao.getVehiclesForDay(date);
+	}
 }
