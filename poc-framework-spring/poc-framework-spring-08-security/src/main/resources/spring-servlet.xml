@@ -6,7 +6,7 @@
 			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 	<!-- ==================================== -->
-	<!-- ===== MANIPULADOR DE MAPEO URL ===== -->
+	<!-- ===== MANEJADOR DE MAPEO URL ===== -->
 	<!-- ==================================== -->
 
 	<bean id="urlMapping"
@@ -32,7 +32,7 @@
 
 	<bean id="authorizationErrorController"
 		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
-		
+
 	<bean id="homePageController" class="team.boolbee.poc.spring.security.mvc.HomePageController">
 		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
 	</bean>
@@ -71,13 +71,13 @@
 	<!-- ===== RESOLUCIÓN DE VISTA ===== -->
 	<!-- =============================== -->
 
-	<!-- <bean id="jspViewResolver" -->
-	<!-- class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
-	<!-- <property name="viewClass" -->
-	<!-- value="org.springframework.web.servlet.view.InternalResourceView" /> -->
-	<!-- <property name="prefix" value="/WEB-INF/jsp/" /> -->
-	<!-- <property name="suffix" value=".jsp" /> -->
-	<!-- </bean> -->
+<!-- 	<bean id="jspViewResolver" -->
+<!-- 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!-- 		<property name="viewClass" -->
+<!-- 			value="org.springframework.web.servlet.view.InternalResourceView" /> -->
+<!-- 		<property name="prefix" value="/WEB-INF/jsp/" /> -->
+<!-- 		<property name="suffix" value=".jsp" /> -->
+<!-- 	</bean> -->
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -94,9 +94,15 @@
 		</property>
 	</bean>
 
-	<!-- ======================= -->
-	<!-- ===== VALIDADORES ===== -->
-	<!-- ======================= -->
+	<bean id="xmlFileViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="location" value="classpath:spring-views.xml" />
+		<!-- <property name="location" value="/WEB-INF/spring-views.xml" /> -->
+		<property name="order" value="0" />
+	</bean>
+
+	<!-- ===================================== -->
+	<!-- ===== VALIDADORES DE FORMULARIO ===== -->
+	<!-- ===================================== -->
 
 	<bean id="vehicleValidator" class="team.boolbee.poc.spring.security.mvc.VehicleValidator" />
 
@@ -125,7 +131,11 @@
 			</props>
 		</property>
 	</bean>
-	
+
+	<!-- ======================================= -->
+	<!-- ===== EXTERNALIZACION DE MENSAJES ===== -->
+	<!-- ======================================= -->
+
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">

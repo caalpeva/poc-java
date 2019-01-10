@@ -3,6 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
+	
 	<display-name>poc-webapp-spring-security</display-name>
 
 	<context-param>
@@ -12,12 +13,12 @@
 			classpath:spring-datasource.xml
 			classpath:spring-hibernate.xml
 			classpath:spring-security.xml
-<!-- 			classpath:spring-tx.xml -->
+		<!-- classpath:spring-tx.xml -->
 		</param-value>
 	</context-param>
 
-	<!-- NOTE: ContextLoaderListener may not work for all application servers. 
-		If it does not work for yours, you must use ContextLoaderServlet instead. -->
+	<!-- NOTE: ContextLoaderListener may not work for all application servers. -->
+	<!-- If it does not work for yours, you must use ContextLoaderServlet instead. -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -26,6 +27,10 @@
 		<listener-class>org.acegisecurity.ui.session.HttpSessionEventPublisher</listener-class>
 	</listener>
 
+	<!-- ============================================ -->
+	<!-- ===== SERVLET PROCESADOR DE PETICIONES ===== -->
+	<!-- ============================================ -->
+
 	<servlet>
 		<servlet-name>spring</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -33,12 +38,36 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring-servlet.xml</param-value>
 		</init-param>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
+
+	<!-- ==================================== -->
+	<!-- ===== MAPEOS DE URLS PERMITIDAS ==== -->
+	<!-- ==================================== -->
 
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.xls</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.pdf</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.rss</url-pattern>
+	</servlet-mapping>
+
+	<!-- ================================ -->
+	<!-- ===== FILTROS DE SEGURIDAD ===== -->
+	<!-- ================================ -->
 
 	<filter>
 		<filter-name>FilterChainProxy</filter-name>
@@ -54,11 +83,20 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<!-- ================================== -->
+	<!-- ===== CONFIGURACION DE SESION ==== -->
+	<!-- ================================== -->
+
 	<session-config>
 		<session-timeout>1</session-timeout> <!-- in minutes -->
 	</session-config>
 
+	<!-- =============================== -->
+	<!-- ===== PAGINAS POR DEFECTO ==== -->
+	<!-- =============================== -->
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
+	
 </web-app>
