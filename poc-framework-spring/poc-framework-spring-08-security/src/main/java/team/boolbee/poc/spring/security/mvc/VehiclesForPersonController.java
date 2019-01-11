@@ -17,6 +17,8 @@ import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
 
 public class VehiclesForPersonController extends AbstractCommandController {
 
+	private static final String BASE_VIEW_NAME = "vehiclesForPerson";
+	
 	public VehiclesForPersonController() {
 		setCommandClass(Person.class);
 		setCommandName("person");
@@ -35,7 +37,7 @@ public class VehiclesForPersonController extends AbstractCommandController {
 		model.put("vehicles", vehicles);
 		model.put("person", person);
 
-		return new ModelAndView("vehiclesForPerson", model);
+		return new ModelAndView(getViewName(request), model);
 	}
 
 	// injected
@@ -45,4 +47,13 @@ public class VehiclesForPersonController extends AbstractCommandController {
 		this.vehicleRegistrationService = vehicleRegistrationService;
 	}
 
+	private String getViewName(HttpServletRequest request) {
+		String requestUri = request.getRequestURI();
+		String extension = requestUri.substring(requestUri.lastIndexOf("."));
+		if (".htm".equals(extension)) {
+			extension = "";
+		}
+		
+		return BASE_VIEW_NAME + extension; 
+	}
 }

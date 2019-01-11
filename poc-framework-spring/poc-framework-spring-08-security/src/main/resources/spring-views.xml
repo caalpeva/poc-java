@@ -5,11 +5,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-<!-- 	<bean id="vehicles.xls" class="team.boolbee.poc.spring.security.mvc.view.VehiclesExcelView" /> -->
+	<bean id="vehiclesForPerson.xls" class="team.boolbee.poc.spring.security.mvc.view.VehiclesExcelView" />
 	
-<!-- 	<bean id="vehicles.pdf" class="team.boolbee.poc.spring.security.mvc.view.VehiclesPdfView" /> -->
+	<bean id="vehiclesForPerson.pdf" class="team.boolbee.poc.spring.security.mvc.view.VehiclesPdfView" />
 	
-<!-- 	<bean id="vehicles.rss" class="team.boolbee.poc.spring.security.mvc.view.VehiclesRssView"> -->
+<!-- 	<bean id="vehiclesForPerson.rss" class="team.boolbee.poc.spring.security.mvc.view.VehiclesRssView"> -->
 <!-- 		<property name="title" value="poc-webapp-spring-security" /> -->
 <!-- 		<property name="description" value="poc-webapp-spring-security.com" /> -->
 <!-- 		<property name="author" value="poc-webapp-spring-security.com" /> -->

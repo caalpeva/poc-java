@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.security.mvc;
+package team.boolbee.poc.spring.security.mvc.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -17,6 +17,7 @@ import team.boolbee.poc.spring.hibernate.model.Person;
 import team.boolbee.poc.spring.hibernate.model.Vehicle;
 import team.boolbee.poc.spring.hibernate.model.VehicleType;
 import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
+import team.boolbee.poc.spring.security.mvc.validator.PersonValidator;
 
 public class UserRegistrationFormController extends AbstractWizardFormController {
 
