@@ -18,6 +18,7 @@
 				<prop key="/vehiclesforperson.htm">vehiclesForPersonController</prop>
 				<prop key="/vehiclesforperson.xls">vehiclesForPersonController</prop>
 				<prop key="/vehiclesforperson.pdf">vehiclesForPersonController</prop>
+				<prop key="/vehiclesforperson.rss">vehiclesForPersonController</prop>
 				<prop key="/addVehicle.htm">addVehicleController</prop>
 				<prop key="/register.htm">userRegistrationController</prop>
 				<prop key="/authorizationError.htm">authorizationErrorController</prop>

@@ -9,11 +9,11 @@
 	
 	<bean id="vehiclesForPerson.pdf" class="team.boolbee.poc.spring.security.mvc.view.VehiclesPdfView" />
 	
-<!-- 	<bean id="vehiclesForPerson.rss" class="team.boolbee.poc.spring.security.mvc.view.VehiclesRssView"> -->
-<!-- 		<property name="title" value="poc-webapp-spring-security" /> -->
-<!-- 		<property name="description" value="poc-webapp-spring-security.com" /> -->
-<!-- 		<property name="author" value="poc-webapp-spring-security.com" /> -->
-<!-- 		<property name="link" value="http://www.poc-webapp-spring-security.com" /> -->
-<!-- 	</bean> -->
+	<bean id="vehiclesForPerson.rss" class="team.boolbee.poc.spring.security.mvc.view.VehiclesRssView">
+		<property name="title" value="poc-webapp-spring-security" />
+		<property name="description" value="poc-webapp-spring-security.com" />
+		<property name="author" value="poc-webapp-spring-security.com" />
+		<property name="link" value="http://www.poc-webapp-spring-security.com" />
+	</bean>
 	
 </beans>
