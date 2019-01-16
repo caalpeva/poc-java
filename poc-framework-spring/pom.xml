@@ -15,6 +15,8 @@
 		<module>poc-framework-spring-06-aop-aspecj</module>
 		<module>poc-framework-spring-07-persistence</module>
 		<module>poc-framework-spring-08-security</module>
+		<module>poc-framework-spring-09-remoting</module>
+		<module>poc-framework-spring-10-webservices-soap</module>
 	</modules>
 
 	<properties>
@@ -42,6 +44,16 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
