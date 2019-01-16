@@ -14,7 +14,7 @@
 		<property name="endpointMap">
 			<map>
 				<entry
-					key="{http://www.springinaction.com/poker/schemas} EvaluateHandRequest"
+					key="{http://www.springinaction.com/poker/schemas}EvaluateHandRequest"
 					value-ref="evaluateHandEndpoint" />
 			</map>
 		</property>
@@ -29,21 +29,19 @@
 		<property name="pokerHandEvaluator" ref="evaluateHandEvaluator" />
 	</bean>
 
-<!-- 	<bean id="evaluateHandEndpoint" -->
-<!-- 		class="team.boolbee.poc.spring.webservices.soap.EvaluateHandMarshallingEndpoint"> -->
-<!-- 		<property name="pokerHandEvaluator" ref="evaluateHandEvaluator" /> -->
-<!-- 		<property name="marshaller" ref="marshaller" /> -->
-<!-- 		<property name="unmarshaller" ref="marshaller" /> -->
-<!-- 	</bean> -->
+	<!-- <bean id="evaluateHandEndpoint" -->
+	<!-- class="team.boolbee.poc.spring.webservices.soap.EvaluateHandMarshallingEndpoint"> -->
+	<!-- <property name="pokerHandEvaluator" ref="evaluateHandEvaluator" /> -->
+	<!-- <property name="marshaller" ref="marshaller" /> -->
+	<!-- <property name="unmarshaller" ref="marshaller" /> -->
+	<!-- </bean> -->
 
 	<!-- ============================ -->
 	<!-- ===== DES/SERIALIZADOR ===== -->
 	<!-- ============================ -->
 
-	<bean id="marshaller"
-		class="org.springframework.oxm.castor.CastorMarshaller">
-		<property name="mappingLocation"
-			value="classpath:castor-mapping.xml" />
+	<bean id="marshaller" class="org.springframework.oxm.castor.CastorMarshaller">
+		<property name="mappingLocation" value="classpath:castor-mapping.xml" />
 	</bean>
 
 	<!-- ==================================== -->
@@ -61,18 +59,20 @@
 		<property name="defaultFault" value="RECEIVER,Server error" />
 	</bean>
 
-	<!-- ======================== -->
-	<!-- ===== ARCHIVO WSDL ===== -->
-	<!-- ======================== -->
+	<!-- ======================================= -->
+	<!-- ===== GENERACION DEL ARCHIVO WSDL ===== -->
+	<!-- ======================================= -->
 
 	<bean id="poker"
 		class="org.springframework.ws.wsdl.wsdl11.DynamicWsdl11Definition">
 		<property name="builder">
-			<bean class="org.springframework.ws.wsdl.wsdl11.builder.XsdBasedSoap11Wsdl4jDefinitionBuilder" />
+			<bean
+				class="org.springframework.ws.wsdl.wsdl11.builder.XsdBasedSoap11Wsdl4jDefinitionBuilder">
+				<property name="schema" value="/DataTypes.xsd" />
+				<property name="portTypeName" value="poker" />
+				<property name="locationUri" value="http://localhost:8080/poker/services" />
+			</bean>
 		</property>
-		<property name="schema" value="/dataTypes.xsd" />
-		<property name="portTypeName" value="poker" />
-		<property name="locationUri" value="http://localhost:8080/poker/services" />
 	</bean>
 
 </beans>
