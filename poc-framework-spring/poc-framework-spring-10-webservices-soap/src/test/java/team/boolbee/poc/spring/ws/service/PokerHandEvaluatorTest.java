@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.ws;
+package team.boolbee.poc.spring.ws.service;
 
 import junit.framework.TestCase;
 import junitx.framework.Assert;
