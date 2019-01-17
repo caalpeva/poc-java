@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.webservices.model;
+package team.boolbee.poc.spring.ws.model;
 
 public class PokerHand {
   public PokerHand() {}

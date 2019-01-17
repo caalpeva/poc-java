@@ -6,6 +6,6 @@
                http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 	<bean id="evaluateHandEvaluator"
-		class="team.boolbee.poc.spring.webservices.service.PokerHandEvaluatorImpl" />
+		class="team.boolbee.poc.spring.ws.service.PokerHandEvaluatorImpl" />
 
 </beans>

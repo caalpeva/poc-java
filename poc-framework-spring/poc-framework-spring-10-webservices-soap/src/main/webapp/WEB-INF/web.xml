@@ -20,7 +20,7 @@
 	</listener>
 
 	<!-- ============================================ -->
-	<!-- ===== SERVLET PROCESADOR DE PETICIONES ===== -->
+	<!-- ===== SERVLET PROCESADOR DE MENSAJES ===== -->
 	<!-- ============================================ -->
 
 	<servlet>

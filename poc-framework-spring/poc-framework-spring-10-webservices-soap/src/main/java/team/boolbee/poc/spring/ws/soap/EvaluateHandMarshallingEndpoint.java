@@ -1,9 +1,9 @@
-package team.boolbee.poc.spring.webservices.soap;
+package team.boolbee.poc.spring.ws.soap;
 
 import org.springframework.ws.server.endpoint.AbstractMarshallingPayloadEndpoint;
 
-import team.boolbee.poc.spring.webservices.model.PokerHand;
-import team.boolbee.poc.spring.webservices.service.PokerHandEvaluator;
+import team.boolbee.poc.spring.ws.model.PokerHand;
+import team.boolbee.poc.spring.ws.service.PokerHandEvaluator;
 
 public class EvaluateHandMarshallingEndpoint extends AbstractMarshallingPayloadEndpoint {
 

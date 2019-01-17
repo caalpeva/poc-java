@@ -4,7 +4,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <property name="context-root" value="poc-framework-spring-10-webservices-soap"/>
         <property name="java-output-path" value="/poc-framework-spring-10-webservices-soap/target/classes"/>
+        <property name="context-root" value="poc-framework-spring-10-ws-soap"/>
     </wb-module>
 </project-modules>

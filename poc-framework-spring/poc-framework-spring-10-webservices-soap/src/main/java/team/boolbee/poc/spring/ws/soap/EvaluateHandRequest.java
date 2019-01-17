@@ -1,6 +1,6 @@
-package team.boolbee.poc.spring.webservices.soap;
+package team.boolbee.poc.spring.ws.soap;
 
-import team.boolbee.poc.spring.webservices.model.Card;
+import team.boolbee.poc.spring.ws.model.Card;
 
 public class EvaluateHandRequest {
 	private Card[] hand;

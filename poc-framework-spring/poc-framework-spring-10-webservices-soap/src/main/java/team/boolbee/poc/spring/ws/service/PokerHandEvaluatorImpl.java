@@ -1,15 +1,15 @@
-package team.boolbee.poc.spring.webservices.service;
+package team.boolbee.poc.spring.ws.service;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-import team.boolbee.poc.spring.webservices.model.Card;
-import team.boolbee.poc.spring.webservices.model.Face;
-import team.boolbee.poc.spring.webservices.model.PokerHand;
-import team.boolbee.poc.spring.webservices.model.PokerHandType;
-import team.boolbee.poc.spring.webservices.model.Suit;
+import team.boolbee.poc.spring.ws.model.Card;
+import team.boolbee.poc.spring.ws.model.Face;
+import team.boolbee.poc.spring.ws.model.PokerHand;
+import team.boolbee.poc.spring.ws.model.PokerHandType;
+import team.boolbee.poc.spring.ws.model.Suit;
 
 public class PokerHandEvaluatorImpl implements PokerHandEvaluator {
 

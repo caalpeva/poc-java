@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.webservices.soap;
+package team.boolbee.poc.spring.ws.soap;
 
 import java.util.List;
 
@@ -9,12 +9,12 @@ import org.jdom.xpath.XPath;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.ws.server.endpoint.AbstractJDomPayloadEndpoint;
 
-import team.boolbee.poc.spring.webservices.model.Card;
-import team.boolbee.poc.spring.webservices.model.Face;
-import team.boolbee.poc.spring.webservices.model.PokerHand;
-import team.boolbee.poc.spring.webservices.model.PokerHandType;
-import team.boolbee.poc.spring.webservices.model.Suit;
-import team.boolbee.poc.spring.webservices.service.PokerHandEvaluator;
+import team.boolbee.poc.spring.ws.model.Card;
+import team.boolbee.poc.spring.ws.model.Face;
+import team.boolbee.poc.spring.ws.model.PokerHand;
+import team.boolbee.poc.spring.ws.model.PokerHandType;
+import team.boolbee.poc.spring.ws.model.Suit;
+import team.boolbee.poc.spring.ws.service.PokerHandEvaluator;
 
 public class EvaluateHandJDomEndpoint extends AbstractJDomPayloadEndpoint implements InitializingBean {
 

@@ -1,6 +1,6 @@
-package team.boolbee.poc.spring.webservices.soap;
+package team.boolbee.poc.spring.ws.soap;
 
-import team.boolbee.poc.spring.webservices.model.PokerHandType;
+import team.boolbee.poc.spring.ws.model.PokerHandType;
 
 public class EvaluateHandResponse {
 	private PokerHandType pokerHandType;

@@ -25,12 +25,12 @@
 	<!-- ===================== -->
 
 	<bean id="evaluateHandEndpoint"
-		class="team.boolbee.poc.spring.webservices.soap.EvaluateHandJDomEndpoint">
+		class="team.boolbee.poc.spring.ws.soap.EvaluateHandJDomEndpoint">
 		<property name="pokerHandEvaluator" ref="evaluateHandEvaluator" />
 	</bean>
 
 	<!-- <bean id="evaluateHandEndpoint" -->
-	<!-- class="team.boolbee.poc.spring.webservices.soap.EvaluateHandMarshallingEndpoint"> -->
+	<!-- class="team.boolbee.poc.spring.ws.soap.EvaluateHandMarshallingEndpoint"> -->
 	<!-- <property name="pokerHandEvaluator" ref="evaluateHandEvaluator" /> -->
 	<!-- <property name="marshaller" ref="marshaller" /> -->
 	<!-- <property name="unmarshaller" ref="marshaller" /> -->
@@ -68,7 +68,7 @@
 		<property name="builder">
 			<bean
 				class="org.springframework.ws.wsdl.wsdl11.builder.XsdBasedSoap11Wsdl4jDefinitionBuilder">
-				<property name="schema" value="/DataTypes.xsd" />
+				<property name="schema" value="/WEB-INF/DataTypes.xsd" />
 				<property name="portTypeName" value="poker" />
 				<property name="locationUri" value="http://localhost:8080/poker/services" />
 			</bean>
