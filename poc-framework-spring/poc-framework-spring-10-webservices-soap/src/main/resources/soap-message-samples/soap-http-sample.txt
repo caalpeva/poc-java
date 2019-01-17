@@ -1,8 +1,12 @@
 POST /poker/services HTTP/1.1
-Host: localhost:8080
 Content-Type: text/xml
 cache-control: no-cache
-Postman-Token: 33a266a1-ee36-4dfb-a150-1ab3a463aab1
+Postman-Token: dc5178f8-5611-4cf9-a9b5-cea75639bb78
+User-Agent: PostmanRuntime/7.6.0
+Accept: */*
+Host: localhost:8080
+accept-encoding: gzip, deflate
+content-length: 1142
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
     xmlns:schemas="http://www.springinaction.com/poker/schemas">
     <SOAP-ENV:Header/>
@@ -30,4 +34,22 @@ Postman-Token: 33a266a1-ee36-4dfb-a150-1ab3a463aab1
             </schemas:card>
         </schemas:EvaluateHandRequest>
     </SOAP-ENV:Body>
-</SOAP-ENV:Envelope>------WebKitFormBoundary7MA4YWxkTrZu0gW--
+</SOAP-ENV:Envelope>
+ 
+HTTP/1.1 200
+status: 200
+Server: Apache-Coyote/1.1
+Accept: text/xml, text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Content-Type: text/xml;charset=utf-8
+Content-Length: 397
+Date: Thu, 17 Jan 2019 19:48:42 GMT
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+	<SOAP-ENV:Header />
+	<SOAP-ENV:Body>
+		<poker:EvaluateHandResponse
+			xmlns:poker="http://www.springinaction.com/poker/schemas">
+			<poker:handName xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="java:java.lang.String">THREE_OF_A_KIND</poker:handName>
+		</poker:EvaluateHandResponse>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
