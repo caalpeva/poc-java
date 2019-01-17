@@ -8,7 +8,7 @@
 <mapping xmlns="http://castor.exolab.org/">
 	<class name="team.boolbee.poc.spring.ws.soap.EvaluateHandRequest">
 		<map-to xml="EvaluateHandRequest" ns-uri="http://www.springinaction.com/poker/schemas"
-			ns-prefix="tns" />
+			ns-prefix="poker" />
 		<field name="hand" collection="array" type="team.boolbee.poc.spring.ws.model.Card"
 			required="true">
 			<bind-xml name="card" node="element" />
@@ -31,10 +31,10 @@
 
 	<class name="team.boolbee.poc.spring.ws.soap.EvaluateHandResponse">
 		<map-to xml="EvaluateHandResponse" ns-uri="http://www.springinaction.com/poker/schemas"
-			ns-prefix="tns" />
+			ns-prefix="poker" />
 		<field name="pokerHand" type="team.boolbee.poc.spring.ws.model.PokerHandType"
 			required="true">
-			<bind-xml name="tns:handName" node="element" QName-prefix="tns"
+			<bind-xml name="tns:handName" node="element" QName-prefix="poker"
 				xmlns:tns="http://www.springinaction.com/poker/schemas" />
 		</field>
 	</class>

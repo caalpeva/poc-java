@@ -25,7 +25,7 @@ public class EvaluateHandJDomEndpoint extends AbstractJDomPayloadEndpoint implem
 
 	public void afterPropertiesSet() throws Exception {
 		namespace = Namespace.getNamespace("poker", "http://www.springinaction.com/poker/schemas");
-		cardsXPath = XPath.newInstance("/poker:EvaluateHandRequest/poker.card");
+		cardsXPath = XPath.newInstance("/poker:EvaluateHandRequest/*");
 		cardsXPath.addNamespace(namespace);
 		suitXPath = XPath.newInstance("poker:suit");
 		suitXPath.addNamespace(namespace);

@@ -24,17 +24,17 @@
 	<!-- ===== ENDPOINTS ===== -->
 	<!-- ===================== -->
 
-	<bean id="evaluateHandEndpoint"
-		class="team.boolbee.poc.spring.ws.soap.EvaluateHandJDomEndpoint">
-		<property name="pokerHandEvaluator" ref="evaluateHandEvaluator" />
-	</bean>
+<!-- 	<bean id="evaluateHandEndpoint" -->
+<!-- 		class="team.boolbee.poc.spring.ws.soap.EvaluateHandJDomEndpoint"> -->
+<!-- 		<property name="pokerHandEvaluator" ref="evaluateHandEvaluator" /> -->
+<!-- 	</bean> -->
 
-	<!-- <bean id="evaluateHandEndpoint" -->
-	<!-- class="team.boolbee.poc.spring.ws.soap.EvaluateHandMarshallingEndpoint"> -->
-	<!-- <property name="pokerHandEvaluator" ref="evaluateHandEvaluator" /> -->
-	<!-- <property name="marshaller" ref="marshaller" /> -->
-	<!-- <property name="unmarshaller" ref="marshaller" /> -->
-	<!-- </bean> -->
+	<bean id="evaluateHandEndpoint"
+		class="team.boolbee.poc.spring.ws.soap.EvaluateHandMarshallingEndpoint">
+		<property name="pokerHandEvaluator" ref="evaluateHandEvaluator" />
+		<property name="marshaller" ref="marshaller" />
+		<property name="unmarshaller" ref="marshaller" />
+	</bean>
 
 	<!-- ============================ -->
 	<!-- ===== DES/SERIALIZADOR ===== -->

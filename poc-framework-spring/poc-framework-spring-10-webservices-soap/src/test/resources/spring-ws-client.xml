@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+               http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="jDomClient" class="team.boolbee.poc.spring.ws.client.JDomPokerClient">
+		<property name="webServiceTemplate" ref="webServiceTemplate" />
+	</bean>
+
+	<bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+		
+		<property name="messageSender" ref="messageSender" />
+		<property name="defaultUri" value="http://localhost:8080/poker/services" />
+		<property name="marshaller" ref="marshaller" />
+		<property name="unmarshaller" ref="marshaller" />
+	</bean>
+
+	<bean id="messageSender"
+		class="org.springframework.ws.transport.http.HttpUrlConnectionMessageSender" />
+
+	<bean id="marshallingGateway"
+		class="team.boolbee.poc.spring.ws.client.MarshallingPokerGateway">
+		
+		<property name="defaultUri" value="http://localhost:8080/poker/services" />
+		<property name="marshaller" ref="marshaller" />
+		<property name="unmarshaller" ref="marshaller" />
+	</bean>
+
+	<bean id="marshallingClient"
+		class="team.boolbee.poc.spring.ws.client.MarshallingPokerClient">
+		<property name="webServiceTemplate" ref="webServiceTemplate" />
+	</bean>
+
+	<!-- ============================ -->
+	<!-- ===== DES/SERIALIZADOR ===== -->
+	<!-- ============================ -->
+
+	<bean id="marshaller" class="org.springframework.oxm.castor.CastorMarshaller">
+		<property name="mappingLocation" value="classpath:castor-mapping.xml" />
+	</bean>
+
+</beans>
