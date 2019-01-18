@@ -20,9 +20,9 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class MessageRequestFilter implements Filter {
+public class MessageSniffFilter implements Filter {
 
-	private static Log logger = LogFactory.getLog(MessageRequestFilter.class);
+	private static Log logger = LogFactory.getLog(MessageSniffFilter.class);
 
 	public void init(FilterConfig arg0) throws ServletException {
 		// Do nothing

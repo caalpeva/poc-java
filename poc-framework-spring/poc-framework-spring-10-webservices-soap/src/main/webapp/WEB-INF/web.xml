@@ -52,15 +52,16 @@
 	</servlet-mapping>
 
 	<!-- ========================================== -->
-	<!-- ===== FILTRO INTERCEPTOR DE MENSAJES ===== -->
+	<!-- ===== FILTRO RASTREADOR DE MENSAJES ===== -->
 	<!-- ========================================== -->
 
 	<filter>
-		<filter-name>requestFilter</filter-name>
-		<filter-class>team.boolbee.poc.spring.ws.filter.MessageRequestFilter</filter-class>
+		<filter-name>sniffFilter</filter-name>
+		<filter-class>team.boolbee.poc.spring.ws.filter.MessageSniffFilter</filter-class>
 	</filter>
+	
 	<filter-mapping>
-		<filter-name>requestFilter</filter-name>
+		<filter-name>sniffFilter</filter-name>
 		<url-pattern>/services/*</url-pattern>
 	</filter-mapping>
 

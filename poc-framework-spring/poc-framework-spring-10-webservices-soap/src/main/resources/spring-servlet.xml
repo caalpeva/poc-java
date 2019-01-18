@@ -74,5 +74,10 @@
 			</bean>
 		</property>
 	</bean>
+	
+<!-- 	<bean id="poker" -->
+<!-- 		class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition"> -->
+<!-- 		<property name="wsdl" value="/WEB-INF/PredefinedPokerService.wsdl" /> -->
+<!-- 	</bean> -->
 
 </beans>
