@@ -1,3 +1,7 @@
+=============================
+===== SOAP HTTP REQUEST =====
+=============================
+
 POST /poker/services HTTP/1.1
 Content-Type: text/xml
 cache-control: no-cache
@@ -35,7 +39,11 @@ content-length: 1142
         </schemas:EvaluateHandRequest>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
- 
+
+==============================
+===== SOAP HTTP RESPONSE =====
+==============================
+
 HTTP/1.1 200
 status: 200
 Server: Apache-Coyote/1.1

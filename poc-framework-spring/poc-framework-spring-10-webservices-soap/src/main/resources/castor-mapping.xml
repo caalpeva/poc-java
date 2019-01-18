@@ -5,7 +5,7 @@
 
 <!-- A Castor mapping file to map EvaluateHandRequest and EvaluateHandResponse -->
 <!-- objects to/from XML. -->
-<mapping xmlns="http://castor.exolab.org/">
+<mapping xmlns="http://www.springinaction.com/poker/schemas"> <!-- http://castor.exolab.org/ -->
 	<class name="team.boolbee.poc.spring.ws.soap.EvaluateHandRequest">
 		<map-to xml="EvaluateHandRequest" ns-uri="http://www.springinaction.com/poker/schemas"
 			ns-prefix="poker" />
