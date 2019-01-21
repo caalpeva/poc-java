@@ -19,7 +19,7 @@ public class JmsQueueTest extends TestCase {
 	protected void setUp() throws Exception {
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
 		connection = connectionFactory.createConnection();
-		queue = new ActiveMQQueue("myQueue");
+		queue = new ActiveMQQueue("myTestQueue");
 	}
 
 	public void testJmsQueueFistStage() {
@@ -42,10 +42,11 @@ public class JmsQueueTest extends TestCase {
 			thread.start();
 			
 			// Empezar a enviar mensajes en el Queue (y a recibirlos)
-			thread = new Thread(producer);
-			thread.start();
-			thread.join(); // Esperar a que el enviador termine de enviar
-							// mensajes
+//			thread = new Thread(producer);
+//			thread.start();
+//			thread.join(); // Esperar a que el enviador termine de enviar
+//							// mensajes
+			producer.send();
 
 			Thread.sleep(5000);
 			

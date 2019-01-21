@@ -43,7 +43,7 @@ public class SynchConsumer implements Runnable {
 			}
 		}
 	}
-
+	
 	public void close() throws JMSException  {
 		consumer.close();
         session.close();

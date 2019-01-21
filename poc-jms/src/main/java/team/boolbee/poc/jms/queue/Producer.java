@@ -40,6 +40,27 @@ public class Producer implements Runnable {
 		}
 	}
 	
+	public void send() {
+		try {
+			for (int i = 1; i <= 5; ++i) {
+				TextMessage message = session.createTextMessage();
+				message.setText(String.format("Hello World! (%d)", i));
+				System.out.println(String.format("[%s] Sending message: %s", name, message.getText()));
+				producer.send(message);
+				Thread.sleep(1000);
+			} // for
+		} catch (JMSException e) {
+			try {
+				close();
+			} catch (JMSException ex) {
+				// Do nothing
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public void close() throws JMSException  {
         producer.close();
         session.close();

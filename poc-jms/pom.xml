@@ -28,4 +28,38 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<!-- <useDefaultManifestFile>true</useDefaultManifestFile> -->
+					<archive>
+						<!-- <manifestFile>resources/META-INF/MANIFEST.MF</manifestFile> -->
+						<index>true</index>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							<mainClass>team.boolbee.poc.jms.Init</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Class-Path>.</Class-Path>
+<!-- 							<SplashScreen-Image>images/splash.png</SplashScreen-Image> -->
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
