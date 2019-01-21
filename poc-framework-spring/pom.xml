@@ -17,6 +17,7 @@
 		<module>poc-framework-spring-08-security</module>
 		<module>poc-framework-spring-09-remoting</module>
 		<module>poc-framework-spring-10-webservices-soap</module>
+		<module>poc-framework-spring-11-jms</module>
 	</modules>
 
 	<properties>
