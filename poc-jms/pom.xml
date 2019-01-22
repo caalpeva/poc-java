@@ -10,6 +10,11 @@
 	</properties>
 
 	<dependencies>
+<!-- 	ActiveMQ es un estupendo corredor de mensajes de código abierto -->
+<!-- 	para la mensajería asíncrona con JMS. Comenzó como proyecto Codehaus -->
+<!-- 	pero finalmente se trasladó a Apache. Descargar y descomprimir la distribucción -->
+<!-- 	binaria correspondiente a la versión de la dependencia. Ejecutar el archivo -->
+<!--	~/bin/activemq.bat y ActiveMQ estará disponible para entregar mensajes. -->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-all</artifactId>
@@ -66,7 +71,7 @@
 						</manifest>
 						<manifestEntries>
 							<Class-Path>.</Class-Path>
-<!-- 							<SplashScreen-Image>images/splash.png</SplashScreen-Image> -->
+							<!-- <SplashScreen-Image>images/splash.png</SplashScreen-Image> -->
 						</manifestEntries>
 					</archive>
 				</configuration>

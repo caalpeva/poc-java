@@ -16,6 +16,12 @@ import org.apache.activemq.command.ActiveMQTopic;
 import junit.framework.TestCase;
 import team.boolbee.poc.jms.runnable.ConsumedMessageCounter;
 
+/**
+ * Clase encargada de comprobar el funcionamiento del modelo de mensajeria emisor/suscriptor de JMS.
+ * Cuando se proporciona un mensaje al corredor de mensajes (message broker), éste lo coloca en un tema (destination).
+ * El tema entrega una copia del mensaje a todos los suscriptores activos en ese momento. Es decir, que cualquier
+ * suscriptor no recibirá mensajes enviados con anterioridad al momento de su suscripción.
+ */
 public class JmsTopicTest extends TestCase {
 
 	private Connection connection;
