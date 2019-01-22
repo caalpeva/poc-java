@@ -16,6 +16,17 @@
 			<version>4.1.2</version>
 		</dependency>
 		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
@@ -51,7 +62,7 @@
 							<classpathPrefix>lib/</classpathPrefix>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-							<mainClass>team.boolbee.poc.jms.Init</mainClass>
+							<mainClass>team.boolbee.poc.jms.App</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Class-Path>.</Class-Path>
