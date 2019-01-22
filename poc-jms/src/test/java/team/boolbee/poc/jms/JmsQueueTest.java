@@ -18,8 +18,13 @@ import team.boolbee.poc.jms.Consumer;
 import team.boolbee.poc.jms.Producer;
 import team.boolbee.poc.jms.runnable.ConsumedMessageCounter;
 
+/**
+ * Clase encargada de comprobar el funcionamiento del modelo de mensajeria punto a punto de JMS.
+ * Cuando se proporciona un mensaje al corredor de mensajes (message broker), éste lo coloca en una cola (destination).
+ * La cola es responsable de mantener el mensaje hasta que un receptor esté preparado para recuperarlo.
+ * Como el mensaje se elimina de la cola cuando se entrega, se garantiza que el mensaje se entregará sólo a un receptor.
+ */
 public class JmsQueueTest extends TestCase {
-
 	private Connection connection;
 	private Session session;
 	private Queue queue;
@@ -32,7 +37,7 @@ public class JmsQueueTest extends TestCase {
 		queue = new ActiveMQQueue("testQueue");
 	}
 
-	public void testWhenConsumerAreCreatedBeforeSending() throws JMSException, InterruptedException {
+	public void testWhenConsumersAreCreatedBeforeSending() throws JMSException, InterruptedException {
 		final int numConsumers = 2;
 		CountDownLatch startSignal = new CountDownLatch(1);
 		CountDownLatch doneSignal = new CountDownLatch(numConsumers);
