@@ -13,5 +13,37 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring</artifactId>
 		</dependency>
+		<!-- 	ActiveMQ es un estupendo corredor de mensajes de código abierto -->
+<!-- 	para la mensajería asíncrona con JMS. Comenzó como proyecto Codehaus -->
+<!-- 	pero finalmente se trasladó a Apache. Descargar y descomprimir la distribucción -->
+<!-- 	binaria correspondiente a la versión de la dependencia. Ejecutar el archivo -->
+<!--	~/bin/activemq.bat y ActiveMQ estará disponible para entregar mensajes. -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit-addons</groupId>
+			<artifactId>junit-addons</artifactId>
+			<version>1.4</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>
