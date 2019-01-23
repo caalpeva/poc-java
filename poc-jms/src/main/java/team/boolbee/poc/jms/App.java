@@ -12,7 +12,7 @@ import org.apache.activemq.command.ActiveMQTopic;
 
 /**
  * Clase principal para comprobar el funcionamiento de la mensajería JMS (Java Message Service).
- * JMS es un estandar de mensajería asíncrona que permite la comunicación entre aplicaciones Java2.
+ * JMS ofrece un API estándar de mensajería asíncrona que permite la comunicación entre aplicaciones Java.
  * Hay dos conceptos principales en JMS: corredores de mensajes (message brokers) y destinos (destinations).
  * Cuando una aplicación envía un mensaje, lo entrega a un corredor de mensajes. Este asegurará de que el mensaje
  * sea entregado en el destino especificado de forma asíncrona, permitiendo al emisor que siga con sus tareas.

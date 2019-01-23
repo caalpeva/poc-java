@@ -29,7 +29,6 @@ public class JsmSenderTest extends AbstractDependencyInjectionSpringContextTests
 		
 		System.out.println("Doing something else...");
 		Thread.sleep(1000);
-		System.out.println("Doing something else...");
 		
 		person = new Person();
 		person.setName("Julius");
@@ -45,7 +44,5 @@ public class JsmSenderTest extends AbstractDependencyInjectionSpringContextTests
 		
 		System.out.println("Doing something else...");
 		Thread.sleep(1000);
-		System.out.println("Doing something else...");
 	}
-
 }

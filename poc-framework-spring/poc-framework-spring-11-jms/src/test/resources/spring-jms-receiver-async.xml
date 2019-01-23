@@ -32,12 +32,6 @@
 		<property name="connectionFactory" ref="connectionFactory" />
 	</bean>
 
-	<!-- ================================================= -->
-	<!-- ===== SERVICIO PROCESADOR DE MENSAJE (POJO) ===== -->
-	<!-- ================================================= -->
-	
-	<bean id="hrDepartmentService" class="team.boolbee.poc.spring.jms.service.HrDepartmentService" />
-	
 	<!-- ======================================================== -->
 	<!-- ===== OYENTE DE MENSAJES JMS QUE DELEGA EN UN POJO ===== -->
 	<!-- ======================================================== -->
