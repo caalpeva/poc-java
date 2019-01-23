@@ -6,7 +6,7 @@ public class JsmAsynchReceiverTest extends AbstractDependencyInjectionSpringCont
 	
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "spring-jms.xml", "spring-jms-receiver.xml" };
+		return new String[] { "spring-jms.xml", "spring-jms-receiver-async.xml" };
 	}
 	
 	public void testReceiver() throws InterruptedException {

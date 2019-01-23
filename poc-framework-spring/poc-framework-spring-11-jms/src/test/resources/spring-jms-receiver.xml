@@ -14,47 +14,4 @@
 <!-- 		<property name="destination" ref="destination" /> -->
 	</bean>
 	
-	<!-- ==================================================== -->
-	<!-- ===== RECEPTOR ASINCRONO (Message Driven Bean) ===== -->
-	<!-- ==================================================== -->
-	
-	<bean id="hrDepartmentMessageListener" class="team.boolbee.poc.spring.jms.HrDepartmentMessageListener" />
-	
-	<!-- ================================== -->
-	<!-- ===== OYENTE DE MENSAJES JMS ===== -->
-	<!-- ================================== -->
-	
-	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
-		<property name="connectionFactory" ref="connectionFactory" />
-		<property name="destination" ref="queueDestination" />
-<!-- 		<property name="messageListener" ref="hrDepartmentMessageListener" /> -->
-		<property name="messageListener" ref="hrDepartmentMessageListenerAdapter" />
-		<property name="transactionManager" ref="jmsTransactionManager" />
-		<property name="concurrentConsumers" value="1" />
-	</bean>
-	
-	<!-- ======================================= -->
-	<!-- ===== GESTOR DE TRANSACCIONES JMS ===== -->
-	<!-- ======================================= -->
-	
-	<bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
-		<property name="connectionFactory" ref="connectionFactory" />
-	</bean>
-
-	<!-- ================================================= -->
-	<!-- ===== SERVICIO PROCESADOR DE MENSAJE (POJO) ===== -->
-	<!-- ================================================= -->
-	
-	<bean id="hrDepartmentService" class="team.boolbee.poc.spring.jms.service.HrDepartmentService" />
-	
-	<!-- ======================================================== -->
-	<!-- ===== OYENTE DE MENSAJES JMS QUE DELEGA EN UN POJO ===== -->
-	<!-- ======================================================== -->
-	
-	<bean id="hrDepartmentMessageListenerAdapter" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
-		<property name="delegate" ref="hrDepartmentService" />
-		<property name="defaultListenerMethod" value="processPersonInfo" />
-		<property name="messageConverter" ref="personConverter" />
-	</bean>
-	
 </beans>
