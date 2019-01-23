@@ -30,6 +30,7 @@
 <!-- 		<property name="messageListener" ref="hrDepartmentMessageListener" /> -->
 		<property name="messageListener" ref="hrDepartmentMessageListenerAdapter" />
 		<property name="transactionManager" ref="jmsTransactionManager" />
+		<property name="concurrentConsumers" value="1" />
 	</bean>
 	
 	<!-- ======================================= -->
