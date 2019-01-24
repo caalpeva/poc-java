@@ -66,7 +66,7 @@
 			</list>
 		</property>
 		<property name="validator">
-			<bean id="personValidator" class="team.boolbee.poc.spring.security.mvc.PersonValidator" />
+			<bean id="personValidator" class="team.boolbee.poc.spring.security.mvc.validator.PersonValidator" />
 		</property>
 	</bean>
 
@@ -107,7 +107,7 @@
 	<!-- ===== VALIDADORES DE FORMULARIO ===== -->
 	<!-- ===================================== -->
 
-	<bean id="vehicleValidator" class="team.boolbee.poc.spring.security.mvc.VehicleValidator" />
+	<bean id="vehicleValidator" class="team.boolbee.poc.spring.security.mvc.validator.VehicleValidator" />
 
 	<!-- <bean id="vehicleValidator" class="org.springmodules.validation.commons.DefaultBeanValidator"> -->
 	<!-- <property name="validatorFactory" ref="validatorFactory" /> -->
