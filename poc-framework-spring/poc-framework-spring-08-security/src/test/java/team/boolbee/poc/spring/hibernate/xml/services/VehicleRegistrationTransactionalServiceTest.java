@@ -18,7 +18,7 @@ public class VehicleRegistrationTransactionalServiceTest extends AbstractDepende
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "spring-datasource.xml", "spring-hibernate.xml", "spring-tx.xml" };
+		return new String[] { "spring-datasource.xml", "spring-hibernate.xml", "spring-tx.xml", "spring-email.xml" };
 	}
 
 	@SuppressWarnings("deprecation")
@@ -35,6 +35,7 @@ public class VehicleRegistrationTransactionalServiceTest extends AbstractDepende
 		person.setName("Dan");
 		person.setSurname("Aykroyd");
 		person.setBirthDate(new Date(52, 6, 1));
+		person.setEmail("daykroyd@mailinator.com");
 		person.addVehicle(vehicle);
 
 		registrationServiceDAO.register(person);
@@ -56,6 +57,7 @@ public class VehicleRegistrationTransactionalServiceTest extends AbstractDepende
 		person.setName("Bill");
 		person.setSurname("Murray");
 		person.setBirthDate(new Date(50, 8, 21));
+		person.setEmail("bmurray@mailinator.com");
 		person.addVehicle(vehicle);
 
 		try {

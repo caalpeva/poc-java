@@ -39,6 +39,8 @@
 		class="team.boolbee.poc.spring.hibernate.services.VehicleRegistrationServiceImpl">
 		<property name="personDao" ref="personDao" />
 		<property name="vehicleDao" ref="vehicleDao" />
+		<property name="mailSender" ref="mailSender" />
+		<property name="mailMessage" ref="mailMessage" />
 	</bean>
 
 </beans>

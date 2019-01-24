@@ -4,6 +4,9 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+
 import team.boolbee.poc.spring.hibernate.dao.PersonDao;
 import team.boolbee.poc.spring.hibernate.dao.VehicleDao;
 import team.boolbee.poc.spring.hibernate.model.Person;
@@ -13,6 +16,8 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 	
 	private PersonDao personDao;
 	private VehicleDao vehicleDao;
+	private MailSender mailSender;
+	private SimpleMailMessage mailMessage; 
 	
 	public VehicleRegistrationServiceImpl() {
 	}
@@ -22,7 +27,8 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 			vehicle.setRegistrationDate(new Date());
 		}
 		
-		personDao.savePerson(person);
+		personDao.savePerson(person);		
+		sendEmailToUser(person);
 	}
 	
 	public List<Person> getPersons() {
@@ -49,6 +55,22 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 		this.vehicleDao = vehicleDao;
 	}
 
+	public MailSender getMailSender() {
+		return mailSender;
+	}
+
+	public void setMailSender(MailSender mailSender) {
+		this.mailSender = mailSender;
+	}
+
+	public SimpleMailMessage getMailMessage() {
+		return mailMessage;
+	}
+
+	public void setMailMessage(SimpleMailMessage mailMessage) {
+		this.mailMessage = mailMessage;
+	}
+
 	public Collection<Vehicle> getVehiclesForPersons(Integer personId) {
 		Person person = personDao.getPersonById(personId);
 		return person.getVehicles();
@@ -63,5 +85,21 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 
 	public List<Vehicle> getVehiclesForDay(Date date) {
 		return vehicleDao.getVehiclesForDay(date);
+	}
+	
+	private void sendEmailToUser(Person person) {
+		if (person == null) {
+			return;
+		}
+		
+		SimpleMailMessage message = new SimpleMailMessage(mailMessage);
+		message.setTo(person.getEmail());
+		
+		String text = message.getText();
+		text = text.replace("%NAME%", person.getName());
+		text = text.replace("%SURNAME%", person.getSurname());
+		message.setText(text);
+		
+		mailSender.send(message);
 	}
 }
