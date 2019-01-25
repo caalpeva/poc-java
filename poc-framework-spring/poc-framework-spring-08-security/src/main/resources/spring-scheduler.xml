@@ -9,8 +9,13 @@
 	<!-- ===== TAREA PERIODICA CON TIMER ===== -->
 	<!-- ===================================== -->
 
-	<bean id="userReportTask" class="team.boolbee.poc.spring.security.task.UserReportTask">
-		<property name="registrationService" ref="vehicleRegistrationService" />
+<!-- 	<bean id="userReportTask" class="team.boolbee.poc.spring.security.task.UserListReportTask"> -->
+<!-- 		<property name="registrationService" ref="vehicleRegistrationService" /> -->
+<!-- 	</bean> -->
+
+	<bean id="userReportTask" class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject" ref="vehicleRegistrationService" />
+		<property name="targetMethod" value="sendUserListEmailToAdmin" />
 	</bean>
 
 	<bean id="scheduledReportingTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
@@ -51,20 +56,24 @@
 	<!-- ===== TAREA CRON CON QUARTZ ===== -->
 	<!-- ================================= -->
 	
-		<bean id="dailyRegisteredVehicleReportJob" class="org.springframework.scheduling.quartz.JobDetailBean">
-		<property name="jobClass" value="team.boolbee.poc.spring.security.task.DailyRegisteredVehicleReportJob" />
-		<property name="jobDataAsMap">
-			<map>
-				<entry key="mailSender" value-ref="mailSender" />
-				<entry key="administratorEmail" value="${email.admin}" />
-			</map>
-		</property>
+<!-- 	<bean id="dailyRegisteredVehicleReportJob" class="org.springframework.scheduling.quartz.JobDetailBean"> -->
+<!-- 		<property name="jobClass" value="team.boolbee.poc.spring.security.task.DailyRegisteredVehicleReportJob" /> -->
+<!-- 		<property name="jobDataAsMap"> -->
+<!-- 			<map> -->
+<!-- 				<entry key="registrationService" value-ref="vehicleRegistrationService" /> -->
+<!-- 			</map> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	
+	<bean id="dailyRegisteredVehicleReportJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="vehicleRegistrationService" />
+		<property name="targetMethod" value="sendDailyRegisteredVehiclesEmailToUser" />
 	</bean>
 	
 	<bean id="dailyRegisteredVehicleReportingTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail" ref="dailyRegisteredVehicleReportJob" />
-<!-- 		<property name="cronExpression" value="0 59 23 * * ?" /> -->
-		<property name="cronExpression" value="0 0,15,30,45 * * * ?" />
+		<property name="cronExpression" value="0 59 23 * * ?" />
+<!-- 		<property name="cronExpression" value="0 0,15,30,45 * * * ?" /> -->
 <!-- 		<property name="cronExpression" value="0 0 8-17 * * MON-FRI" /> -->
 	</bean>
 	

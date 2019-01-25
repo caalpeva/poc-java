@@ -4,7 +4,7 @@ import java.util.TimerTask;
 
 import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
 
-public class UserReportTask extends TimerTask {
+public class UserListReportTask extends TimerTask {
 
 	private VehicleRegistrationService registrationService;
 	

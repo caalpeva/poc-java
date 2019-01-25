@@ -12,7 +12,7 @@ public class DailyRegisteredVehicleReportJob extends QuartzJobBean {
 	
 	@Override
 	protected void executeInternal(JobExecutionContext arg0) throws JobExecutionException {
-		registrationService.sendUserListEmailToAdmin();
+		registrationService.sendDailyRegisteredVehiclesEmailToUser();
 	}
 	
 	public VehicleRegistrationService getRegistrationService() {

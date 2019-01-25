@@ -119,14 +119,17 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 		List<Vehicle> vehicles = getVehiclesForDay(new Date());
 		
 		Set<Person> persons = new HashSet<Person>();
+		if (vehicles != null && vehicles.size() > 0) {
+			for(Vehicle vehicle: vehicles) {
+				persons.add(vehicle.getPerson());
+			} // for
+		}
 		
-		for(Vehicle vehicle: vehicles) {
-			persons.add(vehicle.getPerson());
-		} // for
-		
-		for (Person person : persons) {
-			sendRegistrationEmailToUser(person);
-		} // for
+		if (persons != null && persons.size() > 0) {
+			for (Person person: persons) {
+				sendRegistrationEmailToUser(person);
+			} // for
+		}
 	}
 	
 	private void sendRegistrationEmailToUser(Person person) {
