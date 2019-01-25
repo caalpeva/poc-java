@@ -296,6 +296,9 @@
 	</dependencies>
 
 	<build>
+		<filters>
+			<filter>credentials/credentials.properties</filter>
+		</filters>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>

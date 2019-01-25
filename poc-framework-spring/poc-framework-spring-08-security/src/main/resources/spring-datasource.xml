@@ -24,11 +24,6 @@
 <!-- 		proxy-interface="javax.sql.DataSource" -->
 <!-- 		/> -->
 
-	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:/database-${databaseType}.properties" />
-	</bean>
-
 	<bean id="developmentDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${db.driver}" />
 		<property name="url" value="${db.url}" />

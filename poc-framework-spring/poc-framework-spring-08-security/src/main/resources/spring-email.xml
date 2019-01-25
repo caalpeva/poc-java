@@ -8,8 +8,8 @@
 <!-- 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> -->
 <!-- 		<property name="host" value="smtp.gmail.com" /> -->
 <!-- 		<property name="port" value="587" /> -->
-<!-- 		<property name="username" value="boolbee01@gmail.com" /> -->
-<!-- 		<property name="password" value="Ed1f1c1l" /> -->
+<!-- 		<property name="username" value="${email.user}" /> -->
+<!-- 		<property name="password" value="${email.password}" /> -->
 <!-- 		<property name="javaMailProperties"> -->
 <!-- 			<props> -->
 <!--				<prop key="mail.debug">true</prop> -->
@@ -31,8 +31,8 @@
 		<constructor-arg type="java.util.Properties">
 			<props>
 				<prop key="mail.debug">true</prop>
-		 		<prop key="mail.user">boolbee01@gmail.com</prop>
-		 		<prop key="mail.password">Ed1f1c1l</prop>
+		 		<prop key="mail.user">${email.user}</prop>
+		 		<prop key="mail.password">${email.password}</prop>
 		 		<prop key="mail.smtp.host">smtp.gmail.com</prop>
 				<prop key="mail.smtp.port">587</prop>
 				<prop key="mail.smtp.auth">true</prop>

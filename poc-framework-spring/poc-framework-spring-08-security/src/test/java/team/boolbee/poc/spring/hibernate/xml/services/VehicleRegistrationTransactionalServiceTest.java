@@ -18,7 +18,13 @@ public class VehicleRegistrationTransactionalServiceTest extends AbstractDepende
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "spring-datasource.xml", "spring-hibernate.xml", "spring-tx.xml", "spring-email.xml" };
+		return new String[] {
+				"spring-context.xml",
+				"spring-datasource.xml",
+				"spring-hibernate.xml",
+				"spring-tx.xml",
+				"spring-email.xml"
+			};
 	}
 
 	@SuppressWarnings("deprecation")
@@ -52,7 +58,7 @@ public class VehicleRegistrationTransactionalServiceTest extends AbstractDepende
 		vehicle.setPlateNumber("2107 PZG");
 		vehicle.setRegistrationDate(new Date());
 		vehicle.setType(VehicleType.MOTORCYCLE);
-		
+
 		person = new Person();
 		person.setName("Bill");
 		person.setSurname("Murray");
@@ -70,15 +76,15 @@ public class VehicleRegistrationTransactionalServiceTest extends AbstractDepende
 
 			assertFalse(persons.contains(person));
 		}
-		
+
 		persons = registrationServiceDAO.getPersons();
 
 		for (Person currentPerson : persons) {
 			System.out.println(currentPerson);
 		} // for
-		
+
 		List<Vehicle> vehicles = registrationServiceDAO.getVehiclesForDay(new Date());
-		for (Vehicle currentVehicle: vehicles) {
+		for (Vehicle currentVehicle : vehicles) {
 			System.out.println(currentVehicle.getPlateNumber() + " " + currentVehicle.getRegistrationDate());
 		} // for
 	}

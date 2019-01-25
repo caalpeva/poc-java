@@ -9,6 +9,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
+			classpath:spring-context.xml
 			classpath:spring-cache.xml
 			classpath:spring-datasource.xml
 			classpath:spring-email.xml
