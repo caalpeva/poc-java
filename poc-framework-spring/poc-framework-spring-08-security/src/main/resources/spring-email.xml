@@ -42,8 +42,6 @@
 	</bean>
 
 	<bean id="mailSender" class="team.boolbee.poc.spring.security.mail.FixedJavaMailSenderImpl">
-<!-- 		<property name="username" value="boolbee01@gmail.com" /> -->
-<!-- 		<property name="password" value="Ed1f1c1l" /> -->
 		<property name="session" ref="mailSession" />
 	</bean>
 
