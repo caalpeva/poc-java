@@ -41,6 +41,7 @@
 		<property name="vehicleDao" ref="vehicleDao" />
 		<property name="mailSender" ref="mailSender" />
 		<property name="mailMessage" ref="mailMessage" />
+		<property name="administratorEmail" value="${email.admin}" />
 	</bean>
 
 </beans>

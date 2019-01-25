@@ -3,6 +3,8 @@ package team.boolbee.poc.spring.hibernate.services;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -13,32 +15,33 @@ import team.boolbee.poc.spring.hibernate.model.Person;
 import team.boolbee.poc.spring.hibernate.model.Vehicle;
 
 public class VehicleRegistrationServiceImpl implements VehicleRegistrationService {
-	
+
 	private PersonDao personDao;
 	private VehicleDao vehicleDao;
 	private MailSender mailSender;
-	private SimpleMailMessage mailMessage; 
-	
+	private SimpleMailMessage mailMessage;
+	private String administratorEmail;
+
 	public VehicleRegistrationServiceImpl() {
 	}
 
 	public void register(Person person) {
-		for(Vehicle vehicle: person.getVehicles()) {
+		for (Vehicle vehicle : person.getVehicles()) {
 			vehicle.setRegistrationDate(new Date());
 		}
-		
-		personDao.savePerson(person);		
-		sendEmailToUser(person);
+
+		personDao.savePerson(person);
+		sendRegistrationEmailToUser(person);
 	}
-	
+
 	public List<Person> getPersons() {
 		return personDao.list();
-	}	
+	}
 
 	public Person getPersonById(Integer id) {
 		return personDao.getPersonById(id);
 	}
-	
+
 	public PersonDao getPersonDao() {
 		return personDao;
 	}
@@ -46,7 +49,7 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 	public void setPersonDao(PersonDao personDao) {
 		this.personDao = personDao;
 	}
-	
+
 	public VehicleDao getVehicleDao() {
 		return vehicleDao;
 	}
@@ -71,6 +74,14 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 		this.mailMessage = mailMessage;
 	}
 
+	public String getAdministratorEmail() {
+		return administratorEmail;
+	}
+
+	public void setAdministratorEmail(String administratorEmail) {
+		this.administratorEmail = administratorEmail;
+	}
+
 	public Collection<Vehicle> getVehiclesForPersons(Integer personId) {
 		Person person = personDao.getPersonById(personId);
 		return person.getVehicles();
@@ -86,20 +97,51 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 	public List<Vehicle> getVehiclesForDay(Date date) {
 		return vehicleDao.getVehiclesForDay(date);
 	}
+
+	public void sendUserListEmailToAdmin() {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(administratorEmail);
+		message.setFrom("no-reply@gmail.com");
+		message.setSubject("User list");
+		
+		StringBuffer text = new StringBuffer();
+		List<Person> persons = getPersons();
+		for (Person person : persons) {
+			text.append(String.format("%s %s %s\n", person.getName(),
+					person.getSurname(), person.getEmail()));
+		} // for
+		message.setText(text.toString());
+
+		mailSender.send(message);
+	}
 	
-	private void sendEmailToUser(Person person) {
+	public void sendDailyRegisteredVehiclesEmailToUser() {
+		List<Vehicle> vehicles = getVehiclesForDay(new Date());
+		
+		Set<Person> persons = new HashSet<Person>();
+		
+		for(Vehicle vehicle: vehicles) {
+			persons.add(vehicle.getPerson());
+		} // for
+		
+		for (Person person : persons) {
+			sendRegistrationEmailToUser(person);
+		} // for
+	}
+	
+	private void sendRegistrationEmailToUser(Person person) {
 		if (person == null) {
 			return;
 		}
-		
+
 		SimpleMailMessage message = new SimpleMailMessage(mailMessage);
 		message.setTo(person.getEmail());
-		
+
 		String text = message.getText();
 		text = text.replace("%NAME%", person.getName());
 		text = text.replace("%SURNAME%", person.getSurname());
 		message.setText(text);
-		
+
 		mailSender.send(message);
 	}
 }

@@ -14,6 +14,7 @@
 			classpath:spring-datasource.xml
 			classpath:spring-email.xml
 			classpath:spring-hibernate.xml
+			classpath:spring-scheduler.xml
 			classpath:spring-security.xml
 		<!-- classpath:spring-tx.xml -->
 		</param-value>

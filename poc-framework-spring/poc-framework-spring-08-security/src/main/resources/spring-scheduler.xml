@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- ===================================== -->
+	<!-- ===== TAREA PERIODICA CON TIMER ===== -->
+	<!-- ===================================== -->
+
+	<bean id="userReportTask" class="team.boolbee.poc.spring.security.task.UserReportTask">
+		<property name="registrationService" ref="vehicleRegistrationService" />
+	</bean>
+
+	<bean id="scheduledReportingTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="timerTask" ref="userReportTask" />
+		<property name="period" value="86400000" />
+		<property name="delay" value="120000" />
+	</bean>
+	
+	<bean class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+				<ref bean="scheduledReportingTask" /> 
+			</list>
+		</property>
+	</bean>
+	
+	<!-- ====================================== -->
+	<!-- ===== TAREA PERIODICA CON QUARTZ ===== -->
+	<!-- ====================================== -->
+	
+	<bean id="systemCheckingJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="team.boolbee.poc.spring.security.task.SystemCheckingJob" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender" />
+				<entry key="administratorEmail" value="${email.admin}" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="systemCheckingTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="systemCheckingJob" />
+		<property name="repeatInterval" value="86400000" />
+		<property name="startDelay" value="60000" />
+	</bean>
+
+	<!-- ================================= -->
+	<!-- ===== TAREA CRON CON QUARTZ ===== -->
+	<!-- ================================= -->
+	
+		<bean id="dailyRegisteredVehicleReportJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="team.boolbee.poc.spring.security.task.DailyRegisteredVehicleReportJob" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender" />
+				<entry key="administratorEmail" value="${email.admin}" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="dailyRegisteredVehicleReportingTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="dailyRegisteredVehicleReportJob" />
+<!-- 		<property name="cronExpression" value="0 59 23 * * ?" /> -->
+		<property name="cronExpression" value="0 0,15,30,45 * * * ?" />
+<!-- 		<property name="cronExpression" value="0 0 8-17 * * MON-FRI" /> -->
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="systemCheckingTrigger" />
+				<ref bean="dailyRegisteredVehicleReportingTrigger" />
+			</list>
+		</property>
+	</bean>
+	
+</beans>

@@ -47,7 +47,7 @@
 
 	<bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage">
 		<property name="from">
-			<value><![CDATA[POC EMAIL <notify@gmail.com>]]></value>
+			<value><![CDATA[POC EMAIL <no-reply@gmail.com>]]></value>
 		</property>
 		<property name="subject" value="Datos de registro en POC!" />
 		<property name="text">

@@ -8,11 +8,19 @@ import team.boolbee.poc.spring.hibernate.model.Person;
 import team.boolbee.poc.spring.hibernate.model.Vehicle;
 
 public interface VehicleRegistrationService {
-  public void register(Person person);
-  public List<Person> getPersons();
-  public Person getPersonById(Integer id);
-  public Collection<Vehicle> getVehiclesForPersons(Integer personId);
-  
-  public void register(Vehicle vehicle);
-  public List<Vehicle> getVehiclesForDay(Date day);
+	public void register(Person person);
+
+	public List<Person> getPersons();
+
+	public Person getPersonById(Integer id);
+
+	public Collection<Vehicle> getVehiclesForPersons(Integer personId);
+
+	public void register(Vehicle vehicle);
+
+	public List<Vehicle> getVehiclesForDay(Date day);
+
+	public void sendUserListEmailToAdmin();
+	
+	public void sendDailyRegisteredVehiclesEmailToUser();
 }

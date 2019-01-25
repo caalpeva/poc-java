@@ -6,8 +6,8 @@ import javax.mail.Session;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 /**
- * Clase encargada de proporcionar la información de autenticación
- * que carece el objeto javax.mail.Session obtenido de un JNI.
+ * Subclase de JavaMailSenderImpl encargada de proporcionar la información
+ * de autenticación que carece el objeto javax.mail.Session obtenido de un JNI.
  */
 public class FixedJavaMailSenderImpl extends JavaMailSenderImpl {
 

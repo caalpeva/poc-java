@@ -169,9 +169,6 @@
 			<testResource>
 				<directory>src/test/resources</directory>
 				<filtering>true</filtering>
-				<!-- <includes> -->
-				<!-- <include>**/log4j.properties</include> -->
-				<!-- </includes> -->
 			</testResource>
 		</testResources>
 	</build>
