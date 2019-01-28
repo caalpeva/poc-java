@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- ================================================= -->
+	<!-- ===== EXPORTACION DE BEANS A SERVIDOR MBEAN ===== -->
+	<!-- ================================================= -->
+
+<!-- Comentando la propiedad server se asume que está funcionando dentro de un servidor -->
+<!-- de aplicaciones que ofrece un servidor MBean (Como Tomcat o JBoss) -->
+	<bean class="org.springframework.jmx.export.MBeanExporter">
+		<property name="beans">
+			<map>
+				<entry key="rantz:name=emailSchedule" value-ref="dailyRegisteredVehicleReportingTrigger" />
+ 				<entry key="rantz:name=vehicleRegistrationService" value-ref="vehicleRegistrationService"/>
+			</map>
+		</property>
+		<property name="assembler" ref="assembler" />
+		<property name="registrationBehaviorName" value="REGISTRATION_FAIL_ON_EXISTING" />
+		<property name="server" ref="jmxServer" />
+	</bean>
+	
+	<!-- ================================================ -->
+	<!-- ===== ENSAMBLADORES DE INTERFAZ DE GESTION ===== -->
+	<!-- ================================================ -->
+	
+	<bean id="assembler" class="org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler">
+		<property name="managedInterfaces">
+			<list>
+				<value>team.boolbee.poc.spring.security.jmx.ManagedCronTrigger</value>
+				<value>team.boolbee.poc.spring.security.jmx.ManagedVehicleRegistrationService</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- ========================== -->
+	<!-- ===== SERVIDOR MBEAN ===== -->
+	<!-- ========================== -->
+	
+<!-- Declaración de servidor MBean necesaria si la aplicación Spring funciona independientemente -->
+<!-- o en un contenedor que no ofrece un servidor MBean -->
+	<bean id="jmxServer" class="org.springframework.jmx.support.MBeanServerFactoryBean">
+		<property name="defaultDomain" value="rantz" />
+	</bean>
+	
+</beans>

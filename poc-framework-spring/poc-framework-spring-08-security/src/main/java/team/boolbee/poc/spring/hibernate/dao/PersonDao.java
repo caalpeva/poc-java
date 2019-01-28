@@ -6,6 +6,8 @@ import team.boolbee.poc.spring.hibernate.model.Person;
 
 public interface PersonDao {
 
+	public int getPersonCount();
+	
 	public void savePerson(Person person);
 	
 	public void updatePerson(Person person);

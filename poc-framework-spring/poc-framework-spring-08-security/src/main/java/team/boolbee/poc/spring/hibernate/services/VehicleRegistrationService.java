@@ -4,10 +4,15 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.jmx.export.annotation.ManagedOperation;
+import org.springframework.jmx.export.annotation.ManagedResource;
+
 import team.boolbee.poc.spring.hibernate.model.Person;
 import team.boolbee.poc.spring.hibernate.model.Vehicle;
 
+@ManagedResource(objectName="rantz:name=VehicleRegistrationService")
 public interface VehicleRegistrationService {
+	
 	public void register(Person person);
 
 	public List<Person> getPersons();
@@ -22,5 +27,6 @@ public interface VehicleRegistrationService {
 
 	public void sendUserListEmailToAdmin();
 	
+	@ManagedOperation(description="Send the daily rant e-mail")
 	public void sendDailyRegisteredVehiclesEmailToUser();
 }

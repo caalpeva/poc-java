@@ -22,6 +22,8 @@ public class VehicleRegistrationTransactionalServiceTest extends AbstractDepende
 				"spring-context.xml",
 				"spring-datasource.xml",
 				"spring-hibernate.xml",
+				"spring-jmx-server-mbean.xml",
+				"spring-scheduler.xml",
 				"spring-tx.xml",
 				"spring-email.xml"
 			};

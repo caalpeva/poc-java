@@ -42,6 +42,9 @@
 		<property name="mailSender" ref="mailSender" />
 		<property name="mailMessage" ref="mailMessage" />
 		<property name="administratorEmail" value="${email.admin}" />
+<!-- 		<property name="notificationPublisher"> -->
+<!-- 			<bean class="org.springframework.jmx.export.notification.ModelMBeanNotificationPublisher" />	 -->
+<!-- 		</property> -->
 	</bean>
 
 </beans>

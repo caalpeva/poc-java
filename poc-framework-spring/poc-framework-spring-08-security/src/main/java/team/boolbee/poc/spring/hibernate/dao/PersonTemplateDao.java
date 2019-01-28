@@ -15,6 +15,10 @@ public class PersonTemplateDao implements PersonDao {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 
+	public int getPersonCount() {
+		return list().size();
+	}
+	
 	public void savePerson(Person person) {
 		hibernateTemplate.save(person);
 	}

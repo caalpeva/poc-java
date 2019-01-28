@@ -17,6 +17,13 @@ public class PersonHibernateSessionDao implements PersonDao {
 		this.sessionFactory = sessionFactory;
 	}
 
+	public int getPersonCount() {
+		Session session = sessionFactory.openSession();
+		List<Person> persons = session.createCriteria(Person.class).list();		
+		session.close();
+		return persons.size();
+	}
+	
 	public void savePerson(Person person) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
