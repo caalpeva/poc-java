@@ -1,48 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>poc-webapp-servlets</display-name>
-  <servlet>
-    <servlet-name>HelloWorldServlet</servlet-name>
-    <servlet-class>team.boobee.samples.servlets.HelloWorldServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>RequestDataServlet</servlet-name>
-    <servlet-class>team.boobee.samples.servlets.RequestDataServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>RedirectServlet</servlet-name>
-    <servlet-class>team.boobee.samples.servlets.RedirectServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>ForwardServlet</servlet-name>
-    <servlet-class>team.boobee.samples.servlets.ForwardServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>ClockServlet</servlet-name>
-    <servlet-class>team.boobee.samples.servlets.ClockServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>HelloWorldServlet</servlet-name>
-    <url-pattern>/HelloWorldServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>RequestDataServlet</servlet-name>
-    <url-pattern>/getRequestData</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>RedirectServlet</servlet-name>
-    <url-pattern>/redirectServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ForwardServlet</servlet-name>
-    <url-pattern>/forwardServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ClockServlet</servlet-name>
-    <url-pattern>/showClock</url-pattern>
-  </servlet-mapping>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	
+	<display-name>poc-webapp-servlets</display-name>
+	
+	<!-- ==================== -->
+	<!-- ===== SERVLETS ===== -->
+	<!-- ==================== -->
+	
+	<servlet>
+		<servlet-name>HelloWorldServlet</servlet-name>
+		<servlet-class>team.boobee.samples.servlets.HelloWorldServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>RequestDataServlet</servlet-name>
+		<servlet-class>team.boobee.samples.servlets.RequestDataServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>RedirectServlet</servlet-name>
+		<servlet-class>team.boobee.samples.servlets.RedirectServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ForwardServlet</servlet-name>
+		<servlet-class>team.boobee.samples.servlets.ForwardServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ClockServlet</servlet-name>
+		<servlet-class>team.boobee.samples.servlets.ClockServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>DateTimeServlet</servlet-name>
+		<servlet-class>team.boobee.samples.servlets.DateTimeServlet</servlet-class>
+	</servlet>
+	
+	<!-- ===================================== -->
+	<!-- ===== MAPEOS DE URLS A SERVLETS ===== -->
+	<!-- ===================================== -->
+	
+	<servlet-mapping>
+		<servlet-name>HelloWorldServlet</servlet-name>
+		<url-pattern>/HelloWorldServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>RequestDataServlet</servlet-name>
+		<url-pattern>/getRequestData</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>RedirectServlet</servlet-name>
+		<url-pattern>/redirectServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ForwardServlet</servlet-name>
+		<url-pattern>/forwardServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ClockServlet</servlet-name>
+		<url-pattern>/showClock</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>DateTimeServlet</servlet-name>
+		<url-pattern>/getDateTime</url-pattern>
+	</servlet-mapping>
+	
+	<!-- =============================== -->
+	<!-- ===== PAGINAS POR DEFECTO ==== -->
+	<!-- =============================== -->
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
 </web-app>
