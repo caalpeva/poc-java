@@ -1,4 +1,4 @@
-package team.boolbee.poc.dwr.services;
+package team.boolbee.poc.spring.dwr.services;
 
 import junit.framework.TestCase;
 
