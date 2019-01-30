@@ -16,6 +16,13 @@
 	</properties>
 
 	<dependencies>
+<!-- 	Ajax es un mecanismo de comunicación entre una página web y el -->
+<!-- 	servidor. En la version 5.0 de Internet Explorer, Microsoft incluyó un -->
+<!-- 	componente ActiveX llamado XMLHttpRequest. XMLHttpRequest puede usarse -->
+<!-- 	con Javascript para comunicarse con el servidor en mensajes XML. Esta -->
+<!-- 	técnica de comunicación entre navegador y servidor se ha llamado Ajax, -->
+<!-- 	o Asynchronous Javascript and XML. -->
+	
 <!-- 	Direct Web Remoting (DWR) es un marco de trabajo Ajax basado en Java -->
 <!-- 	que permite acceder virtualmente a cualquier objeto Java del extremo -->
 <!-- 	servidor a través de un objeto Javascript, abstrayéndose completamente -->
@@ -26,12 +33,6 @@
 			<artifactId>dwr</artifactId>
 			<version>2.0.2</version>
 			<!-- <version>3.0.2-RELEASE</version> -->
-		</dependency>
-		<dependency>
-			<groupId>rome</groupId>
-			<artifactId>rome</artifactId>
-			<version>1.0</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>rome</groupId>
