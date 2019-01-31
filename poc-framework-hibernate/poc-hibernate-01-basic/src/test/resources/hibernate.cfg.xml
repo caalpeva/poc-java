@@ -21,6 +21,7 @@
 			y create-drop -->
 		<property name="hbm2ddl.auto">create-drop</property>
 		<!-- <property name="hbm2ddl.import_files"></property> -->
+		<!-- <property name="hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</property> -->
 		
 		<mapping class="team.boolbee.poc.hibernate.Message" />
 	</session-factory>

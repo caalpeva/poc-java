@@ -5,6 +5,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
+	<!-- ========================== -->
+	<!-- ===== SERVIDOR MBEAN ===== -->
+	<!-- ========================== -->
+	
+<!-- Declaración de servidor MBean necesaria si la aplicación Spring funciona independientemente -->
+<!-- o en un contenedor que no ofrece un servidor MBean -->
+	<bean id="jmxServer" class="org.springframework.jmx.support.MBeanServerFactoryBean">
+		<property name="defaultDomain" value="rantz" />
+	</bean>
+
 	<!-- ================================================= -->
 	<!-- ===== EXPORTACION DE BEANS A SERVIDOR MBEAN ===== -->
 	<!-- ================================================= -->
@@ -34,16 +44,6 @@
 				<value>team.boolbee.poc.spring.security.jmx.ManagedVehicleRegistrationService</value>
 			</list>
 		</property>
-	</bean>
-
-	<!-- ========================== -->
-	<!-- ===== SERVIDOR MBEAN ===== -->
-	<!-- ========================== -->
-	
-<!-- Declaración de servidor MBean necesaria si la aplicación Spring funciona independientemente -->
-<!-- o en un contenedor que no ofrece un servidor MBean -->
-	<bean id="jmxServer" class="org.springframework.jmx.support.MBeanServerFactoryBean">
-		<property name="defaultDomain" value="rantz" />
 	</bean>
 	
 </beans>

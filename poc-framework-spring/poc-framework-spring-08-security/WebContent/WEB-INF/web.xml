@@ -17,6 +17,7 @@
 			classpath:spring-jmx.xml
 			classpath:spring-scheduler.xml
 			classpath:spring-security.xml
+			classpath:spring-service.xml
 		<!-- classpath:spring-tx.xml -->
 		</param-value>
 	</context-param>
