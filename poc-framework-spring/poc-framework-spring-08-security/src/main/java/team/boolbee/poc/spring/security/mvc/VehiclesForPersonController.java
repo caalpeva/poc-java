@@ -1,7 +1,6 @@
 package team.boolbee.poc.spring.security.mvc;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +23,7 @@ public class VehiclesForPersonController extends AbstractCommandController {
 		setCommandName("person");
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	protected ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object command,
 			BindException errors) throws Exception {
