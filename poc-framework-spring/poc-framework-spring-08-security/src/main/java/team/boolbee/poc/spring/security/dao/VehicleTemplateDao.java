@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.dao;
+package team.boolbee.poc.spring.security.dao;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -9,8 +9,8 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-import team.boolbee.poc.spring.hibernate.model.Person;
-import team.boolbee.poc.spring.hibernate.model.Vehicle;
+import team.boolbee.poc.spring.security.model.Person;
+import team.boolbee.poc.spring.security.model.Vehicle;
 
 public class VehicleTemplateDao implements VehicleDao {
 

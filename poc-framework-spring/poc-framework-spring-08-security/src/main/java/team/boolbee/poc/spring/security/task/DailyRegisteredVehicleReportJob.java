@@ -4,7 +4,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
+import team.boolbee.poc.spring.security.services.VehicleRegistrationService;
 
 public class DailyRegisteredVehicleReportJob extends QuartzJobBean {
 

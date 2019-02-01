@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.model;
+package team.boolbee.poc.spring.security.model;
 
 public enum VehicleType {
 	AUTOMOBILE,

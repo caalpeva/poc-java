@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.services;
+package team.boolbee.poc.spring.security.services;
 
 import java.util.Collection;
 import java.util.Date;
@@ -14,10 +14,10 @@ import org.springframework.jmx.export.notification.NotificationPublisherAware;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
-import team.boolbee.poc.spring.hibernate.dao.PersonDao;
-import team.boolbee.poc.spring.hibernate.dao.VehicleDao;
-import team.boolbee.poc.spring.hibernate.model.Person;
-import team.boolbee.poc.spring.hibernate.model.Vehicle;
+import team.boolbee.poc.spring.security.dao.PersonDao;
+import team.boolbee.poc.spring.security.dao.VehicleDao;
+import team.boolbee.poc.spring.security.model.Person;
+import team.boolbee.poc.spring.security.model.Vehicle;
 
 public class VehicleRegistrationServiceImpl implements VehicleRegistrationService, NotificationPublisherAware {
 

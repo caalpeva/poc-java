@@ -13,11 +13,11 @@ import org.springframework.validation.Errors;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractWizardFormController;
 
-import team.boolbee.poc.spring.hibernate.model.Person;
-import team.boolbee.poc.spring.hibernate.model.Vehicle;
-import team.boolbee.poc.spring.hibernate.model.VehicleType;
-import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
+import team.boolbee.poc.spring.security.model.Person;
+import team.boolbee.poc.spring.security.model.Vehicle;
+import team.boolbee.poc.spring.security.model.VehicleType;
 import team.boolbee.poc.spring.security.mvc.validator.PersonValidator;
+import team.boolbee.poc.spring.security.services.VehicleRegistrationService;
 
 public class UserRegistrationFormController extends AbstractWizardFormController {
 

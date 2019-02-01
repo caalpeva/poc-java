@@ -10,10 +10,10 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import team.boolbee.poc.spring.hibernate.model.Person;
-import team.boolbee.poc.spring.hibernate.model.Vehicle;
-import team.boolbee.poc.spring.hibernate.model.VehicleType;
-import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
+import team.boolbee.poc.spring.security.model.Person;
+import team.boolbee.poc.spring.security.model.Vehicle;
+import team.boolbee.poc.spring.security.model.VehicleType;
+import team.boolbee.poc.spring.security.services.VehicleRegistrationService;
 
 public class AddVehicleFormController extends SimpleFormController {
 

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.tiles.ComponentContext;
 import org.springframework.web.servlet.view.tiles.ComponentControllerSupport;
 
-import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
+import team.boolbee.poc.spring.security.services.VehicleRegistrationService;
 
 public class HeaderTileController extends ComponentControllerSupport {
 

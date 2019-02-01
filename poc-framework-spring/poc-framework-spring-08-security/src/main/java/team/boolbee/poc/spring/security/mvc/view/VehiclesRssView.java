@@ -17,7 +17,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
 import com.sun.syndication.io.SyndFeedOutput;
 
-import team.boolbee.poc.spring.hibernate.model.Vehicle;
+import team.boolbee.poc.spring.security.model.Vehicle;
 
 public class VehiclesRssView extends AbstractView {
 

@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.services;
+package team.boolbee.poc.spring.security.services;
 
 import java.util.Collection;
 import java.util.Date;
@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.jmx.export.annotation.ManagedResource;
 
-import team.boolbee.poc.spring.hibernate.model.Person;
-import team.boolbee.poc.spring.hibernate.model.Vehicle;
+import team.boolbee.poc.spring.security.model.Person;
+import team.boolbee.poc.spring.security.model.Vehicle;
 
 @ManagedResource(objectName="rantz:name=VehicleRegistrationService")
 public interface VehicleRegistrationService {

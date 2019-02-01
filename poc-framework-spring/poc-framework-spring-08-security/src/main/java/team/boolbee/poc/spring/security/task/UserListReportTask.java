@@ -2,7 +2,7 @@ package team.boolbee.poc.spring.security.task;
 
 import java.util.TimerTask;
 
-import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
+import team.boolbee.poc.spring.security.services.VehicleRegistrationService;
 
 public class UserListReportTask extends TimerTask {
 

@@ -8,7 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import team.boolbee.poc.spring.hibernate.model.Person;
+import team.boolbee.poc.spring.security.model.Person;
 
 public class PersonValidator implements Validator {
 

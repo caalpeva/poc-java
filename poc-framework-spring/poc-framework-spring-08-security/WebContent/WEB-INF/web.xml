@@ -12,8 +12,8 @@
 			classpath:spring-context.xml
 			classpath:spring-cache.xml
 			classpath:spring-datasource.xml
+			classpath:spring-data-hibernate.xml
 			classpath:spring-email.xml
-			classpath:spring-hibernate.xml
 			classpath:spring-jmx.xml
 			classpath:spring-scheduler.xml
 			classpath:spring-security.xml

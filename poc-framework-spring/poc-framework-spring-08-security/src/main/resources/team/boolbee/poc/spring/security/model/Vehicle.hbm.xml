@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="team.boolbee.poc.spring.hibernate.model">
+<hibernate-mapping package="team.boolbee.poc.spring.security.model">
 	<class name="Vehicle" table="VEHICLE">
 		<id name="id">
 			<generator class="identity" />
@@ -10,7 +10,7 @@
 		<property name="plateNumber" not-null="true" unique="true"/>
 		<property name="type">
 			<type name="org.hibernate.type.EnumType">
-				<param name="enumClass">team.boolbee.poc.spring.hibernate.model.VehicleType</param>
+				<param name="enumClass">team.boolbee.poc.spring.security.model.VehicleType</param>
 				<param name="useNamed">true</param>
 			</type>
 		</property>

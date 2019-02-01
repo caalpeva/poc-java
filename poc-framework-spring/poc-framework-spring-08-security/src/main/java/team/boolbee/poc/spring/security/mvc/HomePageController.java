@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-import team.boolbee.poc.spring.hibernate.model.Person;
-import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
+import team.boolbee.poc.spring.security.model.Person;
+import team.boolbee.poc.spring.security.services.VehicleRegistrationService;
 
 public class HomePageController extends AbstractController {
   public HomePageController() {}

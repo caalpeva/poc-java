@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.xml.services;
+package team.boolbee.poc.spring.security.services;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,10 +9,10 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.AbstractTransactionalDataSourceSpringContextTests;
 
-import team.boolbee.poc.spring.hibernate.model.Person;
-import team.boolbee.poc.spring.hibernate.model.Vehicle;
-import team.boolbee.poc.spring.hibernate.model.VehicleType;
-import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
+import team.boolbee.poc.spring.security.model.Person;
+import team.boolbee.poc.spring.security.model.Vehicle;
+import team.boolbee.poc.spring.security.model.VehicleType;
+import team.boolbee.poc.spring.security.services.VehicleRegistrationService;
 
 public class VehicleRegistrationServiceTransactionalDataSourceTest extends AbstractTransactionalDataSourceSpringContextTests {
 
@@ -24,7 +24,7 @@ public class VehicleRegistrationServiceTransactionalDataSourceTest extends Abstr
 	@Override
 	protected String[] getConfigLocations() {
 		setAutowireMode(AUTOWIRE_BY_NAME);
-		return new String[] { "spring-context.xml", "spring-datasource.xml", "spring-hibernate.xml",
+		return new String[] { "spring-context.xml", "spring-datasource.xml", "spring-data-hibernate.xml",
 				"spring-jmx-server-mbean.xml", "spring-scheduler.xml", "spring-service.xml", "spring-tx.xml",
 				"spring-email.xml" };
 	}
@@ -99,7 +99,7 @@ public class VehicleRegistrationServiceTransactionalDataSourceTest extends Abstr
 				return person;
 			}
 		});
-		assertEquals(2, persons.size());
+		assertEquals(before + 1, persons.size());
 		
 		for (Person currentPerson : persons) {
 			System.out.println(currentPerson);
@@ -111,7 +111,7 @@ public class VehicleRegistrationServiceTransactionalDataSourceTest extends Abstr
 		} // for
 
 		// Para confirmar las transacciones al finalizar el método de prueba
-		setComplete();
+		//setComplete();
 
 		// Para consignar los cambios inmediatamente
 		// endTransaction();
@@ -166,6 +166,10 @@ public class VehicleRegistrationServiceTransactionalDataSourceTest extends Abstr
 		}
 	}
 
+	// Una importante regla de las pruebas es que cada una de ellas debe
+	// ejecutarse independientemente de otras. Cada prueba debe dejar su entorno
+	// en un estado consistente después de haberse realizado.
+	
 	// Si se utiliza un método de confirmación de transacciones se deberá
 	// realizar más tarde un trabajo extra de limpieza en los datos o la
 	// base de datos contendrá datos contaminados. Estos datos pueden
@@ -179,6 +183,6 @@ public class VehicleRegistrationServiceTransactionalDataSourceTest extends Abstr
 
 	@Override
 	protected void onTearDownAfterTransaction() throws Exception {
-		deleteFromTables(new String[] { "VEHICLE", "PERSON" });
+		//deleteFromTables(new String[] { "VEHICLE", "PERSON" });
 	}
 }

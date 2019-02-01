@@ -7,7 +7,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import team.boolbee.poc.spring.hibernate.model.Vehicle;
+import team.boolbee.poc.spring.security.model.Vehicle;
 
 public class VehicleValidator implements Validator {
 

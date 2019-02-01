@@ -6,7 +6,7 @@
                http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 	<bean id="vehicleRegistrationService"
-		class="team.boolbee.poc.spring.hibernate.services.VehicleRegistrationServiceImpl">
+		class="team.boolbee.poc.spring.security.services.VehicleRegistrationServiceImpl">
 		<property name="personDao" ref="personDao" />
 		<property name="vehicleDao" ref="vehicleDao" />
 		<property name="mailSender" ref="mailSender" />

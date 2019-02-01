@@ -1,10 +1,10 @@
-package team.boolbee.poc.spring.hibernate.dao;
+package team.boolbee.poc.spring.security.dao;
 
 import java.util.List;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-import team.boolbee.poc.spring.hibernate.model.Person;
+import team.boolbee.poc.spring.security.model.Person;
 
 public class PersonTemplateDao implements PersonDao {
 

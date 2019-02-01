@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.xml.services;
+package team.boolbee.poc.spring.security.services;
 
 import java.util.Date;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.AbstractTransactionalSpringContextTests;
 
-import team.boolbee.poc.spring.hibernate.model.Person;
-import team.boolbee.poc.spring.hibernate.model.Vehicle;
-import team.boolbee.poc.spring.hibernate.model.VehicleType;
-import team.boolbee.poc.spring.hibernate.services.VehicleRegistrationService;
+import team.boolbee.poc.spring.security.model.Person;
+import team.boolbee.poc.spring.security.model.Vehicle;
+import team.boolbee.poc.spring.security.model.VehicleType;
+import team.boolbee.poc.spring.security.services.VehicleRegistrationService;
 
 public class VehicleRegistrationServiceTransactionalTest extends AbstractTransactionalSpringContextTests {
 
@@ -20,7 +20,7 @@ public class VehicleRegistrationServiceTransactionalTest extends AbstractTransac
 
 	@Override
 	protected String[] getConfigLocations() {
-		return new String[] { "spring-context.xml", "spring-datasource.xml", "spring-hibernate.xml",
+		return new String[] { "spring-context.xml", "spring-datasource.xml", "spring-data-hibernate.xml",
 				"spring-jmx-server-mbean.xml", "spring-scheduler.xml", "spring-service.xml", "spring-tx.xml",
 				"spring-email.xml" };
 	}
@@ -138,6 +138,10 @@ public class VehicleRegistrationServiceTransactionalTest extends AbstractTransac
 		// endTransaction();
 	}
 
+	// Una importante regla de las pruebas es que cada una de ellas debe
+	// ejecutarse independientemente de otras. Cada prueba debe dejar su entorno
+	// en un estado consistente después de haberse realizado.
+	
 	// Si se utiliza un método de confirmación de transacciones se deberá
 	// realizar más tarde un trabajo extra de limpieza en los datos o la
 	// base de datos contendrá datos contaminados. Estos datos pueden

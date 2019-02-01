@@ -12,7 +12,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 
-import team.boolbee.poc.spring.hibernate.model.Vehicle;
+import team.boolbee.poc.spring.security.model.Vehicle;
 
 public class VehiclesPdfView extends AbstractPdfView {
 

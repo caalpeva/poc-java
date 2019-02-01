@@ -1,4 +1,4 @@
-package team.boolbee.poc.spring.hibernate.dao;
+package team.boolbee.poc.spring.security.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import team.boolbee.poc.spring.hibernate.model.Person;
+import team.boolbee.poc.spring.security.model.Person;
 
 public class PersonHibernateSessionDao implements PersonDao {
 
