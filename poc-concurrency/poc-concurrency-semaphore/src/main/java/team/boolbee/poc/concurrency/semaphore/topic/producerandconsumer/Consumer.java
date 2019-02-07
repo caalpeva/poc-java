@@ -1,7 +1,9 @@
-package team.boolbee.poc.concurrency.semaphore;
+package team.boolbee.poc.concurrency.semaphore.topic.producerandconsumer;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import team.boolbee.poc.concurrency.utils.ThreadUtils;
 
 public class Consumer implements Runnable {
 

@@ -1,4 +1,4 @@
-package team.boolbee.poc.concurrency.semaphore;
+package team.boolbee.poc.concurrency.utils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -8,7 +8,7 @@ import org.apache.commons.logging.LogFactory;
  * interrupted exceptions but choose not to do so for code clarity.
  *
  */
-class ThreadUtils {
+public class ThreadUtils {
 
 	private static final int NAP_TIME = 5000; // max nap time in seconds
 

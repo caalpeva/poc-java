@@ -1,4 +1,4 @@
-package team.boolbee.poc.concurrency.semaphore;
+package team.boolbee.poc.concurrency.semaphore.topic.producerandconsumer;
 
 /**
  * An interface for buffers
