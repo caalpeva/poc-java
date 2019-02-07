@@ -1,0 +1,178 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>team.boolbee.poc</groupId>
+		<artifactId>team.boobee.poc.framework.spring</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>poc-framework-spring-12-dwr</artifactId>
+	<packaging>war</packaging>
+
+	<!-- Propiedades para desplegar en tomcat cuando se active el perfil indicado -->
+	<properties>
+		<project.encoding>cp1252</project.encoding>
+		<tomcat.manager.url>http://localhost:8080</tomcat.manager.url>
+		<tomcat.manager.user>admin</tomcat.manager.user>
+		<tomcat.manager.password>admin</tomcat.manager.password>
+		<tomcat.deploy.path>/poc-webapp-spring-dwr</tomcat.deploy.path>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<!-- Ajax es un mecanismo de comunicación entre una página web y el -->
+		<!-- servidor. En la version 5.0 de Internet Explorer, Microsoft incluyó un -->
+		<!-- componente ActiveX llamado XMLHttpRequest. XMLHttpRequest puede usarse -->
+		<!-- con Javascript para comunicarse con el servidor en mensajes XML. Esta -->
+		<!-- técnica de comunicación entre navegador y servidor se ha llamado Ajax, -->
+		<!-- o Asynchronous Javascript and XML. -->
+
+		<!-- Direct Web Remoting (DWR) es un marco de trabajo Ajax basado en Java -->
+		<!-- que permite acceder virtualmente a cualquier objeto Java del extremo -->
+		<!-- servidor a través de un objeto Javascript, abstrayéndose completamente -->
+		<!-- del uso de XMLHttpRequest. DWR es una tecnología remota cuyo cliente -->
+		<!-- es un Javascript dentro de una página web. -->
+		<dependency>
+			<groupId>org.directwebremoting</groupId>
+			<artifactId>dwr</artifactId>
+			<version>2.0.2</version>
+			<!-- <version>3.0.2-RELEASE</version> -->
+		</dependency>
+		<dependency>
+			<groupId>rome</groupId>
+			<artifactId>rome</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit-addons</groupId>
+			<artifactId>junit-addons</artifactId>
+			<version>1.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<attachClasses>true</attachClasses>
+					<!-- <warSourceDirectory>WebContent</warSourceDirectory> -->
+					<!-- <webXml>WebContent\WEB-INF\web.xml</webXml> -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>hsqldb</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<databaseType>hsqldb</databaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>sqlserver</id>
+			<properties>
+				<databaseType>sqlserver</databaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>mysql</id>
+			<properties>
+				<databaseType>mysql</databaseType>
+			</properties>
+		</profile>
+
+		<!-- Si se activa el perfil despliega el proyecto en tomcat 6 -->
+		<profile>
+			<id>deploy-tomcat6</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat6-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<url>${tomcat.manager.url}/manager</url>
+							<username>${tomcat.manager.user}</username>
+							<password>${tomcat.manager.password}</password>
+							<path>${tomcat.deploy.path}</path>
+							<update>true</update>
+						</configuration>
+						<executions>
+							<execution>
+								<id>tomcat-deploy</id>
+								<goals>
+									<goal>deploy-only</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Si se activa el perfil despliega el proyecto en tomcat 7 -->
+		<profile>
+			<id>deploy-tomcat7</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat7-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<url>${tomcat.manager.url}/manager/text</url>
+							<username>${tomcat.manager.user}</username>
+							<password>${tomcat.manager.password}</password>
+							<path>${tomcat.deploy.path}</path>
+							<update>true</update>
+						</configuration>
+						<executions>
+							<execution>
+								<id>tomcat-deploy</id>
+								<goals>
+									<goal>deploy-only</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

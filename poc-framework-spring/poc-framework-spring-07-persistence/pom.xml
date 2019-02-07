@@ -14,44 +14,52 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<spring.version>2.5.6</spring.version>
+		<!-- El código de Spring 2.5.x no asumió que se ejecutará en una versión 
+			de Java posterior a la 1.7. Para Java 8 y versiones posteriores, este código 
+			asumirá la versión 1.4 predeterminada. Debido a esto, la parte de anotaciones 
+			no funcionará adecuadamente. Como soluciones se aconseja la actualización 
+			de la versión de Spring o usar Java 7. -->
+		<fixed.spring.version>3.2.9.RELEASE</fixed.spring.version>
 		<hsqldb.version>2.3.1</hsqldb.version>
+		<spring.modules.version>0.8a</spring.modules.version>
 	</properties>
 
 	<modules>
 		<module>poc-framework-spring-07-persistence-jdbc</module>
-		<module>poc-framework-spring-07-persistence-hibernate</module>
-		<module>
-			poc-framework-spring-07-persistence-hibernate-xml
-		</module>
+		<module>poc-framework-spring-07-persistence-hibernate-annotation</module>
+		<module>poc-framework-spring-07-persistence-hibernate-xml</module>
 	</modules>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring</artifactId>
-			<version>${spring.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
+			<version>${fixed.spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>${spring.version}</version>
+			<version>${fixed.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${fixed.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.10</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
+			<version>${fixed.spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
+			<version>${fixed.spring.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- <dependency> -->
@@ -83,7 +91,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -119,6 +126,91 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springmodules</groupId>
+			<artifactId>spring-modules-cache</artifactId>
+			<version>${spring.modules.version}</version>
+			<scope>compile</scope>
+
+			<!-- Exclusions to make up fo the fact that the 0.8a POM for spring-modules-cache 
+				isn't marking many of its optional dependencies as optional. -->
+			<exclusions>
+				<exclusion>
+					<groupId>gigaspaces</groupId>
+					<artifactId>gigaspaces-ce</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jini</groupId>
+					<artifactId>webster</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jboss</groupId>
+					<artifactId>jboss-jmx</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xpp3</groupId>
+					<artifactId>xpp3_min</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jini</groupId>
+					<artifactId>start</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jboss</groupId>
+					<artifactId>jboss-minimal</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jini</groupId>
+					<artifactId>reggie</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jboss</groupId>
+					<artifactId>jboss-cache</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jcs</groupId>
+					<artifactId>jcs</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jboss</groupId>
+					<artifactId>jboss-system</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jini</groupId>
+					<artifactId>jsk-platform</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jboss</groupId>
+					<artifactId>jboss-common</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jini</groupId>
+					<artifactId>mahalo</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jini</groupId>
+					<artifactId>jsk-lib</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jini</groupId>
+					<artifactId>boot</artifactId>
+				</exclusion>
+
+				<!-- This one's here because Hibernate already loads a newer version -->
+				<exclusion>
+					<groupId>ehcache</groupId>
+					<artifactId>ehcache</artifactId>
+				</exclusion>
+
+				<!-- This one's here, because (1) I don't use it and (2) it has a transitive 
+					dependency to com.sun.tools:jar:1.4.2, which is not available in the repository. -->
+				<exclusion>
+					<groupId>commons-attributes</groupId>
+					<artifactId>commons-attributes-compiler</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 

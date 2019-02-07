@@ -13,16 +13,26 @@
 		<module>poc-framework-spring-04-di-advanced</module>
 		<module>poc-framework-spring-05-aop</module>
 		<module>poc-framework-spring-06-aop-aspecj</module>
-		<module>poc-framework-spring-07-jdbc</module>
+		<module>poc-framework-spring-07-persistence</module>
+		<module>poc-framework-spring-08-security</module>
+		<module>poc-framework-spring-09-remoting</module>
+		<module>poc-framework-spring-10-webservices-soap</module>
+		<module>poc-framework-spring-11-jms</module>
+		<module>poc-framework-spring-12-dwr</module>
 	</modules>
 
 	<properties>
-		<spring.version>2.5.6</spring.version>
+		<spring.version>2.0.6</spring.version>
 		<junit.version>3.8.1</junit.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>
@@ -33,11 +43,11 @@
 				<artifactId>spring-context</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.springframework</groupId> -->
+<!-- 				<artifactId>spring-context-support</artifactId> -->
+<!-- 				<version>${spring.version}</version> -->
+<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-aop</artifactId>
@@ -45,7 +55,23 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.springframework</groupId> -->
+<!-- 				<artifactId>spring-test</artifactId> -->
+<!-- 				<version>${spring.version}</version> -->
+<!-- 				<scope>test</scope> -->
+<!-- 			</dependency> -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-mock</artifactId>
 				<version>${spring.version}</version>
 				<scope>test</scope>
 			</dependency>

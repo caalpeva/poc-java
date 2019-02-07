@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<display-name>poc-webapp-spring-webservices-soap</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:spring-service.xml
+		</param-value>
+	</context-param>
+
+	<!-- NOTE: ContextLoaderListener may not work for all application servers. -->
+	<!-- If it does not work for yours, you must use ContextLoaderServlet instead. -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- ============================================ -->
+	<!-- ===== SERVLET PROCESADOR DE MENSAJES ===== -->
+	<!-- ============================================ -->
+
+	<servlet>
+		<servlet-name>poker</servlet-name>
+		<servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-servlet.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>transformWsdlLocations</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- ==================================== -->
+	<!-- ===== MAPEOS DE URLS PERMITIDAS ==== -->
+	<!-- ==================================== -->
+
+	<servlet-mapping>
+		<servlet-name>poker</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>poker</servlet-name>
+		<url-pattern>*.wsdl</url-pattern>
+	</servlet-mapping>
+
+	<!-- ========================================== -->
+	<!-- ===== FILTRO RASTREADOR DE MENSAJES ===== -->
+	<!-- ========================================== -->
+
+	<filter>
+		<filter-name>sniffFilter</filter-name>
+		<filter-class>team.boolbee.poc.spring.ws.filter.MessageSniffFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>sniffFilter</filter-name>
+		<url-pattern>/services/*</url-pattern>
+	</filter-mapping>
+
+	<!-- =============================== -->
+	<!-- ===== PAGINAS POR DEFECTO ==== -->
+	<!-- =============================== -->
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

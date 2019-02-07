@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Direct Web Remoting</title>
+<script type="text/javascript" src="dwr/engine.js"></script>
+<script type="text/javascript" src="dwr/interface/traffic.js"></script>
+<script type="text/javascript" src="dwr/util.js"></script>
+<script>
+function criteriaChanged() {
+	var zipCode = document.trafficForm.zip.value;
+	var zoom = document.trafficForm.zoom.value;
+	var severiy = document.trafficForm.severity.value;
+	
+	if (zipCode.length == 5) {
+		traffic.getTrafficInfo(zipCode, zoom, severiy, updateTable);
+	} else {
+		dwr.util.removeAllRows("trafficTable");
+	}
+}
+
+function updateTable(results) {
+	dwr.util.removeAllRows("trafficTable");
+	dwr.util.addRows("trafficTable", results, cellFuncs);
+}
+
+var cellFuncs = [
+	function(data) { return data.summary; },
+	function(data) { return data.details; }
+];
+</script>
+</head>
+
+<body>
+<form name="trafficForm">
+	Zip <input type="text" name="zip" maxlength="5" onkeyup="criteriaChanged();" /></br>
+	Zoom
+	<select name="zoom" onchange="criteriaChanged();">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6" selected="selected">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+	</select></br>
+	Severity
+	<select name="severity" onchange="criteriaChanged();">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+	</select></br>
+</form>
+</br>
+<table width="100%" border="1" style="font-size:8pt">
+	<thead>
+		<tr><td width="100">Summary</td><td>Details</td></tr>
+	</thead>
+	<tbody id="trafficTable"></tbody>
+</table>
+</body>
+</html>

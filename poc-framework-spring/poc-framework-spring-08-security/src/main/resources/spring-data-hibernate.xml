@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+               http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>team/boolbee/poc/spring/security/model/Person.hbm.xml</value>
+				<value>team/boolbee/poc/spring/security/model/Vehicle.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+<!-- 				<prop key="hibernate.hbm2ddl.import_files">/import.sql</prop> -->
+				<prop key="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</prop>	
+			</props>
+		</property>
+	</bean>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+<!-- 	<bean id="personDao" class="team.boolbee.poc.spring.security.dao.PersonHibernateSessionDao"> -->
+<!-- 		<property name="sessionFactory" ref="sessionFactory" /> -->
+<!-- 	</bean> -->
+	
+	<bean id="personDao" class="team.boolbee.poc.spring.security.dao.PersonTemplateDao">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	
+	<bean id="vehicleDao" class="team.boolbee.poc.spring.security.dao.VehicleTemplateDao">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+</beans>

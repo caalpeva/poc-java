@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="location" value="poc-remoting.properties" />
+  </bean>
+        
+  <bean id="citationService"
+      class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+    <property name="serviceUrl"
+        value="rmi://${citationhost}/CitationService" />
+    <property name="serviceInterface"
+        value="team.boolbee.poc.spring.remoting.model.CitationService" />
+  </bean>
+</beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD 
+        Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<form-validation>
+	<formset>
+		<form name="vehicle">
+			<field property="type" depends="required">
+				<msg name="required" key="required.type" />
+			</field>
+			<field property="plateNumber" depends="required,mask">
+				<msg name="required" key="required.plateNumber" />
+				<msg name="mask" key="required.plateNumber" />
+				<arg name="mask" key="${plateNumber}" position="0" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{4}[a-zA-Z]{3}$</var-value>
+				</var>
+			</field>
+		</form>
+	</formset>
+</form-validation>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- ========================== -->
+	<!-- ===== SERVIDOR MBEAN ===== -->
+	<!-- ========================== -->
+	
+<!-- Declaración de servidor MBean necesaria si la aplicación Spring funciona independientemente -->
+<!-- o en un contenedor que no ofrece un servidor MBean -->
+<!-- 	<bean id="jmxServer" class="org.springframework.jmx.support.MBeanServerFactoryBean"> -->
+<!-- 		<property name="defaultDomain" value="rantz" /> -->
+<!-- 	</bean> -->
+
+	<!-- ================================================= -->
+	<!-- ===== EXPORTACION DE BEANS A SERVIDOR MBEAN ===== -->
+	<!-- ================================================= -->
+
+<!-- Comentando la propiedad server se asume que está funcionando dentro de un servidor -->
+<!-- de aplicaciones que ofrece un servidor MBean (Como Tomcat o JBoss) -->
+	<bean class="org.springframework.jmx.export.MBeanExporter">
+		<property name="beans">
+			<map>
+				<entry key="rantz:name=emailSchedule" value-ref="dailyRegisteredVehicleReportingTrigger" />
+ 				<entry key="rantz:name=vehicleRegistrationService" value-ref="vehicleRegistrationService"/>
+			</map>
+		</property>
+		<property name="assembler" ref="assembler" />
+		<property name="registrationBehaviorName" value="REGISTRATION_FAIL_ON_EXISTING" />
+<!-- 		<property name="server" ref="jmxServer" /> -->
+	</bean>
+	
+<!-- 	<bean class="org.springframework.jmx.export.MBeanExporter"> -->
+<!-- 		<property name="assembler" ref="assembler" /> -->
+<!-- 		<property name="autodetectModeName" value="AUTODETECT_ASSEMBLER" /> -->
+<!-- 		<property name="namingStrategy" ref="namingStrategy" /> -->
+<!-- 	</bean> -->
+	
+	<bean id="namingStrategy" class="org.springframework.jmx.export.naming.MetadataNamingStrategy">
+		<property name="attributeSource" ref="attributeSource" />
+	</bean>
+	
+	<!-- ================================================ -->
+	<!-- ===== ENSAMBLADORES DE INTERFAZ DE GESTION ===== -->
+	<!-- ================================================ -->
+	
+<!-- 	<bean id="assembler" class="org.springframework.jmx.export.assembler.MethodNameBasedMBeanInfoAssembler"> -->
+<!-- 		<property name="managedMethods"> -->
+<!-- 			<list> -->
+<!-- 				<value>setCronExpression</value> -->
+<!-- 				<value>getCronExpression</value> -->
+<!-- 				<value>setNextFireTime</value> -->
+<!-- 				<value>getNextFireTime</value> -->
+
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	
+	<bean id="assembler" class="org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler">
+		<property name="managedInterfaces">
+			<list>
+				<value>team.boolbee.poc.spring.security.jmx.ManagedCronTrigger</value>
+					<value>team.boolbee.poc.spring.security.jmx.ManagedVehicleRegistrationService</value>
+			</list>
+		</property>
+	</bean>
+	
+<!-- 	<bean id="assembler" class="org.springframework.jmx.export.assembler.MetadataMBeanInfoAssembler"> -->
+<!-- 		<property name="attributeSource" ref="attributeSource" /> -->
+<!-- 	</bean> -->
+	
+	 <!-- A Java 5 annotation-based JMX attribute source -->
+	<bean id="attributeSource" class="org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource" />
+	
+	<!-- ================================== -->
+	<!-- ===== EXPONER MBEANS REMOTOS ===== -->
+	<!-- ================================== -->
+	
+<!-- 	<bean class="org.springframework.jmx.support.ConnectorServerFactoryBean" > -->
+<!-- 		<property name="serviceUrl" value="service:jmx:rmi://localhost/jndi/rmi://localhost:1099/rant" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean class="org.springframework.remoting.rmi.RmiRegistryFactoryBean"> -->
+<!-- 		<property name="port" value="1099" /> -->
+<!-- 	</bean> -->
+	
+</beans>

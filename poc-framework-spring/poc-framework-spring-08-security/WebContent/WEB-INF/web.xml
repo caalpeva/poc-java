@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	
+	<display-name>poc-webapp-spring-security</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:spring-context.xml
+			classpath:spring-cache.xml
+			classpath:spring-datasource.xml
+			classpath:spring-data-hibernate.xml
+			classpath:spring-email.xml
+			classpath:spring-jmx.xml
+			classpath:spring-scheduler.xml
+			classpath:spring-security.xml
+			classpath:spring-service.xml
+		<!-- classpath:spring-tx.xml -->
+		</param-value>
+	</context-param>
+
+	<!-- NOTE: ContextLoaderListener may not work for all application servers. -->
+	<!-- If it does not work for yours, you must use ContextLoaderServlet instead. -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>org.acegisecurity.ui.session.HttpSessionEventPublisher</listener-class>
+	</listener>
+
+	<!-- ============================================ -->
+	<!-- ===== SERVLET PROCESADOR DE PETICIONES ===== -->
+	<!-- ============================================ -->
+
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- ==================================== -->
+	<!-- ===== MAPEOS DE URLS PERMITIDAS ==== -->
+	<!-- ==================================== -->
+
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.xls</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.pdf</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.rss</url-pattern>
+	</servlet-mapping>
+
+	<!-- ================================ -->
+	<!-- ===== FILTROS DE SEGURIDAD ===== -->
+	<!-- ================================ -->
+
+	<filter>
+		<filter-name>FilterChainProxy</filter-name>
+		<filter-class>org.acegisecurity.util.FilterToBeanProxy</filter-class>
+		<init-param>
+			<param-name>targetClass</param-name>
+			<param-value>org.acegisecurity.util.FilterChainProxy</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>FilterChainProxy</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- =========================================== -->
+	<!-- ===== REQUERIMIENTOS DE RECURSOS JNDI ===== -->
+	<!-- =========================================== -->
+	
+	<resource-ref>
+		<description>
+    	Resource reference to a factory for java.sql.Connection
+    	instances that may be used for talking to a particular
+    	database that is configured in the context
+    	configuration for the web application.
+  		</description>
+  		<res-ref-name>jdbc/POC</res-ref-name>
+  		<res-type>javax.sql.DataSource</res-type>
+  		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	<resource-ref>
+		<description>
+    	Resource reference to a factory for javax.mail.Session
+    	instances that may be used for sending electronic mail
+    	messages, preconfigured to connect to the appropriate
+    	SMTP server.
+  		</description>
+  		<res-ref-name>mail/POC</res-ref-name>
+  		<res-type>javax.mail.Session</res-type>
+  		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<!-- ================================== -->
+	<!-- ===== CONFIGURACION DE SESION ==== -->
+	<!-- ================================== -->
+
+	<session-config>
+		<session-timeout>1</session-timeout> <!-- in minutes -->
+	</session-config>
+
+	<!-- =============================== -->
+	<!-- ===== PAGINAS POR DEFECTO ==== -->
+	<!-- =============================== -->
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	
+</web-app>

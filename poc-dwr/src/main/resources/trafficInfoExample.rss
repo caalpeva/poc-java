@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" version="2.0">
+<channel>
+<title>Yahoo! Traffic Alerts</title>
+<link>http://maps.yahoo.com</link>
+<language>en</language>
+<description>Traffic Alerts</description>
+<copyright>Copyright (c) 2005 Yahoo! Inc. All rights reserved.</copyright>
+<lastBuildDate>Tue, 18 Oct 2005 15:00:10 -0700</lastBuildDate>
+<image>
+    <url>https://s.yimg.com/zz/combo?a/i/us/nt/b/rss/rss_search.gif</url>
+    <title>Yahoo! Maps</title>
+    <link>http://maps.yahoo.com</link>
+    <width>142</width>
+    <height>18</height>
+</image>
+<item>
+    <title>Hazardous driving conditions, on US-101 at EMBARCADERO RD</title>
+    <link>http://img.maps.yahoo.com/mapimage?MAPDATA=dzmAlOd6wXVpn0uBWgcwxHt4HbbwnbJPy_q5DxwxnbwtWRGskk8dO5qYRDu4I2iPNe1rINGtz.N8bc1PXw.sx_n9XrdQUbomD_GbY71Hx53Hddn47T4mhk7z3IOZp3MRHS77mkYJk8hFN6cyiX6e.Y6EVAvhNnXVI8LtX4Ejig--</link>
+    <description>Traffic Hazard Vehicle in Center Divider 2:46PM UNK VEH W HAZARDS ON; RESPONDING OFFICERS STATUS; 2:51PM CHP Unit Enroute;</description>
+    <geo:lat>37.452340</geo:lat>
+    <geo:long>-122.127301</geo:long>
+    <guid isPermaLink="false">http://img.maps.yahoo.com/mapimage?MAPDATA=dzmAlOd6wXVpn0uBWgcwxHt4HbbwnbJPy_q5DxwxnbwtWRGskk8dO5qYRDu4I2iPNe1rINGtz.N8bc1PXw.sx_n9XrdQUbomD_GbY71Hx53Hddn47T4mhk7z3IOZp3MRHS77mkYJk8hFN6cyiX6e.Y6EVAvhNnXVI8LtX4Ejig--</guid>
+    <pubDate>Tue, 18 Oct 2005 14:46:03 -0700</pubDate>
+</item>
+</channel>
+</rss>

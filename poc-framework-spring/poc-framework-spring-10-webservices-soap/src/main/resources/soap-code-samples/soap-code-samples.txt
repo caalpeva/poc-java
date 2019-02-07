@@ -1,0 +1,421 @@
+========================
+===== SOAP REQUEST =====
+========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schemas="http://www.springinaction.com/poker/schemas">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schemas:EvaluateHandRequest>
+            <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>TWO</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>THREE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>FOUR</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>FIVE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>HEARTS</schemas:suit>
+                <schemas:face>QUEEN</schemas:face>
+            </schemas:card>
+        </schemas:EvaluateHandRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+=========================
+===== SOAP RESPONSE =====
+=========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <poker:EvaluateHandResponse xmlns:poker="http://www.springinaction.com/poker/schemas">
+            <poker:handName xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:type="java:java.lang.String">NONE</poker:handName>
+        </poker:EvaluateHandResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+========================
+===== SOAP REQUEST =====
+========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schemas="http://www.springinaction.com/poker/schemas">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schemas:EvaluateHandRequest>
+            <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>TWO</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>THREE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>FOUR</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>FIVE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>HEARTS</schemas:suit>
+                <schemas:face>SIX</schemas:face>
+            </schemas:card>
+        </schemas:EvaluateHandRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+=========================
+===== SOAP RESPONSE =====
+=========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <poker:EvaluateHandResponse xmlns:poker="http://www.springinaction.com/poker/schemas">
+            <poker:handName xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:type="java:java.lang.String">STRAIGHT</poker:handName>
+        </poker:EvaluateHandResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+========================
+===== SOAP REQUEST =====
+========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schemas="http://www.springinaction.com/poker/schemas">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schemas:EvaluateHandRequest>
+            <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>TWO</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>THREE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>FOUR</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>FIVE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>SIX</schemas:face>
+            </schemas:card>
+        </schemas:EvaluateHandRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+=========================
+===== SOAP RESPONSE =====
+=========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <poker:EvaluateHandResponse xmlns:poker="http://www.springinaction.com/poker/schemas">
+            <poker:handName xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:type="java:java.lang.String">STRAIGHT_FLUSH</poker:handName>
+        </poker:EvaluateHandResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+========================
+===== SOAP REQUEST =====
+========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schemas="http://www.springinaction.com/poker/schemas">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schemas:EvaluateHandRequest>
+            <schemas:card>
+                <schemas:suit>DIAMONDS</schemas:suit>
+                <schemas:face>ACE</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>ACE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>KING</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>SPADES</schemas:suit>
+                <schemas:face>FIVE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>HEARTS</schemas:suit>
+                <schemas:face>SIX</schemas:face>
+            </schemas:card>
+        </schemas:EvaluateHandRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+=========================
+===== SOAP RESPONSE =====
+=========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <poker:EvaluateHandResponse xmlns:poker="http://www.springinaction.com/poker/schemas">
+            <poker:handName xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:type="java:java.lang.String">PAIR</poker:handName>
+        </poker:EvaluateHandResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+========================
+===== SOAP REQUEST =====
+========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schemas="http://www.springinaction.com/poker/schemas">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schemas:EvaluateHandRequest>
+            <schemas:card>
+                <schemas:suit>DIAMONDS</schemas:suit>
+                <schemas:face>ACE</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>ACE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>KING</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>SPADES</schemas:suit>
+                <schemas:face>KING</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>HEARTS</schemas:suit>
+                <schemas:face>KING</schemas:face>
+            </schemas:card>
+        </schemas:EvaluateHandRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+=========================
+===== SOAP RESPONSE =====
+=========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <poker:EvaluateHandResponse xmlns:poker="http://www.springinaction.com/poker/schemas">
+            <poker:handName xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:type="java:java.lang.String">FULL_HOUSE</poker:handName>
+        </poker:EvaluateHandResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+========================
+===== SOAP REQUEST =====
+========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schemas="http://www.springinaction.com/poker/schemas">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schemas:EvaluateHandRequest>
+            <schemas:card>
+                <schemas:suit>DIAMONDS</schemas:suit>
+                <schemas:face>ACE</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>EIGHT</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>KING</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>SPADES</schemas:suit>
+                <schemas:face>KING</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>HEARTS</schemas:suit>
+                <schemas:face>KING</schemas:face>
+            </schemas:card>
+        </schemas:EvaluateHandRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+=========================
+===== SOAP RESPONSE =====
+=========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <poker:EvaluateHandResponse xmlns:poker="http://www.springinaction.com/poker/schemas">
+            <poker:handName xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:type="java:java.lang.String">THREE_OF_A_KIND</poker:handName>
+        </poker:EvaluateHandResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+==============================
+===== WRONG SOAP REQUEST =====
+==============================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schemas="http://www.springinaction.com/poker/schemas">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schemas:EvaluateHandRequest>
+            <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>TWO</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>THREE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>FOUR</schemas:face>
+            </schemas:card>
+             <schemas:card>
+                <schemas:suit>CLUBS</schemas:suit>
+                <schemas:face>FIVE</schemas:face>
+            </schemas:card>
+                        <schemas:card>
+                <schemas:suit>BASTOS</schemas:suit>
+                <schemas:face>SIX</schemas:face>
+            </schemas:card>
+        </schemas:EvaluateHandRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+===============================
+===== SOAP FAULT RESPONSE =====
+===============================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <SOAP-ENV:Fault>
+            <faultcode>SOAP-ENV:Client</faultcode>
+            <faultstring xml:lang="en">Invalid message received</faultstring>
+        </SOAP-ENV:Fault>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+==============================
+===== WRONG SOAP REQUEST =====
+==============================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schemas="http://www.springinaction.com/poker/schemas">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schemas:EvaluateHandRequest>
+            <schemas:card>
+                <schemas:suit/>
+                <schemas:face/>
+            </schemas:card>
+            <schemas:card>
+                <schemas:suit/>
+                <schemas:face/>
+            </schemas:card>
+            <schemas:card>
+                <schemas:suit/>
+                <schemas:face/>
+            </schemas:card>
+            <schemas:card>
+                <schemas:suit/>
+                <schemas:face/>
+            </schemas:card>
+            <schemas:card>
+                <schemas:suit/>
+                <schemas:face/>
+            </schemas:card>
+        </schemas:EvaluateHandRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+===============================
+===== SOAP FAULT RESPONSE =====
+===============================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <SOAP-ENV:Fault>
+            <faultcode>SOAP-ENV:Server</faultcode>
+            <faultstring xml:lang="en">Server error</faultstring>
+        </SOAP-ENV:Fault>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+========================
+===== SOAP REQUEST =====
+========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+<SOAP-ENV:Header/>
+<SOAP-ENV:Body>
+	<poker:EvaluateHandRequest xmlns:poker="http://www.springinaction.com/poker/schemas">
+		<poker:card>
+			<poker:suit>CLUBS</poker:suit>
+			<poker:face>ACE</poker:face>
+		</poker:card>
+		<poker:card>
+			<poker:suit>HEARTS</poker:suit>
+			<poker:face>ACE</poker:face>
+		</poker:card>
+		<poker:card>
+			<poker:suit>CLUBS</poker:suit>
+			<poker:face>TWO</poker:face>
+		</poker:card>
+		<poker:card>
+			<poker:suit>SPADES</poker:suit>
+			<poker:face>ACE</poker:face>
+		</poker:card>
+		<poker:card>
+			<poker:suit>DIAMONDS</poker:suit>
+			<poker:face>ACE</poker:face>
+		</poker:card>
+	</poker:EvaluateHandRequest>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+=========================
+===== SOAP RESPONSE =====
+=========================
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <poker:EvaluateHandResponse xmlns:poker="http://www.springinaction.com/poker/schemas">
+            <poker:handName xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:type="java:java.lang.String">FOUR_OF_A_KIND</poker:handName>
+        </poker:EvaluateHandResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

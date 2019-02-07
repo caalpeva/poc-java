@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- ==================================== -->
+	<!-- ===== MANEJADORES DE MAPEO URL ===== -->
+	<!-- ==================================== -->
+
+	<bean id="beanNameUrlMapping"
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<property name="order" value="2" />
+	</bean>
+
+	<bean id="simpleUrlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/login.htm">loginController</prop>
+		   <!-- <prop key="/home.htm">homePageController</prop> -->
+		   <!-- <prop key="/vehiclesforperson.htm">vehiclesForPersonController</prop> -->
+				<prop key="/vehiclesforperson.xls">vehiclesForPersonController</prop>
+				<prop key="/vehiclesforperson.pdf">vehiclesForPersonController</prop>
+				<prop key="/vehiclesforperson.rss">vehiclesForPersonController</prop>
+				<prop key="/addVehicle.htm">addVehicleController</prop>
+				<prop key="/register.htm">userRegistrationController</prop>
+				<prop key="/authorizationError.htm">authorizationErrorController</prop>
+			</props>
+		</property>
+		<property name="order" value="1" />
+	</bean>
+	
+	<bean id="controllerClassUrlMapping"
+		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+		<property name="order" value="0" />
+	</bean>
+
+	<!-- ========================= -->
+	<!-- ===== CONTROLADORES ===== -->
+	<!-- ========================= -->
+
+	<bean id="loginController"
+		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+
+	<bean id="authorizationErrorController"
+		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+
+	<bean name="/home.htm" class="team.boolbee.poc.spring.security.mvc.HomePageController">
+		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
+	</bean>
+
+	<bean id="vehiclesForPersonController"
+		class="team.boolbee.poc.spring.security.mvc.VehiclesForPersonController">
+		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
+	</bean>
+
+	<bean id="addVehicleController"
+		class="team.boolbee.poc.spring.security.mvc.AddVehicleFormController">
+		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
+		<property name="formView" value="addVehicle" />
+		<property name="successView" value="vehicleAdded" />
+		<property name="validator" ref="vehicleValidator">
+		</property>
+	</bean>
+
+	<bean id="userRegistrationController"
+		class="team.boolbee.poc.spring.security.mvc.UserRegistrationFormController">
+		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
+		<property name="pages">
+			<list>
+				<value>personDetailForm</value>
+				<value>personVehicleForm</value>
+				<value>personConfirmation</value>
+				<value>redirect:home.htm</value>
+			</list>
+		</property>
+		<property name="validator">
+			<bean id="personValidator"
+				class="team.boolbee.poc.spring.security.mvc.validator.PersonValidator" />
+		</property>
+	</bean>
+
+	<!-- =============================== -->
+	<!-- ===== RESOLUCIÓN DE VISTA ===== -->
+	<!-- =============================== -->
+
+	<!-- <bean id="jspViewResolver" -->
+	<!-- class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<!-- <property name="viewClass" -->
+	<!-- value="org.springframework.web.servlet.view.InternalResourceView" /> -->
+	<!-- <property name="prefix" value="/WEB-INF/jsp/" /> -->
+	<!-- <property name="suffix" value=".jsp" /> -->
+	<!-- </bean> -->
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles.TilesJstlView" />
+	</bean>
+
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="xmlFileViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="location" value="classpath:spring-views.xml" />
+		<!-- <property name="location" value="/WEB-INF/spring-views.xml" /> -->
+		<property name="order" value="0" />
+	</bean>
+
+	<!-- ===================================== -->
+	<!-- ===== VALIDADORES DE FORMULARIO ===== -->
+	<!-- ===================================== -->
+
+	<bean id="vehicleValidator"
+		class="team.boolbee.poc.spring.security.mvc.validator.VehicleValidator" />
+
+	<!-- <bean id="vehicleValidator" class="org.springmodules.validation.commons.DefaultBeanValidator"> -->
+	<!-- <property name="validatorFactory" ref="validatorFactory" /> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="validatorFactory" class="org.springmodules.validation.commons.DefaultValidatorFactory"> -->
+	<!-- <property name="validationConfigLocations"> -->
+	<!-- <list> -->
+	<!-- <value>WEB-INF/validator-rules.xml</value> -->
+	<!-- <value>WEB-INF/validation.xml</value> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<!-- ==================================== -->
+	<!-- ===== MANEJADOR DE EXCEPCIONES ===== -->
+	<!-- ==================================== -->
+
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">unexpectedError</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- ======================================= -->
+	<!-- ===== EXTERNALIZACION DE MENSAJES ===== -->
+	<!-- ======================================= -->
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+				<value>errors</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

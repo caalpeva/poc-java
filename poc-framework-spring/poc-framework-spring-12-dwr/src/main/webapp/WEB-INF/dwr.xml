@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+    "http://getahead.org/dwr/dwr20.dtd">
+
+<!-- Este fichero de configuración únicamente es utilizado -->
+<!-- por el servlet org.directwebremoting.servlet.DwrServlet -->
+
+<dwr>
+  <allow>
+	    <convert converter="bean" match="team.boolbee.poc.spring.dwr.model.TrafficInfo"/>
+        <create creator="spring" javascript="traffic">
+        	<param name="beanName" value="trafficService" />
+<!--         	<param name="location" value="spring-context.xml" /> -->
+        	<exclude method="setAppId" />
+        </create>
+  </allow>
+</dwr>

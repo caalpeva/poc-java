@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- ===================================== -->
+	<!-- ===== FABRICA DE CONEXIONES JMS ===== -->
+	<!-- ===================================== -->
+	
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+	</bean>
+	
+	<!-- ======================== -->
+	<!-- ===== DESTINOS JMS ===== -->
+	<!-- ======================== -->
+	
+	<bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0" value="jmsQueue" />
+	</bean>
+	
+	<bean id="topicDestination" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg index="0" value="jmsTopic" />
+	</bean>
+	
+	<!-- ========================= -->
+	<!-- ===== PLANTILLA JMS ===== -->
+	<!-- ========================= -->
+	
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestination" ref="queueDestination" />
+		<property name="receiveTimeout" value="5000" /> <!-- In milliseconds -->
+		<property name="messageConverter" ref="personConverter" />
+	</bean>
+	
+	<!-- ================================= -->
+	<!-- ===== CONVERSOR DE MENSAJES ===== -->
+	<!-- ================================= -->
+	
+	<bean id="personConverter" class="team.boolbee.poc.spring.jms.PersonMessageConverter" />
+
+</beans>

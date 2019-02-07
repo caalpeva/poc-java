@@ -1,0 +1,36 @@
+<project name="poc-framework-spring-07-persistence-jdbc-hsqldb" default="start HSQLDB">
+	<property name="hsql.path" location="H:/HSQLDB" />
+
+	<property file="./src/test/resources/database-hsqldb.properties" />
+
+	<target name="start HSQLDB">
+		<echo message="Starting HSQLDB" />
+		<echo message="${driver.path}" />
+
+		<java fork="true" dir="." classname="org.hsqldb.Server">
+			<classpath>
+				<pathelement path="${driver.path}" />
+			</classpath>
+			<arg value="-database.0" />
+			<arg value="${hsql.path}" />
+			<arg value="-dbname.0" />
+			<arg value="${db.name}" />
+		</java>
+	</target>
+
+	<target name="HSQLDB manager">
+		<java fork="true" dir="." classname="org.hsqldb.util.DatabaseManager">
+			<classpath>
+				<pathelement path="${driver.path}" />
+			</classpath>
+			<arg value="-driver" />
+			<arg value="${db.driver}" />
+			<arg value="-url" />
+			<arg value="${db.url}" />
+			<arg value="-user" />
+			<arg value="${db.username}" />
+			<arg value="-dir" />
+			<arg value="H:/HSQLDB/SPRING_JDBC" />
+		</java>
+	</target>
+</project>

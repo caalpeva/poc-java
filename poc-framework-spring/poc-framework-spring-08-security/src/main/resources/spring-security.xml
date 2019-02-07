@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<bean id="filterChainProxy" class="org.acegisecurity.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**=concurrentSessionFilter,httpSessionIntegrationFilter,logoutFilter,authenticationProcessingFilter,rememberMeProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor
+			</value>
+		</property>
+	</bean>
+	<!-- channelProcessingFilter,anonymousProcessingFilter -->
+
+	<!-- ============================== -->
+	<!-- ========== FILTROS =========== -->
+	<!-- ============================== -->
+
+	<bean id="channelProcessingFilter" class="org.acegisecurity.securechannel.ChannelProcessingFilter">
+		<property name="channelDecisionManager" ref="channelDecisionManager" />
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/login.htm=REQUIRES_SECURE_CHANNEL
+				/j_acegi_security_check*=REQUIRES_SECURE_CHANNEL
+				/**=REQUIRES_INSECURE_CHANNEL
+			</value>
+		</property>
+	</bean>
+
+	<!-- Filtro requerido por el paquete de manejo de sesión concurrente. Este 
+		filtro realiza dos funciones. Primero, llama a SessionRegistry.refreshLastRequest 
+		(String) para cada solicitud, de modo que las sesiones registradas siempre 
+		tengan la fecha / hora correcta de "última actualización". En segundo lugar, 
+		recupera una SessionInformation del SessionRegistry para cada solicitud y 
+		comprueba si la sesión ha sido marcada como caducada. Si se ha marcado como 
+		caducado, se llamará a los manejadores de cierre de sesión configurados (como 
+		ocurre con LogoutFilter), normalmente para invalidar la sesión. Para manejar 
+		la sesión caducada, se realiza una llamada a SessionInformationExpiredStrategy. 
+		La invalidación de la sesión hará que se publique un HttpSessionDestroyedEvent 
+		a través del HttpSessionEventPublisher registrado en web.xml. -->
+	<bean id="concurrentSessionFilter" class="org.acegisecurity.concurrent.ConcurrentSessionFilter">
+		<property name="sessionRegistry" ref="sessionRegistry" />
+		<property name="expiredUrl" value="/home.htm" />
+	</bean>
+
+	<bean id="httpSessionIntegrationFilter"
+		class="org.acegisecurity.context.HttpSessionContextIntegrationFilter">
+		<property name="context"
+			value="org.acegisecurity.context.SecurityContextImpl" />
+		<property name="allowSessionCreation" value="true" />
+		<property name="forceEagerSessionCreation" value="true" />
+		<property name="cloneFromHttpSession" value="false" />
+	</bean>
+
+	<bean id="logoutFilter" class="org.acegisecurity.ui.logout.LogoutFilter">
+		<constructor-arg value="/home.htm" />
+		<constructor-arg>
+			<list>
+				<ref bean="rememberMeServices" />
+				<bean class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler" />
+			</list>
+		</constructor-arg>
+		<property name="filterProcessesUrl" value="/logout" /> <!-- j_acegi_logout -->
+	</bean>
+
+	<bean id="basicProcessingFilter" class="org.acegisecurity.ui.basicauth.BasicProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationEntryPoint" ref="basicAuthenticationEntryPoint" />
+	</bean>
+
+	<bean id="authenticationProcessingFilter"
+		class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationFailureUrl" value="/login.htm?login_error=1" />
+		<property name="defaultTargetUrl" value="/" />
+		<property name="filterProcessesUrl" value="/j_acegi_security_check" />
+		<property name="rememberMeServices" ref="rememberMeServices" />
+	</bean>
+
+	<bean id="rememberMeProcessingFilter"
+		class="org.acegisecurity.ui.rememberme.RememberMeProcessingFilter">
+		<property name="rememberMeServices" ref="rememberMeServices" />
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+
+	<bean id="anonymousProcessingFilter"
+		class="org.acegisecurity.providers.anonymous.AnonymousProcessingFilter">
+		<property name="key" value="foobar" />
+		<property name="userAttribute" value="anonymousUser,ROLE_ADMIN" /> <!-- ROLE_ANONYMOUS -->
+	</bean>
+
+	<bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
+		<!-- <property name="authenticationEntryPoint" ref="basicAuthenticationEntryPoint"/> -->
+		<property name="authenticationEntryPoint">
+			<bean
+				class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+				<property name="loginFormUrl" value="/login.htm" />
+				<property name="forceHttps" value="false" />
+			</bean>
+		</property>
+		<property name="accessDeniedHandler">
+			<bean class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
+				<property name="errorPage" value="/authorizationError.htm" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="filterSecurityInterceptor"
+		class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="accessDecisionManager" ref="accessDecisionManager" />
+		<property name="objectDefinitionSource">
+			<value>
+			 	CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/home.htm=ROLE_ADMIN
+				/addvehicle.htm=ROLE_ADMIN
+				/vehiclesforperson.htm=ROLE_ADMIN
+			</value>
+		</property>
+	</bean>
+
+	<!-- ======================================= -->
+	<!-- ===== GESTOR DE DECISION DE CANAL ===== -->
+	<!-- ======================================= -->
+
+	<bean id="channelDecisionManager"
+		class="org.acegisecurity.securechannel.ChannelDecisionManagerImpl">
+		<property name="channelProcessors">
+			<list>
+				<bean class="org.acegisecurity.securechannel.SecureChannelProcessor" />
+				<bean class="org.acegisecurity.securechannel.InsecureChannelProcessor" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- =============================== -->
+	<!-- ====== CONTROL DE SESION ====== -->
+	<!-- =============================== -->
+
+	<bean id="sessionRegistry" class="org.acegisecurity.concurrent.SessionRegistryImpl" />
+
+	<bean id="concurrentSessionController"
+		class="org.acegisecurity.concurrent.ConcurrentSessionControllerImpl">
+		<property name="maximumSessions" value="1" />
+		<property name="sessionRegistry" ref="sessionRegistry" />
+		<property name="exceptionIfMaximumExceeded" value="true" />
+	</bean>
+
+	<!-- =================================== -->
+	<!-- ===== GESTOR DE AUTENTICACION ===== -->
+	<!-- =================================== -->
+
+	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref bean="daoAuthenticationProvider" />
+				<ref bean="anonymousAuthenticationProvider" />
+				<ref bean="rememberMeAuthenticationProvider" />
+			</list>
+		</property>
+		<!-- <property name="sessionController" ref="concurrentSessionController" 
+			/> -->
+	</bean>
+
+	<bean id="daoAuthenticationProvider"
+		class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+	</bean>
+
+	<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
+		<property name="userMap">
+			<value>
+				egon=egon,ROLE_ADMIN
+				ray=ray,disabled,ROLE_ADMIN
+				venkman=venkman,ROLE_ADMIN,ROLE_ANALIST
+				winston=winston,ROLE_ANALIST,ROLE_OPS
+			</value>
+		</property>
+	</bean>
+
+	<bean id="basicAuthenticationEntryPoint"
+		class="org.acegisecurity.ui.basicauth.BasicProcessingFilterEntryPoint">
+		<property name="realmName" value="poc-webapp-spring-security" />
+	</bean>
+
+	<!-- ================================ -->
+	<!-- ===== SERVICIO REMEMBERME ====== -->
+	<!-- ================================ -->
+
+	<bean id="rememberMeServices"
+		class="org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices">
+		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="key" value="poc" />
+	</bean>
+
+	<bean id="rememberMeAuthenticationProvider"
+		class="org.acegisecurity.providers.rememberme.RememberMeAuthenticationProvider">
+		<property name="key" value="poc" />
+	</bean>
+
+	<!-- ====================== -->
+	<!-- ===== ANONYMOUS ====== -->
+	<!-- ====================== -->
+
+	<bean id="anonymousAuthenticationProvider"
+		class="org.acegisecurity.providers.anonymous.AnonymousAuthenticationProvider">
+		<property name="key" value="foobar" />
+	</bean>
+
+	<!-- ======================================== -->
+	<!-- ===== GESTOR DE DECISION DE ACCESO ===== -->
+	<!-- ======================================== -->
+
+	<bean id="accessDecisionManager" class="org.acegisecurity.vote.UnanimousBased">
+		<property name="allowIfAllAbstainDecisions" value="false" />
+		<property name="decisionVoters">
+			<list>
+				<bean class="org.acegisecurity.vote.RoleVoter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="loggerListener" class="org.acegisecurity.event.authentication.LoggerListener" />
+	
+	<!-- TODO: Intentar solucionar mediante AOP el java.lang.NullPointerException
+	org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices.logout(TokenBasedRememberMeServices.java:295) -->
+
+</beans>

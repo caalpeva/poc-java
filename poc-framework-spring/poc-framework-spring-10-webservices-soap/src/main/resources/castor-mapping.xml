@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapping PUBLIC 
+    "-//EXOLAB/Castor Object Mapping DTD Version 1.0//EN"
+    "http://castor.exolab.org/mapping.dtd">
+
+<!-- A Castor mapping file to map EvaluateHandRequest and EvaluateHandResponse -->
+<!-- objects to/from XML. -->
+<mapping xmlns="http://www.springinaction.com/poker/schemas"> <!-- http://castor.exolab.org/ -->
+	<class name="team.boolbee.poc.spring.ws.soap.EvaluateHandRequest">
+		<map-to xml="EvaluateHandRequest" ns-uri="http://www.springinaction.com/poker/schemas"
+			ns-prefix="poker" />
+		<field name="hand" collection="array" type="team.boolbee.poc.spring.ws.model.Card"
+			required="true">
+			<bind-xml name="card" node="element" />
+		</field>
+	</class>
+
+	<class name="team.boolbee.poc.spring.ws.model.Card">
+		<map-to xml="card" />
+
+		<field name="suit" type="team.boolbee.poc.spring.ws.model.Suit"
+			required="true">
+			<bind-xml name="suit" node="element" />
+		</field>
+
+		<field name="face" type="team.boolbee.poc.spring.ws.model.Face"
+			required="true">
+			<bind-xml name="face" node="element" />
+		</field>
+	</class>
+
+	<class name="team.boolbee.poc.spring.ws.soap.EvaluateHandResponse">
+		<map-to xml="EvaluateHandResponse" ns-uri="http://www.springinaction.com/poker/schemas"
+			ns-prefix="poker" />
+		<field name="pokerHand" type="team.boolbee.poc.spring.ws.model.PokerHandType"
+			required="true">
+			<bind-xml name="tns:handName" node="element" QName-prefix="poker"
+				xmlns:tns="http://www.springinaction.com/poker/schemas" />
+		</field>
+	</class>
+</mapping>
