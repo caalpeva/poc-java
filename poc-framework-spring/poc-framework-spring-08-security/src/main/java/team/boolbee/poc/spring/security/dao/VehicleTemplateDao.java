@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateTemplate;
@@ -27,6 +26,7 @@ public class VehicleTemplateDao implements VehicleDao {
 		hibernateTemplate.save(vehicle);		
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Vehicle> getVehiclesForDay(Date date) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Vehicle.class);
 		criteria.add(Restrictions.between("registrationDate", getLowestDayTime(date), getHighestDayTime(date)));

@@ -6,16 +6,21 @@
 			http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 	<!-- ==================================== -->
-	<!-- ===== MANEJADOR DE MAPEO URL ===== -->
+	<!-- ===== MANEJADORES DE MAPEO URL ===== -->
 	<!-- ==================================== -->
 
-	<bean id="urlMapping"
+	<bean id="beanNameUrlMapping"
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<property name="order" value="2" />
+	</bean>
+
+	<bean id="simpleUrlMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
 				<prop key="/login.htm">loginController</prop>
-				<prop key="/home.htm">homePageController</prop>
-				<prop key="/vehiclesforperson.htm">vehiclesForPersonController</prop>
+		   <!-- <prop key="/home.htm">homePageController</prop> -->
+		   <!-- <prop key="/vehiclesforperson.htm">vehiclesForPersonController</prop> -->
 				<prop key="/vehiclesforperson.xls">vehiclesForPersonController</prop>
 				<prop key="/vehiclesforperson.pdf">vehiclesForPersonController</prop>
 				<prop key="/vehiclesforperson.rss">vehiclesForPersonController</prop>
@@ -24,6 +29,12 @@
 				<prop key="/authorizationError.htm">authorizationErrorController</prop>
 			</props>
 		</property>
+		<property name="order" value="1" />
+	</bean>
+	
+	<bean id="controllerClassUrlMapping"
+		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+		<property name="order" value="0" />
 	</bean>
 
 	<!-- ========================= -->
@@ -36,7 +47,7 @@
 	<bean id="authorizationErrorController"
 		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
 
-	<bean id="homePageController" class="team.boolbee.poc.spring.security.mvc.HomePageController">
+	<bean name="/home.htm" class="team.boolbee.poc.spring.security.mvc.HomePageController">
 		<property name="vehicleRegistrationService" ref="vehicleRegistrationService" />
 	</bean>
 
@@ -66,7 +77,8 @@
 			</list>
 		</property>
 		<property name="validator">
-			<bean id="personValidator" class="team.boolbee.poc.spring.security.mvc.validator.PersonValidator" />
+			<bean id="personValidator"
+				class="team.boolbee.poc.spring.security.mvc.validator.PersonValidator" />
 		</property>
 	</bean>
 
@@ -74,13 +86,13 @@
 	<!-- ===== RESOLUCIÓN DE VISTA ===== -->
 	<!-- =============================== -->
 
-<!-- 	<bean id="jspViewResolver" -->
-<!-- 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
-<!-- 		<property name="viewClass" -->
-<!-- 			value="org.springframework.web.servlet.view.InternalResourceView" /> -->
-<!-- 		<property name="prefix" value="/WEB-INF/jsp/" /> -->
-<!-- 		<property name="suffix" value=".jsp" /> -->
-<!-- 	</bean> -->
+	<!-- <bean id="jspViewResolver" -->
+	<!-- class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<!-- <property name="viewClass" -->
+	<!-- value="org.springframework.web.servlet.view.InternalResourceView" /> -->
+	<!-- <property name="prefix" value="/WEB-INF/jsp/" /> -->
+	<!-- <property name="suffix" value=".jsp" /> -->
+	<!-- </bean> -->
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -107,7 +119,8 @@
 	<!-- ===== VALIDADORES DE FORMULARIO ===== -->
 	<!-- ===================================== -->
 
-	<bean id="vehicleValidator" class="team.boolbee.poc.spring.security.mvc.validator.VehicleValidator" />
+	<bean id="vehicleValidator"
+		class="team.boolbee.poc.spring.security.mvc.validator.VehicleValidator" />
 
 	<!-- <bean id="vehicleValidator" class="org.springmodules.validation.commons.DefaultBeanValidator"> -->
 	<!-- <property name="validatorFactory" ref="validatorFactory" /> -->
