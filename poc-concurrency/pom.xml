@@ -6,5 +6,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>poc-concurrency-semaphore</module>
+  	<module>poc-concurrency-basic</module>
   </modules>
 </project>
