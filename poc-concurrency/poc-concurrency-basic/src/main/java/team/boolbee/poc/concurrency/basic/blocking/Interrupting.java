@@ -24,8 +24,16 @@ public class Interrupting {
 	
 	public static void main(String[] args) throws Exception {
 		test(new SleepBlocked());
+		//test(new ReentrantBlocked());
+		Thread t = new Thread(new ReentrantBlocked());
+		t.start();
+		TimeUnit.SECONDS.sleep(1);
+		logger.info("Issuing t.interrupt()");
+		t.interrupt();
+
 		test(new IOBlocked(System.in));
 		test(new SynchronizedBlocked());
+		
 		TimeUnit.SECONDS.sleep(3);
 		logger.info("Aborting with System.exit(0)");
 		System.exit(0); // Puesto que las 2 últimas interrupciones fallaron
@@ -36,5 +44,8 @@ public class Interrupting {
 	
 	// Según la salida del programa se demuestra que se puede interrumpir una llamada sleep().
 	// Sin embargo, no se puede interrumpir una tarea que esté tratando de adquirir un bloqueo sincronizado
-	// o que esté tratando de efectuar una operación de E/S
+	// o que esté tratando de efectuar una operación de E/S.
+	
+	// A diferencia de las tareas bloqueadas en métodos sincronos o secciones críticas,
+	// las tareas bloqueadas en bloqueos de tipo ReentranLock pueden ser interrumpibles.
 }
