@@ -2,7 +2,6 @@ package team.boolbee.poc.concurrency.basic.blocking;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
