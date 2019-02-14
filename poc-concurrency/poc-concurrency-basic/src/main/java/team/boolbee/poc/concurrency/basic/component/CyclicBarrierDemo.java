@@ -65,7 +65,7 @@ class Horse implements Runnable {
 			throw new RuntimeException(e);
 		}
 		
-		CyclicBarrierDemo.logger.info("Exiting Horse.run()");
+		//CyclicBarrierDemo.logger.info("Exiting Horse.run()");
 	}
 
 	public String toString() {
