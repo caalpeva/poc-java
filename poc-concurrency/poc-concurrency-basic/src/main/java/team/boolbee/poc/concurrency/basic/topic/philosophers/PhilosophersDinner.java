@@ -34,7 +34,7 @@ public class PhilosophersDinner {
 			     .build();
 		ExecutorService exec = Executors.newCachedThreadPool(namedThreadFactory);
 		for(int i = 0; i < size; i++) {
-			//exec.execute(new Philosopher(sticks[i], sticks[(i+1) % size], i + 1, ponder));
+			//exec.execute(new Philosopher(sticks[i], sticks[(i+1) % size], ponder));
 			// Generar una hebra con un filósofo zurdo evita el interbloqueo
 			if (i < (size - 1)) {
 				exec.execute(new Philosopher(sticks[i], sticks[(i+1) % size], ponder));
