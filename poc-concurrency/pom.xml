@@ -7,5 +7,6 @@
   <modules>
   	<module>poc-concurrency-semaphore</module>
   	<module>poc-concurrency-basic</module>
+  	<module>poc-concurrency-component</module>
   </modules>
 </project>

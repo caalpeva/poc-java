@@ -1,4 +1,4 @@
-package team.boolbee.poc.concurrency.basic.component;
+package team.boolbee.poc.concurrency.component;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
