@@ -11,6 +11,9 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+// Un objeto Runnable es una tarea independiente que realiza cierto trabajo,
+// pero que no devuelve un valor. Para que una tarea devuelva un valor cuando
+// finalice debe implementar la interfaz Callable en lugar de la interfaz Runnable.
 public class TaskWithResult implements Callable<String> {
 
 	private static Log logger = LogFactory.getLog(TaskWithResult.class);
