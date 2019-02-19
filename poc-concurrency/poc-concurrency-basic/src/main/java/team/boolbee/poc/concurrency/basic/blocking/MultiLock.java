@@ -1,4 +1,4 @@
-package team.boolbee.poc.concurrency.basic;
+package team.boolbee.poc.concurrency.basic.blocking;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
