@@ -22,6 +22,7 @@ public class PersonValidator implements Validator {
 		Person person = (Person) command;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required.name", "Name is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "required.surname", "Surname is required.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required.password", "Password is required.");
 		if (StringUtils.hasText(person.getEmail())) {
 			validateEmail(person.getEmail(), errors);
 		}

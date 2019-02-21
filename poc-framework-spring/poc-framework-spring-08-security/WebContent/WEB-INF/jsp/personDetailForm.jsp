@@ -19,6 +19,8 @@
       <form:errors path="surname" cssClass="error" /><br>
        <spring:message code="field.email" /><form:input path="email" /><br>
       <form:errors path="email" cssClass="error" /><br>
+      <spring:message code="field.password" /><form:password path="password" /><br>
+      <form:errors path="password" cssClass="error" /><br>
       <input type="submit" name="_target1" value="Next">
       <input type="submit" name="_cancel" value="Cancel">
     </form:form>

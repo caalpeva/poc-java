@@ -11,6 +11,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>team/boolbee/poc/spring/security/model/Person.hbm.xml</value>
+				<value>team/boolbee/poc/spring/security/model/Privilege.hbm.xml</value>
 				<value>team/boolbee/poc/spring/security/model/Vehicle.hbm.xml</value>
 			</list>
 		</property>
@@ -19,7 +20,7 @@
 				<prop key="hibernate.dialect">${dialect}</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
-<!-- 				<prop key="hibernate.hbm2ddl.import_files">/import.sql</prop> -->
+				<prop key="hibernate.hbm2ddl.import_files">/import.sql</prop>
 				<prop key="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</prop>	
 			</props>
 		</property>

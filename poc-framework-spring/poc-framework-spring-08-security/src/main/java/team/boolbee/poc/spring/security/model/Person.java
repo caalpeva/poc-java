@@ -3,7 +3,9 @@ package team.boolbee.poc.spring.security.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Person implements Serializable {
 	
@@ -14,7 +16,9 @@ public class Person implements Serializable {
 	private String surname;
 	private Date birthDate;
 	private String email;
+	private String password;
 	private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+	private Set<Privilege> privileges = new HashSet<Privilege>();
 
 	public Person() {}
 	
@@ -58,6 +62,14 @@ public class Person implements Serializable {
 		this.email = email;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public List<Vehicle> getVehicles() {
 		return vehicles;
 	}
@@ -69,6 +81,14 @@ public class Person implements Serializable {
 	public void addVehicle(Vehicle vehicle) {
 		vehicles.add(vehicle);
 		vehicle.setPerson(this);
+	}
+
+	public Set<Privilege> getPrivileges() {
+		return privileges;
+	}
+
+	public void setPrivileges(Set<Privilege> privileges) {
+		this.privileges = privileges;
 	}
 
 	public boolean equals(Object o) {

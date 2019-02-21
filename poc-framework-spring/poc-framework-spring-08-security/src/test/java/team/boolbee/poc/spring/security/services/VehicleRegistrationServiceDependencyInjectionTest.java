@@ -1,11 +1,15 @@
 package team.boolbee.poc.spring.security.services;
 
+import org.acegisecurity.providers.dao.SaltSource;
+import org.acegisecurity.providers.encoding.PasswordEncoder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 public class VehicleRegistrationServiceDependencyInjectionTest extends AbstractDependencyInjectionSpringContextTests {
 
 	private VehicleRegistrationService registrationServiceDAO;
+	private PasswordEncoder passwordEncoder;
+	private SaltSource saltSource;
 	
 	public VehicleRegistrationServiceDependencyInjectionTest() {
 	}
@@ -14,7 +18,7 @@ public class VehicleRegistrationServiceDependencyInjectionTest extends AbstractD
 	protected String[] getConfigLocations() {
 		return new String[] { "spring-context.xml", "spring-datasource.xml", "spring-data-hibernate.xml",
 				"spring-jmx-server-mbean.xml", "spring-scheduler.xml", "spring-service.xml", "spring-tx.xml",
-				"spring-email.xml" };
+				"spring-email.xml", "spring-security.xml" };
 	}
 
 	@Override
@@ -31,11 +35,24 @@ public class VehicleRegistrationServiceDependencyInjectionTest extends AbstractD
 		System.out.println("onSetup()");
 		registrationServiceDAO = (VehicleRegistrationService) applicationContext
 				.getBean("vehicleRegistrationService");
+		passwordEncoder = (PasswordEncoder) applicationContext.getBean("passwordEncoder");
+		saltSource = (SaltSource) applicationContext.getBean("saltSource");
+		
 	}
 	
 	@Override
 	protected void onTearDown() throws Exception {
 		System.out.println("onTearDown()");
+	}
+	
+	public void testEncryption() {
+		String password = "admin2";
+		String encodedPassword = passwordEncoder.encodePassword(password,
+				saltSource != null? saltSource.getSalt(null): null);
+
+		System.out.println("SALT:  " + (saltSource != null? saltSource.getSalt(null): null));
+		System.out.println("UNENCODED: " + password);
+		System.out.println("ENCODED:  " + encodedPassword);
 	}
 	
 	public void testGetPersons() {

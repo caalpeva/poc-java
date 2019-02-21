@@ -119,7 +119,7 @@
 		<property name="accessDecisionManager" ref="accessDecisionManager" />
 		<property name="objectDefinitionSource">
 			<value>
-			 	CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
 				PATTERN_TYPE_APACHE_ANT
 				/home.htm=ROLE_ADMIN
 				/addvehicle.htm=ROLE_ADMIN
@@ -163,6 +163,7 @@
 		<property name="providers">
 			<list>
 				<ref bean="daoAuthenticationProvider" />
+				<ref bean="developmentDaoAuthenticationProvider" />
 				<ref bean="anonymousAuthenticationProvider" />
 				<ref bean="rememberMeAuthenticationProvider" />
 			</list>
@@ -171,18 +172,48 @@
 			/> -->
 	</bean>
 
-	<bean id="daoAuthenticationProvider"
+	<bean id="developmentDaoAuthenticationProvider"
 		class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
-		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="userDetailsService" ref="developmentAuthenticationDao" />
 	</bean>
 
-	<bean id="userDetailsService" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
+	<bean id="developmentAuthenticationDao" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
 		<property name="userMap">
 			<value>
 				egon=egon,ROLE_ADMIN
 				ray=ray,disabled,ROLE_ADMIN
 				venkman=venkman,ROLE_ADMIN,ROLE_ANALIST
 				winston=winston,ROLE_ANALIST,ROLE_OPS
+			</value>
+		</property>
+	</bean>
+
+	<bean id="daoAuthenticationProvider"
+		class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="authenticationDao" />
+		<property name="passwordEncoder" ref="passwordEncoder" />
+		<property name="saltSource" ref="saltSource" />
+		<!-- La propiedad saltSource se configura a null
+			cuando el passwordEncoder no realiza ninguna codificación -->
+		<!-- <property name="saltSource"><null/></property> -->
+	</bean>
+
+	<bean id="authenticationDao" class="org.acegisecurity.userdetails.jdbc.JdbcDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="usersByUsernameQuery">
+			<value>
+				SELECT email as username, password, 'true' as enabled FROM
+				PERSON
+				WHERE email = ?
+			</value>
+		</property>
+		<property name="authoritiesByUsernameQuery">
+			<value>
+				SELECT email as username, permission as authority FROM
+				PRIVILEGE
+				INNER JOIN PERSON ON PRIVILEGE.person_id = PERSON.id
+				WHERE
+				email = ?
 			</value>
 		</property>
 	</bean>
@@ -198,7 +229,7 @@
 
 	<bean id="rememberMeServices"
 		class="org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices">
-		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="userDetailsService" ref="authenticationDao" />
 		<property name="key" value="poc" />
 	</bean>
 
@@ -229,9 +260,63 @@
 		</property>
 	</bean>
 
+	<!-- ======================= -->
+	<!-- ===== ENCRYPTION ====== -->
+	<!-- ======================= -->
+
+<!-- 	<bean id="passwordEncoder" class="org.acegisecurity.providers.encoding.PlaintextPasswordEncoder" /> -->
+	<bean id="passwordEncoder" class="org.acegisecurity.providers.encoding.Md5PasswordEncoder" />
+
+<!-- 	<bean id= "saltSource" class="org.acegisecurity.providers.dao.salt.ReflectionSaltSource"> -->
+<!-- 		<property name="userPropertyToUse" value="userName" /> -->
+<!-- 	</bean> -->
+
+	<bean id="saltSource"
+		class="org.acegisecurity.providers.dao.salt.SystemWideSaltSource">
+		<property name="systemWideSalt" value="ABC123XYZ789" />
+	</bean>
+
+	<bean id="passwordEncodingAdvice"
+		class="team.boolbee.poc.spring.security.advice.PasswordEncodingAdvice">
+		<property name="passwordEncoder" ref="passwordEncoder" />
+		<property name="saltSource" ref="saltSource" />
+		<!-- La propiedad saltSource se configura a null
+			cuando el passwordEncoder no realiza ninguna codificación -->
+		<!-- <property name="saltSource"><null/></property> -->
+	</bean>
+
+	<aop:config>
+		<aop:aspect id="encodingAround" ref="passwordEncodingAdvice">
+			<aop:around
+				pointcut="execution(* team.boolbee.poc.spring.security.services.VehicleRegistrationService.register(team.boolbee.poc.spring.security.model.Person))"
+				method="encodePersonPassword" />
+			<aop:around
+				pointcut="execution(* org.acegisecurity.providers.encoding.Md5PasswordEncoder.isPasswordValid(String,String,Object))"
+				method="logValidation" />
+		</aop:aspect>
+	</aop:config>
+
+	<!-- ===================================== -->
+	<!-- ===== FIXED SESSION EXPIRATION ====== -->
+	<!-- ===================================== -->
+
+	<!-- Se evita la generación de la excepción java.lang.NullPointerException
+		org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices.logout(TokenBasedRememberMeServices.java:295)
+		producida al deslogarse un usuario con la sessión ya expirada.
+		El problema residía al intentar invocar un método de un objeto Authentication nulo.
+		    public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
+        		cancelCookie(request, response, "Logout of user " + authentication.getName());
+    		} -->
+	<bean id="fixedSessionExpirationAdvice" class="team.boolbee.poc.spring.security.advice.FixedSessionExpirationLogoutAdvice" />
+
+	<aop:config>
+		<aop:aspect id="sessionExpirationAround" ref="fixedSessionExpirationAdvice">
+			<aop:around
+				pointcut="execution(* org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.acegisecurity.Authentication))"
+				method="fixNullPointerException" />
+		</aop:aspect>
+	</aop:config>
+
 	<bean id="loggerListener" class="org.acegisecurity.event.authentication.LoggerListener" />
-	
-	<!-- TODO: Intentar solucionar mediante AOP el java.lang.NullPointerException
-	org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices.logout(TokenBasedRememberMeServices.java:295) -->
 
 </beans>

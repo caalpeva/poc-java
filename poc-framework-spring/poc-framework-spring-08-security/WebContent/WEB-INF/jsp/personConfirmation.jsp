@@ -12,7 +12,8 @@
     <h2>Motorist Confirmation Confirmation (Step 3 of 3)</h2>
     <form:form commandName="person" method="POST" action="register.htm">
       <input type="hidden" name="page" value="2" />
-      Motorist: <c:out value="${person.name}" />&nbsp;<c:out value="${person.surname}" /><br/>
+      Motorist: <c:out value="${person.name}" />&nbsp;<c:out value="${person.surname}" />&nbsp;<c:out value="${person.email}" /><br/>
+      Password: <c:out value="${person.password}" /><br/>
       Vehicles:<br/>
       <ul>
         <c:forEach items="${person.vehicles}" var="vehicle">

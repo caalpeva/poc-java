@@ -17,6 +17,7 @@ import org.springframework.mail.SimpleMailMessage;
 import team.boolbee.poc.spring.security.dao.PersonDao;
 import team.boolbee.poc.spring.security.dao.VehicleDao;
 import team.boolbee.poc.spring.security.model.Person;
+import team.boolbee.poc.spring.security.model.Privilege;
 import team.boolbee.poc.spring.security.model.Vehicle;
 
 public class VehicleRegistrationServiceImpl implements VehicleRegistrationService, NotificationPublisherAware {
@@ -37,6 +38,9 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 			vehicle.setRegistrationDate(new Date());
 		}
 
+		Privilege privilege = new Privilege();
+		privilege.setPermission("ROLE_ADMIN");
+		person.getPrivileges().add(privilege);
 		personDao.savePerson(person);
 		sendRegistrationEmailToUser(person);
 		
@@ -99,7 +103,7 @@ public class VehicleRegistrationServiceImpl implements VehicleRegistrationServic
 
 	public Collection<Vehicle> getVehiclesForPersons(Integer personId) {
 		Person person = personDao.getPersonById(personId);
-		return person.getVehicles();
+		return (person != null? person.getVehicles(): null);
 	}
 
 	public void register(Vehicle vehicle) {
