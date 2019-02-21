@@ -26,16 +26,22 @@ public class PasswordEncodingAdvice {
 
 		logger.debug("SALT:  " + (saltSource != null? saltSource.getSalt(null): null));
 		logger.debug("UNENCODED: " + person.getPassword());
-		logger.debug("ENCODED:  " + encodedPassword);
+		logger.debug("ENCODED: " + encodedPassword);
 
 		person.setPassword(encodedPassword);
 		return pjp.proceed(new Object[] { person });
 	}
 
 	public Object logValidation(ProceedingJoinPoint pjp) throws Throwable {
-		logger.error("LOGGING BEFORE: " + pjp.getSignature().toLongString());
+		//logger.debug("ProceedingJoinPoint signature: " + pjp.getSignature().toLongString());
+		Object[] args = pjp.getArgs();
+		if (args.length != 3) {
+			return pjp.proceed();
+		}
+		
+		logger.debug(String.format("CHECKING encodedPassword: %s, rawPassword: %s", args[0], args[1]));
 		Object result = pjp.proceed();
-		logger.error("LOGGING AFTER: " + pjp.getSignature().toLongString() + ", RETURNING:  " + result);
+		logger.debug("RETURNING: " + result);
 		return result;
 	}
 	

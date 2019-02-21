@@ -53,6 +53,8 @@ public class VehicleRegistrationServiceDependencyInjectionTest extends AbstractD
 		System.out.println("SALT:  " + (saltSource != null? saltSource.getSalt(null): null));
 		System.out.println("UNENCODED: " + password);
 		System.out.println("ENCODED:  " + encodedPassword);
+		
+		assertTrue(passwordEncoder.isPasswordValid(encodedPassword, password, (saltSource != null? saltSource.getSalt(null): null)));
 	}
 	
 	public void testGetPersons() {

@@ -291,7 +291,7 @@
 				pointcut="execution(* team.boolbee.poc.spring.security.services.VehicleRegistrationService.register(team.boolbee.poc.spring.security.model.Person))"
 				method="encodePersonPassword" />
 			<aop:around
-				pointcut="execution(* org.acegisecurity.providers.encoding.Md5PasswordEncoder.isPasswordValid(String,String,Object))"
+				pointcut="execution(* org.acegisecurity.providers.encoding.PasswordEncoder.isPasswordValid(java.lang.String,java.lang.String,java.lang.Object))"
 				method="logValidation" />
 		</aop:aspect>
 	</aop:config>
