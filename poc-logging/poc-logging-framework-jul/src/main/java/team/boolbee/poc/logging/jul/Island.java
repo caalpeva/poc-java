@@ -1,9 +1,6 @@
 package team.boolbee.poc.logging.jul;
 
 import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Island {
 	static {

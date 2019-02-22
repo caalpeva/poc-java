@@ -1,7 +1,5 @@
 package team.boolbee.poc.jms;
 
-import java.util.Date;
-
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;

@@ -1,15 +1,15 @@
 package chapter04.orphan;
 
+import static org.testng.Assert.assertEquals;
+
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.testng.annotations.Test;
 
 import team.boolbee.poc.hibernate.utils.HibernateSession;
-
-import java.util.List;
-
-import static org.testng.Assert.assertEquals;
 
 public class OrphanRemovalTest {
 	

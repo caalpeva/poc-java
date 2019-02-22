@@ -1,7 +1,5 @@
 package team.boolbee.poc.spring.beans.others;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 

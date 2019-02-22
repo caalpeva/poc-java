@@ -2,11 +2,6 @@ package team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.mo
 
 import org.testng.annotations.Test;
 
-import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Course;
-import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Dessert;
-import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Drink;
-import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Food;
-import team.boolbee.poc.hibernate.annotation.inheritance.onetablepersubclass.model.Product;
 import team.boolbee.poc.hibernate.utils.GenericDAO;
 
 public class OneTablePerConcreteClassAnnotationTest {

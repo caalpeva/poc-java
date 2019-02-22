@@ -9,9 +9,6 @@ import org.testng.annotations.Test;
 
 import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.dao.PortDAO;
 import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.dao.ServiceDAO;
-import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.model.Port;
-import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.model.PortType;
-import team.boolbee.poc.hibernate.onetoone.unidirectional.annotation.model.Service;
 
 public class OneToOneAnnotationTest {
 	

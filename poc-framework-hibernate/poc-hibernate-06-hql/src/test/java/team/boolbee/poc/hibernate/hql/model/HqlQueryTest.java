@@ -17,8 +17,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import team.boolbee.poc.hibernate.hql.model.Product;
-import team.boolbee.poc.hibernate.hql.model.Supplier;
 import team.boolbee.poc.hibernate.hql.model.Product.Status;
 import team.boolbee.poc.hibernate.utils.HibernateSession;
 

@@ -5,8 +5,6 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import team.boolbee.poc.spring.remoting.model.CitationService;
 
 public class RmiMain {

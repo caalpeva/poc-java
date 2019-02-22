@@ -6,7 +6,6 @@ package team.boolbee.hibernate.xml.onetomany.unidir.dao;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import team.boolbee.hibernate.xml.onetomany.unidir.model.Team;
 import team.boolbee.poc.hibernate.utils.HibernateSession;

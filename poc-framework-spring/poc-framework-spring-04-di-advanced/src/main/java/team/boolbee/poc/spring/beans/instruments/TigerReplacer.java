@@ -1,6 +1,7 @@
 package team.boolbee.poc.spring.beans.instruments;
 
 import java.lang.reflect.Method;
+
 import org.springframework.beans.factory.support.MethodReplacer;
 
 public class TigerReplacer implements MethodReplacer {

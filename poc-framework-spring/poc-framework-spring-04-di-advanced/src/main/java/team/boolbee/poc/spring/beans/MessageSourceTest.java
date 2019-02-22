@@ -2,15 +2,8 @@ package team.boolbee.poc.spring.beans;
 
 import java.util.Locale;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-
-import team.boolbee.poc.spring.beans.others.LifecycleDemoBean;
-import team.boolbee.poc.spring.beans.performers.Fuddifier;
 
 public class MessageSourceTest {
 	

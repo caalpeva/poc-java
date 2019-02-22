@@ -1,5 +1,8 @@
 package team.boolbee.poc.hibernate.broken;
 
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.testng.annotations.Test;
@@ -7,8 +10,6 @@ import org.testng.annotations.Test;
 import team.boolbee.poc.hibernate.model.broken.Email;
 import team.boolbee.poc.hibernate.model.broken.Message;
 import team.boolbee.poc.hibernate.utils.HibernateSession;
-
-import static org.testng.Assert.*;
 
 public class BrokenInversionTest {
 

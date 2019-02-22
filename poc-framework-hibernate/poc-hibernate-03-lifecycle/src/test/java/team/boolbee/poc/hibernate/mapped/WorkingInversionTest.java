@@ -1,14 +1,16 @@
 package team.boolbee.poc.hibernate.mapped;
 
-import team.boolbee.poc.hibernate.model.mapped.Email;
-import team.boolbee.poc.hibernate.model.mapped.Message;
-import team.boolbee.poc.hibernate.utils.HibernateSession;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import team.boolbee.poc.hibernate.model.mapped.Email;
+import team.boolbee.poc.hibernate.model.mapped.Message;
+import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 public class WorkingInversionTest {
 

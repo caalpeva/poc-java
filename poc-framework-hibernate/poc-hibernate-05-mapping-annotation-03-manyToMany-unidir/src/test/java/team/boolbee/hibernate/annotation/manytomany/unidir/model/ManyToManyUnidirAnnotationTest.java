@@ -13,8 +13,6 @@ import org.hibernate.Session;
 import org.testng.annotations.Test;
 
 import team.boolbee.hibernate.annotation.manytomany.unidir.dao.CustomerDAO;
-import team.boolbee.hibernate.annotation.manytomany.unidir.model.BankAccount;
-import team.boolbee.hibernate.annotation.manytomany.unidir.model.Customer;
 import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 

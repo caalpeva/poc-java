@@ -1,7 +1,6 @@
 package team.boolbee.poc.spring.beans.performers;
 
 import team.boolbee.poc.spring.beans.exceptions.PerformanceException;
-import team.boolbee.poc.spring.beans.instruments.Instrument;
 
 public class Vocalist implements Performer {	
 

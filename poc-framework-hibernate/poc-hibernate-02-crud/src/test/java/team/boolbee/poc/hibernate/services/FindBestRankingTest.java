@@ -1,13 +1,11 @@
 package team.boolbee.poc.hibernate.services;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNull;
+
 import org.testng.annotations.Test;
 
 import team.boolbee.poc.hibernate.model.Person;
-import team.boolbee.poc.hibernate.services.HibernateRankingService;
-import team.boolbee.poc.hibernate.services.RankingService;
-
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNull;
 
 public class FindBestRankingTest {
     RankingService service = new HibernateRankingService();

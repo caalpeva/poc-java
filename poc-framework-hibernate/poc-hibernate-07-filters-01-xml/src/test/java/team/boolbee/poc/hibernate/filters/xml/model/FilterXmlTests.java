@@ -13,8 +13,6 @@ import org.hibernate.Session;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import team.boolbee.poc.hibernate.filters.xml.model.Sale;
-import team.boolbee.poc.hibernate.filters.xml.model.Salesperson;
 import team.boolbee.poc.hibernate.utils.GenericDAO;
 import team.boolbee.poc.hibernate.utils.HibernateSession;
 

@@ -1,31 +1,17 @@
 package team.boolbee.poc.hibernate.sql.model;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.fail;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Example;
-import org.hibernate.criterion.LogicalExpression;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.ProjectionList;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Property;
-import org.hibernate.criterion.Restrictions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import team.boolbee.poc.hibernate.sql.model.Product;
-import team.boolbee.poc.hibernate.sql.model.Supplier;
 import team.boolbee.poc.hibernate.sql.model.Product.Status;
 import team.boolbee.poc.hibernate.utils.HibernateSession;
 

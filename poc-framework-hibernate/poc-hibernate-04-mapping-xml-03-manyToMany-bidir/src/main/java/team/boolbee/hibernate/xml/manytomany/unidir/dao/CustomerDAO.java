@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import team.boolbee.hibernate.xml.manytomany.unidir.model.BankAccount;
 import team.boolbee.hibernate.xml.manytomany.unidir.model.Customer;
 import team.boolbee.poc.hibernate.utils.HibernateSession;
 

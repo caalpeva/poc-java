@@ -7,8 +7,6 @@ import team.boolbee.poc.spring.ws.model.Face;
 import team.boolbee.poc.spring.ws.model.PokerHand;
 import team.boolbee.poc.spring.ws.model.PokerHandType;
 import team.boolbee.poc.spring.ws.model.Suit;
-import team.boolbee.poc.spring.ws.service.PokerHandEvaluator;
-import team.boolbee.poc.spring.ws.service.PokerHandEvaluatorImpl;
 
 public class PokerHandEvaluatorTest extends TestCase {
 	

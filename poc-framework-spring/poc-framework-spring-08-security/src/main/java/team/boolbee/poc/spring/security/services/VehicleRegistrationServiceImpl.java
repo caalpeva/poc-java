@@ -2,12 +2,11 @@ package team.boolbee.poc.spring.security.services;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.management.Notification;
-
-import java.util.HashSet;
 
 import org.springframework.jmx.export.notification.NotificationPublisher;
 import org.springframework.jmx.export.notification.NotificationPublisherAware;

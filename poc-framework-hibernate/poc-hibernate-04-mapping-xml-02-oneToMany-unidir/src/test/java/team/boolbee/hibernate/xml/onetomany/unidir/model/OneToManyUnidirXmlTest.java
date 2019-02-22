@@ -1,7 +1,5 @@
 package team.boolbee.hibernate.xml.onetomany.unidir.model;
 
-import javax.transaction.Transaction;
-
 import org.hibernate.Session;
 import org.testng.annotations.Test;
 

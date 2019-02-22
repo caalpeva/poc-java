@@ -12,7 +12,6 @@ import org.springframework.test.AbstractTransactionalDataSourceSpringContextTest
 import team.boolbee.poc.spring.security.model.Person;
 import team.boolbee.poc.spring.security.model.Vehicle;
 import team.boolbee.poc.spring.security.model.VehicleType;
-import team.boolbee.poc.spring.security.services.VehicleRegistrationService;
 
 public class VehicleRegistrationServiceTransactionalDataSourceTest extends AbstractTransactionalDataSourceSpringContextTests {
 

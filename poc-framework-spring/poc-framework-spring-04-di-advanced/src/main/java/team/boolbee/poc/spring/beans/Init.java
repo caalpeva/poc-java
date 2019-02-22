@@ -3,8 +3,6 @@ package team.boolbee.poc.spring.beans;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import team.boolbee.poc.spring.beans.performers.Instrumentalist;
-
 public class Init {
 
 	public static void main(String[] args) {

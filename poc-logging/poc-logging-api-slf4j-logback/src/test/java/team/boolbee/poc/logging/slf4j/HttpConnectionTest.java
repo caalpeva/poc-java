@@ -6,10 +6,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.bridge.SLF4JBridgeHandler;
-
 import junit.framework.Assert;
 import junit.framework.TestCase;
 

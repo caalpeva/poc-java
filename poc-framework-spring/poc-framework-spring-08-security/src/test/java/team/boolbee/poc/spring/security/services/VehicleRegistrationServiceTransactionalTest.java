@@ -9,7 +9,6 @@ import org.springframework.test.AbstractTransactionalSpringContextTests;
 import team.boolbee.poc.spring.security.model.Person;
 import team.boolbee.poc.spring.security.model.Vehicle;
 import team.boolbee.poc.spring.security.model.VehicleType;
-import team.boolbee.poc.spring.security.services.VehicleRegistrationService;
 
 public class VehicleRegistrationServiceTransactionalTest extends AbstractTransactionalSpringContextTests {
 

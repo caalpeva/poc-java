@@ -1,13 +1,13 @@
 package chapter04.general;
 
-import chapter04.model.SimpleObject;
-import team.boolbee.poc.hibernate.utils.HibernateSession;
+import static org.testng.Assert.assertEquals;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import chapter04.model.SimpleObject;
+import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 public class MergeRefreshTest {
 	

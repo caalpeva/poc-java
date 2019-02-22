@@ -14,8 +14,6 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 
 import junit.framework.TestCase;
-import team.boolbee.poc.jms.Consumer;
-import team.boolbee.poc.jms.Producer;
 import team.boolbee.poc.jms.runnable.ConsumedMessageCounter;
 
 /**

@@ -1,6 +1,5 @@
 package team.boolbee.poc.spring.security.mvc.view;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 

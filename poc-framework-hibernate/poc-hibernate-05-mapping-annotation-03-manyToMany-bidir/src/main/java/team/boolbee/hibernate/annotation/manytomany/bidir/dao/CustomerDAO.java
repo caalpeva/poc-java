@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import team.boolbee.hibernate.annotation.manytomany.bidir.model.BankAccount;
 import team.boolbee.hibernate.annotation.manytomany.bidir.model.Customer;
 import team.boolbee.poc.hibernate.utils.HibernateSession;
 

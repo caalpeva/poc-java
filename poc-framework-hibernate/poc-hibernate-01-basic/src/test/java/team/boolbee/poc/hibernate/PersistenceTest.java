@@ -13,7 +13,6 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import junit.framework.Assert;
-import team.boolbee.poc.hibernate.Message;
 
 public class PersistenceTest {
     SessionFactory factory;

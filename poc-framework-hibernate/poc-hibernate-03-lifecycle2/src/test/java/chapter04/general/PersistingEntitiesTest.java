@@ -1,13 +1,17 @@
 package chapter04.general;
 
-import chapter04.model.SimpleObject;
-import team.boolbee.poc.hibernate.utils.HibernateSession;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertNotEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import chapter04.model.SimpleObject;
+import team.boolbee.poc.hibernate.utils.HibernateSession;
 
 public class PersistingEntitiesTest {
 	
