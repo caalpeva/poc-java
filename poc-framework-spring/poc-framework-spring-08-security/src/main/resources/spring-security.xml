@@ -218,6 +218,13 @@
 		</property>
 	</bean>
 
+	<!-- La autenticación básica HTTP utiliza un cuadro de diálogo de registro
+		producido por el navegador para pedirle al usuario sus credenciales.
+		Una vez que el usuario esté autenticado, la sessión permanece activa
+		hasta que se cierre el navegador. Por ese motivo, aunque se desloge
+		de la aplicación volverá a entrar automáticamente en la misma, ya que
+		la sessión y la información de autenticación está activa hasta que
+		se cierre el navegador. -->
 	<bean id="basicAuthenticationEntryPoint"
 		class="org.acegisecurity.ui.basicauth.BasicProcessingFilterEntryPoint">
 		<property name="realmName" value="poc-webapp-spring-security" />
@@ -255,9 +262,13 @@
 		<property name="allowIfAllAbstainDecisions" value="false" />
 		<property name="decisionVoters">
 			<list>
-				<bean class="org.acegisecurity.vote.RoleVoter" />
+				<ref bean="roleVoter" />
 			</list>
 		</property>
+	</bean>
+	
+	<bean id="roleVoter" class="org.acegisecurity.vote.RoleVoter">
+		<!-- <property name="rolePrefix" value="GROUP_" /> -->
 	</bean>
 
 	<!-- ======================= -->
@@ -276,6 +287,7 @@
 		<property name="systemWideSalt" value="ABC123XYZ789" />
 	</bean>
 
+	<!-- Notificación de codificación de password al registrar usuario -->
 	<bean id="passwordEncodingAdvice"
 		class="team.boolbee.poc.spring.security.advice.PasswordEncodingAdvice">
 		<property name="passwordEncoder" ref="passwordEncoder" />
