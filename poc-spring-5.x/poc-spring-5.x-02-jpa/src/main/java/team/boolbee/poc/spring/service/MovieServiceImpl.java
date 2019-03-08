@@ -18,7 +18,7 @@ public class MovieServiceImpl implements MovieService {
 	List<Movie> movies = new ArrayList<Movie>();
 	
 	public MovieServiceImpl() {
-		System.out.println("Constructor MovieService");
+		//System.out.println("Constructor MovieService");
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 		try {
 			Movie movie = new Movie();
