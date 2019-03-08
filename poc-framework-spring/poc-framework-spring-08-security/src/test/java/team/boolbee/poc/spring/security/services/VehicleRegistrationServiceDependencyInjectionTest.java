@@ -1,9 +1,16 @@
 package team.boolbee.poc.spring.security.services;
 
+import java.util.Date;
+import java.util.List;
+
 import org.acegisecurity.providers.dao.SaltSource;
 import org.acegisecurity.providers.encoding.PasswordEncoder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+
+import team.boolbee.poc.spring.security.model.Person;
+import team.boolbee.poc.spring.security.model.Vehicle;
+import team.boolbee.poc.spring.security.model.VehicleType;
 
 public class VehicleRegistrationServiceDependencyInjectionTest extends AbstractDependencyInjectionSpringContextTests {
 
@@ -90,18 +97,19 @@ public class VehicleRegistrationServiceDependencyInjectionTest extends AbstractD
 	// AbstractTransactionalDataSourceSpringContextTests
 	
 	public void testAddPersonsWithVehicles() {
-		System.out.println("testAddPersonsWithVehicles()");
-		
+//		System.out.println("testAddPersonsWithVehicles()");
+//		
 //		Vehicle vehicle = new Vehicle();
 //		vehicle.setPlateNumber("AHR 7811");
 //		vehicle.setRegistrationDate(new Date());
 //		vehicle.setType(VehicleType.AUTOMOBILE);
 //
 //		Person person = new Person();
-//		person.setName("Dan");
-//		person.setSurname("Aykroyd");
+//		person.setName("Rick");
+//		person.setSurname("Moranis");
 //		person.setBirthDate(new Date(52, 6, 1));
-//		person.setEmail("daykroyd@mailinator.com");
+//		person.setEmail("rmoranis@mailinator.com");
+//		person.setPassword("1234");
 //		person.addVehicle(vehicle);
 //
 //		registrationServiceDAO.register(person);
@@ -115,10 +123,11 @@ public class VehicleRegistrationServiceDependencyInjectionTest extends AbstractD
 //		vehicle.setType(VehicleType.MOTORCYCLE);
 //
 //		person = new Person();
-//		person.setName("Bill");
-//		person.setSurname("Murray");
+//		person.setName("Annie");
+//		person.setSurname("Potts");
 //		person.setBirthDate(new Date(50, 8, 21));
-//		person.setEmail("bmurray@mailinator.com");
+//		person.setEmail("apotts@mailinator.com");
+//		person.setPassword("1234");
 //		person.addVehicle(vehicle);
 //
 //		registrationServiceDAO.register(person);
