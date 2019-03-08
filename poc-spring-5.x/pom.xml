@@ -6,5 +6,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>poc-spring-5.x-01-mvc</module>
+  	<module>poc-spring-5.x-02-jpa</module>
   </modules>
 </project>
