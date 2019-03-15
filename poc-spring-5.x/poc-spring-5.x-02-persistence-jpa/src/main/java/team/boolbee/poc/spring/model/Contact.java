@@ -23,7 +23,7 @@ public class Contact {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String[] getFilmTypes() {		
+	public String[] getFilmTypes() {
 		return filmTypes;
 	}
 	public void setFilmTypes(String[] filmTypes) {

@@ -9,6 +9,8 @@
 	<modules>
 		<module>poc-spring-5.x-01-mvc</module>
 		<module>poc-spring-5.x-02-jpa</module>
+		<module>poc-spring-5.x-persistence-jpa</module>
+		<module>poc-spring-5.x-02-persistence-jpa</module>
 	</modules>
 
 	<profiles>
