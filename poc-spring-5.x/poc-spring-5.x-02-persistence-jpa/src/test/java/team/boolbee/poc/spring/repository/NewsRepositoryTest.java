@@ -14,6 +14,9 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
@@ -23,7 +26,7 @@ import team.boolbee.poc.spring.model.News;
 import team.boolbee.poc.spring.model.Status;
 
 @SpringJUnitConfig(TestContext.class)
-@ContextConfiguration("/spring-service.xml")
+@ContextConfiguration("/spring-datasource-hibernate.xml")
 @Transactional
 public class NewsRepositoryTest {
 
@@ -127,6 +130,40 @@ public class NewsRepositoryTest {
 		//newsRepository.deleteAll();
 		newsRepository.deleteAllInBatch(); // Método de borrado más eficiente
 		assertEquals(0, newsRepository.count());
+	}
+	
+	@Test
+	public void sort() {
+		List<News> newsList = newsRepository.findAll(Sort.by("title").descending());
+		String lastTitle = null;
+		for (News news: newsList) {
+			System.out.println(news);
+			if (lastTitle != null && (lastTitle.compareTo(news.getTitle()) < 0)) {
+				fail("No descending");
+			}
+			lastTitle = news.getTitle();
+		}
+	}
+	
+	@Test
+	public void page() {
+		long count = newsRepository.count();
+		System.out.println("Elementos: " + count);
+		
+		int total = 0;
+		final int pageSize = 7;
+		int pageNums = (int) ((count / pageSize) + ((count % pageSize) > 0? 1: 0));
+		for(int index = 0; index < pageNums; index++) {
+			//Page<News> newsPages = newsRepository.findAll(PageRequest.of(index, pageSize));
+			Page<News> newsPages = newsRepository.findAll(PageRequest.of(index, pageSize, Sort.by("title")));
+			for (News news: newsPages) {
+				System.out.println(news);
+			}
+			
+			total += newsPages.getNumberOfElements();
+		} // for
+		
+		assertEquals(count, total);
 	}
 	
 	private void populateData() {
