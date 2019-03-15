@@ -12,11 +12,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
@@ -34,9 +34,9 @@ public class MovieRepositoryTest {
 
 	@Autowired
 	private MovieRepository movieRepository;
-	
+
 	@Autowired
-	//private MovieDetailRepository movieDetailRepository;
+	// private MovieDetailRepository movieDetailRepository;
 
 	@Test
 	@Order(1)
@@ -48,7 +48,7 @@ public class MovieRepositoryTest {
 		movieDetail.setDirector("Gerardo Olivares");
 		movieDetail.setSynopsis("Synopsis");
 		movieDetail.setTrailer("https://www.youtube.com/embed/KBstfRGTssM");
-		
+
 		Movie movie = new Movie();
 		movie.setTitle("4 Latas");
 		movie.setClassification("A");
@@ -58,9 +58,9 @@ public class MovieRepositoryTest {
 		movie.setReleaseDate(new Date());
 		movie.setDetail(movieDetail);
 		movie.setStatus(Status.INACTIVE);
-		//movieDetailRepository.save(movieDetail);
+		// movieDetailRepository.save(movieDetail);
 		System.out.println(movie.toString());
-		
+
 		movieRepository.save(movie);
 
 		assertNotEquals(0, movie.getId());
@@ -145,7 +145,7 @@ public class MovieRepositoryTest {
 		movieDetail.setDirector("Clint Eastwood");
 		movieDetail.setSynopsis("Synopsis");
 		movieDetail.setTrailer("https://www.youtube.com/embed/7x_m3SsDWnI");
-		
+
 		Movie movie = new Movie();
 		movie.setTitle("Mula");
 		movie.setClassification("B");
@@ -161,15 +161,15 @@ public class MovieRepositoryTest {
 		movie.setStatus(Status.ACTIVE);
 		System.out.println(movie.toString());
 
-		//movieDetailRepository.save(movieDetail);
+		// movieDetailRepository.save(movieDetail);
 		movieRepository.save(movie);
-		
+
 		movieDetail = new MovieDetail();
 		movieDetail.setActors("Michael B. Jordan, Sylvester Stallone, Tessa Thompson, Dolph Lundgren.");
 		movieDetail.setDirector("Steven Caple Jr.");
 		movieDetail.setSynopsis("Synopsis");
 		movieDetail.setTrailer("https://www.youtube.com/embed/QmMqMR2bbGg");
-		
+
 		movie = new Movie();
 		movie.setTitle("Creed II");
 		movie.setClassification("C");
@@ -185,7 +185,7 @@ public class MovieRepositoryTest {
 		movie.setStatus(Status.INACTIVE);
 		System.out.println(movie.toString());
 
-		//movieDetailRepository.save(movieDetail);
+		// movieDetailRepository.save(movieDetail);
 		movieRepository.save(movie);
 	}
 }
