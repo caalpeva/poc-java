@@ -58,7 +58,10 @@ public class Utils {
 			// Se guarda el archivo en el disco duro
 			multipartFile.transferTo(imageFile);
 			return dstFinal;
-		} catch (IllegalStateException | IOException e) {
+		} catch (IllegalStateException e) {
+			System.err.println(e);
+			return null;
+		} catch (IOException e) {
 			System.err.println(e);
 			return null;
 		}
