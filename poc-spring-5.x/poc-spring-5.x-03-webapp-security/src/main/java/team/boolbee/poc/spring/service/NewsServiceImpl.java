@@ -3,6 +3,7 @@ package team.boolbee.poc.spring.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import team.boolbee.poc.spring.model.News;
@@ -16,7 +17,7 @@ public class NewsServiceImpl implements NewsService {
 	
 	@Override
 	public List<News> findAll() {
-		return newsRepository.findAll();
+		return newsRepository.findAll(Sort.by("date").descending());
 	}
 
 	@Override
