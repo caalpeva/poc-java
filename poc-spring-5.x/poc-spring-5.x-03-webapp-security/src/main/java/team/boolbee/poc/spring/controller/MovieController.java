@@ -2,6 +2,7 @@ package team.boolbee.poc.spring.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import team.boolbee.poc.spring.model.FilmType;
 import team.boolbee.poc.spring.model.Movie;
 import team.boolbee.poc.spring.service.MovieService;
 import team.boolbee.poc.spring.utils.Utils;
@@ -40,7 +42,7 @@ public class MovieController {
 
 	@GetMapping("/create")
 	public String create(@ModelAttribute Movie movie, Model model) {
-		model.addAttribute("movieTypes", movieService.getMovieTypes());
+		//model.addAttribute("movieTypes", movieService.getMovieTypes());
 		return "movies/movieForm";
 	}
 	
@@ -48,7 +50,7 @@ public class MovieController {
 	public String create(@PathVariable("id") int movieId, Model model) {
 		Movie movie = movieService.findById(movieId);
 		model.addAttribute("movie", movie);
-		model.addAttribute("movieTypes", movieService.getMovieTypes());
+		//model.addAttribute("movieTypes", movieService.getMovieTypes());
 		return "movies/movieForm";
 	}
 
@@ -57,7 +59,7 @@ public class MovieController {
 			@RequestParam("imageFile") MultipartFile multipartFile, HttpServletRequest request, Model model) {
 		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors());
-			model.addAttribute("movieTypes", movieService.getMovieTypes());
+			//model.addAttribute("movieTypes", movieService.getMovieTypes());
 			return "movies/movieForm";
 		}
 
@@ -73,6 +75,11 @@ public class MovieController {
 		return "redirect:/movies/index"; // URL relativa al context path de la aplicación
 	}
 
+	@ModelAttribute("movieTypes")
+	public List<FilmType> getMovieTypes() {
+		return movieService.getMovieTypes();
+	}
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
