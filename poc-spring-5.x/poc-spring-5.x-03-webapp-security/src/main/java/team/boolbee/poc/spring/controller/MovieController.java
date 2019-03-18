@@ -46,14 +46,6 @@ public class MovieController {
 		return "movies/movieForm";
 	}
 	
-	@GetMapping(value="/edit/{id}")
-	public String create(@PathVariable("id") int movieId, Model model) {
-		Movie movie = movieService.findById(movieId);
-		model.addAttribute("movie", movie);
-		//model.addAttribute("movieTypes", movieService.getMovieTypes());
-		return "movies/movieForm";
-	}
-
 	@PostMapping("/save")
 	public String save(@ModelAttribute Movie movie, BindingResult result, RedirectAttributes redirectAttributes,
 			@RequestParam("imageFile") MultipartFile multipartFile, HttpServletRequest request, Model model) {
@@ -73,6 +65,21 @@ public class MovieController {
 
 		redirectAttributes.addFlashAttribute("successMessage", "El registro fue guardado");
 		return "redirect:/movies/index"; // URL relativa al context path de la aplicación
+	}
+
+	@GetMapping(value="/edit/{id}")
+	public String edit(@PathVariable("id") int movieId, Model model) {
+		Movie movie = movieService.findById(movieId);
+		model.addAttribute("movie", movie);
+		//model.addAttribute("movieTypes", movieService.getMovieTypes());
+		return "movies/movieForm";
+	}
+	
+	@GetMapping(value="/delete/{id}")
+	public String delete(@PathVariable("id") int movieId, RedirectAttributes attributes) {
+		movieService.delete(movieId);
+		attributes.addFlashAttribute("successMessage", "El registro fue eliminado");
+		return "redirect:/movies/index";
 	}
 
 	@ModelAttribute("movieTypes")

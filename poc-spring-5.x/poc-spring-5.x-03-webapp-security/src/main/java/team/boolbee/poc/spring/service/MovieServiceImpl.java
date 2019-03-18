@@ -39,4 +39,9 @@ public class MovieServiceImpl implements MovieService {
 	public List<FilmType> getMovieTypes() {
 		return Arrays.asList(FilmType.values());
 	}
+
+	@Override
+	public void delete(int movieId) {
+		movieRepository.deleteById(movieId);
+	}
 }

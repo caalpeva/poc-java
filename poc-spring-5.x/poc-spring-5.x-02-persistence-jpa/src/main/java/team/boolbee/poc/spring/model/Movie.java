@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,10 +23,15 @@ public class Movie {
 	private String title;
 	private int duration = 100;
 	private String classification = "B";
+	
+	@Enumerated(EnumType.STRING)
 	private FilmType type;
 	private String filename = "cinema.png"; // imagen por default	
-	private Date releaseDate;	
+	private Date releaseDate;
+	
+	@Enumerated(EnumType.STRING)
 	private Status status= Status.ACTIVE;
+	
 	@OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	@JoinColumn(nullable=false, unique=true)
 	private MovieDetail detail;

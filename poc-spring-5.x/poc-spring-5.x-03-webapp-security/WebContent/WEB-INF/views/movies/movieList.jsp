@@ -14,6 +14,7 @@
    	<spring:url value="/resources" var="publicResourcesUrl" />
 	<spring:url value="/movies/create" var="movieFormUrl" />
 	<spring:url value="/movies/edit" var="movieEditUrl" />
+	<spring:url value="/movies/delete" var="movieDeleteUrl" />
     <link href="${publicResourcesUrl}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${publicResourcesUrl}/bootstrap/css/theme.css" rel="stylesheet">
     
@@ -64,7 +65,7 @@
                 </td>
                 <td>
                     <a href="${movieEditUrl}/${movie.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
+                    <a href="${movieDeleteUrl}/${movie.id}" onclick='return confirm("¿Esta seguro de eliminar la película \"${movie.title}\"?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
             </tr>
             </c:forEach>

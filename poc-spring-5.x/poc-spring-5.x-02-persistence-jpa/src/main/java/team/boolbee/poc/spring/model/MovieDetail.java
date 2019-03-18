@@ -1,5 +1,6 @@
 package team.boolbee.poc.spring.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,8 @@ public class MovieDetail {
 	public String director;
 	public String actors;
 	public String trailer;
+	
+	@Column(name="synopsis", columnDefinition="TEXT")
 	public String synopsis;
 	
 	public int getId() {

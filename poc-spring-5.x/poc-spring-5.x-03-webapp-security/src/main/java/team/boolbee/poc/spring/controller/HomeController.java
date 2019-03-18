@@ -4,8 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import team.boolbee.poc.spring.service.BannerService;
 import team.boolbee.poc.spring.service.MovieService;
 import team.boolbee.poc.spring.service.NewsService;
+import team.boolbee.poc.spring.service.ShowtimesService;
 import team.boolbee.poc.spring.utils.Utils;
 
 @Controller
@@ -29,6 +33,9 @@ public class HomeController {
 	
 	@Autowired
 	private NewsService newsService;
+	
+	@Autowired
+	private ShowtimesService showtimesService;
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String goHome(Model model) {
@@ -50,8 +57,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="detail/{id}/{searchDate}")
-	public String goMovieDetail(@PathVariable("id") int movieId, @PathVariable("searchDate") String searchDate, Model model) {
+	public String goMovieDetail(@PathVariable("id") int movieId, @PathVariable("searchDate") Date date, Model model) {
+		model.addAttribute("searchDate", dateFormat.format(date));
+		model.addAttribute("showtimes", showtimesService.getShowTimes(movieId, date));
 		model.addAttribute("movie", movieService.findById(movieId));
 		return "movieDetail";
+	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
 }

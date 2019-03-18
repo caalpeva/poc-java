@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import team.boolbee.poc.spring.model.Showtimes;
 import team.boolbee.poc.spring.service.MovieService;
+import team.boolbee.poc.spring.service.ShowtimesService;
 
 @Controller
 @RequestMapping(value="/showtimes")
@@ -24,6 +25,9 @@ public class ShowtimesController {
 	
 	@Autowired
 	private MovieService movieService;
+	
+	@Autowired
+	private ShowtimesService showtimesService;
 	
 	/**
 	 * Metodo para mostrar el formulario para crear un nuevo horario
@@ -50,6 +54,7 @@ public class ShowtimesController {
 		}
 		
 		System.out.println(showtimes);
+		showtimesService.save(showtimes);
 				
 		// De momento, hacemos un redirect al mismo formulario 
 		return "redirect:/showtimes/create";

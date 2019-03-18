@@ -10,4 +10,5 @@ public interface MovieService {
 	public Movie findById(int movieId);
 	public void save(Movie movie);
 	public List<FilmType> getMovieTypes();
+	public void delete(int movieId);
 }

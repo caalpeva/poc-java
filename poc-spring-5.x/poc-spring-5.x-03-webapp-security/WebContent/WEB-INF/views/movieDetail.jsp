@@ -59,7 +59,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title"><span class="label label-success">20-05-2017</span></h3>
+						<h3 class="panel-title"><span class="label label-success">${searchDate}</span></h3>
 					</div>
 					<div class="panel-body">
 						<table class="table table-striped">
@@ -70,42 +70,14 @@
 									<th>Precio</th>                                  
 								</tr>
 							</thead>
-							<tbody>             
+							<tbody>
+							<c:forEach items="${showtimes}" var="showtime">
 								<tr>                 
-									<td>16:00</td>
-									<td>Sala 1</td>  
-									<td>$10</td>  
-								</tr>              
-								<tr>                 
-									<td>18:00</td>
-									<td>Sala 1</td> 
-									<td>$10</td>  
-								</tr>              
-								<tr>                 
-									<td>20:00</td>
-									<td>Sala 1</td>                        
-									<td>$10</td>  
-								</tr>              
-								<tr>                
-									<td>14:00</td>
-									<td>Sala 1</td>                       
-									<td>$10</td>  
-								</tr>              
-								<tr>               
-									<td>16:00</td>
-									<td>Sala 1</td> 
-									<td>$10</td>  
-								</tr>                             
-								<tr>                  
-									<td>20:00</td>
-									<td>Sala 1</td> 
-									<td>$10</td>  
-								</tr>              
-								<tr>                 
-									<td>22:00</td>
-									<td>Sala 1</td>  
-									<td>$10</td>  
-								</tr>              
+									<td>${showtime.time}</td>
+									<td>${showtime.room}</td>  
+									<td>$ ${showtime.price}</td>  
+								</tr>
+							</c:forEach>                           
 							</tbody>           
 						</table>
 					</div>
