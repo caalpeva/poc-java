@@ -117,6 +117,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="director">Director</label>
+              <form:hidden path="detail.id"/>
               <form:input type="text" class="form-control" path="detail.director" id="director" required="required" />
             </div>  
           </div>

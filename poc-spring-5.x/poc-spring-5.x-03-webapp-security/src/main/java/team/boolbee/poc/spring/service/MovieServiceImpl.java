@@ -2,6 +2,7 @@ package team.boolbee.poc.spring.service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,10 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public Movie findById(int movieId) {
-		return findById(movieId);
+		Optional<Movie> optional = movieRepository.findById(movieId);
+		return optional.isPresent()
+				? optional.get()
+				: null;
 	}
 
 	@Override

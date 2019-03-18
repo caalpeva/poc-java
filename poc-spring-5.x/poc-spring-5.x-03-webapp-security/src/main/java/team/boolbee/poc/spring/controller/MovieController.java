@@ -14,6 +14,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,6 +40,14 @@ public class MovieController {
 
 	@GetMapping("/create")
 	public String create(@ModelAttribute Movie movie, Model model) {
+		model.addAttribute("movieTypes", movieService.getMovieTypes());
+		return "movies/movieForm";
+	}
+	
+	@GetMapping(value="/edit/{id}")
+	public String create(@PathVariable("id") int movieId, Model model) {
+		Movie movie = movieService.findById(movieId);
+		model.addAttribute("movie", movie);
 		model.addAttribute("movieTypes", movieService.getMovieTypes());
 		return "movies/movieForm";
 	}
