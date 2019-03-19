@@ -36,7 +36,7 @@ INSERT INTO Details (id, director, actors, synopsis, trailer) VALUES (1,'Jordan 
 SET IDENTITY_INSERT Details OFF
 
 SET IDENTITY_INSERT Movies ON
-INSERT INTO Movies (id, title, duration, classification, type, filename, releaseDate, status, detail_id) VALUES (1,'Kong La Isla Calavera',118,'B','ADVENTURE','kong.png','2017-10-20','ACTIVE',1),(2,'Life: Vida Inteligente',104,'B','DRAMA','life.png','2017-10-20','ACTIVE',2),(3,'La Bella y La Bestia',132,'A','ANIMATION','bella.png','2017-10-20','ACTIVE',3),(4,'Contratiempo',106,'B','THRILLER','contratiempo.png','2017-10-22','ACTIVE',4),(5,'Power Rangers',120,'B','ADVENTURE','power-rangers.png','2017-10-22','ACTIVE',5),(7,'Rapidos y Furiosos 8',136,'B','ACTION','rapidos-furiosos.png','2017-10-24','ACTIVE',6),(8,'Guardianes de la Galaxia Vol 2',136,'B','ACTION','guardianes-galaxia.png','2017-10-24','ACTIVE',7);
+INSERT INTO Movies (id, title, duration, classification, type, filename, releaseDate, status, detail_id) VALUES (1,'Kong La Isla Calavera',118,'B','ADVENTURE','kong.png','2017-10-20','ACTIVE',1),(2,'Life: Vida Inteligente',104,'B','DRAMA','life.png','2017-10-20','ACTIVE',2),(3,'La Bella y La Bestia',132,'A','ANIMATION','bella.png','2017-10-20','ACTIVE',3),(4,'Contratiempo',106,'B','THRILLER','contratiempo.png','2017-10-22','ACTIVE',4),(5,'Power Rangers',120,'B','ADVENTURE','power-rangers.png','2017-10-22','ACTIVE',5),(7,'Fast & Furious 8',136,'B','ACTION','fast-and-furious8.png','2017-10-24','ACTIVE',6),(8,'Guardianes de la Galaxia Vol 2',136,'B','ACTION','guardianes-galaxia.png','2017-10-24','ACTIVE',7);
 SET IDENTITY_INSERT Movies OFF
 
 SET IDENTITY_INSERT Showtimes ON

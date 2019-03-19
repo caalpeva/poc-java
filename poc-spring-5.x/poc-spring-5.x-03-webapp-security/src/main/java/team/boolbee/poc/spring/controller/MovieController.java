@@ -71,7 +71,8 @@ public class MovieController {
 		movieService.save(movie);
 
 		redirectAttributes.addFlashAttribute("successMessage", "El registro fue guardado");
-		return "redirect:/movies/index"; // URL relativa al context path de la aplicación
+		//return "redirect:/movies/index";
+		return "redirect:/movies/paginateIndex?page=0"; // URL relativa al context path de la aplicación
 	}
 
 	@GetMapping(value="/edit/{id}")

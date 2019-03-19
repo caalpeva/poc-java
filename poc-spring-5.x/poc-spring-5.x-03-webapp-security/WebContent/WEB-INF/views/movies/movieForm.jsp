@@ -45,7 +45,7 @@
         <div class="row">
 		  <div class="col-sm-3">
             <div class="form-group">
-              <img class="img-rounded" src="${publicResourcesUrl}/images/${movie.filename}" alt="Generic placeholder image" width="150" height="200">
+              <img class="img-rounded" src="${publicResourcesUrl}/images/movies/${movie.filename}" alt="Generic placeholder image" width="150" height="200">
             </div>  
           </div>
         </div>

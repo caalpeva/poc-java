@@ -47,12 +47,12 @@
         	<c:choose>
         		<c:when test="${loop.index == 0}">
         			<div class="item active">         
-            			<img src="${publicResourcesUrl}/images/${banner.filename}" alt="Slide" title="Some text" >
+            			<img src="${publicResourcesUrl}/images/movies/${banner.filename}" alt="Slide" title="Some text" >
           			</div>
         		</c:when>
         		<c:otherwise>
          			<div class="item">         
-            			<img src="${publicResourcesUrl}/images/${banner.filename}" alt="Slide" title="Some text" >
+            			<img src="${publicResourcesUrl}/images/movies/${banner.filename}" alt="Slide" title="Some text" >
           			</div>
         		</c:otherwise>
         	</c:choose>
@@ -98,7 +98,7 @@
         <div class="row">
 		<c:forEach var="movie" items="${movies}">
           <div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="img-rounded" src="${publicResourcesUrl}/images/${movie.filename}" alt="Generic placeholder image" width="150" height="200">
+            <img class="img-rounded" src="${publicResourcesUrl}/images/movies/${movie.filename}" alt="Generic placeholder image" width="150" height="200">
             <h4>${movie.title}</h4>
             <h4>
               <span class="label label-default">${movie.classification}</span>
