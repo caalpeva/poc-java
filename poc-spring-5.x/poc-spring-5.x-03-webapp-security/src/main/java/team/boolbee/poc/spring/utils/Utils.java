@@ -51,7 +51,7 @@ public class Utils {
 		// Se agrega al archivo 8 caracteres aleatorios para evitar duplicados
 		String dstFinal = randomAlphaNumeric(8) + srcName;
 		// Se obtiene la ruta absoluta del directorio imágenes
-		String dstPath = request.getServletContext().getRealPath("/resources/images/movies");
+		String dstPath = request.getServletContext().getRealPath("/resources/images/movies/");
 		try {
 			File imageFile = new File(dstPath + dstFinal);
 			// Se guarda el archivo en el disco duro

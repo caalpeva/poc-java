@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import team.boolbee.poc.spring.model.News;
+import team.boolbee.poc.spring.model.Status;
 import team.boolbee.poc.spring.repository.NewsRepository;
 
 @Service
@@ -22,7 +23,7 @@ public class NewsServiceImpl implements NewsService {
 	
 	@Override
 	public List<News> findLatest10() {
-		return newsRepository.findTop10ByOrderByDateDesc();
+		return newsRepository.findTop10ByStatusOrderByDateDesc(Status.ACTIVE);
 	}
 
 	@Override
