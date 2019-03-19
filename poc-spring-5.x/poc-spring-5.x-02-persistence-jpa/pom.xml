@@ -103,14 +103,14 @@
 			</testResource>
 		</testResources>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-compiler-plugin</artifactId> -->
+<!-- 				<version>3.1</version> -->
+<!-- 				<configuration> -->
+<!-- 					<source>${java.version}</source> -->
+<!-- 					<target>${java.version}</target> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -123,4 +123,29 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>hsqldb</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<databaseType>hsqldb</databaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>sqlserver</id>
+			<properties>
+				<databaseType>sqlserver</databaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>mysql</id>
+			<properties>
+				<databaseType>mysql</databaseType>
+			</properties>
+		</profile>
+	</profiles>
+	
 </project>

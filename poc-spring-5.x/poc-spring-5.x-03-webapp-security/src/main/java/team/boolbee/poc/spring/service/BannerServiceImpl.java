@@ -1,6 +1,7 @@
 package team.boolbee.poc.spring.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,20 @@ public class BannerServiceImpl implements BannerService {
 		return bannerRepository.findByStatusOrderByDateDesc(Status.ACTIVE);
 	}
 	
+	@Override
+	public Banner findById(int bannerId) {
+		Optional<Banner> optional = bannerRepository.findById(bannerId);
+		return (optional.isPresent())
+				? optional.get()
+				: null;
+	}
+	
 	public void save(Banner banner) {
 		bannerRepository.save(banner);
+	}
+	
+	@Override
+	public void delete(int movieId) {
+		bannerRepository.deleteById(movieId);
 	}
 }

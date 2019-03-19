@@ -3,6 +3,8 @@ package team.boolbee.poc.spring.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +18,8 @@ public class Banner {
 	private int id;
 	private String title;
 	private Date date; // Fecha de Publicacion del Banner
-	private String filename; // atributo para guardar el nombre de la imagen
+	private String filename = "banner-default.png"; // atributo para guardar el nombre de la imagen
+	@Enumerated(EnumType.STRING)
 	private Status status;
 	
 	/**

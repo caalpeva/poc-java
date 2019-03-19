@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import team.boolbee.poc.spring.model.Banner;
-import team.boolbee.poc.spring.model.News;
 import team.boolbee.poc.spring.model.Status;
 
 @Repository

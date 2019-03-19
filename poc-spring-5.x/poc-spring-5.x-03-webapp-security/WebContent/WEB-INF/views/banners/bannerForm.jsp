@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -36,12 +37,27 @@
 			</div>
 		</spring:hasBindErrors>
 
-         <form action="${bannerCreationUrl}" enctype="multipart/form-data" method="post">
-            <div class="row">         
+         <form:form action="${bannerCreationUrl}" enctype="multipart/form-data" method="post" modelAttribute="banner">
+
+		<c:if test="${banner.id ne 0}">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="form-group">
+						<img class="img-rounded"
+							src="${publicResourcesUrl}/images/movies/${banner.filename}"
+							alt="Generic placeholder image" width="1140" height="250">
+					</div>
+				</div>
+			</div>
+		</c:if>
+		
+
+			<div class="row">         
                <div class="col-sm-6">
                   <div class="form-group">
-                     <label for="titulo">Titulo</label>             
-                     <input type="text" class="form-control" name="title" id="titulo" required="required"/>
+                     <label for="titulo">Titulo</label>
+                     <form:hidden path="id"/>           
+                     <form:input type="text" class="form-control" path="title" id="titulo" required="required"/>
                   </div>
                </div>
 
@@ -49,7 +65,13 @@
                <div class="col-sm-3">
                   <div class="form-group">
                      <label for="imagen">Imagen</label>
-                     <input type="file" id="archivoImagen" name="imageFile" required="required" />
+                     <form:hidden path="filename"/>
+                     <c:if test="${banner.id eq 0}">
+                     	<input type="file" id="archivoImagen" name="imageFile" required="required"/>
+                     </c:if>
+                     <c:if test="${banner.id ne 0}">
+                     	<input type="file" id="archivoImagen" name="imageFile" />
+                     </c:if>
                      <p class="help-block">Tamaño recomendado: 1140 x 250 </p>
                   </div> 
                </div> 
@@ -57,16 +79,16 @@
                <div class="col-sm-3">
                   <div class="form-group">
                      <label for="estatus">Estatus</label>             
-                     <select id="estatus" name="status" class="form-control">
-                        <option value="ACTIVE">Activo</option>
-                        <option value="INACTIVE">Inactivo</option>                
-                     </select>  
+                     <form:select id="estatus" path="status" class="form-control">
+                        <form:option value="ACTIVE">Activo</form:option>
+                        <form:option value="INACTIVE">Inactivo</form:option>                
+                     </form:select>  
                   </div>
                </div>
             </div>
 
             <button type="submit" class="btn btn-danger">Guardar</button>
-         </form> 
+         </form:form> 
 
          <hr class="featurette-divider">
 

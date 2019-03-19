@@ -12,29 +12,5 @@
 		<module>poc-spring-5.x-03-webapp-security</module>
 		<module>poc-spring-5.x-02-persistence-jpa2</module>
 	</modules>
-
-	<profiles>
-		<profile>
-			<id>hsqldb</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<databaseType>hsqldb</databaseType>
-			</properties>
-		</profile>
-		<profile>
-			<id>sqlserver</id>
-			<properties>
-				<databaseType>sqlserver</databaseType>
-			</properties>
-		</profile>
-		<profile>
-			<id>mysql</id>
-			<properties>
-				<databaseType>mysql</databaseType>
-			</properties>
-		</profile>
-	</profiles>
-
+	
 </project>

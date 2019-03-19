@@ -7,5 +7,7 @@ import team.boolbee.poc.spring.model.Banner;
 public interface BannerService {
 	List<Banner> findAll();
 	List<Banner> findAllActives();
+	Banner findById(int bannerId);
 	void save(Banner banner);
+	void delete(int bannerId);
 }

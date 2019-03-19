@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Movies")
+@Table(name="MOVIES")
 public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class Movie {
 	
 	@Enumerated(EnumType.STRING)
 	private FilmType type;
-	private String filename = "cinema.png"; // imagen por default	
+	private String filename = "movie-default.png"; // imagen por default	
 	private Date releaseDate;
 	
 	@Enumerated(EnumType.STRING)

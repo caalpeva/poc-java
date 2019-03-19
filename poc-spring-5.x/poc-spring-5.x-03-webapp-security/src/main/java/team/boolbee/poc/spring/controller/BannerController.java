@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,10 +33,8 @@ public class BannerController {
 	}
 	
 	@GetMapping("/create")
-	public String create() {
-		
+	public String create(@ModelAttribute Banner banner) {
 		return "banners/bannerForm";
-		
 	}
 	
 	@PostMapping("/save")
@@ -55,5 +55,19 @@ public class BannerController {
 		bannersService.save(banner);
 		redirectAttributes.addFlashAttribute("successMessage", "El registro fue guardado");
 		return "redirect:/banners/index";
-	}	
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") int bannerId, Model model) {
+		Banner banner = bannersService.findById(bannerId);
+		model.addAttribute("banner", banner);
+		return "banners/bannerForm";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable("id") int bannerId, RedirectAttributes attributes) {
+		bannersService.delete(bannerId);
+		attributes.addFlashAttribute("successMessage", "El registro fue eliminado");
+		return "redirect:/banners/index";
+	}
 }

@@ -32,12 +32,18 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>javax.servlet</groupId> -->
-<!-- 			<artifactId>javax.servlet-api</artifactId> -->
-<!-- 			<version>3.1.0</version> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		 <dependency>
+    <groupId>javax.servlet.jsp</groupId>
+    <artifactId>javax.servlet.jsp-api</artifactId>
+    <version>2.3.1</version>
+    <scope>provided</scope>
+</dependency>
 <!-- 		<dependency> -->
 <!-- 			<groupId>javax.el</groupId> -->
 <!-- 			<artifactId>javax.el-api</artifactId> -->
@@ -128,6 +134,28 @@
 	</build>
 
 	<profiles>
+		<profile>
+			<id>hsqldb</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<databaseType>hsqldb</databaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>sqlserver</id>
+			<properties>
+				<databaseType>sqlserver</databaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>mysql</id>
+			<properties>
+				<databaseType>mysql</databaseType>
+			</properties>
+		</profile>
+	
 		<!-- Si se activa el perfil despliega el proyecto en tomcat 6 -->
 		<profile>
 			<id>deploy-tomcat6</id>

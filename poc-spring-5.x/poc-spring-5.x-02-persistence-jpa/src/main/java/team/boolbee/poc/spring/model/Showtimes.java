@@ -2,15 +2,16 @@ package team.boolbee.poc.spring.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="SHOWTIMES")
 public class Showtimes {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
