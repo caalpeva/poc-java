@@ -6,5 +6,6 @@ import team.boolbee.poc.spring.model.News;
 
 public interface NewsService {
 	public List<News> findAll();
+	public List<News> findLatest10();
 	public void save(News news);
 }

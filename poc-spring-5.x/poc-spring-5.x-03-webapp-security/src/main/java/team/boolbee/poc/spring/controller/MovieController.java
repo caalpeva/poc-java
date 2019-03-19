@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -40,6 +41,12 @@ public class MovieController {
 		return "movies/movieList";
 	}
 
+	@GetMapping("/paginateIndex")
+	public String goIndexPaginate(Model model, Pageable pageable) {
+		model.addAttribute("moviesPage", movieService.findAll(pageable));
+		return "movies/moviePageableList";
+	}
+	
 	@GetMapping("/create")
 	public String create(@ModelAttribute Movie movie, Model model) {
 		//model.addAttribute("movieTypes", movieService.getMovieTypes());

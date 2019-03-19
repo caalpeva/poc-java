@@ -35,7 +35,7 @@ public class ShowtimesController {
 	 */
 	@GetMapping(value = "/create")
 	public String crear(@ModelAttribute("showtimes") Showtimes showtimes, Model model) {
-		model.addAttribute("movies", movieService.findAll());
+		model.addAttribute("movies", movieService.findAllActives());
 		return "showtimes/showtimesForm";
 	}
 		
@@ -49,7 +49,7 @@ public class ShowtimesController {
 	public String guardar(@ModelAttribute("showtimes") Showtimes showtimes, BindingResult result, Model model) {				
 		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors());
-			model.addAttribute("movies", movieService.findAll());
+			model.addAttribute("movies", movieService.findAllActives());
 			return "showtimes/showtimesForm";
 		}
 		

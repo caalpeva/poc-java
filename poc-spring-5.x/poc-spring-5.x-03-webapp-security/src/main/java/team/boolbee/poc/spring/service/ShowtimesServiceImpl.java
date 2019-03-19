@@ -24,4 +24,9 @@ public class ShowtimesServiceImpl implements ShowtimesService {
 	public List<Showtimes> getShowTimes(int movieId, Date date) {
 		return showtimesRepository.findByMovie_IdAndDateOrderByTime(movieId, date);
 	}
+
+	@Override
+	public Date findLatestShowtimesDate() {
+		return showtimesRepository.findLatestShowtimesDate();
+	}
 }

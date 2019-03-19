@@ -1,6 +1,7 @@
 package team.boolbee.poc.spring.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,20 +40,21 @@ public class HomeController {
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String goHome(Model model) {
-		model.addAttribute("dates", Utils.getNextDays(5));
-		model.addAttribute("searchDate", dateFormat.format(new Date()));
+		Date startDate = getStartDate();
+		model.addAttribute("dates", Utils.getNextDays(startDate, 5));
+		model.addAttribute("searchDate", dateFormat.format(startDate));
 		model.addAttribute("banners", bannerService.findAll());
-		model.addAttribute("movies", movieService.findAll());
-		model.addAttribute("newsList", newsService.findAll());
+		model.addAttribute("movies", movieService.findAllByShowtimeDate(startDate));
+		model.addAttribute("newsList", newsService.findLatest10());
 		return "home";
 	}
 	
 	@RequestMapping(value="/search", method=RequestMethod.POST)
-	public String searchMovies(@RequestParam("date") String searchDate, Model model) {
-		model.addAttribute("dates", Utils.getNextDays(5));
-		model.addAttribute("searchDate", searchDate);
-		model.addAttribute("movies", movieService.findAll());
-		model.addAttribute("newsList", newsService.findAll());
+	public String searchMovies(@RequestParam("date") Date searchDate, Model model) {
+		model.addAttribute("dates", Utils.getNextDays(getStartDate(), 5));
+		model.addAttribute("searchDate", dateFormat.format(searchDate));
+		model.addAttribute("movies", movieService.findAllByShowtimeDate(searchDate));
+		model.addAttribute("newsList", newsService.findLatest10());
 		return "home";
 	}
 	
@@ -68,5 +70,13 @@ public class HomeController {
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+	}
+	
+	private Date getStartDate() {
+		Date startDate = showtimesService.findLatestShowtimesDate();
+		if (startDate == null) {
+			startDate = new Date();			
+		}
+		return startDate;
 	}
 }

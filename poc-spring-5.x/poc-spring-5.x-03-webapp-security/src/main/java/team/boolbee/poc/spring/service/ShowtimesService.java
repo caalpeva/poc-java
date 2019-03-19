@@ -9,4 +9,5 @@ public interface ShowtimesService {
 	
 	public void save(Showtimes showtimes);
 	public List<Showtimes> getShowTimes(int movieId, Date date);
+	public Date findLatestShowtimesDate();
 }

@@ -19,6 +19,11 @@ public class NewsServiceImpl implements NewsService {
 	public List<News> findAll() {
 		return newsRepository.findAll(Sort.by("date").descending());
 	}
+	
+	@Override
+	public List<News> findLatest10() {
+		return newsRepository.findTop10ByOrderByDateDesc();
+	}
 
 	@Override
 	public void save(News news) {

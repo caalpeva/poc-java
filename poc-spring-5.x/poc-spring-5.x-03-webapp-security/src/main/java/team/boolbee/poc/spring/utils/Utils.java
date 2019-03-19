@@ -20,16 +20,15 @@ public class Utils {
 	 * @param count
 	 * @return
 	 */
-	public static List<String> getNextDays(int count) {
+	public static List<String> getNextDays(Date startDate, int count) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		// Today's Date
-		Date start = new Date();
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DAY_OF_MONTH, count); // Next N days from now
+		cal.setTime(startDate);
+		cal.add(Calendar.DAY_OF_MONTH, count); // Next N days from start date
 		Date endDate = cal.getTime();
 
 		GregorianCalendar gcal = new GregorianCalendar();
-		gcal.setTime(start);
+		gcal.setTime(startDate);
 		List<String> nextDays = new ArrayList<String>();
 		while (!gcal.getTime().after(endDate)) {
 			nextDays.add(sdf.format(gcal.getTime()));
