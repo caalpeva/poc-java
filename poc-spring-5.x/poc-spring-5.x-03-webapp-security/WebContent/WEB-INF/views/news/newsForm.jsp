@@ -38,7 +38,7 @@
 	</spring:hasBindErrors>
 
       <form:form action="${newsCreationUrl}" method="post" modelAttribute="news">
-        <div class="row">         
+        <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
               <label for="titulo">Titulo</label>
