@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="poc-spring-5.x-01-mvc">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <dependent-module archiveName="poc-spring-5.x-02-persistence-jpa-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/poc-spring-5.x-02-persistence-jpa/poc-spring-5.x-02-persistence-jpa">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="poc-spring-5.x-03-webapp-security"/>
+        <property name="java-output-path" value="/poc-spring-5.x-03-webapp-security/target/classes"/>
+    </wb-module>
+</project-modules>
