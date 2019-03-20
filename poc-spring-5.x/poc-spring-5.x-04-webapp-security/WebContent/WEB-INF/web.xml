@@ -9,7 +9,10 @@
 	<!-- needed for ContextLoaderListener -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring-service.xml</param-value>
+		<param-value>
+			classpath:spring-service.xml,
+			classpath:spring-security.xml
+		</param-value>
 	</context-param>
 
 	<!-- Bootstraps the root web application context before servlet initialization -->
@@ -43,6 +46,20 @@
 		<servlet-name>spring</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<!-- ================================ -->
+	<!-- ===== FILTROS DE SEGURIDAD ===== -->
+	<!-- ================================ -->
+	
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	
 	<!-- ========================================== -->
 	<!-- ===== PAGINAS DE ERROR PERSONALIZADAS ==== -->

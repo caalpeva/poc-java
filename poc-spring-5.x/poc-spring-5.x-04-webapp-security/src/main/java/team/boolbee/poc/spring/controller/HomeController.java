@@ -1,7 +1,6 @@
 package team.boolbee.poc.spring.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -64,12 +63,17 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value="detail/{id}/{searchDate}")
+	@RequestMapping(value="/detail/{id}/{searchDate}")
 	public String goMovieDetail(@PathVariable("id") int movieId, @PathVariable("searchDate") Date date, Model model) {
 		model.addAttribute("searchDate", dateFormat.format(date));
 		model.addAttribute("showtimes", showtimesService.getShowTimes(movieId, date));
 		model.addAttribute("movie", movieService.findById(movieId));
 		return "movieDetail";
+	}
+	
+	@RequestMapping(value="/about")
+	public String goAbout() {
+		return "about";
 	}
 
 	@ModelAttribute("banners")
