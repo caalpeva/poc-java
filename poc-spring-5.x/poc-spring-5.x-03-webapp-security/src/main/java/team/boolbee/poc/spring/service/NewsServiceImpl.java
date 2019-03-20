@@ -1,6 +1,7 @@
 package team.boolbee.poc.spring.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -27,7 +28,18 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
+	public News findById(int newsId) {
+		Optional<News> optional = newsRepository.findById(newsId);
+		return (optional.isPresent())? optional.get(): null;
+	}
+	
+	@Override
 	public void save(News news) {
 		newsRepository.save(news);
+	}
+	
+	@Override
+	public void delete(int newsId) {
+		newsRepository.deleteById(newsId);
 	}
 }

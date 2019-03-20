@@ -13,6 +13,8 @@
     <title>Listado de Noticias</title>
     <spring:url value="/resources" var="publicResourcesUrl" />
 	<spring:url value="/news/create" var="newsFormUrl" />
+	<spring:url value="/news/edit" var="newsEditUrl" />
+	<spring:url value="/news/delete" var="newsDeleteUrl" />
     <link href="${publicResourcesUrl}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${publicResourcesUrl}/bootstrap/css/theme.css" rel="stylesheet">
     
@@ -57,8 +59,8 @@
                 </c:choose>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
+                    <a href="${newsEditUrl}/${news.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="${newsDeleteUrl}/${news.id}" onclick='return confirm("¿Desea eliminar la noticia \"${news.title}\"?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
             </tr>
             </c:forEach>

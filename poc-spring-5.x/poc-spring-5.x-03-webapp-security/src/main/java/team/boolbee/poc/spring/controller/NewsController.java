@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -26,8 +28,7 @@ public class NewsController {
 	}
 
 	@GetMapping("/create")
-	public String create() {
-
+	public String create(@ModelAttribute News news) {
 		return "news/newsForm";
 	}
 
@@ -45,4 +46,17 @@ public class NewsController {
 		return "redirect:/news/index"; // URL relativa al context path de la aplicación
 	}
 	
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") int newsId, Model model) {
+		News news = newsService.findById(newsId);
+		model.addAttribute("news", news);
+		return "news/newsForm";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable("id") int newsId, RedirectAttributes attributes) {
+		newsService.delete(newsId);
+		attributes.addFlashAttribute("successMessage", "El registro fue eliminado");
+		return "redirect:/news/index";
+	}
 }
