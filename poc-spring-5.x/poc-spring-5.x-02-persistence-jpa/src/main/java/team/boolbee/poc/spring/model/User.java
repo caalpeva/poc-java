@@ -3,6 +3,7 @@ package team.boolbee.poc.spring.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -19,15 +22,18 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(name = "name", unique = true)
 	private String name;
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
-	private Status status;
+	private Status status = Status.ACTIVE;
 	private String email;
 	private String phone;
 	
-	@ManyToMany(cascade = {CascadeType.ALL}, fetch=FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.REMOVE, fetch=FetchType.EAGER)
+	@JoinTable(name = "USERS_PROFILES", joinColumns = @JoinColumn(name = "user_id"),
+		inverseJoinColumns = @JoinColumn(name = "profile_id"))
 	private List<Profile> profiles;
 	
 	public int getId() {

@@ -18,6 +18,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<sec:authorize access="hasAnyAuthority('MANAGER')">
+					<li><a href="${publicRootUrl}users/index">Usuarios</a></li>
 					<li><a href="${publicRootUrl}banners/index">Banners</a></li>
 				</sec:authorize>
 				<sec:authorize access="hasAnyAuthority('EDITOR')">

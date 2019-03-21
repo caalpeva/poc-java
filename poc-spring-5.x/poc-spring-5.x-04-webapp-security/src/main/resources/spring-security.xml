@@ -12,6 +12,7 @@
 		<intercept-url pattern="/news/*" access="hasAnyAuthority('EDITOR')" />
 		<intercept-url pattern="/showtimes/*" access="hasAnyAuthority('EDITOR')" />
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('MANAGER')" />
+		<intercept-url pattern="/users/*" access="hasAnyAuthority('MANAGER')" />
 		<form-login login-page="/admin/login" default-target-url="/admin/index" />
 	</http>
 	
@@ -26,15 +27,15 @@
 
 		<authentication-provider>
 			<!-- <jdbc-user-service data-source-ref="datasource" /> -->
-			<password-encoder ref="passwordEncoder"/>
+ 			<password-encoder ref="passwordEncoder"/>
 			<jdbc-user-service data-source-ref="datasource"
 				users-by-username-query="select name, password,
 					CASE WHEN status = 'ACTIVE' THEN 1 ELSE 0 END AS enabled
 					from USERS where name = ?"
-				authorities-by-username-query="select name, profile from PROFILES
+				authorities-by-username-query="select USERS.name, PROFILES.name as profile from PROFILES
 					inner join USERS_PROFILES on PROFILES.id = USERS_PROFILES.profile_id
 					inner join USERS on USERS_PROFILES.user_id = USERS.id
-					where name = ?"
+					where USERS.name = ?"
 			/>
 		</authentication-provider>
 

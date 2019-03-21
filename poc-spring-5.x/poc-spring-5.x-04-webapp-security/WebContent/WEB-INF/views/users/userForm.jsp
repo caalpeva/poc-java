@@ -28,14 +28,25 @@
 				<div class="row">         
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="perfil" class="control-label">Perfil</label>              
-							<select id="perfil" name="profiles" multiple="multiple" class="form-control">
+							<label for="perfil" class="control-label">Perfil</label>
+							<form:hidden path="id"/>            
+							<select id="perfil" name="selectedProfiles" multiple="multiple" class="form-control" required="required">
 								<c:forEach items="${profileList}" var="profile">
-									<option value="${profile.id}">${profile.profile}</option>
+									<option value="${profile.id}">${profile.name}</option>
 								</c:forEach>								
 							</select>
 						</div> 
 					</div>
+					
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="estatus" class="control-label">Estatus</label>
+							<form:select id="genero" path="status" class="form-control">
+								<form:option value="ACTIVE">Activa</form:option>
+								<form:option value="INACTIVE">Inactiva</form:option>
+							</form:select>
+						</div>
+					</div>					
 				</div>	
 				<div class="row"> 	
 					<div class="col-sm-3">
