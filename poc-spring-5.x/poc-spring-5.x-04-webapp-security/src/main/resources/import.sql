@@ -3,6 +3,7 @@ INSERT BANNER (id,date,filename,status,title) VALUES (1, '2019-03-19', 'slide1.j
 INSERT BANNER (id,date,filename,status,title) VALUES (2, '2019-03-19', 'slide2.jpg', 'INACTIVE', 'La Bella y La Bestia')
 INSERT BANNER (id,date,filename,status,title) VALUES (3, '2019-03-19', 'slide3.jpg', 'ACTIVE', 'Spiderman')
 INSERT BANNER (id,date,filename,status,title) VALUES (4, '2019-03-19', 'slide4.jpg', 'ACTIVE', 'Cars')
+INSERT BANNER (id,date,filename,status,title) VALUES (5, '2019-03-21', 'slide5.jpg', 'ACTIVE', 'Star Wars')
 SET IDENTITY_INSERT BANNER OFF
 
 SET IDENTITY_INSERT NEWS ON
@@ -49,5 +50,25 @@ SET IDENTITY_INSERT MOVIES OFF
 SET IDENTITY_INSERT SHOWTIMES ON
 INSERT INTO SHOWTIMES (id, date, time, room, price, movie_id) VALUES (1,'2017-10-25','18:00:00','Premium',55,1),(2,'2017-10-25','18:00:00','Premium',55,3),(3,'2017-10-25','21:00:00','Premium',55,3),(4,'2017-10-25','18:00:00','Premium',65,4),(5,'2017-10-25','21:00:00','Premium',65,4),(6,'2017-10-25','20:00:00','Premium',55,5),(7,'2017-10-25','16:30:00','Premium',60,7),(8,'2017-10-25','15:45:00','Premium',55,8),(9,'2017-10-25','14:00:00','Sala 1',55,1),(10,'2017-10-25','16:00:00','Sala 1',55,1),(11,'2017-10-25','14:00:00','Sala 1',60,2),(12,'2017-10-25','16:00:00','Sala 1',60,2),(13,'2017-10-25','14:00:00','Sala 1',55,3),(14,'2017-10-25','16:00:00','Sala 1',55,3),(15,'2017-10-25','14:00:00','Sala 1',65,4),(16,'2017-10-25','16:00:00','Sala 1',65,4),(17,'2017-10-25','17:00:00','Sala 1',55,5),(18,'2017-10-25','19:00:00','Sala 1',55,5),(19,'2017-10-25','21:00:00','Sala 1',55,5),(20,'2017-10-25','18:45:00','Sala 1',55,8),(21,'2017-10-25','21:45:00','Sala 1',55,8),(22,'2017-10-25','17:00:00','Sala 2',55,3),(23,'2017-10-25','17:00:00','Sala 2',65,4),(24,'2017-10-25','16:00:00','Sala 2',55,5),(25,'2017-10-25','18:30:00','Sala 2',60,7),(26,'2017-10-25','16:00:00','Sala 3',55,3),(27,'2017-10-25','16:00:00','Sala 3',65,4),(28,'2017-10-25','22:00:00','Sala 3',55,5),(29,'2017-10-25','20:45:00','Sala 3',60,7),(30,'2017-10-25','22:20:00','Sala 3',55,8),(31,'2017-10-26','18:00:00','Premium',55,1),(32,'2017-10-26','18:00:00','Premium',55,3),(33,'2017-10-26','21:00:00','Premium',55,3),(34,'2017-10-26','18:00:00','Premium',65,4),(35,'2017-10-26','21:00:00','Premium',65,4),(36,'2017-10-26','14:30:00','Premium',55,8),(37,'2017-10-26','17:00:00','Premium',55,8),(38,'2017-10-26','14:00:00','Sala 1',55,1),(39,'2017-10-26','16:00:00','Sala 1',55,1),(40,'2017-10-26','14:00:00','Sala 1',60,2),(41,'2017-10-26','16:00:00','Sala 1',60,2),(42,'2017-10-26','14:00:00','Sala 1',55,3),(43,'2017-10-26','16:00:00','Sala 1',55,3),(44,'2017-10-26','14:00:00','Sala 1',65,4),(45,'2017-10-26','16:00:00','Sala 1',65,4),(46,'2017-10-26','17:50:00','Sala 1',55,8),(47,'2017-10-26','17:00:00','Sala 2',55,3),(48,'2017-10-26','17:00:00','Sala 2',65,4),(49,'2017-10-26','17:00:00','Sala 2',55,8),(50,'2017-10-26','16:00:00','Sala 3',55,3),(51,'2017-10-26','16:00:00','Sala 3',65,4),(52,'2017-10-26','22:10:00','Sala 3',55,8),(53,'2017-10-27','18:00:00','Premium',55,5),(54,'2017-10-27','21:00:00','Premium',55,5),(55,'2017-10-27','20:00:00','Premium',60,2),(56,'2017-10-27','15:30:00','Premium',55,8),(57,'2017-10-27','14:00:00','Sala 1',55,5),(58,'2017-10-27','16:00:00','Sala 1',55,5),(59,'2017-10-27','17:00:00','Sala 1',60,2),(60,'2017-10-27','19:00:00','Sala 1',60,2),(61,'2017-10-27','21:00:00','Sala 1',60,2),(62,'2017-10-27','20:30:00','Sala 1',55,8),(63,'2017-10-27','13:30:00','Sala 1',60,7),(64,'2017-10-27','17:00:00','Sala 2',55,5),(65,'2017-10-27','16:00:00','Sala 2',60,2),(66,'2017-10-27','17:15:00','Sala 2',55,8),(67,'2017-10-27','13:30:00','Sala 2',60,7),(68,'2017-10-27','18:00:00','Sala 2',60,7),(69,'2017-10-27','21:30:00','Sala 2',60,7),(70,'2017-10-27','16:00:00','Sala 3',55,5),(71,'2017-10-27','22:00:00','Sala 3',60,2),(72,'2017-10-27','17:15:00','Sala 3',55,8),(73,'2017-10-27','14:00:00','Sala 3',60,7),(74,'2017-10-27','22:00:00','Sala 3',60,7),(75,'2017-10-28','22:15:00','Premium',55,5),(76,'2017-10-28','14:30:00','Premium',60,7),(77,'2017-10-28','17:00:00','Premium',60,7),(78,'2017-10-28','11:00:00','Premium',55,8),(79,'2017-10-28','14:30:00','Sala 1',60,7),(80,'2017-10-28','21:30:00','Sala 1',60,7),(81,'2017-10-28','15:30:00','Sala 1',55,8),(82,'2017-10-28','15:30:00','Sala 2',55,5),(83,'2017-10-28','21:30:00','Sala 2',60,7),(84,'2017-10-28','11:00:00','Sala 2',55,8),(85,'2017-10-28','17:55:00','Sala 2',55,8),(86,'2017-10-28','16:40:00','Sala 3',55,5),(87,'2017-10-28','14:30:00','Sala 3',60,7),(88,'2017-10-28','17:00:00','Sala 3',60,7),(89,'2017-10-28','21:30:00','Sala 3',60,7),(90,'2017-10-28','11:00:00','Sala 3',55,8),(91,'2017-10-28','22:10:00','Sala 3',55,8),(92,'2017-10-29','13:30:00','Premium',55,8),(93,'2017-10-29','15:30:00','Premium',55,8),(94,'2017-10-29','17:30:00','Premium',55,8),(95,'2017-10-29','21:00:00','Premium',55,8),(96,'2017-10-29','17:00:00','Premium',60,7),(97,'2017-10-29','20:45:00','Premium',60,7),(98,'2017-10-29','16:15:00','Sala 1',55,8),(99,'2017-10-29','18:30:00','Sala 1',55,8),(100,'2017-10-29','21:30:00','Sala 1',55,8),(101,'2017-10-29','16:15:00','Sala 2',60,7),(102,'2017-10-29','20:15:00','Sala 2',60,7),(103,'2017-10-29','22:50:00','Sala 2',60,7),(104,'2017-10-29','14:40:00','Sala 3',55,8),(105,'2017-10-29','20:10:00','Sala 3',55,8);
 SET IDENTITY_INSERT SHOWTIMES OFF
+
+SET IDENTITY_INSERT PROFILES ON
+INSERT INTO PROFILES(id, profile) VALUES (1,'EDITOR'),(2,'MANAGER');
+SET IDENTITY_INSERT PROFILES OFF
+
+SET IDENTITY_INSERT USERS ON
+INSERT INTO USERS(id, name, password, status, email, phone) VALUES (1,'admin', '{noop}admin', 'ACTIVE', 'admin@mailinator.com', '555-555-000');
+INSERT INTO USERS(id, name, password, status, email, phone) VALUES (2,'editor', '{noop}editor', 'ACTIVE', 'editor@mailinator.com', '555-555-001');
+INSERT INTO USERS(id, name, password, status, email, phone) VALUES (3,'admin2', '$2a$10$Sn.YSVTkEFTbSlaTShDN9OwTSU0SFbVjUoCp/MveU4YS7HpZtTyzW', 'ACTIVE', 'admin2@mailinator.com', '555-555-002'); --// admin2 encrypted with bcrypt
+INSERT INTO USERS(id, name, password, status, email, phone) VALUES (4,'editor2', '$2a$10$u6TqXjW5gcmvINV/2nIPweznmLl1H55syFC2hiP9WPBaZCaQMvO.y', 'ACTIVE', 'editor2@mailinator.com', '555-555-003'); --// editor2 encrypted with bcrypt
+SET IDENTITY_INSERT USERS OFF
+
+SET IDENTITY_INSERT USERS_PROFILES ON
+INSERT INTO USERS_PROFILES(user_id, profile_id) VALUES (1, 1);
+INSERT INTO USERS_PROFILES(user_id, profile_id) VALUES (1, 2);
+INSERT INTO USERS_PROFILES(user_id, profile_id) VALUES (2, 1);
+INSERT INTO USERS_PROFILES(user_id, profile_id) VALUES (3, 1);
+INSERT INTO USERS_PROFILES(user_id, profile_id) VALUES (3, 2);
+INSERT INTO USERS_PROFILES(user_id, profile_id) VALUES (4, 1);
+SET IDENTITY_INSERT USERS_PROFILES OFF
 
 

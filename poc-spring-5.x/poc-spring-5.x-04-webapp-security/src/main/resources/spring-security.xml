@@ -18,11 +18,26 @@
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="luis" password="{noop}luis123" authorities="EDITOR" />
-				<user name="marisol" password="{noop}mari123" authorities="MANAGER,EDITOR" />
+				<user name="egon" password="{noop}egon" authorities="MANAGER,EDITOR" />
+				<user name="ray" password="{noop}ray" authorities="MANAGER" disabled="true" />
+				<user name="venkman" password="{noop}venkman" authorities="EDITOR" />
 			</user-service>
 		</authentication-provider>
 
-	</authentication-manager>
+		<authentication-provider>
+			<!-- <jdbc-user-service data-source-ref="datasource" /> -->
+			<password-encoder ref="passwordEncoder"/>
+			<jdbc-user-service data-source-ref="datasource"
+				users-by-username-query="select name, password,
+					CASE WHEN status = 'ACTIVE' THEN 1 ELSE 0 END AS enabled
+					from USERS where name = ?"
+				authorities-by-username-query="select name, profile from PROFILES
+					inner join USERS_PROFILES on PROFILES.id = USERS_PROFILES.profile_id
+					inner join USERS on USERS_PROFILES.user_id = USERS.id
+					where name = ?"
+			/>
+		</authentication-provider>
 
+	</authentication-manager>
+	
 </b:beans>

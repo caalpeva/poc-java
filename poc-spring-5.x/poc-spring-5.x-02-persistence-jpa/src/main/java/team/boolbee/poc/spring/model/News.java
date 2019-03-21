@@ -21,6 +21,8 @@ public class News {
 	
 	@Column(name = "publicationDate")
 	private Date date = new Date();
+	
+	@Column(name="detail", columnDefinition="TEXT")
 	private String detail;
 	
 	@Enumerated(EnumType.STRING)

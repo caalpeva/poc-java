@@ -11,7 +11,8 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:spring-service.xml,
-			classpath:spring-security.xml
+			classpath:spring-security.xml,
+			classpath:spring-security-encryption.xml
 		</param-value>
 	</context-param>
 
