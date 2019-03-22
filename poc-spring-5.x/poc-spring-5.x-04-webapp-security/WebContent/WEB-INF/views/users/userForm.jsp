@@ -30,11 +30,9 @@
 						<div class="form-group">
 							<label for="perfil" class="control-label">Perfil</label>
 							<form:hidden path="id"/>            
-							<select id="perfil" name="selectedProfiles" multiple="multiple" class="form-control" required="required">
-								<c:forEach items="${profileList}" var="profile">
-									<option value="${profile.id}">${profile.name}</option>
-								</c:forEach>								
-							</select>
+							<form:select id="perfil" path="profiles" multiple="multiple" class="form-control" required="required">
+							<form:options items="${profileList}" itemValue="id" itemLabel="name"/>
+							</form:select>
 						</div> 
 					</div>
 					

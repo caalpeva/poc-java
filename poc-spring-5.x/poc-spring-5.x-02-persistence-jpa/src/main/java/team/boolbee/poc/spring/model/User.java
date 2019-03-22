@@ -31,7 +31,7 @@ public class User {
 	private String email;
 	private String phone;
 	
-	@ManyToMany(cascade = CascadeType.REMOVE, fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name = "USERS_PROFILES", joinColumns = @JoinColumn(name = "user_id"),
 		inverseJoinColumns = @JoinColumn(name = "profile_id"))
 	private List<Profile> profiles;
