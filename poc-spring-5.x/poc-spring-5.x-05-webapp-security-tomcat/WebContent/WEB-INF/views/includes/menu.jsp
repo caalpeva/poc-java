@@ -1,4 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix ="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <spring:url value="/" var="publicRootUrl" />
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -11,28 +13,29 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<sec:authorize access="isAnonymous()"><a class="navbar-brand" href="${publicRootUrl}">My CineSite</a></sec:authorize>
-			<sec:authorize access="isAuthenticated()"><a class="navbar-brand" href="${publicRootUrl}admin/index">My CineSite | Administracion</a></sec:authorize>
+			${roles}
+			<c:if test="${empty roles}"><a class="navbar-brand" href="${publicRootUrl}">My CineSite</a></c:if>
+			<c:if test="${not empty roles}"><a class="navbar-brand" href="${publicRootUrl}admin/index">My CineSite | Administracion</a></c:if>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<sec:authorize access="hasAnyAuthority('MANAGER')">
+				<c:if test="${fn:containsIgnoreCase(roles, 'manager')}">
 					<li><a href="${publicRootUrl}banners/index">Banners</a></li>
-				</sec:authorize>
-				<sec:authorize access="hasAnyAuthority('EDITOR')">
+				</c:if>
+				<c:if test="${fn:containsIgnoreCase(roles, 'editor')}">
 					<%-- <li><a href="${publicRootUrl}movies/index">Peliculas</a></li> --%>
 					<li><a href="${publicRootUrl}movies/paginateIndex?page=0">Peliculas</a></li>
 					<li><a href="${publicRootUrl}news/index">Noticias</a></li>
 					<li><a href="${publicRootUrl}showtimes/create">Horarios</a></li>
-				</sec:authorize>
-				<sec:authorize access="isAnonymous()">
+				</c:if>
+				<c:if test="${empty roles}">
 					<li><a href="${publicRootUrl}contact">Contacto</a></li>
 					<li><a href="${publicRootUrl}about">Acerca</a></li>
-					<li><a href="${publicRootUrl}admin/login">Login</a></li>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
+					<li><a href="${publicRootUrl}admin/index">Login</a></li>
+				</c:if>
+				<c:if test="${not empty roles}">
 					<li><a href="${publicRootUrl}admin/logout">Logout</a></li>
-				</sec:authorize>
+				</c:if>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->

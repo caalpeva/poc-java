@@ -26,10 +26,8 @@
 			<hr class="featurette-divider">
 			<img src="${publicResourcesUrl}/images/login.png" width="136" height="136" class="center">
 			<form class="form-signin" action="j_security_check" method="post">
-				<c:if test="${param.error != null}">
-					<img src="${publicResourcesUrl}/images/error.png" width="48" height="48" class="center">
-					<h4 class="form-signin-heading" style="color:red">Acceso denegado</h4>
-				</c:if>        
+				<img src="${publicResourcesUrl}/images/error.png" width="48" height="48" class="center">
+				<h4 class="form-signin-heading" style="color:red">El usuario y/o password incorrectos</h4>
 				<h3 class="form-signin-heading">CineSite | Administracion</h3>        
 				<label for="j_username" class="sr-only">Usuario</label>
 				<input type="text" id="j_username" name="j_username" class="form-control" placeholder="Usuario" required autofocus>

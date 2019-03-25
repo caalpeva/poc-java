@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/myapp">
+	<Realm className="org.apache.catalina.realm.JDBCRealm"
+		connectionName="sa"
+		connectionPassword="boolbee"
+		connectionURL="jdbc:sqlserver://localhost;databaseName=CINE_APP_SECURITY_TOMCAT"
+		driverName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		digest="MD5"
+		roleNameCol="authority"
+		userCredCol="password"
+		userNameCol="username"
+		userRoleTable="tomcat_authorities"
+		userTable="tomcat_users" />
+</Context>

@@ -23,7 +23,7 @@
 
       <div class="jumbotron">        
         <h3>Administración del Sistema</h3>
-        <p>Bienvenido(a) <sec:authentication property="principal.username"/> </p>
+        <p>Bienvenido(a) ${username}</p>
       </div>
 
 	<jsp:include page="includes/footer.jsp"></jsp:include>   

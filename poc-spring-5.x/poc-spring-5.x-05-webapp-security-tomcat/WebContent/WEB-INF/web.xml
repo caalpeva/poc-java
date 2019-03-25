@@ -31,6 +31,10 @@
 			<param-value>classpath:spring-servlet.xml</param-value>
 			<!-- <param-value>/WEB-INF/spring/spring-servlet.xml</param-value> -->
 		</init-param>
+		<init-param>
+			<param-name>listings</param-name>
+			<param-value>true</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<multipart-config>
 			<location>H:\tmp</location>
@@ -60,7 +64,7 @@
 			<url-pattern>/admin/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>editor</role-name>
+			<role-name>EDITOR</role-name>
 		</auth-constraint>
 	</security-constraint>
 	
@@ -70,14 +74,24 @@
 			<!-- Define the context-relative URL(s) to be protected -->
 			<url-pattern>/banners/*</url-pattern>
 			<url-pattern>/users/*</url-pattern>
+			<url-pattern>/admin/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>manager</role-name>
+			<role-name>MANAGER</role-name>
 		</auth-constraint>
 	</security-constraint>
 	
+	<!-- Default basic authentication -->
+<!-- 	<login-config> -->
+<!-- 		<auth-method>BASIC</auth-method> -->
+<!-- 	</login-config> -->
+	
 	<login-config>
-		<auth-method>BASIC</auth-method>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/WEB-INF/views/loginForm.jsp</form-login-page>
+			<form-error-page>/WEB-INF/views/loginFormWithError.jsp</form-error-page>
+		</form-login-config>
 	</login-config>
 	
 	<!-- ========================================== -->
