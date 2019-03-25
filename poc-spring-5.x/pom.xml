@@ -10,7 +10,8 @@
 		<module>poc-spring-5.x-01-webapp-mvc</module>
 		<module>poc-spring-5.x-02-persistence-jpa</module>
 		<module>poc-spring-5.x-03-webapp-persistence</module>
-		<module>poc-spring-5.x-03-webapp-security</module>
+		<module>poc-spring-5.x-04-webapp-security</module>
+		<module>poc-spring-5.x-05-webapp-security-tomcat</module>
 	</modules>
 	
 </project>

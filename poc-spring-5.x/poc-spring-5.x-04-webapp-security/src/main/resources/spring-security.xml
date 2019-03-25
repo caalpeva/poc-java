@@ -13,7 +13,8 @@
 		<intercept-url pattern="/showtimes/*" access="hasAnyAuthority('EDITOR')" />
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('MANAGER')" />
 		<intercept-url pattern="/users/*" access="hasAnyAuthority('MANAGER')" />
-		<form-login login-page="/admin/login" default-target-url="/admin/index" />
+		<intercept-url pattern="/admin/*" access="hasAnyAuthority('EDITOR')" />
+		<form-login login-page="/login" default-target-url="/admin/index" />
 	</http>
 	
 	<authentication-manager>

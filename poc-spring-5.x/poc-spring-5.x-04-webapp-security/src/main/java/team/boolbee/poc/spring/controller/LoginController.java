@@ -13,11 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class LoginController {
 
-	@GetMapping("/login")
-	public String login() {
-		return "loginForm";
-	}
-	
 	@GetMapping("/index")
 	public String goMainPage(Authentication authentication) {
 		System.out.println("Username: " + authentication.getName());
@@ -31,7 +26,7 @@ public class LoginController {
 	public String logout(HttpServletRequest request) {
 		SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 		logoutHandler.logout(request, null, null);
-		return "redirect:/admin/login";
+		return "redirect:/login";
 	}
 
 }
