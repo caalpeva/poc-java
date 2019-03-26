@@ -1,13 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>team.boolbee.poc</groupId>
-  <artifactId>poc-webapp-maven</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
-  <!-- Propiedades para desplegar en tomcat cuando se active el perfil indicado -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>team.boolbee.poc</groupId>
+	<artifactId>poc-webapp-maven</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<!-- Propiedades para desplegar en tomcat cuando se active el perfil indicado -->
 	<properties>
 		<project.encoding>cp1252</project.encoding>
 		<tomcat.manager.url>http://localhost:8080</tomcat.manager.url>
@@ -15,29 +14,29 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		<tomcat.manager.password>admin</tomcat.manager.password>
 		<tomcat.deploy.path>/poc-webapp-maven</tomcat.deploy.path>
 	</properties>
-  
-  <dependencies>
-  	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>servlet-api</artifactId>
-		<version>2.5</version>
-		<scope>provided</scope>
-	</dependency>
-  </dependencies>
- <build>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<attachClasses>true</attachClasses>
 					<warSourceDirectory>WebContent</warSourceDirectory>
-    				<webXml>WebContent\WEB-INF\web.xml</webXml>   
-  				</configuration>
+					<webXml>WebContent\WEB-INF\web.xml</webXml>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-  
-  <profiles>
+
+	<profiles>
 		<!-- Si se activa el perfil despliega el proyecto en tomcat 6 -->
 		<profile>
 			<id>deploy-tomcat6</id>
@@ -67,7 +66,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 				</plugins>
 			</build>
 		</profile>
-		
+
 		<!-- Si se activa el perfil despliega el proyecto en tomcat 7 -->
 		<profile>
 			<id>deploy-tomcat7</id>
@@ -98,5 +97,5 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 			</build>
 		</profile>
 	</profiles>
-  
+
 </project>
