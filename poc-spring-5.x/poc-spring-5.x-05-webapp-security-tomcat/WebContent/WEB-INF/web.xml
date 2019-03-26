@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	
-	<display-name>poc-spring-5.x-04-webapp-security</display-name>
+	<display-name>poc-spring-5.x-05-webapp-security-tomcat</display-name>
 	
 	<!-- needed for ContextLoaderListener -->
 	<context-param>

@@ -3,6 +3,7 @@
 	<name>poc-spring-5.x-05-webapp-security-tomcat</name>
 	<comment></comment>
 	<projects>
+		<project>poc-spring-5.x-02-persistence-jpa</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

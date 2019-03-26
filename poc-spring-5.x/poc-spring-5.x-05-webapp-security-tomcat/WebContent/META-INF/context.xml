@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- CONFIGURACIÓN PARA VERSIONES DE APACHE TOMCAT (8.0.X, 7.0.X, etc.) -->
+<!-- 
 <Context path="/poc-spring-5.x-05-webapp-security-tomcat">
 	<Realm className="org.apache.catalina.realm.JDBCRealm"
 		connectionName="${db.username}"
@@ -11,4 +13,24 @@
 		userNameCol="username"
 		userRoleTable="tomcat_authorities"
 		userTable="tomcat_users" />
+</Context>
+-->
+
+<!-- CONFIGURACIÓN PARA VERSIONES DE APACHE TOMCAT (8.5.x y posteriores) -->
+<Context path="/poc-spring-5.x-05-webapp-security-tomcat">
+	<Realm className="org.apache.catalina.realm.JDBCRealm"
+		connectionName="${db.username}"
+		connectionPassword="${db.password}"
+		connectionURL="${db.url}"
+		driverName="${db.driver}"
+		roleNameCol="authority"
+		userCredCol="password"
+		userNameCol="username"
+		userRoleTable="tomcat_authorities"
+		userTable="tomcat_users">
+		
+		<CredentialHandler
+			className="org.apache.catalina.realm.MessageDigestCredentialHandler"
+			algorithm="MD5" iterations="1" saltLength="0" encoding="ISO-8859-1" />
+	</Realm>
 </Context>
