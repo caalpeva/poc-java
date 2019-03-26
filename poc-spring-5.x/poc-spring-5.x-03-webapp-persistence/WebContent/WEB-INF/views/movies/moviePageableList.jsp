@@ -75,9 +75,8 @@
         
         <nav aria-label="">
 			<ul class="pager">
-				<li>
 				<c:if test="${moviesPage.number gt 0}">
-					<a href="${moviePaginateIndexUrl}?page=${moviesPage.number - 1 }">Anterior</a></li>
+					<li><a href="${moviePaginateIndexUrl}?page=${moviesPage.number - 1 }">Anterior</a></li>
 				</c:if>
 				<c:if test="${moviesPage.number lt (moviesPage.totalPages - 1)}">
 					<li><a href="${moviePaginateIndexUrl}?page=${moviesPage.number + 1 }">Siguiente</a></li>
