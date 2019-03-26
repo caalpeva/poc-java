@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/myapp">
+<Context path="/poc-spring-5.x-05-webapp-security-tomcat">
 	<Realm className="org.apache.catalina.realm.JDBCRealm"
-		connectionName="sa"
-		connectionPassword="boolbee"
-		connectionURL="jdbc:sqlserver://localhost;databaseName=CINE_APP_SECURITY_TOMCAT"
-		driverName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		connectionName="${db.username}"
+		connectionPassword="${db.password}"
+		connectionURL="${db.url}"
+		driverName="${db.driver}"
 		digest="MD5"
 		roleNameCol="authority"
 		userCredCol="password"

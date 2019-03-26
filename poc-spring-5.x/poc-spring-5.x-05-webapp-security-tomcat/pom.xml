@@ -122,6 +122,9 @@
 	</dependencies>
 
 	<build>
+		<filters>
+			<filter>databases/${databaseType}/database.properties</filter>
+		</filters>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -132,9 +135,19 @@
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<attachClasses>true</attachClasses>
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>WebContent/META-INF</directory>
+							<includes>
+								<include>**/context.xml</include>
+							</includes>
+							<targetPath>META-INF</targetPath>
+						</resource>
+				   	</webResources>
+				   	<attachClasses>true</attachClasses>
 					<warSourceDirectory>WebContent</warSourceDirectory>
-					<webXml>WebContent\WEB-INF\web.xml</webXml>
+					<webXml>WebContent/WEB-INF/web.xml</webXml>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -149,18 +162,40 @@
 			<properties>
 				<databaseType>hsqldb</databaseType>
 			</properties>
+			<build>
+  				<resources>
+  					<resource>
+    					<directory>databases/hsqldb</directory>
+   					</resource>
+  				</resources>
+ 			</build>
 		</profile>
 		<profile>
 			<id>sqlserver</id>
 			<properties>
 				<databaseType>sqlserver</databaseType>
 			</properties>
+			<build>
+  				<resources>
+  					<resource>
+    					<directory>databases/sqlserver</directory>
+    					<filtering>true</filtering>
+   					</resource>
+  				</resources>
+ 			</build>
 		</profile>
 		<profile>
 			<id>mysql</id>
 			<properties>
 				<databaseType>mysql</databaseType>
 			</properties>
+			<build>
+  				<resources>
+  					<resource>
+    					<directory>databases/mysql</directory>
+    				</resource>
+  				</resources>
+ 			</build>
 		</profile>
 
 		<!-- Si se activa el perfil despliega el proyecto en tomcat 6 -->

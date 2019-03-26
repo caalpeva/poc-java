@@ -1,3 +1,4 @@
+${db.url}
 SET IDENTITY_INSERT BANNER ON 
 INSERT BANNER (id,date,filename,status,title) VALUES (1, '2019-03-19', 'slide1.jpg', 'ACTIVE', 'Kong')
 INSERT BANNER (id,date,filename,status,title) VALUES (2, '2019-03-19', 'slide2.jpg', 'INACTIVE', 'La Bella y La Bestia')
