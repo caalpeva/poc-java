@@ -30,7 +30,7 @@
 				<sec:authorize access="isAnonymous()">
 					<li><a href="${publicRootUrl}contact">Contacto</a></li>
 					<li><a href="${publicRootUrl}about">Acerca</a></li>
-					<li><a href="${publicRootUrl}admin/login">Login</a></li>
+					<li><a href="${publicRootUrl}login">Login</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li><a href="${publicRootUrl}admin/logout">Logout</a></li>

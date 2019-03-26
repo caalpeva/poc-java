@@ -1,4 +1,4 @@
-USE [CINE_APP]
+USE [CINEMA]
 
 /****** Object:  Table [dbo].[BANNER]    Script Date: 21/03/2019 17:29:58 ******/
 SET ANSI_NULLS ON

@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>poc-spring-5.x-05-webapp-security-tomcat</artifactId>
-
+	
 	<packaging>war</packaging>
 
 	<!-- Propiedades para desplegar en tomcat cuando se active el perfil indicado -->

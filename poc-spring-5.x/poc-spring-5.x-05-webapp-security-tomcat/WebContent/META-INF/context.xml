@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- CONFIGURACIÓN PARA VERSIONES DE APACHE TOMCAT (8.0.X, 7.0.X, etc.) -->
-<Context path="/poc-spring-5.x-05-webapp-security-tomcat">
+<Context path="/${project.artifactId}">
 	<Realm className="org.apache.catalina.realm.JDBCRealm"
 		connectionName="${db.username}"
 		connectionPassword="${db.password}"
@@ -16,7 +16,7 @@
 
 <!-- CONFIGURACIÓN PARA VERSIONES DE APACHE TOMCAT (8.5.x y posteriores) -->
 <!-- 
-<Context path="/poc-spring-5.x-05-webapp-security-tomcat">
+<Context path="/${project.artifactId}">
 	<Realm className="org.apache.catalina.realm.JDBCRealm"
 		connectionName="${db.username}"
 		connectionPassword="${db.password}"
