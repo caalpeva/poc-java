@@ -18,7 +18,7 @@ public class PasswordEncoderTest {
 
 	@Test
 	public void checkEncodedPassword() {
-		String password = "admin2";
+		String password = "bart";
 		String encodedPassword = passwordEncoder.encode(password);
 		System.out.println("UNENCODED: " + password);
 		System.out.println("ENCODED:  " + encodedPassword);

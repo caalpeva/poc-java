@@ -56,10 +56,10 @@ INSERT INTO PROFILES(id, name) VALUES (1,'EDITOR'),(2,'MANAGER');
 SET IDENTITY_INSERT PROFILES OFF
 
 SET IDENTITY_INSERT USERS ON
-INSERT INTO USERS(id, name, password, status, email, phone) VALUES (1,'admin', '{noop}admin', 'ACTIVE', 'admin@mailinator.com', '555-555-000');
-INSERT INTO USERS(id, name, password, status, email, phone) VALUES (2,'editor', '{noop}editor', 'ACTIVE', 'editor@mailinator.com', '555-555-001');
-INSERT INTO USERS(id, name, password, status, email, phone) VALUES (3,'admin2', '$2a$10$Sn.YSVTkEFTbSlaTShDN9OwTSU0SFbVjUoCp/MveU4YS7HpZtTyzW', 'ACTIVE', 'admin2@mailinator.com', '555-555-002'); --// admin2 encrypted with bcrypt
-INSERT INTO USERS(id, name, password, status, email, phone) VALUES (4,'editor2', '$2a$10$u6TqXjW5gcmvINV/2nIPweznmLl1H55syFC2hiP9WPBaZCaQMvO.y', 'ACTIVE', 'editor2@mailinator.com', '555-555-003'); --// editor2 encrypted with bcrypt
+INSERT INTO USERS(id, name, password, status, email, phone) VALUES (1,'marge', '{noop}marge', 'ACTIVE', 'marge@mailinator.com', '555-555-000');
+INSERT INTO USERS(id, name, password, status, email, phone) VALUES (2,'homer', '{noop}homer', 'ACTIVE', 'homer@mailinator.com', '555-555-001');
+INSERT INTO USERS(id, name, password, status, email, phone) VALUES (3,'lisa', '$2a$10$1UnwGTbEyhkVstHe6la/uOS/gyMY8/8td/.VRdk8ZhOqZ15.gB0I6', 'ACTIVE', 'lisa@mailinator.com', '555-555-002'); --// lisa encrypted with bcrypt
+INSERT INTO USERS(id, name, password, status, email, phone) VALUES (4,'bart', '$2a$10$3vzP2SzOVXl7rn/5dvh2j.nk8.Nz/rMoniovDa52HAPLcNtuuWoWC', 'ACTIVE', 'bart@mailinator.com', '555-555-003'); --// bart encrypted with bcrypt
 SET IDENTITY_INSERT USERS OFF
 
 SET IDENTITY_INSERT USERS_PROFILES ON

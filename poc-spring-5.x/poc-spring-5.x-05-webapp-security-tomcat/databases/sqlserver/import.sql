@@ -57,8 +57,8 @@ INSERT INTO PROFILES(id, name) VALUES (1,'EDITOR'),(2,'MANAGER');
 SET IDENTITY_INSERT PROFILES OFF
 
 SET IDENTITY_INSERT USERS ON
-INSERT INTO USERS(id, name, password, status, email, phone) VALUES (1,'manager', '1D0258C2440A8D19E716292B231E3190', 'ACTIVE', 'manager@mailinator.com', '555-555-002'); --// manager encrypted with md5
-INSERT INTO USERS(id, name, password, status, email, phone) VALUES (2,'editor', '5AEE9DBD2A188839105073571BEE1B1F', 'ACTIVE', 'editor@mailinator.com', '555-555-003'); --// editor encrypted with md5
+INSERT INTO USERS(id, name, password, status, email, phone) VALUES (1,'willow', '592CEC0A3FC4D8CF9B6E57A09BFF554B', 'ACTIVE', 'manager@mailinator.com', '555-555-002'); --// willow encrypted with md5
+INSERT INTO USERS(id, name, password, status, email, phone) VALUES (2,'madmartigan', '0CF0214C13691C43E7813D9CB79B3EC8', 'ACTIVE', 'editor@mailinator.com', '555-555-003'); --// madmartigan encrypted with md5
 --//SELECT HashBytes('MD5', '<password>')
 SET IDENTITY_INSERT USERS OFF
 

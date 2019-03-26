@@ -13,7 +13,8 @@
 	
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:/database-${databaseType}.properties" />
+		<!-- <property name="location" value="classpath:/database-${databaseType}.properties" /> -->
+		<property name="location" value="classpath:/database.properties" />
 	</bean>
 	
 	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

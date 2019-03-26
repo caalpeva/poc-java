@@ -23,10 +23,9 @@
   <user username="role1" password="tomcat" roles="role1"/>
 -->
 
-  <role rolename="editor"/>
-  <role rolename="manager"/>
-  <user username="tomcat" password="tomcat" roles="editor"/>
-  <user username="tomcat2" password="tomcat2" roles="editor,manager"/>
-  <user username="tomcat3" password="tomcat3" roles="manager"/>
+  <role rolename="EDITOR"/>
+  <role rolename="MANAGER"/>
+  <user username="rose" password="rose" roles="EDITOR"/>
+  <user username="jack" password="jack" roles="EDITOR,MANAGER"/>
 
 </tomcat-users>

@@ -173,18 +173,40 @@
 			<properties>
 				<databaseType>hsqldb</databaseType>
 			</properties>
+			<build>
+  				<resources>
+  					<resource>
+    					<directory>databases/hsqldb</directory>
+   					</resource>
+  				</resources>
+ 			</build>
 		</profile>
 		<profile>
 			<id>sqlserver</id>
 			<properties>
 				<databaseType>sqlserver</databaseType>
 			</properties>
+			<build>
+  				<resources>
+  					<resource>
+    					<directory>databases/sqlserver</directory>
+    					<filtering>true</filtering>
+   					</resource>
+  				</resources>
+ 			</build>
 		</profile>
 		<profile>
 			<id>mysql</id>
 			<properties>
 				<databaseType>mysql</databaseType>
 			</properties>
+ 			<build>
+  				<resources>
+  					<resource>
+    					<directory>databases/mysql</directory>
+    				</resource>
+  				</resources>
+ 			</build>
 		</profile>
 
 		<!-- Si se activa el perfil despliega el proyecto en tomcat 6 -->
