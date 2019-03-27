@@ -8,9 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PROFILES")
-//@Table(name="PROFILES", uniqueConstraints = @UniqueConstraint(columnNames = { "id", "profile" }))
-public class Profile {
+@Table(name="ROLES")
+public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -33,6 +32,6 @@ public class Profile {
 	
 	@Override
 	public String toString() {
-		return "Profile [id=" + id + ", profile=" + name + "]";
+		return "Role [id=" + id + ", name=" + name + "]";
 	}
 }

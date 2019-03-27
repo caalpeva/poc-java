@@ -33,9 +33,9 @@
 				users-by-username-query="select name, password,
 					CASE WHEN status = 'ACTIVE' THEN 1 ELSE 0 END AS enabled
 					from USERS where name = ?"
-				authorities-by-username-query="select USERS.name, PROFILES.name as profile from PROFILES
-					inner join USERS_PROFILES on PROFILES.id = USERS_PROFILES.profile_id
-					inner join USERS on USERS_PROFILES.user_id = USERS.id
+				authorities-by-username-query="select USERS.name, ROLES.name as profile from ROLES
+					inner join USERS_ROLES on ROLES.id = USERS_ROLES.role_id
+					inner join USERS on USERS_ROLES.user_id = USERS.id
 					where USERS.name = ?"
 			/>
 		</authentication-provider>

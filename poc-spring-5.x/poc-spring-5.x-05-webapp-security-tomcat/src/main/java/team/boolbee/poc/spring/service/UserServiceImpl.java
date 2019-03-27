@@ -1,7 +1,6 @@
 package team.boolbee.poc.spring.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +20,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findById(int userId) {
-		Optional<User> optional = userRepository.findById(userId);
-		return optional.isPresent()? optional.get(): null;
+	public User findByName(String username) {
+		return userRepository.findByName(username);
 	}
 
 	@Override
@@ -32,7 +30,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void delete(int userId) {
-		userRepository.deleteById(userId);
+	public void delete(String username) {
+		User user = userRepository.findByName(username);
+		userRepository.delete(user);
 	}
 }

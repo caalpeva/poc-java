@@ -20,6 +20,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<c:if test="${fn:containsIgnoreCase(roles, 'manager')}">
+					<li><a href="${publicRootUrl}users/index">Usuarios</a></li>
 					<li><a href="${publicRootUrl}banners/index">Banners</a></li>
 				</c:if>
 				<c:if test="${fn:containsIgnoreCase(roles, 'editor')}">

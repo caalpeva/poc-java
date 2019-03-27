@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name="USERS")
@@ -21,6 +22,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@Column(name = "name", unique = true)
 	private String name;
 	private String password;
@@ -31,9 +33,11 @@ public class User {
 	private String phone;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name = "USERS_PROFILES", joinColumns = @JoinColumn(name = "user_id"),
-		inverseJoinColumns = @JoinColumn(name = "profile_id"))
-	private List<Profile> profiles;
+	@JoinTable(name = "USERS_ROLES",
+		joinColumns = @JoinColumn(name = "user_id"),
+		inverseJoinColumns = @JoinColumn(name = "role_id"),
+		uniqueConstraints = @UniqueConstraint(columnNames = { "user_id", "role_id" }))
+	private List<Role> roles;
 	
 	public int getId() {
 		return id;
@@ -71,16 +75,16 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public List<Profile> getProfiles() {
-		return profiles;
+	public List<Role> getRoles() {
+		return roles;
 	}
-	public void setProfiles(List<Profile> profiles) {
-		this.profiles = profiles;
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", password=" + password + ", status=" + status + ", email="
-				+ email + ", phone=" + phone + ", profiles=" + profiles + "]";
+				+ email + ", phone=" + phone + ", roles=" + roles + "]";
 	}
 }

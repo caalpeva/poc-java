@@ -30,7 +30,7 @@
 						<div class="form-group">
 							<label for="perfil" class="control-label">Perfil</label>
 							<form:hidden path="id"/>            
-							<form:select id="perfil" path="profiles" multiple="multiple" class="form-control" required="required">
+							<form:select id="perfil" path="roles" multiple="multiple" class="form-control" required="required">
 							<form:options items="${profileList}" itemValue="id" itemLabel="name"/>
 							</form:select>
 						</div> 

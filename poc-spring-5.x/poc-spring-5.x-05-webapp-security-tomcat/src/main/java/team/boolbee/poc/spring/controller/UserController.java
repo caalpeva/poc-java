@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.DigestUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,13 +31,9 @@ public class UserController {
 	@Autowired
 	private RoleRepository roleRepository;
 	
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
-
 	@GetMapping("/index")
-	public String index(Model model, Authentication authentication) {
+	public String index(Model model) {
 		model.addAttribute("users", userService.findAll());
-		model.addAttribute("authentication", authentication);
 		return "users/userList";
 	}
 	
@@ -60,21 +55,21 @@ public class UserController {
 //		}
 		
 		//user.setProfiles(profileRepository.findAllById(profileIds));
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
 		userService.save(user);
 		
 		return "redirect:/users/index";
 	}
 
-	@GetMapping("/edit/{id}")
-	public String edit(@PathVariable("id") int userId, Model model) {
-		model.addAttribute("user", userService.findById(userId));
+	@GetMapping("/edit/{name}")
+	public String edit(@PathVariable("name") String username, Model model) {
+		model.addAttribute("user", userService.findByName(username));
 		return "users/userForm";
 	}
 	
-	@GetMapping("/delete/{id}")
-	public String create(@PathVariable("id") int userId) {
-		userService.delete(userId);
+	@GetMapping("/delete/{name}")
+	public String create(@PathVariable("name") String username) {
+		userService.delete(username);
 		return "redirect:/users/index";
 	}
 	
@@ -90,10 +85,8 @@ public class UserController {
 			protected Object convertElement(Object element) {
 				 Role  p = new Role() ;
 		         try {
-
-		             Integer id = new Integer(String.valueOf(element));
-		              p = (Role) roleRepository.findById(id).get();
-		             System.out.println(p.getId() + "\\" +p.getName());
+		              p = (Role) roleRepository.findByName(String.valueOf(element));
+		             System.out.println(p.getName());
 		             return p;
 
 		        } catch (Exception e) {

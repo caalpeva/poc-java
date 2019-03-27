@@ -7,11 +7,11 @@
 		connectionURL="${db.url}"
 		driverName="${db.driver}"
 		digest="MD5"
-		roleNameCol="authority"
+		roleNameCol="rolename"
 		userCredCol="password"
 		userNameCol="username"
-		userRoleTable="tomcat_authorities"
-		userTable="tomcat_users" />
+		userRoleTable="USERS_ROLES"
+		userTable="USERS" />
 </Context>
 
 <!-- CONFIGURACIÓN PARA VERSIONES DE APACHE TOMCAT (8.5.x y posteriores) -->

@@ -29,9 +29,8 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="perfil" class="control-label">Perfil</label>
-							<form:hidden path="id"/>            
-							<form:select id="perfil" path="profiles" multiple="multiple" class="form-control" required="required">
-							<form:options items="${profileList}" itemValue="id" itemLabel="name"/>
+							<form:select id="perfil" path="roles" multiple="multiple" class="form-control" required="required">
+							<form:options items="${profileList}" itemValue="name" itemLabel="name"/>
 							</form:select>
 						</div> 
 					</div>
@@ -49,8 +48,15 @@
 				<div class="row"> 	
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="cuenta">Cuenta</label>             
-							<form:input type="text" class="form-control" path="name" id="cuenta" required="required"/>
+							<label for="cuenta">Cuenta</label>
+							<c:choose>
+								<c:when test="${empty user.name}">
+									<form:input type="text" class="form-control" path="name" id="cuenta" required="required"/>
+								</c:when>
+								<c:otherwise>
+									<form:input type="text" class="form-control" path="name" id="cuenta" required="required" readonly="true"/>		
+								</c:otherwise>
+							</c:choose>
 						</div>  
 					</div>
 					

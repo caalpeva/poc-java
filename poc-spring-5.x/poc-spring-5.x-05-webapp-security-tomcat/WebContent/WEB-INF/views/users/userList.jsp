@@ -58,9 +58,9 @@
                 </c:choose>
                 </td>
                 <td>
-                    <a href="${userEditUrl}/${user.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <c:if test="${authentication.principal.username ne user.name}">
-                   	<a href="${userDeleteUrl}/${user.id}" onclick='return confirm("¿Desea eliminar el usuario ${user.name}?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
+                    <a href="${userEditUrl}/${user.name}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
+                    <c:if test="${username ne user.name}">
+                   	<a href="${userDeleteUrl}/${user.name}" onclick='return confirm("¿Desea eliminar el usuario ${user.name}?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
                     </c:if>
                 </td>
             </tr>

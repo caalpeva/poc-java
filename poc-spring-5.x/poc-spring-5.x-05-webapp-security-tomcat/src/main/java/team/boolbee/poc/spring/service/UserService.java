@@ -6,7 +6,7 @@ import team.boolbee.poc.spring.model.User;
 
 public interface UserService {
 	public List<User> findAll();
-	public User findById(int userId);
+	public User findByName(String username);
 	public void save(User user);
-	public void delete(int userId);
+	public void delete(String username);
 }
