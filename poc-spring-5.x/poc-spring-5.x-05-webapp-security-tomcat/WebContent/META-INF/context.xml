@@ -22,11 +22,11 @@
 		connectionPassword="${db.password}"
 		connectionURL="${db.url}"
 		driverName="${db.driver}"
-		roleNameCol="authority"
+		roleNameCol="rolename"
 		userCredCol="password"
 		userNameCol="username"
-		userRoleTable="tomcat_authorities"
-		userTable="tomcat_users">
+		userRoleTable="USERS_ROLES"
+		userTable="USERS">
 		
 		<CredentialHandler
 			className="org.apache.catalina.realm.MessageDigestCredentialHandler"
