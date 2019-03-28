@@ -49,6 +49,15 @@
 	</dependencies>
 
 	<build>
+<!-- 		<filters> -->
+<!-- 			<filter>databases/${databaseType}/database.properties</filter> -->
+<!-- 		</filters> -->
+<!-- 		<resources> -->
+<!-- 			<resource> -->
+<!-- 				<directory>src/main/resources</directory> -->
+<!-- 				<filtering>true</filtering> -->
+<!-- 			</resource> -->
+<!-- 		</resources> -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -56,5 +65,29 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>hsqldb</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<databaseType>hsqldb</databaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>sqlserver</id>
+			<properties>
+				<databaseType>sqlserver</databaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>mysql</id>
+			<properties>
+				<databaseType>mysql</databaseType>
+			</properties> 			
+		</profile>
+	</profiles>
 
 </project>
