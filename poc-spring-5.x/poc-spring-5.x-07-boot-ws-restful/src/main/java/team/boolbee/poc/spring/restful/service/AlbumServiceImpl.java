@@ -19,4 +19,14 @@ public class AlbumServiceImpl implements AlbumService {
 		return albumRepository.findAll();
 	}
 
+	@Override
+	public void save(Album album) {
+		albumRepository.save(album);
+	}
+
+	@Override
+	public void deleteById(int albumId) {
+		albumRepository.deleteById(albumId);
+	}
+
 }
