@@ -12,6 +12,8 @@
 		<module>poc-spring-5.x-03-webapp-persistence</module>
 		<module>poc-spring-5.x-04-webapp-security</module>
 		<module>poc-spring-5.x-05-webapp-security-tomcat</module>
+		<module>poc-spring-5.x-06-boot</module>
+		<module>poc-spring-5.x-07-boot-ws-restful</module>
 	</modules>
 	
 </project>
