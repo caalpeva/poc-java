@@ -23,7 +23,7 @@
 		<div class="container theme-showcase" role="main">
 
 			<h3 class="blog-title"><span class="label label-success">Datos del Usuario</span></h3>  
-
+			
 			<form:form action="${userCreationUrl}" method="post" modelAttribute="user">
 				<div class="row">         
 					<div class="col-sm-3">
@@ -57,7 +57,7 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="pwd">Password</label>             
-							<form:input type="password" class="form-control" path="password" id="pwd" required="required"/>
+							<input type="password" class="form-control" name="password" id="pwd" required="required" autocomplete="new-password"/>
 						</div>  
 					</div>
 					

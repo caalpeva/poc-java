@@ -60,8 +60,14 @@ public class UserController {
 //		}
 		
 		//user.setProfiles(profileRepository.findAllById(profileIds));
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		System.out.println(user);
+		System.out.println("PASSWORD: " + user.getPassword());
+		String encodedPassword = passwordEncoder.encode(user.getPassword());
+		System.out.println("ENCODED PASSWORD: " + encodedPassword);
+		user.setPassword(encodedPassword);
+		System.out.println("SAVED PASSWORD: " + user.getPassword());
 		userService.save(user);
+		System.out.println("SAVED PASSWORD ON DATABASE" + user.getPassword());
 		
 		return "redirect:/users/index";
 	}
@@ -90,12 +96,11 @@ public class UserController {
 			protected Object convertElement(Object element) {
 				 Role  p = new Role() ;
 		         try {
-
-		             Integer id = new Integer(String.valueOf(element));
-		              p = (Role) roleRepository.findById(id).get();
-		             System.out.println(p.getId() + "\\" +p.getName());
-		             return p;
-
+		        	 if (element instanceof String) {
+			             Integer id = new Integer(String.valueOf(element));
+			              p = (Role) roleRepository.findById(id).get();
+			             System.out.println(p.getId() + "\\" +p.getName());
+		        	 }
 		        } catch (Exception e) {
 		            e.printStackTrace();
 		        }

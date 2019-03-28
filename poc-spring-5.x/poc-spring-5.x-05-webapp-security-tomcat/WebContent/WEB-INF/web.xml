@@ -94,6 +94,15 @@
 		</form-login-config>
 	</login-config>
 	
+	<!-- ================================== -->
+	<!-- ===== CONFIGURACION DE SESION ==== -->
+	<!-- ================================== -->
+
+	<session-config> 
+		<!-- <session-timeout>1</session-timeout> --> <!-- in minutes --> 
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
+		
 	<!-- ========================================== -->
 	<!-- ===== PAGINAS DE ERROR PERSONALIZADAS ==== -->
 	<!-- ========================================== -->

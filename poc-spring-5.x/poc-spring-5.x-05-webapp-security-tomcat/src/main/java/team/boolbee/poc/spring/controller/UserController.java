@@ -43,20 +43,20 @@ public class UserController {
 	}
 	
 	@PostMapping("/save")
-	public String save(@ModelAttribute User user, BindingResult result) { //, @RequestParam("selectedProfiles") List<Integer> profileIds) {
+	public String save(@ModelAttribute User user, BindingResult result) {
 		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors());
 			return "users/userForm";
 		}
 		
 		System.out.println(user);
-//		for(int profile: profileIds) {
-//			System.out.println(profile);
-//		}
-		
-		//user.setProfiles(profileRepository.findAllById(profileIds));
-		user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+		System.out.println("PASSWORD: " + user.getPassword());
+		String encodedPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
+		System.out.println("ENCODED PASSWORD: " + encodedPassword);
+		user.setPassword(encodedPassword);
+		System.out.println("SAVED PASSWORD: " + user.getPassword());
 		userService.save(user);
+		System.out.println("SAVED PASSWORD ON DATABASE" + user.getPassword());
 		
 		return "redirect:/users/index";
 	}
@@ -83,12 +83,12 @@ public class UserController {
 		binder.registerCustomEditor(List.class, new CustomCollectionEditor(List.class) {
 			@Override
 			protected Object convertElement(Object element) {
-				 Role  p = new Role() ;
+				 Role  p = new Role();
 		         try {
-		              p = (Role) roleRepository.findByName(String.valueOf(element));
-		             System.out.println(p.getName());
-		             return p;
-
+		        	 if (element instanceof String) {
+		        		 p = (Role) roleRepository.findByName(String.valueOf(element));
+			             System.out.println(p.getName());
+		        	 }
 		        } catch (Exception e) {
 		            e.printStackTrace();
 		        }

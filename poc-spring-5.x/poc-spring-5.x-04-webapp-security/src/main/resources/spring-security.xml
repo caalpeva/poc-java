@@ -8,12 +8,12 @@
      http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/movies/*" access="hasAnyAuthority('EDITOR')" />
-		<intercept-url pattern="/news/*" access="hasAnyAuthority('EDITOR')" />
-		<intercept-url pattern="/showtimes/*" access="hasAnyAuthority('EDITOR')" />
-		<intercept-url pattern="/banners/*" access="hasAnyAuthority('MANAGER')" />
-		<intercept-url pattern="/users/*" access="hasAnyAuthority('MANAGER')" />
-		<intercept-url pattern="/admin/*" access="hasAnyAuthority('EDITOR')" />
+		<intercept-url pattern="/movies/**" access="hasAnyAuthority('EDITOR')" />
+		<intercept-url pattern="/news/**" access="hasAnyAuthority('EDITOR')" />
+		<intercept-url pattern="/showtimes/**" access="hasAnyAuthority('EDITOR')" />
+		<intercept-url pattern="/banners/**" access="hasAnyAuthority('MANAGER')" />
+		<intercept-url pattern="/users/**" access="hasAnyAuthority('MANAGER')" />
+		<intercept-url pattern="/admin/**" access="hasAnyAuthority('EDITOR','MANAGER')" />
 		<form-login login-page="/login" default-target-url="/admin/index" />
 	</http>
 	

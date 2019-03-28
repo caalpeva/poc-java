@@ -63,7 +63,7 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="pwd">Password</label>             
-							<form:input type="password" class="form-control" path="password" id="pwd" required="required"/>
+							<input type="password" class="form-control" name="password" id="pwd" required="required" autocomplete="new-password"/>
 						</div>  
 					</div>
 					
