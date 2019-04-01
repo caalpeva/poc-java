@@ -35,7 +35,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<multipart-config>
-			<location>H:\tmp</location>
+			<location>${user.home.directory}/tmp</location>
 		</multipart-config>
 	</servlet>
 

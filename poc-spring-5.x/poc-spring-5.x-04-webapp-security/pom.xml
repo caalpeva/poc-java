@@ -19,6 +19,7 @@
 		<tomcat.manager.user>admin</tomcat.manager.user>
 		<tomcat.manager.password>admin</tomcat.manager.password>
 		<tomcat.deploy.path>/poc-spring-5.x-04-webapp-security</tomcat.deploy.path>
+		<user.home.directory>H:/</user.home.directory>
 	</properties>
 
 	<dependencies>
@@ -74,6 +75,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.47</version>
+<!-- 			<scope>provided</scope> -->
 		</dependency>
 		<dependency>
 			<groupId>team.boolbee.poc.spring</groupId>
@@ -156,6 +158,16 @@
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>WebContent/WEB-INF</directory>
+							<includes>
+								<include>**/web.xml</include>
+							</includes>
+							<targetPath>WEB-INF</targetPath>
+						</resource>
+				   	</webResources>
 					<attachClasses>true</attachClasses>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<webXml>WebContent\WEB-INF\web.xml</webXml>
@@ -169,6 +181,7 @@
 			<id>hsqldb</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
+				<!-- <os><family>Windows</family></os> -->
 			</activation>
 			<properties>
 				<databaseType>hsqldb</databaseType>
@@ -207,6 +220,13 @@
     				</resource>
   				</resources>
  			</build>
+		</profile>
+		<profile>
+			<id>linux</id>
+			<properties>
+				<user.home.directory>/root</user.home.directory>
+				<!-- <user.home.directory>/${user.name}</user.home.directory> -->
+			</properties>
 		</profile>
 
 		<!-- Si se activa el perfil despliega el proyecto en tomcat 6 -->
