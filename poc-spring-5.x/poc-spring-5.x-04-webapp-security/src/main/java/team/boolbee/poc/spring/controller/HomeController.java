@@ -55,7 +55,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/search", method=RequestMethod.POST)
-	public String searchMovies(@RequestParam("date") Date searchDate, Model model) {
+	public String searchMovies(@ModelAttribute Object object, @RequestParam("date") Date searchDate, Model model) {
 		//model.addAttribute("banners", bannerService.findAllActives());
 		model.addAttribute("dates", Utils.getNextDays(getStartDate(), NUMBER_OF_DAYS));
 		model.addAttribute("searchDate", dateFormat.format(searchDate));
