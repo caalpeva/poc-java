@@ -224,7 +224,7 @@
 		<profile>
 			<id>linux</id>
 			<properties>
-				<user.home.directory>/root</user.home.directory>
+				<user.home.directory></user.home.directory>
 				<!-- <user.home.directory>/${user.name}</user.home.directory> -->
 			</properties>
 		</profile>
