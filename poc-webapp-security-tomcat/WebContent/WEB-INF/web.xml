@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	
+	<display-name>poc-webapp-security-tomcat</display-name>
+
+  <!--   listings            Should directory listings be produced if there -->
+  <!--                       is no welcome file in this directory?  [false] -->
+  <!--                       WARNING: Listings for directories with many    -->
+  <!--                       entries can be slow and may consume            -->
+  <!--                       significant proportions of server resources.   -->
+
+	<!-- ============================== -->
+	<!-- ===== SERVLET POR DEFECTO ==== -->
+	<!-- ============================== -->
+
+	<servlet>
+		<servlet-name>DirectoryListing</servlet-name>
+		<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+		<init-param>
+			<param-name>listings</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+
+	<!-- ==================================== -->
+	<!-- ===== MAPEOS DE URLS PERMITIDAS ==== -->
+	<!-- ==================================== -->
+
+	<servlet-mapping>
+		<servlet-name>DirectoryListing</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- ====================================== -->
+	<!-- ===== CONFIGURACIÓN DE SEGURIDAD ===== -->
+	<!-- ====================================== -->
+
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/protected1/*</url-pattern>
+			<url-pattern>/protected2/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>gerente</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!-- Default basic authentication -->
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	
+</web-app>
