@@ -3,19 +3,16 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-	
-	<display-name>poc-webapp-security-tomcat</display-name>
 
-  <!--   listings            Should directory listings be produced if there -->
-  <!--                       is no welcome file in this directory?  [false] -->
-  <!--                       WARNING: Listings for directories with many    -->
-  <!--                       entries can be slow and may consume            -->
-  <!--                       significant proportions of server resources.   -->
+	<display-name>poc-webapp-security-tomcat</display-name>
 
 	<!-- ============================== -->
 	<!-- ===== SERVLET POR DEFECTO ==== -->
 	<!-- ============================== -->
 
+	<!-- Si no se encuentra presente un archivo de bienvenida, el servlet predeterminado 
+		 sirve una lista de directorios o devuelve un estado 404, dependiendo de la 
+		 configuración del parámetro listings. -->
 	<servlet>
 		<servlet-name>DirectoryListing</servlet-name>
 		<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
@@ -61,5 +58,5 @@
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
-	
+
 </web-app>
