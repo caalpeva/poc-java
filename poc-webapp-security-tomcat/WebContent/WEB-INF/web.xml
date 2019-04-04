@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	id="WebApp_ID" version="3.0">
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
 	
 	<display-name>poc-webapp-security-tomcat</display-name>
 
@@ -21,7 +21,7 @@
 		<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
 		<init-param>
 			<param-name>listings</param-name>
-			<param-value>true</param-value>
+			<param-value>false</param-value>
 		</init-param>
 	</servlet>
 
@@ -40,11 +40,12 @@
 
 	<security-constraint>
 		<web-resource-collection>
-			<url-pattern>/protected1/*</url-pattern>
-			<url-pattern>/protected2/*</url-pattern>
+			<web-resource-name>Url protegidas para el rol MANAGER</web-resource-name>
+			<url-pattern>/personal/*</url-pattern>
+			<url-pattern>/private/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>gerente</role-name>
+			<role-name>MANAGER</role-name>
 		</auth-constraint>
 	</security-constraint>
 
@@ -52,6 +53,10 @@
 	<login-config>
 		<auth-method>BASIC</auth-method>
 	</login-config>
+
+	<!-- =============================== -->
+	<!-- ===== PAGINAS POR DEFECTO ==== -->
+	<!-- =============================== -->
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
