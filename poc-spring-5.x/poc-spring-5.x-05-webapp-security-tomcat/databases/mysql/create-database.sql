@@ -1,10 +1,10 @@
-# DROP DATABASE IF EXISTS CINEMA;
-CREATE DATABASE CINEMA;
+# DROP DATABASE IF EXISTS CINEMA_TOMCAT;
+CREATE DATABASE CINEMA_TOMCAT;
 
-USE CINEMA;
+USE CINEMA_TOMCAT;
 
-# Host: 46.183.115.17  (Version 5.7.25-0ubuntu0.18.04.2)
-# Date: 2019-04-01 19:15:49
+# Host: 93.189.94.106  (Version 5.7.25-0ubuntu0.18.04.2)
+# Date: 2019-04-04 18:01:08
 # Generator: MySQL-Front 6.1  (Build 1.26)
 
 
@@ -19,7 +19,7 @@ CREATE TABLE `BANNER` (
   `status` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "MOVIE_DETAILS"
@@ -32,7 +32,7 @@ CREATE TABLE `MOVIE_DETAILS` (
   `synopsis` text,
   `trailer` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "MOVIES"
@@ -51,7 +51,7 @@ CREATE TABLE `MOVIES` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_ragi6whancb4l1qs8pkqrkq1f` (`detail_id`),
   CONSTRAINT `FKj6vj1rbic4diyi5388490oqdq` FOREIGN KEY (`detail_id`) REFERENCES `MOVIE_DETAILS` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "NEWS"
@@ -64,18 +64,16 @@ CREATE TABLE `NEWS` (
   `status` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "ROLES"
 #
 
 CREATE TABLE `ROLES` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_1s6p3xpt8owdb603jky0mo815` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "SHOWTIMES"
@@ -91,32 +89,30 @@ CREATE TABLE `SHOWTIMES` (
   PRIMARY KEY (`id`),
   KEY `FKjgtqe2xus31j1c12wytq2110g` (`movie_id`),
   CONSTRAINT `FKjgtqe2xus31j1c12wytq2110g` FOREIGN KEY (`movie_id`) REFERENCES `MOVIES` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "USERS"
 #
 
 CREATE TABLE `USERS` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_kby09mn7e5oe95v5ykdm0c0lq` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "USERS_ROLES"
 #
 
 CREATE TABLE `USERS_ROLES` (
-  `user_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  UNIQUE KEY `UKki8x30j3ar7btq9nt2h8kpsmv` (`user_id`,`role_id`),
-  KEY `FKs9jph45raq0bh9bihmviuubd3` (`role_id`),
-  CONSTRAINT `FKnoseerj3xr32i73kjox69kgs1` FOREIGN KEY (`user_id`) REFERENCES `USERS` (`id`),
-  CONSTRAINT `FKs9jph45raq0bh9bihmviuubd3` FOREIGN KEY (`role_id`) REFERENCES `ROLES` (`id`)
+  `username` varchar(255) NOT NULL,
+  `rolename` varchar(255) NOT NULL,
+  UNIQUE KEY `UKtmha71m6iunbqcvx1atifmkxl` (`username`,`rolename`),
+  KEY `FKo47ql066k4pi977m6wnp68d5u` (`rolename`),
+  CONSTRAINT `FK138713b6sdp2pjbn1ujksibsn` FOREIGN KEY (`username`) REFERENCES `USERS` (`username`),
+  CONSTRAINT `FKo47ql066k4pi977m6wnp68d5u` FOREIGN KEY (`rolename`) REFERENCES `ROLES` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

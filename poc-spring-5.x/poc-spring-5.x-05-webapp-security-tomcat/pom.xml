@@ -15,10 +15,11 @@
 	<!-- Propiedades para desplegar en tomcat cuando se active el perfil indicado -->
 	<properties>
 		<project.encoding>cp1252</project.encoding>
-		<tomcat.manager.url>http://localhost:8080</tomcat.manager.url>
+		<tomcat.manager.url>http://localhost</tomcat.manager.url>
 		<tomcat.manager.user>admin</tomcat.manager.user>
 		<tomcat.manager.password>admin</tomcat.manager.password>
 		<tomcat.deploy.path>/poc-spring-5.x-05-webapp-security-tomcat</tomcat.deploy.path>
+		<user.home.directory>H:/</user.home.directory>
 	</properties>
 
 	<dependencies>
@@ -144,7 +145,15 @@
 							</includes>
 							<targetPath>META-INF</targetPath>
 						</resource>
-				   	</webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>WebContent/WEB-INF</directory>
+							<includes>
+								<include>**/web.xml</include>
+							</includes>
+							<targetPath>WEB-INF</targetPath>
+						</resource>
+			   		</webResources>
 				   	<attachClasses>true</attachClasses>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<webXml>WebContent/WEB-INF/web.xml</webXml>
@@ -196,6 +205,13 @@
     				</resource>
   				</resources>
  			</build>
+		</profile>
+		<profile>
+			<id>linux</id>
+			<properties>
+				<user.home.directory></user.home.directory>
+				<!-- <user.home.directory>/${user.name}</user.home.directory> -->
+			</properties>
 		</profile>
 
 		<!-- Si se activa el perfil despliega el proyecto en tomcat 6 -->

@@ -68,7 +68,7 @@
 
 	<session-config> 
 		<!-- <session-timeout>1</session-timeout> --> <!-- in minutes --> 
-		<tracking-mode>COOKIE</tracking-mode>
+		<tracking-mode>COOKIE</tracking-mode> <!-- Disable JSESSIONID/CSRF URL rewrite -->
 	</session-config>
 	
 	<!-- ========================================== -->
