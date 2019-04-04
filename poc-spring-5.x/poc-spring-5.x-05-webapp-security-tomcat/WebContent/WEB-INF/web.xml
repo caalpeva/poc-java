@@ -52,7 +52,7 @@
 	
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Urls protegidas para el rol editor</web-resource-name>
+			<web-resource-name>Urls protegidas para el rol EDITOR</web-resource-name>
 			<!-- Define the context-relative URL(s) to be protected -->
 			<url-pattern>/movies/*</url-pattern>
 			<url-pattern>/news/*</url-pattern>
@@ -66,7 +66,7 @@
 	
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Urls protegidas para el rol manager</web-resource-name>
+			<web-resource-name>Urls protegidas para el rol MANAGER</web-resource-name>
 			<!-- Define the context-relative URL(s) to be protected -->
 			<url-pattern>/banners/*</url-pattern>
 			<url-pattern>/users/*</url-pattern>
