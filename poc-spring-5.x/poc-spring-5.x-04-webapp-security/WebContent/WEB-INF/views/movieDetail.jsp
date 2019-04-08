@@ -33,7 +33,7 @@
 				<div class="row">
 					<div class="col-sm-3">
 						<p class="text-center">
-							<img class="img-rounded" src="${publicResourcesUrl}/images/${movie.filename}" alt="Generic placeholder image" width="155" height="220">            
+							<img class="img-rounded" src="${publicResourcesUrl}/images/movies/${movie.filename}" alt="Generic placeholder image" width="155" height="220">            
 						</p>
 					</div>
 					<div class="col-sm-9">
