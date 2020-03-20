@@ -36,6 +36,7 @@
 			</resource>
 		</resources>
 
+		<!-- mvn clean verify  -->
 		<plugins>
 			<plugin>
 				<groupId>org.jacoco</groupId>
