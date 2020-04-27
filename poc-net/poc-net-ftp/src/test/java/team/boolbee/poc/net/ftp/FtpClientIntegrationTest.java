@@ -36,6 +36,7 @@ public class FtpClientIntegrationTest {
     	fakeFtpServer.start();
     	
     	ftpClientHelper = new FtpClientHelper("localhost", fakeFtpServer.getServerControlPort(), "user", "password");
+    	//ftpClientHelper = new FtpClientHelper("localhost", 21, "sussex", "sussex");
 		ftpClientHelper.open();    	
     }
     
@@ -73,7 +74,7 @@ public class FtpClientIntegrationTest {
     	File file = new File(getClass().getClassLoader().getResource("baz.txt").toURI());
     	ftpClientHelper.makeDirectory("files");
     	ftpClientHelper.changeDirectory("files");
-    	ftpClientHelper.putFileToPath(file, "/data/files/buz.txt");
+    	ftpClientHelper.putFileToPath(file, "buz.txt");
     	assertThat(fakeFtpServer.getFileSystem().exists("/data/files")).isTrue();
     	assertThat(fakeFtpServer.getFileSystem().exists("/data/files/buz.txt")).isTrue();
     }
