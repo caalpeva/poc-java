@@ -43,15 +43,16 @@ public class JdkFtpClientIntegrationTest {
     }
     
     @Test
-    public void givenRemoteFile_whenDownloading_thenItIsOnTheLocalFilesystem() throws IOException {
+    public void givenRemoteFile_whenDownloading_thenItIsOnTheLocalFileSystem() throws IOException {
     	String ftpUrl = String.format("ftp://user:password@localhost:%d/foobar.txt", fakeFtpServer.getServerControlPort());
     	
+    	File file = new File("copy_of_foobar.txt");
     	URLConnection urlConnection = new URL(ftpUrl).openConnection();
     	InputStream inputStream = urlConnection.getInputStream();
-    	Files.copy(inputStream, new File("downloaded_buz.txt").toPath());
+    	Files.copy(inputStream, file.toPath());
     	
-    	assertThat(new File("downloaded_buz.txt").exists());
+    	assertThat(file.exists()).isTrue();    	
     	
-    	new File("downloaded_buz.txt").delete(); // clean up
+    	file.deleteOnExit(); // clean up
     }
 }

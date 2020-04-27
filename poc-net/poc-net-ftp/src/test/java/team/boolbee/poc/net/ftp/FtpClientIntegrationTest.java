@@ -20,7 +20,7 @@ import org.mockftpserver.fake.filesystem.UnixFakeFileSystem;
 public class FtpClientIntegrationTest {
 	
     private FakeFtpServer fakeFtpServer;    
-    private FtpClient ftpClient;
+    private FtpClientHelper ftpClientHelper;
     
     @Before
     public void setup() throws IOException {
@@ -35,34 +35,35 @@ public class FtpClientIntegrationTest {
     	
     	fakeFtpServer.start();
     	
-    	ftpClient = new FtpClient("localhost", fakeFtpServer.getServerControlPort(), "user", "password");
-		ftpClient.open();    	
+    	ftpClientHelper = new FtpClientHelper("localhost", fakeFtpServer.getServerControlPort(), "user", "password");
+		ftpClientHelper.open();    	
     }
     
     @After
     public void teardown() throws IOException {
-    	ftpClient.close();
+    	ftpClientHelper.close();
     	fakeFtpServer.stop();
     }
     
     @Test
     public void givenRemoteFile_whenListingRemoteFiles_thenItIsContainedInList() throws IOException {
-    	Collection<String> files = ftpClient.listFiles("");
+    	Collection<String> files = ftpClientHelper.listFiles("");
 		assertThat(files).contains("foobar.txt");
     }
     
     @Test
     public void givenRemoteFile_whenDownloading_thenItIsOnTheLocalFilesystem2() throws IOException {
-    	ftpClient.downloadFile("foobar.txt", "downloaded_buz.txt");
-    	assertThat(new File("downloaded_buz.txt").exists());    	
-    	new File("downloaded_buz.txt").delete(); // clean up
+    	ftpClientHelper.downloadFile("foobar.txt", "copy_of_foobar.txt");
+    	File file = new File("copy_of_foobar.txt");
+    	assertThat(file.exists()).isTrue();    	
+    	file.deleteOnExit(); // clean up
     }
     
     @Test
     public void givenLocalFile_whenUploadingIt_thenItExistsOnRemoteLocation() 
       throws URISyntaxException, IOException {
     	File file = new File(getClass().getClassLoader().getResource("baz.txt").toURI());
-    	ftpClient.putFileToPath(file, "/buz.txt");
+    	ftpClientHelper.putFileToPath(file, "/buz.txt");
     	assertThat(fakeFtpServer.getFileSystem().exists("/buz.txt")).isTrue();
     }
 }

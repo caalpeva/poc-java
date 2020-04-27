@@ -14,7 +14,7 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 
-public class FtpClient {
+public class FtpClientHelper {
 
 	private String server;
     private int port;
@@ -22,7 +22,7 @@ public class FtpClient {
     private String password;
     private FTPClient ftp;
 	
-    FtpClient(String server, int port, String username, String password) {
+    FtpClientHelper(String server, int port, String username, String password) {
     	this.server = server;
     	this.port = port;
     	this.username = username;
@@ -31,8 +31,7 @@ public class FtpClient {
     
 	void open() throws IOException {
 		ftp = new FTPClient();
-		ftp.addProtocolCommandListener(new PrintCommandListener(new PrintStream(System.out)));
-		
+		ftp.addProtocolCommandListener(new PrintCommandListener(new PrintStream(System.out)));		
 		ftp.connect(server, port);
 		int replyCode = ftp.getReplyCode();
 		if (!FTPReply.isPositiveCompletion(replyCode)) {
