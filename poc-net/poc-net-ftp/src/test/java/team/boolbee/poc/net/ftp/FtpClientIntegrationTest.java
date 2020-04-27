@@ -66,4 +66,15 @@ public class FtpClientIntegrationTest {
     	ftpClientHelper.putFileToPath(file, "/buz.txt");
     	assertThat(fakeFtpServer.getFileSystem().exists("/buz.txt")).isTrue();
     }
+    
+    @Test
+    public void givenLocalFile_whenUploadingItToNewDirectory_thenItExistsOnRemoteLocation() 
+      throws URISyntaxException, IOException {
+    	File file = new File(getClass().getClassLoader().getResource("baz.txt").toURI());
+    	ftpClientHelper.makeDirectory("files");
+    	ftpClientHelper.changeDirectory("files");
+    	ftpClientHelper.putFileToPath(file, "/data/files/buz.txt");
+    	assertThat(fakeFtpServer.getFileSystem().exists("/data/files")).isTrue();
+    	assertThat(fakeFtpServer.getFileSystem().exists("/data/files/buz.txt")).isTrue();
+    }
 }

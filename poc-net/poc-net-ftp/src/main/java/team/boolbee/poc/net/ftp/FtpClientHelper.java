@@ -49,6 +49,14 @@ public class FtpClientHelper {
 				.collect(Collectors.toList());		
 	}
 	
+	void makeDirectory(String pathname) throws IOException {
+		ftp.makeDirectory(pathname);
+	}
+	
+	void changeDirectory(String pathname) throws IOException {
+		ftp.changeWorkingDirectory(pathname);
+	}
+	
 	void downloadFile(String source, String destination) throws IOException {
 		ftp.retrieveFile(source, new FileOutputStream(destination));
 	}
