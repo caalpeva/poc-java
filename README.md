@@ -1,2 +1,3 @@
-# PoC
-Proofs of concept (frameworks & java topics)
+# poc-java
+
+Proofs of concept about Java programming language (frameworks & topics)
