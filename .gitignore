@@ -1,7 +1,7 @@
 /poc-webapp-basic/build
 /poc-webapp-maven/build
 target
-
+*/test-output/**
 
 # Compiled class file
 *.class
