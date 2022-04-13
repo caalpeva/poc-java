@@ -33,7 +33,7 @@ public class VehicleRegistrationTransactionalServiceTest extends AbstractDepende
 
 		Person person = new Person();
 		person.setName("Alex");
-		person.setSurname("Zülle");
+		person.setSurname("Zulle");
 		person.setBirthDate(new Date(68, 4, 5));
 		person.addVehicle(vehicle);
 
