@@ -1,0 +1,10 @@
+version: "3"
+services:
+  calculator:
+    container_name: poc-webapp-calculator
+    image: poc-calculator
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    ports:
+      - 8080
