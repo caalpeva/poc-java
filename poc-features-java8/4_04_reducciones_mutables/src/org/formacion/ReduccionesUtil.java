@@ -1,8 +1,10 @@
 package org.formacion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Para las soluciones de estos ejercicios utiliza streams, las 
@@ -23,10 +25,12 @@ public class ReduccionesUtil {
 	public Collection<String> obtenSinNulosYMayusculas(List<String> original) {
 		Collection<String> result = new ArrayList<>();
 		original.stream()
-				.filter(p ->p != null)
-				.map((a) -> a.toUpperCase())
-				.forEach(it -> result.add(it));
+				.filter(p -> p != null)
+				.map(p -> p.toUpperCase())
+				.forEach(p -> result.add(p));
+		
 		return result;
+		
 	}
 
 	/**
@@ -44,11 +48,40 @@ public class ReduccionesUtil {
 		 */
 		int[] acumular = {0,0};
 		
-		numeros.stream()
-			.forEach(it -> acumular[it % 2]++);
+		
+		numeros.stream().forEach(p -> acumular[p % 2]++);
 		
 		return acumular;
 		
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("Lista con stream (suma)");
+		List<Integer> lista = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+		Integer value = lista.stream()
+		 .peek(System.out::println)
+		 .reduce(0, (a,b)-> a+b);
+		System.out.println("Suma = " + value);
+		
+		System.out.println("Lista con parallel stream (suma)");
+		value = lista.parallelStream()
+		 .peek(System.out::println)
+		 .reduce(0, (a,b)-> a+b);
+		System.out.println("Suma = " + value);
+			
+		System.out.println("Lista con stream (concatenacion)");
+		String text = lista.stream()
+		.map(String::valueOf)
+		.peek(System.out::println)
+		.collect(Collectors.joining(","));
+		System.out.println(text);
+		
+		System.out.println("Lista con parallel stream (concatenacion)");
+		text = lista.parallelStream()
+		.map(String::valueOf)
+		.peek(System.out::println)
+		.collect(Collectors.joining(","));
+		System.out.println(text);
 	}
 	
 }
