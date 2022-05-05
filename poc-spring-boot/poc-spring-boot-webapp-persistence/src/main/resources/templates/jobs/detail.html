@@ -26,7 +26,8 @@
 
         <div class="row">
           <div class="col-md-3">            
-            <img class="rounded mx-auto d-block" th:src="@{/images/{image} (image=${job.image})}" alt="Generic placeholder image" width="220" height="220">            
+            <!-- <img class="rounded mx-auto d-block" th:src="@{/images/{image} (image=${job.image})}" alt="Generic placeholder image" width="220" height="220"> -->            
+            <img class="rounded mx-auto d-block" th:src="@{/logos/{image} (image=${job.image})}" alt="Generic placeholder image" width="220" height="220">
           </div>
           <h1>Detalle de la oferta de trabajo</h1>
           <div class="col-md-9">

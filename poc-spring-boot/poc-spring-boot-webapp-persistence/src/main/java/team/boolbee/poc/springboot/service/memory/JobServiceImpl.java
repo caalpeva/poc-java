@@ -1,4 +1,4 @@
-package team.boolbee.poc.springboot.service;
+package team.boolbee.poc.springboot.service.memory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import team.boolbee.poc.springboot.model.Category;
 import team.boolbee.poc.springboot.model.Job;
+import team.boolbee.poc.springboot.model.Status;
+import team.boolbee.poc.springboot.service.JobService;
 
 @Service
 public class JobServiceImpl implements JobService {
@@ -92,5 +94,14 @@ public class JobServiceImpl implements JobService {
 	
 	private Integer getLastId() {
 		return jobs.size()> 0 ? jobs.get(jobs.size() - 1).getId(): 0;
+	}
+
+	@Override
+	public List<Job> findByFeaturedAndStatus(boolean featured, Status status) {
+		return null;
+	}
+
+	@Override
+	public void delete(Integer id) {				
 	}
 }

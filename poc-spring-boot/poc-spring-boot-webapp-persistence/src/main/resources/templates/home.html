@@ -38,11 +38,7 @@
             <input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Escriba una búsqueda">&nbsp;
             <select class="custom-select custom-select mb-3">
               <option selected>Seleccione una categoría</option>
-              <option value="1">Ventas</option>
-              <option value="2">Contabilidad</option>
-              <option value="3">Transporte</option>
-              <option value="4">Informática</option>
-              <option value="5">Construcción</option>
+              <option th:each="category:${categories}" th:text="${category.name}" th:value="${category.id}"></option>
             </select>&nbsp;
             <button type="submit" class="btn btn-primary mb-3">Buscar</button>
           </form>
@@ -54,8 +50,9 @@
         <h2 class="font-weight-bold text-center text-capitalize">DESTACADOS</h2>
         <hr>
         <div th:each="job: ${jobs}" class="row">
-          <div class="col-md-3">            
-            <img class="rounded mx-auto d-block" th:src="@{images/{image} (image=${job.image})}" alt="Generic placeholder image" width="220" height="220">            
+          <div class="col-md-3">
+            <!-- <img class="rounded mx-auto d-block" th:src="@{/images/{image} (image=${job.image})}" alt="Generic placeholder image" width="220" height="220"> -->                        
+            <img class="rounded mx-auto d-block" th:src="@{logos/{image} (image=${job.image})}" alt="Generic placeholder image" width="220" height="220">            
           </div>
           <div class="col-md-9">
             <h2 th:text="${job.name}"></h2>

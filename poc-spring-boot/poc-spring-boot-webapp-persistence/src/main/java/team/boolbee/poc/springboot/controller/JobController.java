@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,7 @@ public class JobController {
 	private String fileLocation;
 	
 	@Autowired
+	@Qualifier("jobServiceInDatabase")
 	private JobService jobService;
 	
 	@Autowired
@@ -70,7 +72,7 @@ public class JobController {
 	
 	@GetMapping("/index")
 	public String list(Model model) {
-		model.addAttribute("jobs", jobService.list());
+		//model.addAttribute("jobs", jobService.list());
 		return "jobs/list";
 	}
 	
@@ -83,15 +85,21 @@ public class JobController {
 	}
 	
 	@GetMapping("/delete")
-	public String delete(@RequestParam("id") Integer id, Model model) {
-		List<Job> jobs = jobService.list();
-		model.addAttribute("jobs", jobs);
-		return "jobs/list";
+	public String delete(@RequestParam("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+		jobService.delete(id);
+		//model.addAttribute("jobs", jobService.list());
+		redirectAttributes.addFlashAttribute("msg", "Registro eliminado");
+		return "redirect:/jobs/index";
 	}
 	
 	@InitBinder
 	public void initBinder(WebDataBinder webDataBinder) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(simpleDateFormat, false));		
+	}
+	
+	@ModelAttribute
+	public void getCurrentJobs(Model model) {
+		model.addAttribute("jobs", jobService.list());
 	}
 }

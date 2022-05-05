@@ -1,4 +1,4 @@
-package team.boolbee.poc.springboot.service;
+package team.boolbee.poc.springboot.service.memory;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import team.boolbee.poc.springboot.model.Category;
+import team.boolbee.poc.springboot.service.CategoryService;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
