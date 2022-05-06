@@ -35,7 +35,7 @@
               <h4 class="card-header">Aplicar para <strong th:text="'Nombre:' + ${job.name}"></strong></h4>
               <div class="card-body">
                 <h5 class="card-title"><strong>Categoría: </strong> <span th:if="${job.category != null}" th:text="${job.category.name}"></span></h5>
-                <h6 class="card-title"><strong>Publicado: </strong> <span th:text="${job.publicationDate}"></span></h6>                
+                <h6 class="card-title"><strong>Publicado: </strong> <span th:text="${#dates.format(job.publicationDate, 'dd-MM-yyyy')}"></span></h6>                
                 <h6 class="card-title"><strong>Salario Ofrecido: </strong><span th:text="${job.salary}"></span></h6>
                 <p class="card-text" th:text="${job.description}"></p>
                 

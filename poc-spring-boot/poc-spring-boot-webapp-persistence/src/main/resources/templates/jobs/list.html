@@ -45,7 +45,7 @@
                 <tr th:each="job:${jobs}">
                   <td th:text="${job.category.name}"></td>
                   <td th:text="${job.name}"></td>                  
-                  <td th:text="${job.publicationDate}"></td>
+                  <td th:text="${#dates.format(job.publicationDate, 'dd-MM-yyyy')}"></td>
                   <td th:text="${job.status}"></td>
                   <td>
                   	<span th:if="${job.featured}" class="badge bg-success">Si</span>

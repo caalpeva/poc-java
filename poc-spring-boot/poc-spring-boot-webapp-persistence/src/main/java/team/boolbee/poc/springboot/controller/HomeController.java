@@ -52,7 +52,6 @@ public class HomeController {
 	public String search(@ModelAttribute Job job, Model model) {
 		job.resetImage();
 		System.out.println(job);
-		// where description like '%?%'
 		ExampleMatcher exampleMatcher = ExampleMatcher.matching()
 				.withMatcher("description", ExampleMatcher.GenericPropertyMatchers.contains());
 		Example<Job> example = Example.of(job, exampleMatcher);

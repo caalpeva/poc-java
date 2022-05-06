@@ -57,7 +57,7 @@
           <div class="col-md-9">
             <h2 th:text="${job.name}"></h2>
             <h6 class="card-title"><strong>Categoría: </strong> <span th:text="${job.category.name}"></span></h6>
-            <h6 class="card-title"><strong>Publicado: </strong> <span th:text="${job.publicationDate}"></span></h6>                
+            <h6 class="card-title"><strong>Publicado: </strong> <span th:text="${#dates.format(job.publicationDate, 'dd-MM-yyyy')}"></span></h6>                
             <p th:text="${job.description}"></p>
             <p><a class="btn btn-secondary" th:href="@{/jobs/detail/{id} (id=${job.id})}" role="button">View details &raquo;</a></p>            
           </div>
