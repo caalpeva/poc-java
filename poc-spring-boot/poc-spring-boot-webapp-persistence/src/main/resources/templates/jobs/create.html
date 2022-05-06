@@ -39,6 +39,7 @@
                 <div class="col-md-3"> 
                   <div class="form-group">
                     <label for="name">Nombre</label>
+                    <input type="hidden" name="id" th:field="*{id}"/>
                     <input type="text" class="form-control" id="name" name="name" th:field="*{name}" placeholder="Titulo de la oferta de trabajo" required="required">
                   </div>
                 </div>
@@ -95,7 +96,7 @@
                 <div class="col-md-3"> 
                   <div class="form-group">
                     <label for="imageFile">Imagen</label>
-                    <!-- <input type="hidden" name="imagen" th:field="*{imagen}"/> -->
+                    <input type="hidden" name="image" th:field="*{image}"/>
                     <input type="file" class="form-control-file" name="imageFile" id="imageFile">
                   </div>
                 </div>
@@ -110,7 +111,7 @@
                 </div> 
                 <div class="col-md-3">
                   <label for="imagen">Imagen/Logo</label>
-                  <img class="rounded mx-auto d-block" src="images/no-image.png" alt="Generic placeholder image" width="200" height="200">            
+                  <img class="rounded mx-auto d-block" th:src="@{/logos/{image} (image=${job.image})}" alt="Generic placeholder image" width="200" height="200">            
                 </div>
               </div> 
               <button type="submit" class="btn btn-primary">Guardar</button>  

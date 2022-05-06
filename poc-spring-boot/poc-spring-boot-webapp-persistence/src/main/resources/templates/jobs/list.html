@@ -52,7 +52,7 @@
 					<span th:unless="${job.featured}" class="badge bg-danger">No</span>
                   </td>
                   <td>
-                    <a th:href="@{/jobs/detail/{id} (id=${job.id})}" class="btn btn-success btn-sm" role="button" title="Editar el registro."><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                    <a th:href="@{/jobs/edit/{id} (id=${job.id})}" class="btn btn-success btn-sm" role="button" title="Editar el registro."><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                     <a th:href="@{/jobs/delete(id=${job.id})}" onclick="return confirm('¿Estas seguro?')" class="btn btn-success btn-sm" role="button" title="Eliminar el registro."><i class="fas fa-trash" aria-hidden="true"></i></a>
                   </td>
                 </tr>

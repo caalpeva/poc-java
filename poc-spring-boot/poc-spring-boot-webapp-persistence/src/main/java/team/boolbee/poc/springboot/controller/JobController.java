@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import team.boolbee.poc.springboot.model.Job;
+import team.boolbee.poc.springboot.repository.JobRepository;
 import team.boolbee.poc.springboot.service.CategoryService;
 import team.boolbee.poc.springboot.service.JobService;
 import team.boolbee.poc.springboot.util.Utils;
@@ -44,7 +45,7 @@ public class JobController {
 
 	@GetMapping("/create")
 	public String create(Job job, Model model) {
-		model.addAttribute("categories", categoryService.list());
+		//model.addAttribute("categories", categoryService.list());
 		return "jobs/create";
 	}
 	
@@ -70,9 +71,17 @@ public class JobController {
 		return "redirect:/jobs/index";
 	}
 	
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Integer id, Model model) {
+		Job job = jobService.findBy(id);
+		model.addAttribute("job" , job);
+		//model.addAttribute("categories", categoryService.list());
+		return "jobs/create";
+	}
+	
 	@GetMapping("/index")
 	public String list(Model model) {
-		//model.addAttribute("jobs", jobService.list());
+		model.addAttribute("jobs", jobService.list());
 		return "jobs/list";
 	}
 	
@@ -87,7 +96,6 @@ public class JobController {
 	@GetMapping("/delete")
 	public String delete(@RequestParam("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
 		jobService.delete(id);
-		//model.addAttribute("jobs", jobService.list());
 		redirectAttributes.addFlashAttribute("msg", "Registro eliminado");
 		return "redirect:/jobs/index";
 	}
@@ -100,6 +108,6 @@ public class JobController {
 	
 	@ModelAttribute
 	public void getCurrentJobs(Model model) {
-		model.addAttribute("jobs", jobService.list());
+		model.addAttribute("categories", categoryService.list());
 	}
 }
