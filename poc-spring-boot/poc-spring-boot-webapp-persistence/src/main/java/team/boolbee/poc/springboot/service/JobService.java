@@ -10,6 +10,5 @@ public interface JobService {
 	Job findBy(Integer id);
 	void add(Job job);
 	List<Job> findByFeaturedAndStatus(boolean featured, Status status);
-	void delete(Integer id);
-	
+	void delete(Integer id);	
 }

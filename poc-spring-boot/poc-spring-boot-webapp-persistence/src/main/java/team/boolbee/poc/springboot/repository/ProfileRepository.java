@@ -1,9 +1,11 @@
 package team.boolbee.poc.springboot.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import team.boolbee.poc.springboot.model.Profile;
 
 public interface ProfileRepository extends JpaRepository<Profile, Integer> {
-
+	List<Profile> findByName(String name);
 }

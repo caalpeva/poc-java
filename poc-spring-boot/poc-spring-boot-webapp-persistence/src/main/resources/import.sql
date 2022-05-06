@@ -60,7 +60,7 @@ INSERT INTO `PROFILES` (`id`, `name`) VALUES (3, 'Usuario');
 -- Volcado de datos para la tabla `USERS`
 --
 
-INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (1, 'perico@gmail.com', 'Perico', 'perico', '2022-05-04 12:47:07', 'Activo', 'perico');
+INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (1, 'perico@gmail.com', 'Perico', 'perico', '2022-05-04 12:47:07', 'ACTIVE', 'perico');
 
 -- --------------------------------------------------------
 

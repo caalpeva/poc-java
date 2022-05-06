@@ -38,4 +38,9 @@ public class CategoryServiceInDatabaseImpl implements CategoryService {
 		categoryRepository.save(category);
 	}
 
+	@Override
+	public void delete(Integer id) {
+		categoryRepository.deleteById(id);
+	}
+
 }

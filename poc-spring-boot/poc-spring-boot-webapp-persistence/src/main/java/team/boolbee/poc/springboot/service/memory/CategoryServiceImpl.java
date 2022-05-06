@@ -71,4 +71,8 @@ public class CategoryServiceImpl implements CategoryService {
 	private Integer getLastId() {
 		return categories.size()> 0 ? categories.get(categories.size() - 1).getId(): 0;
 	}
+
+	@Override
+	public void delete(Integer id) {
+	}
 }

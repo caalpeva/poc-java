@@ -8,4 +8,5 @@ public interface CategoryService {
 	List<Category> list();
 	Category findBy(Integer id);
 	void add(Category category);
+	void delete(Integer id);
 }

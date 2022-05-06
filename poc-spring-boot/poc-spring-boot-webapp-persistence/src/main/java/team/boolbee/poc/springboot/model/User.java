@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +31,9 @@ public class User {
 	private Integer age;
 	private String username;
 	private String password;
-	private String status;
+	
+	@Enumerated(EnumType.STRING)
+	private Status status;
 	private Date registrationDate;
 	
 	//@ManyToMany(fetch=FetchType.EAGER)
@@ -73,10 +77,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 	public Date getRegistrationDate() {

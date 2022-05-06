@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>EmpleosApp | Listado de Categorías</title>
+    <title>EmpleosApp | Listado de Usuarios</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -18,37 +18,41 @@
 
   <body>
 
-    <header th:insert="/fragments/header :: header"> 
-    </header>
+    <header th:insert="/fragments/header :: header">     
+    </header>  
 
     <main role="main">     
       <hr>
       <div class="container"> 
 
         <div class="card">
-          <h4 class="card-header"><strong>Listado de Categorías</strong></h4>              
-          <div class="card-body">
-            <a class="btn btn-primary" th:href="@{/categories/create}" role="button"><i class="fas fa-file" aria-hidden="true"></i> Nueva</a>            
+          <h4 class="card-header"><strong>Listado de Usuarios</strong></h4>              
+          <div class="card-body">            
             <hr>
+            <div th:if="${msg != null}" class='alert alert-success' th:text="${msg}" role='alert'></div>
             <table class="table table-hover">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col">Id</th>
                   <th scope="col">Nombre</th>
-                  <th scope="col">Descripción</th>
+                  <th scope="col">Username</th>                  
+                  <th scope="col">Email</th>
+                  <th scope="col">Estatus</th>
                   <th scope="col">Operaciones</th>
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="category:${categories}">
-                  <th scope="row" th:text="${category.id}"></th>
-                  <td th:text="${category.name}"></td>
-                  <td th:text="${category.description}"></td>
+                <tr th:each="user : ${users}">
+                  <td th:text="${user.name}"></td>
+                  <td th:text="${user.username}"></td>                  
+                  <td th:text="${user.email}"></td>
+                  <td th:text="${user.status}"></td>
+                  
                   <td>
-                    <a th:href="@{/categories/edit/{id} (id=${category.id})}" class="btn btn-success btn-sm" role="button" title="Editar"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
-                    <a th:href="@{/categories/delete(id=${category.id})}" onclick="return confirm('¿Estas seguro?')" class="btn btn-success btn-sm" role="button" title="Eliminar"><i class="fas fa-trash" aria-hidden="true"></i></a>
+                    <a th:href="@{/users/delete(id=${user.id}) }" onclick="return confirm('¿Estas seguro?')" class="btn btn-success btn-sm" role="button" title="Eliminar"><i class="fas fa-trash" aria-hidden="true"></i></a>
+                    <a href="#" onclick="return confirm('¿Quiere bloquear el acceso al usuario?')" class="btn btn-success btn-sm" role="button" title="Bloquear el acceso al sistema para este usuario."><i class="fas fa-lock" aria-hidden="true"></i></a>	
                   </td>
-                </tr>                        
+                </tr>                
+                               
               </tbody>
             </table>
             
@@ -60,11 +64,11 @@
 
     <footer th:insert="/fragments/footer :: footer" class="footer">
     </footer>
-
+    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>     
   </body>
 </html>
