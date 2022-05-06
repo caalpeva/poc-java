@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import team.boolbee.poc.springboot.model.Category;
@@ -41,6 +43,11 @@ public class CategoryServiceInDatabaseImpl implements CategoryService {
 	@Override
 	public void delete(Integer id) {
 		categoryRepository.deleteById(id);
+	}
+	
+	@Override
+	public Page<Category> list(Pageable page) {
+		return categoryRepository.findAll(page);
 	}
 
 }

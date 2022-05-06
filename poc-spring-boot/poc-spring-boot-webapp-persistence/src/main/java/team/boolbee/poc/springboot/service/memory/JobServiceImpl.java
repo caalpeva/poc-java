@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import team.boolbee.poc.springboot.model.Category;
@@ -108,6 +110,12 @@ public class JobServiceImpl implements JobService {
 
 	@Override
 	public List<Job> findByExample(Example<Job> job) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<Job> list(Pageable page) {
 		// TODO Auto-generated method stub
 		return null;
 	}

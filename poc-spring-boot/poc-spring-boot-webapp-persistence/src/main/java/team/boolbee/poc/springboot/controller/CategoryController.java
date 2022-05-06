@@ -3,6 +3,8 @@ package team.boolbee.poc.springboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +38,7 @@ public class CategoryController {
 		category.setDescription(description);
 		System.out.println("Category: " + category);
 		categoryService.add(category);
-		return "redirect:/categories/index";
+		return "redirect:/categories/indexPaginate";
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -48,13 +50,20 @@ public class CategoryController {
 	@GetMapping("/delete")
 	public String delete(@RequestParam("id") Integer id, Model model) {
 		categoryService.delete(id);
-		return "redirect:/categories/index";
+		return "redirect:/categories/indexPaginate";
 	}
 	
 	
 	@GetMapping("/index")
 	public String list(Model model) {
 		List<Category> categories = categoryService.list();
+		model.addAttribute("categories", categories);
+		return "categories/list";
+	}
+	
+	@GetMapping("/indexPaginate")
+	public String listPaginate(Model model, Pageable page) {
+		Page<Category> categories = categoryService.list(page);
 		model.addAttribute("categories", categories);
 		return "categories/list";
 	}

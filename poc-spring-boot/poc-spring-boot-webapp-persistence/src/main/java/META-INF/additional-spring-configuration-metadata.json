@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "team.boolbee.poc.jobs.file.location",
+  "type": "java.lang.String",
+  "description": "A description for 'team.boolbee.poc.jobs.file.location'"
+}]}

@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import team.boolbee.poc.springboot.model.Job;
@@ -51,6 +53,11 @@ public class JobServiceInDatabase implements JobService {
 	@Override
 	public List<Job> findByExample(Example<Job> job) {
 		return jobRepository.findAll(job);
+	}
+	
+	@Override
+	public Page<Job> list(Pageable page) {
+		return jobRepository.findAll(page);
 	}
 
 }

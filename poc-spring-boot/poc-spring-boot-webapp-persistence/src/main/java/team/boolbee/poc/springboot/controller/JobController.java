@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -68,7 +69,7 @@ public class JobController {
 		System.out.println("Job: " + job);
 		jobService.add(job);
 		redirectAttributes.addFlashAttribute("msg", "Registro guardado");
-		return "redirect:/jobs/index";
+		return "redirect:/jobs/indexPaginate";
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -85,6 +86,12 @@ public class JobController {
 		return "jobs/list";
 	}
 	
+	@GetMapping("/indexPaginate")
+	public String listPaginate(Model model, Pageable page) {
+		model.addAttribute("jobs", jobService.list(page));
+		return "jobs/list";
+	}
+	
 	@GetMapping("/detail/{id}")
 	public String getDetail(@PathVariable("id") Integer id, Model model) {
 		Job job = jobService.findBy(id);
@@ -97,7 +104,7 @@ public class JobController {
 	public String delete(@RequestParam("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
 		jobService.delete(id);
 		redirectAttributes.addFlashAttribute("msg", "Registro eliminado");
-		return "redirect:/jobs/index";
+		return "redirect:/jobs/indexPaginate";
 	}
 	
 	@InitBinder

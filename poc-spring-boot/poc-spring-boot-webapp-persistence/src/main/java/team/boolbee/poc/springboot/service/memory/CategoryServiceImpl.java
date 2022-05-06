@@ -3,6 +3,8 @@ package team.boolbee.poc.springboot.service.memory;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import team.boolbee.poc.springboot.model.Category;
@@ -74,5 +76,11 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public void delete(Integer id) {
+	}
+
+	@Override
+	public Page<Category> list(Pageable page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
