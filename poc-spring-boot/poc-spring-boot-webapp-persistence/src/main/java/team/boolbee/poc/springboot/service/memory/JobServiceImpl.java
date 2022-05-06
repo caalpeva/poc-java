@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import team.boolbee.poc.springboot.model.Category;
@@ -103,5 +104,11 @@ public class JobServiceImpl implements JobService {
 
 	@Override
 	public void delete(Integer id) {				
+	}
+
+	@Override
+	public List<Job> findByExample(Example<Job> job) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

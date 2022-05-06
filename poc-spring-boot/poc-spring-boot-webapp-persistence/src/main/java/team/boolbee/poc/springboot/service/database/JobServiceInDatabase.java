@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import team.boolbee.poc.springboot.model.Job;
@@ -45,6 +46,11 @@ public class JobServiceInDatabase implements JobService {
 	@Override
 	public void delete(Integer id) {
 		jobRepository.deleteById(id);
+	}
+
+	@Override
+	public List<Job> findByExample(Example<Job> job) {
+		return jobRepository.findAll(job);
 	}
 
 }

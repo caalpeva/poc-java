@@ -34,7 +34,7 @@ public class Job {
 	private Category category;
 	
 	@Type(type = "org.hibernate.type.NumericBooleanType")  
-	private boolean featured;
+	private boolean featured = true;
 	
 	@Enumerated(EnumType.STRING)
 	private Status status = Status.ACTIVE;
@@ -101,7 +101,9 @@ public class Job {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+	public void resetImage() {
+		this.image = null;
+	}
 	@Override
 	public String toString() {
 		return "Job [id=" + id + ", name=" + name + ", description=" + description + ", publicationDate="
