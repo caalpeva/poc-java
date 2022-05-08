@@ -37,6 +37,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource);
+		auth.jdbcAuthentication().dataSource(dataSource)
+			.usersByUsernameQuery("select username, password, CASE WHEN status = 'ACTIVE' THEN 1 ELSE 0 END AS enabled "
+					+ " from USERS where username = ?")
+			.authoritiesByUsernameQuery("select * from USER_PROFILES up "
+					+ "inner join USERS u on up.userId = u.id "
+					+ "inner join PROFILES p on up.profileId = p.id "
+					+ "where u.username = ?");
 	}
 }
