@@ -52,7 +52,7 @@
         <div th:each="job: ${jobs}" class="row">
           <div class="col-md-3">
             <!-- <img class="rounded mx-auto d-block" th:src="@{/images/{image} (image=${job.image})}" alt="Generic placeholder image" width="220" height="220"> -->                        
-            <img class="rounded mx-auto d-block" th:src="@{logos/{image} (image=${job.image})}" alt="Generic placeholder image" width="220" height="220">            
+            <img class="rounded mx-auto d-block" th:src="@{/logos/{image} (image=${job.image})}" alt="Generic placeholder image" width="220" height="220">            
           </div>
           <div class="col-md-9">
             <h2 th:text="${job.name}"></h2>
