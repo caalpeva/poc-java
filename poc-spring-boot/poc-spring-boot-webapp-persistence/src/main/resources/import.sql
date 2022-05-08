@@ -60,7 +60,8 @@ INSERT INTO `PROFILES` (`id`, `name`) VALUES (3, 'Usuario');
 -- Volcado de datos para la tabla `USERS`
 --
 
-INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (1, 'perico@gmail.com', 'Perico', 'perico', '2022-05-04 12:47:07', 'ACTIVE', 'perico');
+INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (1, 'egon@ghostbusters.com', 'egon', '{noop}egon', '2022-05-04 12:47:07', 'ACTIVE', 'egon');
+INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (2, 'ray@ghostbusters.com', 'ray', '{noop}ray', '2022-05-04 12:47:07', 'INACTIVE', 'ray');
 
 -- --------------------------------------------------------
 
@@ -68,5 +69,6 @@ INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `sta
 -- Volcado de datos para la tabla `USER_PROFILES`
 --
 
-INSERT INTO `USER_PROFILES` (`userId`, `profileId`) VALUES (1, 2);
+INSERT INTO `USER_PROFILES` (`userId`, `profileId`) VALUES (1, 1);
 INSERT INTO `USER_PROFILES` (`userId`, `profileId`) VALUES (1, 3);
+INSERT INTO `USER_PROFILES` (`userId`, `profileId`) VALUES (2, 2);
