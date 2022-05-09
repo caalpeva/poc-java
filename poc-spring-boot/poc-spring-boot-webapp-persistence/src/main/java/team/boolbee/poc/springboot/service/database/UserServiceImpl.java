@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import team.boolbee.poc.springboot.model.Profile;
 import team.boolbee.poc.springboot.model.Status;
 import team.boolbee.poc.springboot.model.User;
-import team.boolbee.poc.springboot.repository.ProfileRepository;
 import team.boolbee.poc.springboot.repository.UserRepository;
 import team.boolbee.poc.springboot.service.UserService;
 
@@ -18,9 +17,6 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Autowired
-	private ProfileRepository profileRepository;
 	
 	@Override
 	public void add(User user) {

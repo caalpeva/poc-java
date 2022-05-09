@@ -2,7 +2,6 @@ package team.boolbee.poc.springboot.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,7 +24,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import team.boolbee.poc.springboot.model.Job;
-import team.boolbee.poc.springboot.repository.JobRepository;
 import team.boolbee.poc.springboot.service.CategoryService;
 import team.boolbee.poc.springboot.service.JobService;
 import team.boolbee.poc.springboot.util.Utils;

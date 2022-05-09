@@ -75,6 +75,7 @@ public class DemoApplication implements	CommandLineRunner {
 		findBySalaryBetweenOrderSalaryDesc();
 	}
 	
+	@SuppressWarnings("unused")
 	private void addCategory() {
 		Category category = new Category();
 		category.setName("Contabilidad");
@@ -82,6 +83,7 @@ public class DemoApplication implements	CommandLineRunner {
 		categoryRepository.save(category);
 	}
 	
+	@SuppressWarnings("unused")
 	private void addJob() {
 		Job job = new Job();
 		job.setName("Contable");
@@ -138,14 +140,17 @@ public class DemoApplication implements	CommandLineRunner {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void deleteCategory(Integer id) {
 		categoryRepository.deleteById(id);
 	}
 	
+	@SuppressWarnings("unused")
 	private void deleteJob(Integer id) {
 		jobRepository.deleteById(id);
 	}
 	
+	@SuppressWarnings("unused")
 	private void deleteAllJobsInBatch() {
 		//jobRepository.deleteAll();
 		jobRepository.deleteAllInBatch();
@@ -186,6 +191,7 @@ public class DemoApplication implements	CommandLineRunner {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void savePerfiles() {
 		List<Profile> profiles = new ArrayList<Profile>();
 		Profile profile = new Profile();
@@ -200,6 +206,7 @@ public class DemoApplication implements	CommandLineRunner {
 		profileRepository.saveAll(profiles);
 	}
 	
+	@SuppressWarnings("unused")
 	private void addUserWithTwoProfiles() {
 		User user = new User();
 		user.setName("Perico");
@@ -217,6 +224,7 @@ public class DemoApplication implements	CommandLineRunner {
 		userRepository.save(user);
 	}
 	
+	@SuppressWarnings("unused")
 	private void listUsers() {
 		List<User> users = userRepository.findAll();
 		for(User u: users) {
@@ -229,6 +237,7 @@ public class DemoApplication implements	CommandLineRunner {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void findUserById(Integer id) {
 		Optional<User> user = userRepository.findById(id);
 		if (user.isPresent()) {
