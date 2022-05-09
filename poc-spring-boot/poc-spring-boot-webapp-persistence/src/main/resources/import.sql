@@ -67,7 +67,6 @@ INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `sta
 INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (2, 'ray@ghostbusters.com', 'Ray Stantz', '$2a$10$l.qb63rpGHHVEmmrrFO6LuvkqTUMoF4vwSiKfwYXmeZdLdyxjUVLe', '2022-05-04 12:47:07', 'INACTIVE', 'ray');
 INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (3, 'venkman@ghostbusters.com', 'Peter Venkman', '$2a$10$FZg7OWEJcts1ky16iQ./TObfSfDLQx9mlxefzeo7IPMQ7sNMKYG5u', '2022-05-04 12:47:07', 'ACTIVE', 'venkman');
 
-
 -- --------------------------------------------------------
 
 --
