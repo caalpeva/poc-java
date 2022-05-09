@@ -50,9 +50,9 @@ INSERT INTO `JOBS` (`id`, `description`, `details`, `featured`, `image`, `name`,
 -- Volcado de datos para la tabla `PROFILES`
 --
 
-INSERT INTO `PROFILES` (`id`, `name`) VALUES (1, 'Supervisor');
-INSERT INTO `PROFILES` (`id`, `name`) VALUES (2, 'Administrador');
-INSERT INTO `PROFILES` (`id`, `name`) VALUES (3, 'Usuario');
+INSERT INTO `PROFILES` (`id`, `name`) VALUES (1, 'MANAGER');
+INSERT INTO `PROFILES` (`id`, `name`) VALUES (2, 'ADMINISTRATOR');
+INSERT INTO `PROFILES` (`id`, `name`) VALUES (3, 'USER');
 
 -- --------------------------------------------------------
 
@@ -60,8 +60,13 @@ INSERT INTO `PROFILES` (`id`, `name`) VALUES (3, 'Usuario');
 -- Volcado de datos para la tabla `USERS`
 --
 
-INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (1, 'egon@ghostbusters.com', 'egon', '{noop}egon', '2022-05-04 12:47:07', 'ACTIVE', 'egon');
-INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (2, 'ray@ghostbusters.com', 'ray', '{noop}ray', '2022-05-04 12:47:07', 'INACTIVE', 'ray');
+--//INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (1, 'egon@ghostbusters.com', 'Egon Spengler', '{noop}egon', '2022-05-04 12:47:07', 'ACTIVE', 'egon');
+--//INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (2, 'ray@ghostbusters.com', 'Ray Stantz', '{noop}ray', '2022-05-04 12:47:07', 'INACTIVE', 'ray');
+--//INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (3, 'venkman@ghostbusters.com', 'Peter Venkman', '{noop}venkman', '2022-05-04 12:47:07', 'ACTIVE', 'venkman');
+INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (1, 'egon@ghostbusters.com', 'Egon Spengler', '$2a$10$4v2B3UNYZuV.b5/FrlA88O1yV8dNPuZw39gdWwvCkrLHsx7MgWu0y', '2022-05-04 12:47:07', 'ACTIVE', 'egon');
+INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (2, 'ray@ghostbusters.com', 'Ray Stantz', '$2a$10$l.qb63rpGHHVEmmrrFO6LuvkqTUMoF4vwSiKfwYXmeZdLdyxjUVLe', '2022-05-04 12:47:07', 'INACTIVE', 'ray');
+INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `status`, `username`) VALUES (3, 'venkman@ghostbusters.com', 'Peter Venkman', '$2a$10$FZg7OWEJcts1ky16iQ./TObfSfDLQx9mlxefzeo7IPMQ7sNMKYG5u', '2022-05-04 12:47:07', 'ACTIVE', 'venkman');
+
 
 -- --------------------------------------------------------
 
@@ -70,5 +75,6 @@ INSERT INTO `USERS` (`id`, `email`, `name`, `password`, `registrationDate`, `sta
 --
 
 INSERT INTO `USER_PROFILES` (`userId`, `profileId`) VALUES (1, 1);
-INSERT INTO `USER_PROFILES` (`userId`, `profileId`) VALUES (1, 3);
+INSERT INTO `USER_PROFILES` (`userId`, `profileId`) VALUES (1, 2);
 INSERT INTO `USER_PROFILES` (`userId`, `profileId`) VALUES (2, 2);
+INSERT INTO `USER_PROFILES` (`userId`, `profileId`) VALUES (3, 1);

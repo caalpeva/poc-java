@@ -10,5 +10,6 @@ import team.boolbee.poc.springboot.model.User;
 public interface UserService {
 	void add(User user);
 	void delete(Integer id);
-	List<User> list();	
+	List<User> list();
+	User findByUsername(String username);
 }

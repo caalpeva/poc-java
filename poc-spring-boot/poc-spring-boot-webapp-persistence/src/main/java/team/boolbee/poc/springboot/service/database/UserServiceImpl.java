@@ -26,10 +26,9 @@ public class UserServiceImpl implements UserService {
 	public void add(User user) {
 		user.setRegistrationDate(new Date());
 		user.setStatus(Status.ACTIVE);
-		List<Profile> profiles = profileRepository.findByName("Usuario");
-		for(Profile profile: profiles) {
-			user.addProfile(profile);
-		}
+		Profile profile = new Profile();
+		profile.setId(3);
+		user.addProfile(profile);
 		userRepository.save(user);
 	}
 
@@ -41,6 +40,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> list() {
 		return userRepository.findAll();
+	}
+
+	@Override
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
 	}
 
 }

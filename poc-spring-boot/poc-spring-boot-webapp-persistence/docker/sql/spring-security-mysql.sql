@@ -21,5 +21,5 @@ INSERT INTO `users` VALUES ('luis','{noop}luis123',1);
 INSERT INTO `users` VALUES ('marisol','{noop}mari123',1);
 
 -- Insertamos (asignamos roles) a nuestros usuarios.
-INSERT INTO `authorities` VALUES ('luis','SUPERVISOR');
-INSERT INTO `authorities` VALUES ('marisol','ADMINISTRADOR');
+INSERT INTO `authorities` VALUES ('luis','MANAGER');
+INSERT INTO `authorities` VALUES ('marisol','ADMINISTRATOR');
