@@ -38,6 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/jobs/**").hasAnyAuthority("MANAGER","ADMINISTRATOR")
 			.antMatchers("/categories/**").hasAnyAuthority("MANAGER","ADMINISTRATOR") 
 			.antMatchers("/users/**").hasAnyAuthority("ADMINISTRATOR")
+			.antMatchers("/demands/create/**").hasAnyAuthority("USER")
+			.antMatchers("/demands/save/**").hasAnyAuthority("USER")
+			.antMatchers("/demands/**").hasAnyAuthority("MANAGER", "ADMINISTRATOR")
 			.anyRequest().authenticated()
 			.and().formLogin().loginPage("/login").permitAll();
 			//.and().formLogin().permitAll(); // Formulario de login por defecto

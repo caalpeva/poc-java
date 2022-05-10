@@ -6,11 +6,14 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
+           	<li class="nav-item" sec:authorize="hasAnyAuthority('MANAGER','ADMINISTRATOR')">
+              <a class="nav-link" th:href="@{/demands/indexPaginate}">Solicitudes</a>
+            </li>
           	<li class="nav-item" sec:authorize="hasAnyAuthority('MANAGER','ADMINISTRATOR')">
-              <a class="nav-link active" th:href="@{/jobs/indexPaginate}">Ofertas de trabajo</a>
+              <a class="nav-link" th:href="@{/jobs/indexPaginate}">Ofertas de trabajo</a>
             </li>
            	<li class="nav-item" sec:authorize="hasAnyAuthority('MANAGER','ADMINISTRATOR')">
-              <a class="nav-link"th:href="@{/categories/indexPaginate}">Categorias</a>
+              <a class="nav-link" th:href="@{/categories/indexPaginate}">Categorias</a>
             </li>
            	<li class="nav-item" sec:authorize="hasAnyAuthority('ADMINISTRATOR')">
               <a class="nav-link" th:href="@{/users/index}">Usuarios</a>

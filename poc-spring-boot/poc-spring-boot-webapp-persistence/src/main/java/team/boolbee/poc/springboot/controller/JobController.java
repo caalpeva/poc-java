@@ -32,7 +32,7 @@ import team.boolbee.poc.springboot.util.Utils;
 @RequestMapping(value="/jobs")
 public class JobController {
 	
-	@Value("${team.boolbee.poc.jobs.file.location}")
+	@Value("${team.boolbee.poc.jobs.location.images}")
 	private String fileLocation;
 	
 	@Autowired
