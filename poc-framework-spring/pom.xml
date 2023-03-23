@@ -22,7 +22,7 @@
 	</modules>
 
 	<properties>
-		<spring.version>2.0.6</spring.version>
+		<spring.version>5.2.23.RELEASE</spring.version>
 		<junit.version>3.8.1</junit.version>
 	</properties>
 
