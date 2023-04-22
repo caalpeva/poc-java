@@ -1,6 +1,7 @@
 **/.metadata/.plugins/**
 /poc-webapp-basic/build
 /poc-webapp-maven/build
+/poc-cadence/.idea/**
 target
 bin
 test-output/**:wq
