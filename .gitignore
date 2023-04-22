@@ -2,6 +2,7 @@
 /poc-webapp-basic/build
 /poc-webapp-maven/build
 /poc-cadence/.idea/**
+poc-cadence/uservices/poc-mobile-router/target/**
 target
 bin
 test-output/**:wq
