@@ -2,12 +2,18 @@ plugins {
 	id 'org.springframework.boot' version '2.6.6'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'war'
 }
+
+apply plugin: 'java'
+apply plugin: "jacoco"
+apply plugin: 'checkstyle'
 
 group = 'team.boolbee'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+sourceSets.test.resources.srcDir 'src/test/java'
 
 repositories {
 	mavenCentral()
@@ -15,10 +21,40 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation("io.cucumber:cucumber-java:6.8.1")
+	testImplementation("io.cucumber:cucumber-junit:6.8.1")
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = 0.2
+			}
+		}
+	}
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task acceptanceTest() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+						systemProperties = System.properties
+				    main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'team.boolbee.calculator', 'src/test/resources']
+        }
+    }
 }
