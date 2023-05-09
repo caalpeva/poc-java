@@ -6,6 +6,9 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 
 public class MainVerticle extends AbstractVerticle {
+
+  public static final int PORT = 8888;
+
 /*
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
@@ -49,7 +52,7 @@ public class MainVerticle extends AbstractVerticle {
         // Handle every request using the router
         .requestHandler(router)
         // Start listening
-        .listen(8888)
+        .listen(PORT)
         // Print the port
         .onSuccess(server ->
             System.out.println(
