@@ -10,6 +10,7 @@
   </parent>
 
   <artifactId>poc-mobile-router</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
@@ -21,10 +22,10 @@
     <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
 
-    <vertx.version>4.3.7</vertx.version>
+    <vertx.version>4.4.1</vertx.version>
     <junit-jupiter.version>5.9.1</junit-jupiter.version>
 
-    <main.verticle>team.kalpeva.poc.cadence.mobile.router.starter.MainVerticle</main.verticle>
+    <main.verticle>team.kalpeva.poc.mobile.router.MainVerticle</main.verticle>
     <launcher.class>io.vertx.core.Launcher</launcher.class>
   </properties>
 
@@ -74,7 +75,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${maven-compiler-plugin.version}</version>
         <configuration>
-          <release>11</release>
+          <source>11</source>
+          <target>11</target>
         </configuration>
       </plugin>
       <plugin>

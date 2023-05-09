@@ -1,8 +1,7 @@
-package team.kalpeva.poc.cadence.mobile.router.starter;
+package team.kalpeva.poc.mobile.router;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.MultiMap;
-import io.vertx.core.Promise;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 
