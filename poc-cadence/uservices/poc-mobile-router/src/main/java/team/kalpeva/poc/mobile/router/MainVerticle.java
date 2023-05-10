@@ -4,6 +4,11 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.MultiMap;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.handler.BodyHandler;
+import team.kalpeva.poc.mobile.router.comm.handlers.OrderRestHandlerImpl;
+
+import static io.vertx.core.http.HttpMethod.GET;
+import static io.vertx.core.http.HttpMethod.POST;
 
 public class MainVerticle extends AbstractVerticle {
 
@@ -30,9 +35,10 @@ public class MainVerticle extends AbstractVerticle {
   public void start() throws Exception {
     // Create a Router
     Router router = Router.router(vertx);
+    router.route().handler(BodyHandler.create());
 
     // Mount the handler for all incoming requests at every path and HTTP method
-    router.route().handler(context -> {
+    /*router.route(GET, "/orders").handler(context -> {
       // Get the address of the request
       String address = context.request().connection().remoteAddress().toString();
       // Get the query parameter "name"
@@ -45,7 +51,10 @@ public class MainVerticle extends AbstractVerticle {
               .put("address", address)
               .put("message", "Hello " + name + " connected from " + address)
       );
-    });
+    });*/
+
+    // Mount the handler for all incoming requests at every path and HTTP method
+    router.route(POST,"/orders").handler(new OrderRestHandlerImpl());
 
     // Create the HTTP server
     vertx.createHttpServer()
