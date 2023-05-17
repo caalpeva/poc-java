@@ -12,7 +12,8 @@
   <artifactId>uservices</artifactId>
   <packaging>pom</packaging>
   <modules>
-    <module>poc-mobile-router</module>
+    <module>server-purchase</module>
+    <module>server-order</module>
   </modules>
 
   <properties>
