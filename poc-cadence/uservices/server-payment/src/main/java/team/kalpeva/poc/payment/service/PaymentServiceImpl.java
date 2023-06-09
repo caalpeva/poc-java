@@ -27,14 +27,15 @@ public class PaymentServiceImpl implements PaymentService {
 	public PaymentResponse debit(final PaymentRequest request) {
 		double balance = userBalanceMap.getOrDefault(request.getUserId(), 0d);
 		PaymentResponse response = new PaymentResponse();
-		response.setAmount(request.getAmount());
 		response.setUserId(request.getUserId());
 		response.setOrderId(request.getOrderId());
 		response.setStatus(PaymentStatus.PAYMENT_REJECTED);
-		if(balance >= request.getAmount()){
+		if (balance >= request.getAmount()){
+			balance -= request.getAmount();
+			userBalanceMap.put(request.getUserId(), balance);
 			response.setStatus(PaymentStatus.PAYMENT_APPROVED);
-			userBalanceMap.put(request.getUserId(), balance - request.getAmount());
 		}
+		response.setAmount(balance);
 		return response;
 	}
 

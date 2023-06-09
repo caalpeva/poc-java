@@ -12,7 +12,7 @@
   <artifactId>uservices</artifactId>
   <packaging>pom</packaging>
   <modules>
-    <module>server-purchase</module>
+    <module>server-shopping</module>
     <module>server-order</module>
     <module>server-payment</module>
     <module>server-inventory</module>
